@@ -6,11 +6,6 @@ using UnityEngine.Tilemaps;
 
 public class PathfindingGrid : MonoBehaviour
 {
-    public class Node
-    {
-        private bool isBlocked;
-    }
-
     public Tilemap terrainMap;
     public Tilemap gridMap;
 
@@ -18,7 +13,7 @@ public class PathfindingGrid : MonoBehaviour
 
     public Node[,] nodes;
     
-    public void Start()
+    public void Awake()
     {
         Generate();
     }
@@ -34,7 +29,9 @@ public class PathfindingGrid : MonoBehaviour
             {
                 nodes[x, y] = new Node();
                 Vector3Int currentPosition = new Vector3Int(terrainMap.origin.x + x, terrainMap.origin.y + y, 0);
-
+                nodes[x, y].coordinates = currentPosition;
+                nodes[x, y].index = new Vector2Int(x, y);
+                
                 Tile currentTile = terrainMap.GetTile<Tile>(currentPosition);
 
                 foreach (Tile blockedTile in blockedTiles)
@@ -42,9 +39,17 @@ public class PathfindingGrid : MonoBehaviour
                     if (currentTile == blockedTile)
                     {
                         gridMap.SetTile(currentPosition, blockedTile);
+                        nodes[x, y].isBlocked = true;
+                        break;
                     }
                 }
             }
         }    
+    }
+
+    public Vector3Int ConvertPositionToCell(Vector3 position)
+    {
+        Vector3Int cellPosition = terrainMap.WorldToCell(position);
+        return cellPosition - terrainMap.origin;
     }
 }
