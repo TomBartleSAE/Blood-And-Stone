@@ -28,6 +28,8 @@ public class DayNightManager : MonoBehaviour
 
     public float timeElapsed;
     public float lerpDuration;
+
+    public AnimationCurve curve;
     
 
 
@@ -73,23 +75,6 @@ public class DayNightManager : MonoBehaviour
         else if (dayPhase == DayPhase.Night)
         {
             moon.transform.position = point;
-        }
-
-        //Probably extremely long winded way to do this tbh
-        if (timeElapsed >= lerpDuration)
-        {
-
-            timeElapsed = 0;
-            
-            if (dayPhase == DayPhase.Day)
-            {
-                dayPhase = DayPhase.Night;
-            }
-
-            else if(dayPhase == DayPhase.Night)
-            {
-                dayPhase = DayPhase.Day;
-            }
         }
     }
 
