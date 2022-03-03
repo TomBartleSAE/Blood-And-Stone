@@ -591,7 +591,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335997866}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751794583
 GameObject:
@@ -789,12 +789,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808489529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.735887, y: 1.7345111, z: 0}
+  m_LocalPosition: {x: -9.25, y: 2.22, z: 0.052131016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1335997866}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917143268
 GameObject:
@@ -1420,7 +1420,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 808489530}
   - {fileID: 576038759}
   - {fileID: 1869122872}
   - {fileID: 1987269859}
@@ -1542,14 +1541,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunMoon: {fileID: 1001761991}
-  time: 0
-  phaseLength: 60
   arc:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0.007075472
+      inSlope: 0.8298237
+      outSlope: 0.8298237
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.68350327
+    - serializedVersion: 3
+      time: 0.08032497
+      value: 0.066007055
+      inSlope: 0.84197724
+      outSlope: 0.84197724
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.40886205
+      outWeight: 0.255733
+    - serializedVersion: 3
+      time: 0.18979827
+      value: 0.16094482
+      inSlope: 0.92539436
+      outSlope: 0.92539436
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.3240797
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5029602
+      value: 0.29539108
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -1557,44 +1581,41 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.17495608
-      value: 0.30064037
-      inSlope: 1.5208639
-      outSlope: 1.5208639
+      time: 0.80792475
+      value: 0.17209464
+      inSlope: -0.9646766
+      outSlope: -0.9646766
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2878176
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.79455805
-      value: 0.29811698
-      inSlope: -1.3795418
-      outSlope: -1.3795418
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.10937688
       outWeight: 0.25929743
     - serializedVersion: 3
-      time: 1.0015974
-      value: 0.009433962
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      time: 0.9331583
+      value: 0.060827687
+      inSlope: -0.8280449
+      outSlope: -0.8280449
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.2913538
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0030622
+      value: 0.009433962
+      inSlope: -0.6279172
+      outSlope: -0.6279172
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.8912597
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sunRise: {fileID: 808489530}
+  testValue: 0
+  time: 0
+  arcTime: 0
+  phaseLength: 18
+  heightMultiplier: 5
 --- !u!4 &1487139404
 Transform:
   m_ObjectHideFlags: 0
@@ -1674,7 +1695,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335997866}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982745959
 GameObject:
@@ -1790,7 +1811,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335997866}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2019328975
 GameObject:
