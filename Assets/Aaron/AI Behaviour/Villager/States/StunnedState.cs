@@ -2,17 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StunnedState : MonoBehaviour
+public class StunnedState : StateBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public float stunTime;
+    
+    public override void Enter()
     {
+        base.Enter();
         
+        Debug.Log("Entering Stunned State");
+
+        //TODO fine tune when steering behaviours added
+        //GetComponent<SteeringBehaviour>().ChangeSpeed(0);
+        
+        StartCoroutine(StunnedTimer());
+    }
+    
+    public override void Execute()
+    {
+        base.Enter();
+        
+        Debug.Log("Executing Stunned State");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit()
     {
+        base.Enter();
+
+        Debug.Log("Exiting Stunned State");
+    }
+
+    IEnumerator StunnedTimer()
+    {
+        for (int i = 0; i < stunTime; i++)
+        {
+            yield return new WaitForSeconds(1);
+        }
         
+        //ChangeState to IdleState
     }
 }
