@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Anthill.AI;
 using UnityEngine;
 
-public class ReturnToKeepState : StateBase
+public class ReturnToKeepState : AntAIState
 {
     public override void Enter()
     {
@@ -11,9 +12,9 @@ public class ReturnToKeepState : StateBase
         Debug.Log("Entering Return to Keep State");
     }
 
-    public override void Execute()
+    public override void Execute(float aDeltaTime, float aTimeScale)
     {
-        base.Execute();
+        base.Execute(aDeltaTime, aTimeScale);
         
         Debug.Log("Executing Return to Keep State");
     }

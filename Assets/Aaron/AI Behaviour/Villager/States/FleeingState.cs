@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Anthill.AI;
 using UnityEngine;
 
-public class FleeingState : StateBase
+public class FleeingState : AntAIState
 {
     public float fleeSpeed;
     public float fleeTime;
@@ -18,12 +19,12 @@ public class FleeingState : StateBase
         //GetComponent<Health>().DeathEvent += RaycastCheck;
     }
 
-    public override void Execute()
-    {
-        base.Execute();
-        
-        Debug.Log("Executing Fleeing State");
-    }
+    // public override void Execute(aDeltaTime, aTimeScale)
+    // {
+    //     base.Execute(aDeltaTime, aDeltaTime);
+    //     
+    //     Debug.Log("Executing Fleeing State");
+    // }
 
     public override void Exit()
     {
@@ -50,8 +51,7 @@ public class FleeingState : StateBase
         {
             yield return new WaitForSeconds(1);
         }
+
         
-        //Change State to IdleState
-        //GetComponent<StateManager>().ChangeState();
     }
 }

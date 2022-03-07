@@ -1,11 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Anthill.AI;
 using UnityEngine;
 
-public class StunnedState : StateBase
+public class StunnedState : AntAIState
 {
-    public float stunTime;
+    public GameObject owner;
+    public VillagerModel villager;
     
+    public float stunTime;
+
+    public bool stunned;
+
+    public override void Create(GameObject aGameObject)
+    {
+        base.Create(aGameObject);
+        owner = aGameObject;
+        villager = GetComponent<VillagerModel>();
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -13,17 +28,16 @@ public class StunnedState : StateBase
         Debug.Log("Entering Stunned State");
 
         //TODO fine tune when steering behaviours added
-        //GetComponent<SteeringBehaviour>().ChangeSpeed(0);
-        
+        //villager.GetComponent<Wander>().enabled = false;
         StartCoroutine(StunnedTimer());
     }
     
-    public override void Execute()
-    {
-        base.Enter();
-        
-        Debug.Log("Executing Stunned State");
-    }
+    // public override void Execute()
+    // {
+    //     base.Enter();
+    //     
+    //     Debug.Log("Executing Stunned State");
+    // }
 
     public override void Exit()
     {
@@ -38,7 +52,9 @@ public class StunnedState : StateBase
         {
             yield return new WaitForSeconds(1);
         }
+
+        villager.isStunned = false;
         
-        //ChangeState to IdleState
+        Finish();
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Anthill.AI;
 using UnityEngine;
 
-public class InvestigatingState : StateBase
+public class InvestigatingState : AntAIState
 {
     public override void Enter()
     {
@@ -11,9 +12,9 @@ public class InvestigatingState : StateBase
         Debug.Log("Entering Investigating State");
     }
 
-    public override void Execute()
+    public override void Execute(float aDeltaTime, float aTimeScale)
     {
-        base.Execute();
+        base.Execute(aDeltaTime, aTimeScale);
 
         Debug.Log("Executing Investigating State");
     }
