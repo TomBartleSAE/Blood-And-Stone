@@ -9,26 +9,27 @@ public class AttackingState : AntAIState
     [SerializeField]
     public List<GameObject> Targets = new List<GameObject>();
     public Transform target;
-    
+
+    public override void Create(GameObject aGameObject)
+    {
+        base.Create(aGameObject);
+
+    }
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("Entering Attacking State");
+        
+        
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
-        
-        Debug.Log("Executing Attacking State");
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Debug.Log("Exiting Attacking State");
     }
 
     private void OnTriggerEnter(Collider other)

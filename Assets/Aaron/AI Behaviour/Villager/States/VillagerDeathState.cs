@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using Anthill.AI;
 using UnityEngine;
 
-public class IdleState : AntAIState
+public class VillagerDeathState : AntAIState
 {
-    public Wander wander;
+    public VillagerManager manager;
     public GameObject owner;
-
+    
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
-        
-        wander = GetComponentInParent<Wander>();
         owner = aGameObject;
+        manager = FindObjectOfType<VillagerManager>();
     }
-    
+
     public override void Enter()
     {
         base.Enter();
-        
-        wander.speed = 6;
+        Debug.Log("Destroying");
+
+        Finish();
     }
 
-     public override void Execute(float aDeltaTime, float aTimeScale)
-     {
-         base.Execute(aDeltaTime, aTimeScale);
-     }
+    public override void Execute(float aDeltaTime, float aTimeScale)
+    {
+        base.Execute(aDeltaTime, aTimeScale);
+    }
 
     public override void Exit()
     {

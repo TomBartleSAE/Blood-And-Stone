@@ -33,17 +33,15 @@ MonoBehaviour:
     pre:
     - id: 0
       value: 1
-    - id: 1
-      value: 1
     - id: 3
       value: 1
     - id: 2
-      value: 1
-    post:
-    - id: 1
       value: 0
+    post:
     - id: 4
       value: 0
+    - id: 2
+      value: 1
   - name: MoveToTarget
     isDefault: 0
     state: {fileID: 3899031200594898589, guid: 904acdc3d8f5403489fa0faa507ed891, type: 3}
@@ -52,12 +50,10 @@ MonoBehaviour:
     pre:
     - id: 0
       value: 1
-    - id: 1
-      value: 1
     - id: 3
       value: 0
     - id: 2
-      value: 1
+      value: 0
     post:
     - id: 3
       value: 1
@@ -72,15 +68,15 @@ MonoBehaviour:
     - id: 0
       value: 0
     - id: 2
-      value: 1
+      value: 0
     post:
     - id: 0
       value: 1
   - name: ReturnToKeepState
     isDefault: 0
     state: {fileID: 7376677871898443837, guid: 64c584a03590787459e67e1196bd68a8, type: 3}
-    cost: 0
-    position: {x: 994, y: 192}
+    cost: 10
+    position: {x: 988, y: 189}
     pre:
     - id: 2
       value: 1
@@ -102,11 +98,9 @@ MonoBehaviour:
     list:
     - id: 0
       value: 0
-    - id: 1
-      value: 1
     - id: 2
-      value: 1
+      value: 0
     - id: 3
-      value: 1
+      value: 0
     - id: 4
       value: 0

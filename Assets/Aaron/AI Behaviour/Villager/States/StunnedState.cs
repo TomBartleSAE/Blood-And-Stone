@@ -3,47 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Anthill.AI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StunnedState : AntAIState
 {
     public GameObject owner;
     public VillagerModel villager;
-    
-    public float stunTime;
+    public Wander wander;
 
-    public bool stunned;
+    public float stunTime;
 
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
+        
         owner = aGameObject;
-        villager = GetComponent<VillagerModel>();
+        villager = aGameObject.GetComponentInParent<VillagerModel>();
+        wander = aGameObject.GetComponentInParent<Wander>();
     }
 
     public override void Enter()
     {
         base.Enter();
         
-        Debug.Log("Entering Stunned State");
+        wander.enabled = false;
+        stunTime = 5;
 
-        //TODO fine tune when steering behaviours added
-        //villager.GetComponent<Wander>().enabled = false;
         StartCoroutine(StunnedTimer());
     }
     
-    // public override void Execute()
-    // {
-    //     base.Enter();
-    //     
-    //     Debug.Log("Executing Stunned State");
-    // }
+    public override void Execute(float aDeltaTime, float aTimeScale)
+    {
+        base.Execute(aDeltaTime, aTimeScale);
+    }
 
     public override void Exit()
     {
         base.Enter();
-
-        Debug.Log("Exiting Stunned State");
     }
 
     IEnumerator StunnedTimer()
@@ -54,6 +51,9 @@ public class StunnedState : AntAIState
         }
 
         villager.isStunned = false;
+        villager.isScared = true;
+
+        wander.enabled = true;
         
         Finish();
     }
