@@ -2,7 +2,7 @@
     "name": "MainControls",
     "maps": [
         {
-            "name": "Vampire",
+            "name": "Night",
             "id": "ab1eb040-ddae-4ff2-a0c9-ab2833a70699",
             "actions": [
                 {
@@ -108,6 +108,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Day",
+            "id": "8d0bce44-4ffd-49e1-af14-06173a4d69e6",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "d8392128-784e-46a0-ac86-241b4972fc1d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "341885e0-1dda-4d9c-b0c8-0ac9ac09110a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a932521e-875b-4c91-8a3a-f93abf368aed",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a5027b2-fe93-4d57-b605-0931832dc115",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

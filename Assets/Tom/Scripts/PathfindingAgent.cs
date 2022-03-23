@@ -7,15 +7,13 @@ using UnityEngine.Tilemaps;
 public class PathfindingAgent : MonoBehaviour
 {
     public PathfindingGrid grid;
-    public Tilemap pathMap;
-    public Tile pathTile;
-
-    public Tile openTile;
     
     private List<Node> openNodes = new List<Node>();
     private List<Node> closedNodes = new List<Node>();
 
     public Transform destination;
+    
+    public List<Node> path;
 
     public void Start()
     {
@@ -25,8 +23,8 @@ public class PathfindingAgent : MonoBehaviour
     public List<Node> FindPath(Vector3 start, Vector3 destination)
     {
         // Node index for start and destination for later use
-        Vector3Int startIndex = grid.ConvertPositionToCell(start);
-        Vector3Int destinationIndex = grid.ConvertPositionToCell(destination);
+        Vector2Int startIndex = grid.GetNodeFromPosition(start).index;
+        Vector2Int destinationIndex = grid.GetNodeFromPosition(destination).index;
         
         foreach (Node node in grid.nodes)
         {
@@ -39,7 +37,7 @@ public class PathfindingAgent : MonoBehaviour
         openNodes.Clear();
         closedNodes.Clear();
 
-        Node currentNode = grid.nodes[grid.ConvertPositionToCell(start).x, grid.ConvertPositionToCell(start).y];
+        Node currentNode = grid.GetNodeFromPosition(start);
         openNodes.Add(currentNode);
 
         while (openNodes.Count > 0)
@@ -67,7 +65,7 @@ public class PathfindingAgent : MonoBehaviour
             {
                 for (int j = currentNode.index.y - 1; j <= currentNode.index.y + 1; j++)
                 {
-                    if (i >= 0 && i < grid.terrainMap.size.x && j >= 0 && j < grid.terrainMap.size.y)
+                    if (grid.IsIndexWithinGrid(new Vector2Int(i,j)))
                     {
                         Node neighbour = grid.nodes[i, j];
                         if (neighbour.isBlocked || closedNodes.Contains(neighbour))
@@ -95,16 +93,16 @@ public class PathfindingAgent : MonoBehaviour
                 }
             }
         }
-
-        List<Node> path = new List<Node>();
+        
+        path = new List<Node>();
 
         while (currentNode != grid.nodes[startIndex.x, startIndex.y])
         {
-            pathMap.SetTile(currentNode.coordinates, pathTile);
             path.Add(currentNode);
             currentNode = currentNode.parent;
         }
-        pathMap.SetTile(currentNode.coordinates, pathTile);
+        
+        path.Reverse();
 
         return path;
     }
@@ -121,4 +119,36 @@ public class PathfindingAgent : MonoBehaviour
 
         return distance.x * 14 + 10 * (distance.y - distance.x);
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        if (grid.nodes != null)
+        {
+            for (int x = 0; x < grid.gridSize.x; x++)
+            {
+                for (int y = 0; y < grid.gridSize.y; y++)
+                {
+                    if (grid.nodes[x,y] != null)
+                    {
+                        if (openNodes.Contains(grid.nodes[x,y]))
+                        {
+                            Gizmos.color = Color.green;
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                        }
+                        if (closedNodes.Contains(grid.nodes[x,y]))
+                        {
+                            Gizmos.color = Color.yellow;
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                        }
+                        if (path.Contains(grid.nodes[x,y]))
+                        {
+                            Gizmos.color = Color.blue;
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+

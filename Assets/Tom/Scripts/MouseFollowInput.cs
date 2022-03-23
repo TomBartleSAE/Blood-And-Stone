@@ -21,7 +21,7 @@ public class MouseFollowInput : MonoBehaviour
     {
         controls.Enable();
 
-        mouseClick = controls.Vampire.MouseClick;
+        mouseClick = controls.Night.MouseClick;
         mouseClick.Enable();
         mouseClick.performed += ctx => mouseClicked = true;
         mouseClick.canceled += ctx => mouseClicked = false;
@@ -46,7 +46,7 @@ public class MouseFollowInput : MonoBehaviour
 
     private void MouseClick()
     {
-        Vector2 mousePosition = controls.Vampire.MousePosition.ReadValue<Vector2>();
+        Vector2 mousePosition = controls.Night.MousePosition.ReadValue<Vector2>();
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 moveDirection = mousePosition - (Vector2)transform.position;
         if (moveDirection.magnitude > 0.1f)
