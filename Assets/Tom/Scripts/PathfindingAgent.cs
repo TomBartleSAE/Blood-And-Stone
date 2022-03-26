@@ -15,9 +15,11 @@ public class PathfindingAgent : MonoBehaviour
     
     public List<Node> path;
 
+    public event Action NewPathEvent;
+
     public void Start()
     {
-        FindPath(transform.position, destination.position);
+        //FindPath(transform.position, destination.position);
     }
 
     public List<Node> FindPath(Vector3 start, Vector3 destination)
@@ -103,6 +105,8 @@ public class PathfindingAgent : MonoBehaviour
         }
         
         path.Reverse();
+        
+        NewPathEvent?.Invoke();
 
         return path;
     }
@@ -122,7 +126,7 @@ public class PathfindingAgent : MonoBehaviour
     
     private void OnDrawGizmosSelected()
     {
-        if (grid.nodes != null)
+        if (path != null)
         {
             for (int x = 0; x < grid.gridSize.x; x++)
             {
@@ -133,17 +137,17 @@ public class PathfindingAgent : MonoBehaviour
                         if (openNodes.Contains(grid.nodes[x,y]))
                         {
                             Gizmos.color = Color.green;
-                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
                         }
                         if (closedNodes.Contains(grid.nodes[x,y]))
                         {
                             Gizmos.color = Color.yellow;
-                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
                         }
                         if (path.Contains(grid.nodes[x,y]))
                         {
                             Gizmos.color = Color.blue;
-                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, Vector3.one);
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
                         }
                     }
                 }

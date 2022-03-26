@@ -12,22 +12,17 @@ public class FollowPath : MonoBehaviour
 
     private Node targetNode;
     private int index;
-
-    private bool init = false;
+    
+    private void Start()
+    {
+        agent.NewPathEvent += ResetPath;
+    }
 
     public void FixedUpdate()
     {
-        if (agent.path != null)
+        if (agent.path != null && index < agent.path.Count)
         {
-            // HACK
-            if (!init)
-            {
-                index = 0;
-                targetNode = agent.path[index];
-                init = true;
-            }
-            
-            rb.AddForce((targetNode.coordinates - transform.position) * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+            rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
 
             if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
             {
@@ -35,5 +30,11 @@ public class FollowPath : MonoBehaviour
                 targetNode = agent.path[index];
             }
         }
+    }
+
+    public void ResetPath()
+    {
+        index = 0;
+        targetNode = agent.path[index];
     }
 }

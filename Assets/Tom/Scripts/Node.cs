@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Node
 {
-    public Vector3Int coordinates;
+    public Vector3 coordinates;
     public Vector2Int index;
     public bool isBlocked;
     public int fCost;

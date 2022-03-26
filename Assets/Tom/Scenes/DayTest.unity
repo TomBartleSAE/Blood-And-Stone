@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 10, y: 10}
+  tileSize: 1
   blockedLayers:
     serializedVersion: 2
     m_Bits: 128

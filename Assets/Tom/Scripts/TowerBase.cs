@@ -20,7 +20,7 @@ public class TowerBase : BuildingBase
         if (other.GetComponent<EnemyBase>())
         {
             targets.Add(other);
-            other.GetComponent<Health>().DeathEvent += RemoveTarget;
+            other.GetComponent<Tom.Health>().DeathEvent += RemoveTarget;
         }
     }
 
@@ -29,7 +29,7 @@ public class TowerBase : BuildingBase
         if (other.GetComponent<EnemyBase>())
         {
             targets.Remove(other);
-            other.GetComponent<Health>().DeathEvent -= RemoveTarget;
+            other.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
         }
     }
 

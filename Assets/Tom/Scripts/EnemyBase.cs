@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    public Health health;
+    public Tom.Health health;
 
     private void Awake()
     {

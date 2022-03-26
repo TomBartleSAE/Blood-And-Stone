@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 public class PathfindingGrid : MonoBehaviour
 {
     public Vector2Int gridSize = new Vector2Int(10, 10);
+    public float tileSize = 1f;
 
     public Node[,] nodes;
 
@@ -27,11 +28,11 @@ public class PathfindingGrid : MonoBehaviour
             for (int y = 0; y < gridSize.y; y++)
             {
                 nodes[x, y] = new Node();
-                Vector3Int currentPosition = new Vector3Int((int) transform.position.x + x, 0, (int) transform.position.z + y);
+                Vector3 currentPosition = new Vector3(transform.position.x + (x * tileSize), 0, transform.position.z + (y * tileSize));
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, Vector3.one / 3f, Quaternion.identity, blockedLayers))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayers))
                 {
                     nodes[x, y].isBlocked = true;
                 }
@@ -77,14 +78,14 @@ public class PathfindingGrid : MonoBehaviour
                     {
                         if (nodes[x, y].isBlocked)
                         {
-                            Gizmos.color = new Color(1f,0f,0f,0.5f);
+                            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
                         }
                         else
                         {
-                            Gizmos.color = new Color(0f,1f,0f,0.5f);
+                            Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
                         }
-                        
-                        Gizmos.DrawCube(nodes[x,y].coordinates, Vector3.one);
+
+                        Gizmos.DrawCube(nodes[x, y].coordinates, (Vector3.one * tileSize));
                     }
                 }
             }

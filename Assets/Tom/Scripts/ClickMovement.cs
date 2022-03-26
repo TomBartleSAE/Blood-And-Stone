@@ -1,0 +1,55 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class ClickMovement : MonoBehaviour
+{
+    public PathfindingAgent agent;
+
+    private MainControls controls;
+    private InputAction leftClick;
+
+    private Camera cam;
+
+    public LayerMask walkableLayers;
+
+    private void Awake()
+    {
+        controls = new MainControls();
+
+        cam = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+
+        leftClick = controls.Night.MouseClick;
+        leftClick.Enable();
+        leftClick.performed += PerformClick;
+    }
+
+    private void PerformClick(InputAction.CallbackContext obj)
+    {
+        Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
+        Ray ray = cam.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayers))
+        {
+            Node hitNode = agent.grid.GetNodeFromPosition(hit.point);
+
+            if (!hitNode.isBlocked)
+            {
+                MoveToPoint(hitNode.coordinates);
+            }
+        }
+    }
+
+    public void MoveToPoint(Vector3 destination)
+    {
+        agent.FindPath(transform.position, destination);
+    }
+}

@@ -3,25 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Tom
 {
-    public float currentHealth;
-    public float maxHealth;
+    public class Health : MonoBehaviour
+    {
+        public float currentHealth;
+        public float maxHealth;
 
-    public event Action<GameObject> DeathEvent;
+        public event Action<GameObject> DeathEvent;
     
-    public void Awake()
-    {
-        currentHealth = maxHealth;
-    }
-
-    public void ChangeHealth(float amount)
-    {
-        currentHealth += amount;
-
-        if (currentHealth <= 0)
+        public void Awake()
         {
-            DeathEvent?.Invoke(gameObject);
+            currentHealth = maxHealth;
+        }
+
+        public void ChangeHealth(float amount)
+        {
+            currentHealth += amount;
+
+            if (currentHealth <= 0)
+            {
+                DeathEvent?.Invoke(gameObject);
+            }
         }
     }
 }
