@@ -10,15 +10,12 @@ public class FindTargetState : AntAIState
     public GhoulModel ghoulModel;
     public Wander wander;
 
-    public float speed;
-
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         manager = FindObjectOfType<VillagerManager>();
         ghoulModel = GetComponentInParent<GhoulModel>();
-        
         wander = GetComponentInParent<Wander>();
     }
 
@@ -39,6 +36,7 @@ public class FindTargetState : AntAIState
                 {
                     shortestDistance = distance;
                     ghoulModel.target = villager;
+                    ghoulModel.hasTarget = true;
                 }
             }
         }
@@ -49,8 +47,6 @@ public class FindTargetState : AntAIState
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
-
-        Vector3.MoveTowards(transform.position, ghoulModel.target.transform.position, (speed * Time.deltaTime));
     }
 
     public override void Exit()

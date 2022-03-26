@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
+using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class VillagerModel : MonoBehaviour
     public VillagerModel villager;
     public VillagerManager manager;
 
-    static event Action<Vector3> PersonEatenEvent;
+    public event Action<GameObject> PersonEatenEvent;
 
     public RaycastHit hit;
 
@@ -41,14 +42,14 @@ public class VillagerModel : MonoBehaviour
         //Will add/finetune when Health Component Added
         if (GetComponent<Health>().currentHealth <= 0)
         {
-            PersonEatenEvent?.Invoke(transform.position);
+            PersonEatenEvent?.Invoke(this.gameObject);
 
             manager.Villagers.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
     }
 
-    public void Reaction(Vector3 targetPosition)
+    public void Reaction(GameObject deadThing)
     {
         
         //logic to check if in sight

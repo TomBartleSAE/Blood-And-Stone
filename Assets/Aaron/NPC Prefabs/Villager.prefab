@@ -112,10 +112,10 @@ GameObject:
   - component: {fileID: 1152092510813912211}
   - component: {fileID: 1152092510813912213}
   - component: {fileID: 2062415260244514593}
-  - component: {fileID: 4806484024097132897}
+  - component: {fileID: 297143199648334005}
   m_Layer: 0
   m_Name: Villager
-  m_TagString: Untagged
+  m_TagString: Townsfolk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   antAIAgent: {fileID: 1152092510813912212}
   villager: {fileID: 0}
+  manager: {fileID: 0}
   rayDistance: 0
   moveSpeed: 0
   isScared: 0
@@ -214,7 +215,7 @@ MonoBehaviour:
   speed: 8
   turn: 0
   turnMultiplier: 1
---- !u!114 &4806484024097132897
+--- !u!114 &297143199648334005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,11 +224,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152092510813912220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2bc6b1489abae4aa20e35db806e430, type: 3}
+  m_Script: {fileID: 11500000, guid: fbbfc6d1aeb0ba3418e53806da973d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
   currentHealth: 0
+  maxHealth: 10
 --- !u!1 &1152092511017340208
 GameObject:
   m_ObjectHideFlags: 0
