@@ -1,40 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Anthill.AI;
 using Newtonsoft.Json.Converters;
 using Unity.VisualScripting;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public class MoveToTargetState : AntAIState
 {
     public GhoulModel ghoulModel;
     public Rigidbody rb;
+    public Transform target;
 
-    public GameObject pathGrid;
     public PathfindingAgent pathfinding;
+    public FollowPath followPath;
 
-    public PathfindingGrid grid;
-    //probably need the pathfinding component
-    
+    public Vector2 targetDestination;
+
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         ghoulModel = GetComponentInParent<GhoulModel>();
         rb = GetComponentInParent<Rigidbody>();
-        grid = pathGrid.GetComponent<PathfindingGrid>();
-        pathfinding = GetComponentInParent<PathfindingAgent>();
-        pathfinding.enabled = true;
+
     }
     
     public override void Enter()
     {
         base.Enter();
         
-        //Pathfinding GetPath() function
-        //Need to repeat every x seconds if not included in pathfinding script
-        pathfinding.FindPath(this.transform.position, ghoulModel.target.transform.position);
-            
+        pathfinding = GetComponentInParent<PathfindingAgent>();
+        followPath = GetComponentInParent<FollowPath>();
+        
+        pathfinding.enabled = true;
+        followPath.enabled = true;
+        
+        target = ghoulModel.target.transform;
+        pathfinding.destination = target;
+
+        if (pathfinding.destination != null)
+        {
+            pathfinding.FindPath(ghoulModel.transform.position, ghoulModel.targetPos);
+        }
+
         Debug.Log("Entering Move to Target State");
     }
 
@@ -51,5 +61,11 @@ public class MoveToTargetState : AntAIState
 
         Debug.Log("Exiting Move to Target State");
         pathfinding.enabled = false;
+        followPath.enabled = false; 
+    }
+
+    public void SetDestination()
+    {
+        pathfinding.destination = target;
     }
 }

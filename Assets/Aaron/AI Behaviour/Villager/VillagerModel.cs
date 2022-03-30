@@ -12,8 +12,7 @@ public class VillagerModel : MonoBehaviour
     public AntAIAgent antAIAgent;
     public VillagerModel villager;
     public VillagerManager manager;
-
-    public event Action<GameObject> PersonEatenEvent;
+    public Health health;
 
     public RaycastHit hit;
 
@@ -31,8 +30,9 @@ public class VillagerModel : MonoBehaviour
         antAIAgent = GetComponent<AntAIAgent>();
         antAIAgent.SetGoal("Survive");
         manager = FindObjectOfType<VillagerManager>();
+        health = GetComponentInParent<Health>();
 
-        PersonEatenEvent += Reaction;
+        health.DeathEvent += Reaction;
         manager.Villagers.Add(this.gameObject);
     }
 
@@ -42,8 +42,6 @@ public class VillagerModel : MonoBehaviour
         //Will add/finetune when Health Component Added
         if (GetComponent<Health>().currentHealth <= 0)
         {
-            PersonEatenEvent?.Invoke(this.gameObject);
-
             manager.Villagers.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
@@ -51,17 +49,6 @@ public class VillagerModel : MonoBehaviour
 
     public void Reaction(GameObject deadThing)
     {
-        
-        //logic to check if in sight
-        
-        
         villager.isScared = true;
     }
-    
-    /*public void FireDeathEvent()
-    {
-        PersonEatenEvent?.Invoke(this.transform.position);
-        
-        Debug.Log("Event Fired");
-    }*/
 }

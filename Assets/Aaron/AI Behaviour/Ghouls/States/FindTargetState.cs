@@ -9,14 +9,18 @@ public class FindTargetState : AntAIState
     public VillagerManager manager;
     public GhoulModel ghoulModel;
     public Wander wander;
+    public PathfindingAgent pathfinding;
 
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
+        Debug.Log("Entering Find Target State");
+
         manager = FindObjectOfType<VillagerManager>();
         ghoulModel = GetComponentInParent<GhoulModel>();
         wander = GetComponentInParent<Wander>();
+        pathfinding = GetComponentInParent<PathfindingAgent>();
     }
 
     public override void Enter()

@@ -9,7 +9,9 @@ using UnityEngine;
 public class GhoulModel : MonoBehaviour
 {
     public AttackingState attacking;
-    public VillagerModel villager;
+    public Health health;
+    
+    private PathfindingAgent pathfinding;
 
     public bool hasTarget;
     public bool targetAlive;
@@ -20,24 +22,27 @@ public class GhoulModel : MonoBehaviour
     public int damage;
 
     public GameObject target;
-    
-    
-    
+    public Vector2 targetPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        pathfinding = GetComponent<PathfindingAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (target != null)
+        {
+            targetPos = target.transform.position;
+            pathfinding.destination = target.transform;
+        }
     }
 
     public void OnEnable()
     {
-       villager.PersonEatenEvent += RemoveTarget;
+       health.DeathEvent += RemoveTarget;
     }
 
     public void OnTriggerEnter(Collider other)
