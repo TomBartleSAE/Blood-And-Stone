@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f22e7053ea04ed0922308786facc8c, type: 3}
+  m_Name: SoldierBrain
+  m_EditorClassIdentifier: 
+  conditions:
+    list:
+    - id: 0
+      name: hasTarget
+    - id: 1
+      name: attackedByGhoul
+    - id: 2
+      name: attackedByTower
+    - id: 3
+      name: castleStanding
+    - id: 4
+      name: inRange
+    - id: 5
+      name: targetAlive
+  actions:
+  - name: FindTargetState
+    isDefault: 1
+    state: {fileID: 2912095369631467980, guid: 970ad14248e65d4428c2555599da73be, type: 3}
+    cost: 0
+    position: {x: 303.8235, y: 87.31543}
+    pre:
+    - id: 0
+      value: 0
+    - id: 3
+      value: 1
+    post:
+    - id: 0
+      value: 1
+  - name: MoveToTargetState
+    isDefault: 0
+    state: {fileID: 4694208113020746779, guid: b7249b128f00a7a4dadc71319a6fd298, type: 3}
+    cost: 0
+    position: {x: 525.8132, y: 90.90112}
+    pre:
+    - id: 0
+      value: 1
+    - id: 4
+      value: 0
+    post:
+    - id: 4
+      value: 1
+  - name: AttackKeepState
+    isDefault: 0
+    state: {fileID: 5808321601648382795, guid: c320874527d1fd744936e85827ebb7d2, type: 3}
+    cost: 10
+    position: {x: 770.18695, y: 528.2636}
+    pre:
+    - id: 4
+      value: 1
+    - id: 3
+      value: 1
+    post:
+    - id: 3
+      value: 0
+  - name: AttackGhoulState
+    isDefault: 0
+    state: {fileID: 7715918310403537678, guid: 97c45e2a541aedc499b42de924c22425, type: 3}
+    cost: 0
+    position: {x: 761.72534, y: 88.30769}
+    pre:
+    - id: 4
+      value: 1
+    post: []
+  - name: AttackDefensesState
+    isDefault: 0
+    state: {fileID: 1022765470523554323, guid: 7c10f288672821e44ba4993fde654035, type: 3}
+    cost: 5
+    position: {x: 769.53845, y: 309.0879}
+    pre:
+    - id: 4
+      value: 1
+    post: []
+  goals:
+  - name: DestroyTarget
+    isDefault: 1
+    position: {x: 292.2948, y: 619.04004}
+    conditions:
+    - id: 3
+      value: 0
+  worldStates:
+  - position: {x: 292.24374, y: 763.41046}
+    isAutoUpdate: 1
+    list:
+    - id: 0
+      value: 0
+    - id: 1
+      value: 0
+    - id: 2
+      value: 0
+    - id: 3
+      value: 1
+    - id: 4
+      value: 0
+    - id: 5
+      value: 0

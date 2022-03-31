@@ -63,9 +63,4 @@ public class MoveToTargetState : AntAIState
         pathfinding.enabled = false;
         followPath.enabled = false; 
     }
-
-    public void SetDestination()
-    {
-        pathfinding.destination = target;
-    }
 }

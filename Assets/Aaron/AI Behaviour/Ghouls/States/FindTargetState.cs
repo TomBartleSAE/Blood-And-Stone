@@ -11,6 +11,8 @@ public class FindTargetState : AntAIState
     public Wander wander;
     public PathfindingAgent pathfinding;
 
+    public bool autoAttack;
+
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -30,17 +32,21 @@ public class FindTargetState : AntAIState
         float shortestDistance;
         shortestDistance = distance;
         
-        foreach (var villager in manager.Villagers)
+        //This can serve as an auto target if the player hasn't selected a target to attack.
+        if (autoAttack)
         {
-            if (villager != null)
+            foreach (var villager in manager.Villagers)
             {
-                distance = Vector3.Distance(this.transform.position, villager.transform.position);
-            
-                if (distance < shortestDistance)
+                if (villager != null)
                 {
-                    shortestDistance = distance;
-                    ghoulModel.target = villager;
-                    ghoulModel.hasTarget = true;
+                    distance = Vector3.Distance(this.transform.position, villager.transform.position);
+
+                    if (distance < shortestDistance)
+                    {
+                        shortestDistance = distance;
+                        ghoulModel.target = villager;
+                        ghoulModel.hasTarget = true;
+                    }
                 }
             }
         }
