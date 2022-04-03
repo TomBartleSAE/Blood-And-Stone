@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tom;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngineInternal;
 
@@ -10,6 +12,7 @@ public class SoldierModel : MonoBehaviour
     public PathfindingAgent pathfinding;
     public Health health;
     public GameObject target;
+    public NPCManager manager;
 
     public bool hasTarget = false;
     public bool attackedByGhoul = false;
@@ -24,5 +27,10 @@ public class SoldierModel : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
+    }
+
+    private void Update()
+    {
+    
     }
 }

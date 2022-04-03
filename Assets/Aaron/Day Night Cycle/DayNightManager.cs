@@ -86,8 +86,6 @@ public class DayNightManager : MonoBehaviour
         {
             time = 1 * timeSpeedMultiplier;
             yield return new WaitForSeconds(time);
-            
-            Debug.Log("Time = " + i);
         }
 
         StartCoroutine(TimeCycle());

@@ -10,7 +10,7 @@ public class GhoulModel : MonoBehaviour
 {
     public AttackingState attacking;
     public Health health;
-    
+    public NPCManager manager;
     private PathfindingAgent pathfinding;
 
     public bool hasTarget;
@@ -22,12 +22,13 @@ public class GhoulModel : MonoBehaviour
     public int damage;
 
     public GameObject target;
-    public Vector2 targetPos;
+    public Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
+        //manager.Ghouls.Add(this.GameObject());
     }
 
     // Update is called once per frame

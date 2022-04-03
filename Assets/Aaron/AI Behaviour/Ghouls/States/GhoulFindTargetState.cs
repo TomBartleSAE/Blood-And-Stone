@@ -4,9 +4,9 @@ using Anthill.AI;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FindTargetState : AntAIState
+public class GhoulFindTargetState : AntAIState
 {
-    public VillagerManager manager;
+    public NPCManager manager;
     public GhoulModel ghoulModel;
     public Wander wander;
     public PathfindingAgent pathfinding;
@@ -19,7 +19,7 @@ public class FindTargetState : AntAIState
 
         Debug.Log("Entering Find Target State");
 
-        manager = FindObjectOfType<VillagerManager>();
+        manager = FindObjectOfType<NPCManager>();
         ghoulModel = GetComponentInParent<GhoulModel>();
         wander = GetComponentInParent<Wander>();
         pathfinding = GetComponentInParent<PathfindingAgent>();
@@ -28,6 +28,32 @@ public class FindTargetState : AntAIState
     public override void Enter()
     {
         base.Enter();
+        
+        //need to adjust for build
+        autoAttack = true;
+
+        FindTarget();
+        
+        wander.enabled = false;
+    }
+
+    public override void Execute(float aDeltaTime, float aTimeScale)
+    {
+        base.Execute(aDeltaTime, aTimeScale);
+
+        if (ghoulModel.hasTarget == false)
+        {
+            FindTarget();
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    void FindTarget()
+    {
         float distance = 10000000;
         float shortestDistance;
         shortestDistance = distance;
@@ -50,17 +76,5 @@ public class FindTargetState : AntAIState
                 }
             }
         }
-
-        wander.enabled = false;
-    }
-
-    public override void Execute(float aDeltaTime, float aTimeScale)
-    {
-        base.Execute(aDeltaTime, aTimeScale);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 }

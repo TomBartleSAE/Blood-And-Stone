@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacking: {fileID: 767760982043892881, guid: 49d1ef3f06047cd4caba9c240e9efd22, type: 3}
   health: {fileID: 6559976953810290360}
+  manager: {fileID: 0}
   hasTarget: 0
   targetAlive: 0
   castleStanding: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   isIdle: 0
   damage: -3
   target: {fileID: 0}
-  targetPos: {x: 0, y: 0}
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &833944671312180782
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-public class MoveToTargetState : AntAIState
+public class GhoulMoveToTargetState : AntAIState
 {
     public GhoulModel ghoulModel;
     public Rigidbody rb;
@@ -24,7 +24,6 @@ public class MoveToTargetState : AntAIState
 
         ghoulModel = GetComponentInParent<GhoulModel>();
         rb = GetComponentInParent<Rigidbody>();
-
     }
     
     public override void Enter()
@@ -37,12 +36,9 @@ public class MoveToTargetState : AntAIState
         pathfinding.enabled = true;
         followPath.enabled = true;
         
-        target = ghoulModel.target.transform;
-        pathfinding.destination = target;
-
         if (pathfinding.destination != null)
         {
-            pathfinding.FindPath(ghoulModel.transform.position, ghoulModel.targetPos);
+            pathfinding.FindPath(ghoulModel.transform.position, ghoulModel.target.transform.position);
         }
 
         Debug.Log("Entering Move to Target State");

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class VillagerDeathState : AntAIState
 {
-    public VillagerManager manager;
+    public NPCManager manager;
     public GameObject owner;
     
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
         owner = aGameObject;
-        manager = FindObjectOfType<VillagerManager>();
+        manager = FindObjectOfType<NPCManager>();
     }
 
     public override void Enter()

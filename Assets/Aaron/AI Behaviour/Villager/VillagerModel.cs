@@ -11,7 +11,7 @@ public class VillagerModel : MonoBehaviour
 {
     public AntAIAgent antAIAgent;
     public VillagerModel villager;
-    public VillagerManager manager;
+    public NPCManager manager;
     public Health health;
 
     public RaycastHit hit;
@@ -29,7 +29,7 @@ public class VillagerModel : MonoBehaviour
         villager = GetComponent<VillagerModel>();
         antAIAgent = GetComponent<AntAIAgent>();
         antAIAgent.SetGoal("Survive");
-        manager = FindObjectOfType<VillagerManager>();
+        manager = FindObjectOfType<NPCManager>();
         health = GetComponentInParent<Health>();
 
         health.DeathEvent += Reaction;

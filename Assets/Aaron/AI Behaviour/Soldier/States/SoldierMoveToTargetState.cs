@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using Anthill.AI;
 using UnityEngine;
 
-public class FindingTargetState : AntAIState
+public class SoldierMoveToTargetState : AntAIState
 {
-    public SoldierModel soldier;
-    
-    public override void Create(GameObject aGameObject)
-    {
-        base.Create(aGameObject);
-        soldier = GetComponentInParent<SoldierModel>();
-    }
-
     public override void Enter()
     {
         base.Enter();
         
-        
+        Debug.Log("Entering Moving to Keep State");
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+        
+        Debug.Log("Executing Moving to Keep State");
     }
 
     public override void Exit()
     {
         base.Exit();
+        
+        Debug.Log("Exiting Moving to Keep State");
     }
 }
