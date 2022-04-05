@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DayNightManager : MonoBehaviour
+public class PhaseTimerScript : MonoBehaviour
 {
     public event Action PhaseEndEvent;
 
