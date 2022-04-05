@@ -21,6 +21,10 @@ public class PhaseTimer : MonoBehaviour
     //converts the phase length to a 0-1 value relating to the curve
     public float phaseLengthNormalised;
 
+
+    public Vector3 previous;
+    public Vector3 next;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +44,7 @@ public class PhaseTimer : MonoBehaviour
         //todo lerp/dotween the movement to smooth it out
         //moves sun/moon according to time passed and corresponding y value of animation curve
         sunMoon.transform.position = new Vector3(sunRise.position.x + xPos, yPos * heightMultiplier);
-        
+
         //should fire off an event when phase is complete
         if (time >= phaseLength)
         {
