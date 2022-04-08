@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class TowerPlacement : MonoBehaviour
 {
     public PathfindingGrid grid;
+    public Blood blood;
 
-    public BuildingBase selectedTower;
+    public BuildingBase selectedBuilding;
     private Node selectedNode;
 
     private Camera cam;
@@ -17,6 +18,9 @@ public class TowerPlacement : MonoBehaviour
     private InputAction leftClick;
 
     public LayerMask buildableLayers;
+
+    public event Action<BuildingBase, Node> MouseOverNodeEvent;
+    public event Action MouseOffGridEvent;
 
     private void Awake()
     {
@@ -36,7 +40,7 @@ public class TowerPlacement : MonoBehaviour
 
     void Update()
     {
-        if (selectedTower)
+        if (selectedBuilding)
         {
             Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
             Ray ray = cam.ScreenPointToRay(mousePosition);
@@ -48,20 +52,29 @@ public class TowerPlacement : MonoBehaviour
 
                 if (hitNode != null)
                 {
-                    selectedNode = hitNode;
+                    if (selectedNode == null || hitNode != selectedNode)
+                    {
+                        selectedNode = hitNode;
+                        MouseOverNodeEvent?.Invoke(selectedBuilding, selectedNode);
+                    }
                 }
-                else
-                {
-                    selectedNode = null;
-                }
+            }
+            else
+            {
+                selectedNode = null;
+                MouseOffGridEvent?.Invoke();
             }
         }
     }
 
-    public void BuildTower(Vector3 towerPosition)
+    public void Build(Vector3 position)
     {
-        Instantiate(selectedTower, towerPosition, Quaternion.identity);
-        selectedNode.isBlocked = true;
+        if (blood.currentBlood >= selectedBuilding.cost)
+        {
+            Instantiate(selectedBuilding, position, Quaternion.identity);
+            selectedNode.isBlocked = true;
+            blood.ChangeBlood(-selectedBuilding.cost);
+        }
     }
 
     public void PerformClick(InputAction.CallbackContext obj)
@@ -70,8 +83,13 @@ public class TowerPlacement : MonoBehaviour
         {
             if (!selectedNode.isBlocked)
             {
-                BuildTower(selectedNode.coordinates);
+                Build(selectedNode.coordinates);
             }
         }
+    }
+
+    public void SelectBuilding(BuildingBase building)
+    {
+        selectedBuilding = building;
     }
 }
