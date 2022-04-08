@@ -27,10 +27,7 @@ public class SoldierModel : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
-    }
 
-    private void Update()
-    {
-    
+        manager.Soldiers.Add(this.gameObject);
     }
 }

@@ -12,6 +12,6 @@ public class NPCManager : MonoBehaviour
 
     public void Start()
     {
-        Villagers.Add(FindObjectOfType<VillagerModel>().gameObject);
+
     }
 }
