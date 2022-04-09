@@ -8,7 +8,7 @@ public class Wander : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public float speed = 10f;
+    public float speed;
     public float turn;
     public float turnMultiplier;
     private float startOffset;
@@ -18,6 +18,7 @@ public class Wander : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         startOffset = Random.Range(0, 100000);
+        speed = 10f;
     }
 
     // Update is called once per frame

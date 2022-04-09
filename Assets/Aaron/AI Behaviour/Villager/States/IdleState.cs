@@ -20,7 +20,7 @@ public class IdleState : AntAIState
     {
         base.Enter();
         
-        wander.speed = 6;
+        wander.speed = 8;
     }
 
      public override void Execute(float aDeltaTime, float aTimeScale)
