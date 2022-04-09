@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class Stunner : MonoBehaviour
 {
-    public Collider stunTrigger;
-
     public void OnTriggerEnter(Collider other)
     {
-        IStunnable stunnable = other.gameObject.GetComponent<IStunnable>();
+        IStunnable stunnable = other.gameObject.GetComponentInParent<IStunnable>();
 
         if (stunnable != null)
         {
