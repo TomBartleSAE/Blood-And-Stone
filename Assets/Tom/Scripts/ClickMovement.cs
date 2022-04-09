@@ -13,7 +13,12 @@ public class ClickMovement : MonoBehaviour
 
     private Camera cam;
 
+    public LayerMask enemyLayer;
     public LayerMask walkableLayers;
+
+    public Transform target;
+
+    private float timer;
 
     private void Awake()
     {
@@ -31,11 +36,36 @@ public class ClickMovement : MonoBehaviour
         leftClick.performed += PerformClick;
     }
 
+    public void Update()
+    {
+        if (target != null)
+        {
+            timer -= Time.deltaTime;
+            
+            if (timer < 0)
+            {
+                MoveToPoint(target.position);
+                timer = 1f;
+            }
+        }
+    }
+
     private void PerformClick(InputAction.CallbackContext obj)
     {
         Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
         Ray ray = cam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))
+        {
+            target = hit.transform;
+            return;
+        }
+        else
+        {
+            // HACK
+            target = null;
+        }
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayers))
         {
