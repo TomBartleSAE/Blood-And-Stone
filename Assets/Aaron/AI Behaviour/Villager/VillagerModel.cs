@@ -6,7 +6,7 @@ using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class VillagerModel : MonoBehaviour
+public class VillagerModel : MonoBehaviour, IStunnable
 {
     public AntAIAgent antAIAgent;
     public VillagerModel villager;
@@ -50,4 +50,11 @@ public class VillagerModel : MonoBehaviour
     {
         villager.isScared = true;
     }
+
+    public void GetStunned()
+    {
+        isStunned = true;
+    }
+    
+    
 }
