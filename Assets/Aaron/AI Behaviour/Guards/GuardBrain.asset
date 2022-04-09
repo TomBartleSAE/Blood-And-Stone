@@ -13,7 +13,82 @@ MonoBehaviour:
   m_Name: GuardBrain
   m_EditorClassIdentifier: 
   conditions:
-    list: []
-  actions: []
-  goals: []
-  worldStates: []
+    list:
+    - id: 0
+      name: hasTarget
+    - id: 1
+      name: isAlert
+    - id: 2
+      name: inRange
+    - id: 3
+      name: targetCaptured
+  actions:
+  - name: PatrollingState
+    isDefault: 1
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 298, y: 71}
+    pre:
+    - id: 1
+      value: 0
+    - id: 0
+      value: 0
+    post:
+    - id: 1
+      value: 1
+  - name: InvestigatingState
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 515, y: 68}
+    pre:
+    - id: 1
+      value: 1
+    post:
+    - id: 0
+      value: 1
+  - name: CapturingState
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 946, y: 67}
+    pre:
+    - id: 0
+      value: 1
+    - id: 2
+      value: 1
+    post:
+    - id: 3
+      value: 1
+  - name: ChasingState
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 731, y: 66}
+    pre:
+    - id: 0
+      value: 1
+    - id: 2
+      value: 0
+    post:
+    - id: 2
+      value: 1
+  goals:
+  - name: CaptureTarget
+    isDefault: 1
+    position: {x: 1161, y: 64}
+    conditions:
+    - id: 3
+      value: 1
+  worldStates:
+  - position: {x: 277, y: 353}
+    isAutoUpdate: 1
+    list:
+    - id: 0
+      value: 0
+    - id: 1
+      value: 0
+    - id: 2
+      value: 0
+    - id: 3
+      value: 0
