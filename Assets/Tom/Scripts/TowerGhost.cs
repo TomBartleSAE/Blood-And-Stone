@@ -20,7 +20,7 @@ public class TowerGhost : MonoBehaviour
     public void ShowGhost(BuildingBase building, Node node)
     {
         ghost.GetComponentInChildren<MeshFilter>().mesh = building.GetComponentInChildren<MeshFilter>().sharedMesh;
-        Material ghostMaterial;
+
         if (node.isBlocked)
         {
             ghost.GetComponentInChildren<MeshRenderer>().material = blockedMaterial;
