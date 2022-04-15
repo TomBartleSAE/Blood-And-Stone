@@ -43,7 +43,7 @@ public class FleeingState : AntAIState
 
     void RaycastCheck()
     {
-        //add raycast logic here
+        //add raycast logic here to check if can see event
     }
 
     IEnumerator Flee()

@@ -38,23 +38,21 @@ public class VillagerModel : MonoBehaviour, IStunnable
     // Update is called once per frame
     void Update()
     {
-        //Will add/finetune when Health Component Added
-        if (GetComponent<Health>().currentHealth <= 0)
+    }
+
+    public void Reaction(GameObject deadThing)
+    {
+        villager.isScared = true;
+        
+        if (deadThing == this)
         {
             manager.Villagers.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
     }
 
-    public void Reaction(GameObject deadThing)
-    {
-        villager.isScared = true;
-    }
-
     public void GetStunned()
     {
         isStunned = true;
     }
-    
-    
 }
