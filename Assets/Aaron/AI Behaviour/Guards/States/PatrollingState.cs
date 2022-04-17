@@ -11,6 +11,7 @@ public class PatrollingState : AntAIState
     public GameObject target;
     public PathfindingAgent pathfinding;
     public FollowPath followPath;
+    public GuardModel guard;
     
     
     public override void Enter()
@@ -19,9 +20,10 @@ public class PatrollingState : AntAIState
 
         pathfinding = GetComponentInParent<PathfindingAgent>();
         followPath = GetComponentInParent<FollowPath>();
+        guard = GetComponentInParent<GuardModel>();
         
-        FindObjectOfType<Health>().DeathEvent += Investigate;
-        
+        pathfinding.FindPath(guard.patrolPointA, guard.patrolPointB);
+
         Debug.Log("Entering Patrolling State");
     }
 
@@ -35,13 +37,9 @@ public class PatrollingState : AntAIState
     public override void Exit()
     {
         base.Exit();
+        
+        Finish();
 
         Debug.Log("Exiting Patrollin State");
-    }
-
-    public void Investigate(GameObject target)
-    {
-        pathfinding.FindPath(this.transform.position, target.transform.position);
-        
     }
 }

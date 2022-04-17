@@ -9,7 +9,6 @@ using UnityEngine;
 public class VillagerModel : MonoBehaviour, IStunnable
 {
     public AntAIAgent antAIAgent;
-    public VillagerModel villager;
     public NPCManager manager;
     public Health health;
 
@@ -25,7 +24,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
     // Start is called before the first frame update
     void Start()
     {
-        villager = GetComponent<VillagerModel>();
         antAIAgent = GetComponent<AntAIAgent>();
         antAIAgent.SetGoal("Survive");
         manager = FindObjectOfType<NPCManager>();
@@ -42,7 +40,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     public void Reaction(GameObject deadThing)
     {
-        villager.isScared = true;
+        isScared = true;
         
         if (deadThing == this)
         {
