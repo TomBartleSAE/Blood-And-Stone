@@ -36,6 +36,7 @@ public class GhoulModel : MonoBehaviour
     {
         if (target != null)
         {
+            hasTarget = true;
             targetPos = target.transform.position;
             pathfinding.destination = target.transform;
         }
