@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3425211843109648343}
   - component: {fileID: 1789045400901704820}
-  - component: {fileID: 8870839405378671524}
   m_Layer: 0
   m_Name: ChasingState
   m_TagString: Untagged
@@ -45,15 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54d7d1a8de56a44680eb812ad4db0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8870839405378671524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6155038574833507872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54d7d1a8de56a44680eb812ad4db0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  isCapturing: 0
+  inRange: 0

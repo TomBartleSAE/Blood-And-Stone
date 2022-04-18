@@ -14,8 +14,6 @@ public class AttackingDefensesState : AntAIState
         base.Enter();
         
         Debug.Log("Entering Attacking Defenses State");
-
-        FindTarget();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -30,10 +28,5 @@ public class AttackingDefensesState : AntAIState
         base.Exit();
         
         Debug.Log("Exiting Attacking Defenses State");
-    }
-
-    void FindTarget()
-    {
-        //get defense that attacked it
     }
 }

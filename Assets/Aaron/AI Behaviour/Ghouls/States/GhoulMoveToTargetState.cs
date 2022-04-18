@@ -6,6 +6,7 @@ using Newtonsoft.Json.Converters;
 using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class GhoulMoveToTargetState : AntAIState
 {
@@ -14,9 +15,8 @@ public class GhoulMoveToTargetState : AntAIState
     public Transform target;
 
     public PathfindingAgent pathfinding;
-    public FollowPath followPath;
 
-    public Vector2 targetDestination;
+    public Vector3 targetDestination;
 
     public override void Create(GameObject aGameObject)
     {
@@ -31,15 +31,14 @@ public class GhoulMoveToTargetState : AntAIState
         base.Enter();
         
         pathfinding = GetComponentInParent<PathfindingAgent>();
-        followPath = GetComponentInParent<FollowPath>();
+
+        target = ghoulModel.target.transform;
+        targetDestination = target.position;
         
         pathfinding.enabled = true;
-        followPath.enabled = true;
+        GetComponentInParent<FollowPath>().enabled = true;
         
-        if (pathfinding.destination != null)
-        {
-            pathfinding.FindPath(ghoulModel.transform.position, ghoulModel.target.transform.position);
-        }
+        pathfinding.FindPath(ghoulModel.transform.position, target.position);
 
         Debug.Log("Entering Move to Target State");
     }
@@ -57,6 +56,5 @@ public class GhoulMoveToTargetState : AntAIState
 
         Debug.Log("Exiting Move to Target State");
         pathfinding.enabled = false;
-        followPath.enabled = false; 
     }
 }

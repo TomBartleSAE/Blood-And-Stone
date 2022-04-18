@@ -8,21 +8,39 @@ using UnityEngine.PlayerLoop;
 
 public class PatrollingState : AntAIState
 {
-    public GameObject target;
+    public GameObject owner;
     public PathfindingAgent pathfinding;
     public FollowPath followPath;
     public GuardModel guard;
-    
-    
+            
+    private Vector3 pointA;
+    private Vector3 pointB;
+
+    public override void Create(GameObject aGameObject)
+    {
+        base.Create(aGameObject);
+
+        owner = aGameObject;
+    }
     public override void Enter()
     {
         base.Enter();
 
-        pathfinding = GetComponentInParent<PathfindingAgent>();
-        followPath = GetComponentInParent<FollowPath>();
-        guard = GetComponentInParent<GuardModel>();
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+        followPath = owner.GetComponent<FollowPath>();
+        guard = owner.GetComponent<GuardModel>();
         
-        pathfinding.FindPath(guard.patrolPointA, guard.patrolPointB);
+        pointA = guard.patrolPointA;
+        pointB = guard.patrolPointB;
+
+        guard.viewRange = 10;
+        
+        //Not sure if we want to have them spawn at their patrol start point? If not then can use this
+        //find path to patrolPointA;
+        MoveToPatrol();
+
+        //then this, but in a different part
+        //pathfinding.FindPath(guard.patrolPointA, guard.patrolPointB);
 
         Debug.Log("Entering Patrolling State");
     }
@@ -40,6 +58,24 @@ public class PatrollingState : AntAIState
         
         Finish();
 
-        Debug.Log("Exiting Patrollin State");
+        Debug.Log("Exiting Patrolling State");
+    }
+
+    public void MoveToPatrol()
+    {
+        pathfinding.FindPath(transform.position, guard.patrolPointA);
+    }
+
+    //probably not actually going to work tbh
+    public void Patrol()
+    {
+        if (transform.position == pointA)
+        {
+            pathfinding.FindPath(pointA, pointB);
+        }
+        else if (transform.position == pointB)
+        {
+            pathfinding.FindPath(pointB, pointA);
+        }
     }
 }

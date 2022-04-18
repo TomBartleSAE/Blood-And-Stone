@@ -1,24 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Anthill.AI;
 using Tanks;
 using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GuardModel : MonoBehaviour
 {
     public AntAIAgent antAIAgent;
     public NPCManager npcManager;
-    public GameObject target;
     public Health health;
     public PathfindingAgent pathfindingAgent;
     public PathfindingGrid grid;
+    
+    public GameObject InvestigateTarget;
+    public GameObject chaseTarget;
+
+    public event Action VampireCapturedEvent;
 
     public bool hasTarget;
     public bool isAlert;
     public bool inRange;
     public bool targetCaptured;
+
+    public float guardRange;
+    public float captureTime;
+    public float viewRange;
+    public float searchCooldown;
+    public float investigationTime;
 
     public Vector3 patrolPointA;
     public Vector3 patrolPointB;
@@ -29,27 +42,20 @@ public class GuardModel : MonoBehaviour
         antAIAgent = GetComponent<AntAIAgent>();
         antAIAgent.SetGoal("CaptureTarget");
         npcManager = FindObjectOfType<NPCManager>();
-        health = GetComponentInParent<Health>();
         pathfindingAgent = GetComponent<PathfindingAgent>();
         grid = FindObjectOfType<PathfindingGrid>();
 
-        transform.position = patrolPointA;
+        //need to sub to all health death events
+//        health.DeathEvent += Reaction;
 
-        health.DeathEvent += Reaction;
-        
         npcManager.Guards.Add(this.GameObject());
 
         GetPatrolPoints();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Reaction(GameObject deadThing)
     {
+        Debug.Log("Guard Reacting ok");
         isAlert = true;
         
         if (deadThing == this)
@@ -60,7 +66,7 @@ public class GuardModel : MonoBehaviour
 
         else
         {
-            target = deadThing;
+            InvestigateTarget = deadThing;
             Investigate(deadThing);
         }
     }
@@ -79,9 +85,40 @@ public class GuardModel : MonoBehaviour
         patrolPointB = pointB;
     }
     
-    
     public void Investigate(GameObject target)
     {
         pathfindingAgent.FindPath(this.transform.position, target.transform.position);
+    }
+
+    public void VampireCaptured()
+    {
+        VampireCapturedEvent?.Invoke();
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        //do we need a better identifying ref for the vampire?
+        if (other.GetComponent<ClickMovement>())
+        {
+            //direction to Vampire
+            Vector3 targetDirection = transform.position - other.transform.position;
+            
+            RaycastHit hit;
+            
+            if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
+            {
+                hasTarget = true;
+                chaseTarget = other.gameObject;
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<ClickMovement>())
+        {
+            hasTarget = false;
+            chaseTarget = null;
+        }
     }
 }

@@ -9,7 +9,6 @@ public class GhoulFindTargetState : AntAIState
     public NPCManager manager;
     public GhoulModel ghoulModel;
     public Wander wander;
-    public PathfindingAgent pathfinding;
 
     public bool autoAttack;
 
@@ -22,7 +21,6 @@ public class GhoulFindTargetState : AntAIState
         manager = FindObjectOfType<NPCManager>();
         ghoulModel = GetComponentInParent<GhoulModel>();
         wander = GetComponentInParent<Wander>();
-        pathfinding = GetComponentInParent<PathfindingAgent>();
     }
 
     public override void Enter()
@@ -34,7 +32,7 @@ public class GhoulFindTargetState : AntAIState
 
         FindTarget();
         
-        wander.enabled = false;
+        wander.enabled = true;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -45,10 +43,13 @@ public class GhoulFindTargetState : AntAIState
         {
             FindTarget();
         }
+
+        Finish();
     }
 
     public override void Exit()
     {
+        GetComponentInParent<Wander>().enabled = false;
         base.Exit();
     }
 
