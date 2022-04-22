@@ -16,13 +16,15 @@ GameObject:
   - component: {fileID: 833944671312180779}
   - component: {fileID: 833944671312180782}
   - component: {fileID: 6559976953810290360}
-  m_Layer: 1
+  - component: {fileID: 267632786}
+  - component: {fileID: 267632787}
+  m_Layer: 5
   m_Name: Ghoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &833944671312180778
 Transform:
   m_ObjectHideFlags: 0
@@ -62,7 +64,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833944671312180753}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a991ad27fa87b0640a73771bb035fa44, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -148,6 +150,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 20
+--- !u!114 &267632786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833944671312180753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a419fc1c621157244aeacd7bfbe41b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 267632787}
+  rb: {fileID: 833944671312180783}
+  moveSpeed: 10
+--- !u!114 &267632787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833944671312180753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b521d3e1b05081428d246e85e374dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  destination: {fileID: 0}
 --- !u!1 &833944672601593751
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 833944672601593748}
-  m_Layer: 1
+  m_Layer: 5
   m_Name: View Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +223,7 @@ GameObject:
   - component: {fileID: 833944672786676777}
   - component: {fileID: 833944672786676776}
   - component: {fileID: 833944672786676779}
-  m_Layer: 1
+  m_Layer: 5
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a45a6caa8ff9d4d4890fb2d77e3bb015, type: 2}
+  - {fileID: 2100000, guid: 15d749c86ae3a9f42a0efeb925d17f2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

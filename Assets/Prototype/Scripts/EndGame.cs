@@ -9,5 +9,7 @@ public class EndGame : MonoBehaviour
     {
         //TODO: need to keep an eye on this scene ref
         SceneManager.LoadScene(1);
+        
+        //TODO also: Clear World functionality, or is that GameManager stuff?
     }
 }
