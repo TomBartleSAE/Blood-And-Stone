@@ -24,11 +24,11 @@ public class InvestigatingState : AntAIState
         pathfinding = owner.GetComponent<PathfindingAgent>();
         guard = owner.GetComponent<GuardModel>();
 
+        owner.GetComponent<Wander>().enabled = false;
+
         //Run FindPath to get to event site
         pathfinding.FindPath(transform.position, guard.InvestigateTarget.transform.position);
         investigating = false;
-        
-        Debug.Log("Entering Investigating State");
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -36,15 +36,11 @@ public class InvestigatingState : AntAIState
         base.Execute(aDeltaTime, aTimeScale);
 
         CheckInvestigationPosition();
-
-        Debug.Log("Executing Investigating State");
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Debug.Log("Exiting Investigating State");
     }
 
     //checking to see if at event site/place to investigate; if so, begin investigation
@@ -63,15 +59,13 @@ public class InvestigatingState : AntAIState
     {
         for (int i = 0; i < guard.investigationTime; i++)
         {
-            //if something found, go tot chase state
+            //if something found, go to chase state
             if (guard.chaseTarget != null)
             {
                 guard.hasTarget = true;
             }
             yield return new WaitForSeconds(1);
         }
-
-        Debug.Log("Nothing Found");
         
         //if nothing spotted in time; return to patrol state
         if (guard.chaseTarget == null)

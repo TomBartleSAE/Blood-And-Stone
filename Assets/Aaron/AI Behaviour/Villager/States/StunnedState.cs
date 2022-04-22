@@ -28,7 +28,6 @@ public class StunnedState : AntAIState
         base.Enter();
         
         wander.enabled = false;
-        stunTime = 5;
 
         StartCoroutine(StunnedTimer());
     }

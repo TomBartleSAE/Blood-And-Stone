@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 892184976}
   - component: {fileID: 892184977}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Reverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,8 +58,7 @@ GameObject:
   - component: {fileID: 1152092510271013320}
   - component: {fileID: 1152092510271013323}
   - component: {fileID: 1152092510271013322}
-  - component: {fileID: 1152092510271013321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +73,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152092510271013175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1152092511017340209}
@@ -131,20 +130,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1152092510271013321
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152092510271013175}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1152092510813912220
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152092510813912210}
+  - component: {fileID: 7796836105024918868}
   - component: {fileID: 1152092510813912214}
   - component: {fileID: 1152092510813912212}
   - component: {fileID: 1152092510813912211}
@@ -161,7 +147,7 @@ GameObject:
   - component: {fileID: 2062415260244514593}
   - component: {fileID: 297143199648334005}
   - component: {fileID: 2776466084584230898}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Villager
   m_TagString: Townsfolk
   m_Icon: {fileID: 0}
@@ -177,13 +163,27 @@ Transform:
   m_GameObject: {fileID: 1152092510813912220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5141134, y: 0.845, z: 2.448}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1152092511017340209}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7796836105024918868
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152092510813912220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.125
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!54 &1152092510813912214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152092511017340209}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: View Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2965481770675214059}
   - component: {fileID: 2466640795865067257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8717498385223550592}
   - component: {fileID: 8959208585718673169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6407772873022574214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -38,7 +38,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
         health = GetComponentInParent<Health>();
         
         health.DeathEvent += Reaction;
-        manager.Villagers.Add(this.gameObject);
+        manager.Villagers.Add(gameObject);
 
         GlobalEvents.DeathEvent += Reaction;
 
@@ -52,7 +52,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     public void Reaction(GameObject deadThing)
     {
-        if (deadThing != this.gameObject)
+        if (deadThing != gameObject)
         {
             Vector3 targetDirection = transform.position - deadThing.transform.position;
             

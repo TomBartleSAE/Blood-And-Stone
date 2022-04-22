@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
@@ -9,25 +10,35 @@ public class ChasingState : AntAIState
 {
     public GameObject owner;
     private GuardModel guard;
+    public PathfindingAgent pathfinding;
+    private GameObject target;
 
     private Coroutine coroutine;
 
     public bool isCapturing = false;
     public bool inRange = false;
+
+    public static event Action GameOverEvent;
     
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         owner = aGameObject;
+
+        pathfinding = owner.GetComponent<PathfindingAgent>();
     }
     public override void Enter()
     {
         base.Enter();
-
+        
         coroutine = null;  
 
         guard = owner.GetComponent<GuardModel>();
+        target = guard.chaseTarget;
+        
+        //Gets path to target every 5 seconds. Note repeat time for testing/changing
+        InvokeRepeating("ChaseTarget",0, 5 );
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -72,19 +83,17 @@ public class ChasingState : AntAIState
     public IEnumerator CapturingTarget()
     {
         isCapturing = true;
-        
-        Debug.Log("Capturing Started"); 
 
         for (int i = 0; i < guard.captureTime; i++)
         {
-            Debug.Log("Capturing");
             yield return new WaitForSeconds(1);
         }
-        
-        //TODO: Link up game over state
+
         guard.targetCaptured = true;
-        Debug.Log("CAPTURED");
         isCapturing = false;
+        
+        //Can remove if not needed
+        GameOverEvent?.Invoke();
     }
 
     public IEnumerator TargetLost()
@@ -97,5 +106,9 @@ public class ChasingState : AntAIState
         guard.isAlert = false;
         guard.InvestigateTarget = null;
     }
-    
+
+    public void ChaseTarget()
+    {
+        pathfinding.FindPath(transform.position, target.transform.position);
+    }
 }

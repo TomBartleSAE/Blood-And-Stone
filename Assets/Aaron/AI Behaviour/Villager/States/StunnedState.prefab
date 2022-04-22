@@ -47,4 +47,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   villager: {fileID: 0}
   wander: {fileID: 0}
-  stunTime: 0
+  stunTime: 5

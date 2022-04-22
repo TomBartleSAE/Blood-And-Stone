@@ -10,7 +10,6 @@ public class SoldierMoveToTargetState : AntAIState
     public FollowPath followPath;
     public SoldierModel soldier;
     
-
     public Transform targetDestination;
     
     public override void Enter()

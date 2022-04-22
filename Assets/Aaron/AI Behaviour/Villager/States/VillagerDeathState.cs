@@ -18,7 +18,6 @@ public class VillagerDeathState : AntAIState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Destroying");
 
         Finish();
     }

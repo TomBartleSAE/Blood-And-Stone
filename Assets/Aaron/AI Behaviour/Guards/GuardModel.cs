@@ -48,7 +48,7 @@ public class GuardModel : MonoBehaviour
         //need to sub to all health death events
 //        health.DeathEvent += Reaction;
 
-        npcManager.Guards.Add(this.GameObject());
+        npcManager.Guards.Add(gameObject);
 
         GetPatrolPoints();
     }
@@ -58,6 +58,7 @@ public class GuardModel : MonoBehaviour
         Debug.Log("Guard Reacting ok");
         isAlert = true;
         
+        //TODO clear this out maybe
         if (deadThing == this)
         {
             npcManager.Guards.Remove(this.gameObject);

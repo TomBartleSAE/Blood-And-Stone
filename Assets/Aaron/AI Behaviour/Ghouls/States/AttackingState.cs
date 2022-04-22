@@ -12,7 +12,6 @@ public class AttackingState : AntAIState
 
     public float attackCooldown;
     
-    [SerializeField]
     public List<GameObject> Targets = new List<GameObject>();
 
     public override void Create(GameObject aGameObject)
@@ -30,7 +29,6 @@ public class AttackingState : AntAIState
         Attack();
         
         StartCoroutine(AttackTimer());
-        
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)

@@ -28,7 +28,7 @@ public class GhoulModel : MonoBehaviour
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
-        manager.Ghouls.Add(this.GameObject());
+        manager.Ghouls.Add(gameObject);
     }
 
     // Update is called once per frame

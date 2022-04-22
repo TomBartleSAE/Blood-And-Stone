@@ -19,6 +19,8 @@ public class IdleState : AntAIState
     public override void Enter()
     {
         base.Enter();
+
+        wander.enabled = true;
         
         wander.speed = 8;
     }

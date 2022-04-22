@@ -36,8 +36,6 @@ MonoBehaviour:
     - id: 3
       value: 1
     post:
-    - id: 4
-      value: 0
     - id: 2
       value: 1
   - name: MoveToTarget
@@ -95,7 +93,7 @@ MonoBehaviour:
   goals:
   - name: DefendCastle
     isDefault: 1
-    position: {x: 1343.8247, y: 518.7393}
+    position: {x: 1360.8247, y: 510.73932}
     conditions:
     - id: 1
       value: 0

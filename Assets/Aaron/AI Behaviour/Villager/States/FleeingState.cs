@@ -40,12 +40,7 @@ public class FleeingState : AntAIState
     {
         base.Exit();
     }
-
-    void RaycastCheck()
-    {
-        //add raycast logic here to check if can see event
-    }
-
+    
     IEnumerator Flee()
     {
         for (int i = 0; i < fleeTime; i++)

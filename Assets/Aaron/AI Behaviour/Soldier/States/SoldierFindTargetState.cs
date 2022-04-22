@@ -29,6 +29,8 @@ public class SoldierFindTargetState : AntAIState
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+        
+        FindTarget();
     }
 
     public override void Exit()

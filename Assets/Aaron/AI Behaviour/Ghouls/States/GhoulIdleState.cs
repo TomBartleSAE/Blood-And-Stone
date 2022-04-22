@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class GhoulIdleState : AntAIState
 {
-    //public PathfindingAgent pathfinding;
-    //public FollowPath followPath;
-    
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -16,12 +13,6 @@ public class GhoulIdleState : AntAIState
     public override void Enter()
     {
         base.Enter();
-
-        //pathfinding = GetComponentInParent<PathfindingAgent>();
-        //followPath = GetComponentInParent<FollowPath>();
-//
-        //pathfinding.enabled = false;
-        //followPath.enabled = false;
 
         Debug.Log("Entering Ghoul Idle State");
     }
