@@ -21,7 +21,9 @@ public class Spawner : MonoBehaviour
             
             for (int j = 0; j < currentGroup.numberToSpawn; j++)
             {
-                Instantiate(currentGroup.enemy, currentSpawn.position, Quaternion.identity);
+                // Gives each object and random offset to prevent them spawning on top of each other
+                Vector3 positionOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
+                Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
             }
 
             yield return new WaitForSeconds(currentGroup.timeToNextGroup);
