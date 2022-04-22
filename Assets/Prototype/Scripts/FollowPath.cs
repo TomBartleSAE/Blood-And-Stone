@@ -13,7 +13,7 @@ public class FollowPath : MonoBehaviour
     private Node targetNode;
     private int index;
     
-    private void Start()
+    private void OnEnable()
     {
         agent.NewPathEvent += ResetPath;
     }
