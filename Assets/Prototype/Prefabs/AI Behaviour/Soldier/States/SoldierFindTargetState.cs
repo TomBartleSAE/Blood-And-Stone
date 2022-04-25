@@ -17,16 +17,13 @@ public class SoldierFindTargetState : AntAIState
 
     public LayerMask buildingLayer;
 
-    public void OnEnable()
-    {
-        pathfinding.PathFailedEvent += BreakThroughWall;
-    }
-
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         owner = aGameObject;
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+        pathfinding.PathFailedEvent += BreakThroughWall;
     }
 
     public override void Enter()
@@ -34,10 +31,7 @@ public class SoldierFindTargetState : AntAIState
         base.Enter();
         
         soldierModel = owner.GetComponent<SoldierModel>();
-        pathfinding = owner.GetComponent<PathfindingAgent>();
         manager = FindObjectOfType<NPCManager>();
-
-
 
         castle = soldierModel.castle;
     }

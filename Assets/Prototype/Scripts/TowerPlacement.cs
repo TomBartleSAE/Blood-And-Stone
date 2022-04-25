@@ -71,7 +71,8 @@ public class TowerPlacement : MonoBehaviour
     {
         if (blood.currentBlood >= selectedBuilding.cost)
         {
-            Instantiate(selectedBuilding, position, Quaternion.identity);
+            BuildingBase newBuilding = Instantiate(selectedBuilding, position, Quaternion.identity);
+            newBuilding.grid = grid;
             selectedNode.isBlocked = true;
             selectedNode.canBuild = false;
             blood.ChangeBlood(-selectedBuilding.cost);
