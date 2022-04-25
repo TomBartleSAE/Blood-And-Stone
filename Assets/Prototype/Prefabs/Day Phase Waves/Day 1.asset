@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Day 1
   m_EditorClassIdentifier: 
   groups:
-  - enemy: {fileID: 5288419812290766290, guid: 1b0642b4dd3faf84dab52f96c317ce51, type: 3}
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
     numberToSpawn: 10
     timeToNextGroup: 0

@@ -13,12 +13,12 @@ public class HealthEditor : Editor
 
         if (GUILayout.Button("+5 Health"))
         {
-            (target as Health)?.ChangeHealth(5f);
+            (target as Health)?.ChangeHealth(5f, target as GameObject);
         }
         
         if (GUILayout.Button("-5 Health"))
         {
-            (target as Health)?.ChangeHealth(-5f);
+            (target as Health)?.ChangeHealth(-5f, target as GameObject);
         }
     }
 }
