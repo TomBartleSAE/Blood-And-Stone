@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
@@ -15,7 +16,12 @@ public class SoldierFindTargetState : AntAIState
     private GameObject owner;
 
     public LayerMask buildingLayer;
-    
+
+    public void OnEnable()
+    {
+        pathfinding.PathFailedEvent += BreakThroughWall;
+    }
+
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -31,7 +37,7 @@ public class SoldierFindTargetState : AntAIState
         pathfinding = owner.GetComponent<PathfindingAgent>();
         manager = FindObjectOfType<NPCManager>();
 
-        pathfinding.PathFailedEvent += BreakThroughWall;
+
 
         castle = soldierModel.castle;
     }
@@ -77,6 +83,7 @@ public class SoldierFindTargetState : AntAIState
 
     public void BreakThroughWall()
     {
+
         Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
 
         foreach (var building in towers)
@@ -90,6 +97,7 @@ public class SoldierFindTargetState : AntAIState
             }
         }
         
-        
+        //will change to AttackingDefensesState
+        soldierModel.attackedByTower = true;
     }
 }
