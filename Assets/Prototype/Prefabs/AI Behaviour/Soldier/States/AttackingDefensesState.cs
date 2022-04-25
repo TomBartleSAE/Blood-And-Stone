@@ -10,7 +10,7 @@ public class AttackingDefensesState : AntAIState
     public PathfindingAgent pathfinding;
 
     public GameObject owner;
-    public GameObject target;
+    public Transform target;
 
     public bool inRange = false;
     public bool canAttack = true;

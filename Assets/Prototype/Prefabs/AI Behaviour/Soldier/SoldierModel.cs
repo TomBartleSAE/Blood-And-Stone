@@ -13,8 +13,8 @@ public class SoldierModel : MonoBehaviour
     public Health health;
     public NPCManager manager;
 
-    public GameObject target;
-    public GameObject castle;
+    public Transform target;
+    public Transform castle;
 
     public bool hasTarget = false;
     public bool attackedByGhoul = false;
@@ -45,7 +45,7 @@ public class SoldierModel : MonoBehaviour
 
     public void ChangeTarget(GameObject newTarget)
     {
-        target = newTarget;
+        target = newTarget.transform;
 
         if (target.GetComponent<GhoulModel>())
         {

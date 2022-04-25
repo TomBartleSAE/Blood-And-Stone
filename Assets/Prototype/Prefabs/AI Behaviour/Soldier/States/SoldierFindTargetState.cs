@@ -11,8 +11,10 @@ public class SoldierFindTargetState : AntAIState
     public NPCManager manager;
 
     public GameObject target;
-    public GameObject castle;
+    public Transform castle;
     private GameObject owner;
+
+    public LayerMask buildingLayer;
     
     public override void Create(GameObject aGameObject)
     {
@@ -28,6 +30,8 @@ public class SoldierFindTargetState : AntAIState
         soldierModel = owner.GetComponent<SoldierModel>();
         pathfinding = owner.GetComponent<PathfindingAgent>();
         manager = FindObjectOfType<NPCManager>();
+
+        pathfinding.PathFailedEvent += BreakThroughWall;
 
         castle = soldierModel.castle;
     }
@@ -59,22 +63,33 @@ public class SoldierFindTargetState : AntAIState
                 if (distance < shortestDistance)
                 {
                     shortestDistance = distance;
-                    soldierModel.target = ghoul;
+                    soldierModel.target = ghoul.transform;
                     soldierModel.hasTarget = true;
                 }
             }
         }
     }
 
-    public void FindCastle(GameObject castle)
+    public void FindCastle()
     {
-        pathfinding.FindPath(transform.position, castle.transform.position);
-        
-        //if Path not clear, find the nearest wall and target it to make a path
+        pathfinding.FindPath(transform.position, castle.position);
     }
 
     public void BreakThroughWall()
     {
+        Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
+
+        foreach (var building in towers)
+        {
+            float shortestDistance = 100000;
+            float distance = Vector3.Distance(transform.position, building.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                soldierModel.target = building.transform;
+            }
+        }
+        
         
     }
 }
