@@ -1942,6 +1942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1182133929}
   destination: {fileID: 0}
+  pathOnStart: 0
 --- !u!4 &1199680142
 Transform:
   m_ObjectHideFlags: 0

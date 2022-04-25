@@ -210,8 +210,9 @@ MonoBehaviour:
   rb: {fileID: 2645878115345322759}
   pathfinding: {fileID: 2645878115345322752}
   health: {fileID: 2645878115345322754}
-  target: {fileID: 0}
   manager: {fileID: 7621921801392273967, guid: e2cd08b04d9c7c74ea5dc8892f4ac58b, type: 3}
+  target: {fileID: 0}
+  castle: {fileID: 0}
   hasTarget: 0
   attackedByGhoul: 0
   attackedByTower: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   destination: {fileID: 0}
+  pathOnStart: 0
 --- !u!114 &2645878115345322755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 5
+  maxHealth: 15
 --- !u!1 &2645878115819848673
 GameObject:
   m_ObjectHideFlags: 0

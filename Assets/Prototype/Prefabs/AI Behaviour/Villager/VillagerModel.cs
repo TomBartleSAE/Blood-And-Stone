@@ -24,10 +24,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public bool isScared;
     public bool isStunned;
     public bool isEaten;
-
-    public bool testBool;
-
-    public event Action<GameObject> HackTestDeathEvent;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,22 +40,13 @@ public class VillagerModel : MonoBehaviour, IStunnable
         health.DeathEvent += Reaction;
         health.DeathEvent += Die;
 
-
-        //GlobalEvents.DeathEvent += Reaction;
-
         foreach (var villager in manager.Villagers)
         {
             villager.GetComponent<Health>().DeathEvent += Reaction;
         }
-
-        //for test
-        if (testBool)
-        {
-            StartCoroutine(CertainDeath());
-        }
-
     }
 
+    //Reacting to other thing's death
     public void Reaction(GameObject deadThing)
     {
         if (deadThing != gameObject)
@@ -78,19 +66,8 @@ public class VillagerModel : MonoBehaviour, IStunnable
     {
         isStunned = true;
     }
-    
-    //hacked in test
-    public IEnumerator CertainDeath()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-        
-        health.ChangeHealth(-20, gameObject);
-        Debug.Log(gameObject);
-    }
 
+    //reacting to own death
     public void Die(GameObject me)
     {
         manager.Villagers.Remove(gameObject);
