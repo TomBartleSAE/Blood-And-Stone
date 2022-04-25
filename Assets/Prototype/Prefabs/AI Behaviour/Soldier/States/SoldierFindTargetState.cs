@@ -9,9 +9,7 @@ public class SoldierFindTargetState : AntAIState
 {
     public SoldierModel soldierModel;
     public PathfindingAgent pathfinding;
-    public NPCManager manager;
-
-    public GameObject target;
+    
     public Transform castle;
     private GameObject owner;
 
@@ -23,6 +21,7 @@ public class SoldierFindTargetState : AntAIState
 
         owner = aGameObject;
         pathfinding = owner.GetComponent<PathfindingAgent>();
+        soldierModel = owner.GetComponent<SoldierModel>();
         pathfinding.PathFailedEvent += BreakThroughWall;
     }
 
@@ -30,9 +29,6 @@ public class SoldierFindTargetState : AntAIState
     {
         base.Enter();
         
-        soldierModel = owner.GetComponent<SoldierModel>();
-        manager = FindObjectOfType<NPCManager>();
-
         castle = soldierModel.castle;
     }
 
@@ -40,7 +36,7 @@ public class SoldierFindTargetState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
         
-        FindTarget();
+        //FindTarget();
     }
 
     public override void Exit()
@@ -48,7 +44,7 @@ public class SoldierFindTargetState : AntAIState
         base.Exit();
     }
 
-    void FindTarget()
+    /*void FindTarget()
     {
         float distance = 10000000;
         float shortestDistance;
@@ -68,7 +64,7 @@ public class SoldierFindTargetState : AntAIState
                 }
             }
         }
-    }
+    }*/
 
     public void FindCastle()
     {
@@ -77,7 +73,6 @@ public class SoldierFindTargetState : AntAIState
 
     public void BreakThroughWall()
     {
-
         Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
 
         foreach (var building in towers)

@@ -10,6 +10,7 @@ public class AttackingDefensesState : AntAIState
     public SoldierModel soldier;
     //public PathfindingAgent pathfinding;
     public Rigidbody rb;
+    public FollowPath followPath;
 
     public GameObject owner;
     public Transform target;
@@ -25,6 +26,7 @@ public class AttackingDefensesState : AntAIState
         base.Create(aGameobject);
 
         owner = aGameobject;
+        followPath = owner.GetComponent<FollowPath>();
     }
     
     public override void Enter()
@@ -35,6 +37,8 @@ public class AttackingDefensesState : AntAIState
         //pathfinding = owner.GetComponent<PathfindingAgent>();
         target = soldier.target;
         rb = owner.GetComponent<Rigidbody>();
+
+        followPath.enabled = false;
 
         canAttack = true;
 
@@ -63,13 +67,15 @@ public class AttackingDefensesState : AntAIState
     public override void Exit()
     {
         base.Exit();
+
+        followPath.enabled = true;
     }
 
     public void CheckRange()
     {
         float range;
         
-        range = Vector3.Distance(transform.position, target.transform.position);
+        range = Vector3.Distance(owner.transform.position, target.transform.position);
 
         if (range <= 1)
         {
