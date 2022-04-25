@@ -58,7 +58,7 @@ public class SoldierModel : MonoBehaviour
         }
     }
 
-    void Die()
+    void Die(GameObject me)
     {
         NPCManager.Instance.Soldiers.Remove(gameObject);
         
