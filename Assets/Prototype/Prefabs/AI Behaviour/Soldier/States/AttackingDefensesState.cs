@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using Anthill.AI;
 using UnityEngine;
@@ -32,8 +33,10 @@ public class AttackingDefensesState : AntAIState
         soldier = owner.GetComponent<SoldierModel>();
         pathfinding = owner.GetComponent<PathfindingAgent>();
         target = soldier.target;
+
+        canAttack = true;
         
-        InvokeRepeating("Pathfind", 0, 3);
+        pathfinding.FindPath(owner.transform.position, target.transform.position);
         
         Debug.Log("Entering Attacking Defenses State");
     }
@@ -42,6 +45,8 @@ public class AttackingDefensesState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
+        CheckRange();
+        
         if (inRange && canAttack)
         {
             StartCoroutine(Attack());
@@ -57,29 +62,24 @@ public class AttackingDefensesState : AntAIState
         Debug.Log("Exiting Attacking Defenses State");
     }
 
-    public void Pathfind()
-    {
-        pathfinding.FindPath(transform.position, target.transform.position);
-    }
-
     public void CheckRange()
     {
         float range;
         
         range = Vector3.Distance(transform.position, target.transform.position);
 
-        if (range <= 0.5f)
+        if (range <= 1)
         {
-            canAttack = true;
+            inRange = true;
         }
     }
 
     public IEnumerator Attack()
     {
-        target.GetComponent<Tom.Health>().ChangeHealth(-damage, gameObject);
-
         canAttack = false;
-
+        
+        target.GetComponent<Tom.Health>().ChangeHealth(-damage, owner);
+        
         for (int i = 0; i < attackTime; i++)
         {
             yield return new WaitForSeconds(1);
