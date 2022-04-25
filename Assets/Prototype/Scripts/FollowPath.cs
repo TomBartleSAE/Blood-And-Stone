@@ -24,10 +24,14 @@ public class FollowPath : MonoBehaviour
         {
             rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
 
-            if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
+            if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.1f)
             {
                 index++;
-                targetNode = agent.path[index];
+                if (index < agent.path.Count)
+                {
+                    targetNode = agent.path[index];
+                }
+                print(index + "/" + agent.path.Count);
             }
         }
     }
@@ -35,6 +39,6 @@ public class FollowPath : MonoBehaviour
     public void ResetPath()
     {
         index = 0;
-        targetNode = agent.path[index];
+        targetNode = agent.path[0];
     }
 }

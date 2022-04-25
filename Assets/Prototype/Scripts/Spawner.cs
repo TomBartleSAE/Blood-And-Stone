@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour
     public Transform castleTarget;
 
     public event Action FinishedSpawningEvent;
+
+    public PathfindingGrid grid;
     
     public IEnumerator SpawnWaves(int waveIndex)
     {
@@ -31,6 +33,7 @@ public class Spawner : MonoBehaviour
                 Vector3 positionOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
                 GameObject newEnemy = Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
                 newEnemy.GetComponent<SoldierModel>().castle = castleTarget;
+                newEnemy.GetComponent<PathfindingAgent>().grid = grid; // HACK: Find another way to do this
             }
 
             yield return new WaitForSeconds(currentGroup.timeToNextGroup);

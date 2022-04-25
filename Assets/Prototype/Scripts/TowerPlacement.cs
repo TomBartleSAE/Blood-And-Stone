@@ -73,6 +73,7 @@ public class TowerPlacement : MonoBehaviour
         {
             Instantiate(selectedBuilding, position, Quaternion.identity);
             selectedNode.isBlocked = true;
+            selectedNode.canBuild = false;
             blood.ChangeBlood(-selectedBuilding.cost);
         }
     }
@@ -81,7 +82,7 @@ public class TowerPlacement : MonoBehaviour
     {
         if (selectedNode != null)
         {
-            if (!selectedNode.isBlocked)
+            if (selectedNode.canBuild)
             {
                 Build(selectedNode.coordinates);
             }

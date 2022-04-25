@@ -23,16 +23,15 @@ public class AttackingKeepState : AntAIState
 
         owner = aGameObject;
         soldier = owner.GetComponent<SoldierModel>();
-        castle = soldier.castle;
+        pathfinding = owner.GetComponent<PathfindingAgent>();
     }
     public override void Enter()
     {
         base.Enter();
 
+        castle = soldier.castle;
         
-        pathfinding = owner.GetComponent<PathfindingAgent>();
-
-        pathfinding.FindPath(transform.position, castle.position);
+        pathfinding.FindPath(owner.transform.position, castle.position);
         
         Debug.Log("Entering Attacking Keep State");
     }
@@ -41,7 +40,7 @@ public class AttackingKeepState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (Vector3.Distance(transform.position, castle.position) <= 0.5 && canAttack)
+        if (Vector3.Distance(owner.transform.position, castle.position) <= 0.5f && canAttack)
         {
             StartCoroutine(AttackCastle());
         }
@@ -58,8 +57,9 @@ public class AttackingKeepState : AntAIState
 
     public IEnumerator AttackCastle()
     {
-        castle.GetComponent<Health>().ChangeHealth(damage, gameObject);
+        print("attack castle");
         canAttack = false;
+        castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
         
         for (int i = 0; i < attackTime; i++)
         {

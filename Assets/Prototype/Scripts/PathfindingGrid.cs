@@ -12,7 +12,8 @@ public class PathfindingGrid : MonoBehaviour
 
     public Node[,] nodes;
 
-    public LayerMask blockedLayers;
+    public LayerMask buildingLayer;
+    public LayerMask blockedLayer;
 
     public void Awake()
     {
@@ -32,9 +33,14 @@ public class PathfindingGrid : MonoBehaviour
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayers))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
                 {
                     nodes[x, y].isBlocked = true;
+                }
+                
+                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
+                {
+                    nodes[x, y].canBuild = true;
                 }
             }
         }
@@ -76,7 +82,7 @@ public class PathfindingGrid : MonoBehaviour
                 {
                     if (nodes[x, y] != null)
                     {
-                        if (nodes[x, y].isBlocked)
+                        if (nodes[x, y].isBlocked || !nodes[x, y].canBuild)
                         {
                             Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
                         }

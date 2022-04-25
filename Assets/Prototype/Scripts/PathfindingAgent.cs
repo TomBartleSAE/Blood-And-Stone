@@ -110,6 +110,8 @@ public class PathfindingAgent : MonoBehaviour
             currentNode = currentNode.parent;
         }
         
+        path.Add(currentNode);
+        
         if (path[0].index != destinationIndex)
         {
             // Used if path is blocked or cannot reach destination
