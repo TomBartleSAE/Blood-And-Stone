@@ -23,20 +23,20 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public bool isScared;
     public bool isStunned;
     public bool isEaten;
-    
+
+
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+                
+        health.DeathEvent += Reaction;
+        health.DeathEvent += Die;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        antAIAgent = GetComponent<AntAIAgent>();
-        antAIAgent.SetGoal("Survive");
-        health = GetComponentInParent<Health>();
-        
         NPCManager.Instance.Villagers.Add(gameObject);
-
-        
-        health.DeathEvent += Reaction;
-        health.DeathEvent += Die;
 
         foreach (var villager in NPCManager.Instance.Villagers)
         {

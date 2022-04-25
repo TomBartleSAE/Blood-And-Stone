@@ -34,13 +34,8 @@ public class SoldierModel : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
-
-        NPCManager.Instance.Soldiers.Add(this.gameObject);
-    }
-
-    private void Update()
-    {
         
+        NPCManager.Instance.Soldiers.Add(gameObject);
     }
 
     public void ChangeTarget(GameObject newTarget)
