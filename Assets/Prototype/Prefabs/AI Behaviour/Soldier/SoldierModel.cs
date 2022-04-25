@@ -26,6 +26,7 @@ public class SoldierModel : MonoBehaviour
     public void OnEnable()
     {
         health.DamageChangeEvent += ChangeTarget;
+        health.DeathEvent += Die;
     }
 
     void Start()
@@ -55,5 +56,12 @@ public class SoldierModel : MonoBehaviour
         {
             attackedByTower = true;
         }
+    }
+
+    void Die()
+    {
+        NPCManager.Instance.Soldiers.Remove(gameObject);
+        
+        Destroy(gameObject);
     }
 }

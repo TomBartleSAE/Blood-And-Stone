@@ -11,7 +11,6 @@ using Random = UnityEngine.Random;
 public class VillagerModel : MonoBehaviour, IStunnable
 {
     public AntAIAgent antAIAgent;
-    public NPCManager manager;
     public Health health;
 
     public RaycastHit hit;
@@ -31,16 +30,15 @@ public class VillagerModel : MonoBehaviour, IStunnable
     {
         antAIAgent = GetComponent<AntAIAgent>();
         antAIAgent.SetGoal("Survive");
-        manager = FindObjectOfType<NPCManager>();
         health = GetComponentInParent<Health>();
         
-        manager.Villagers.Add(gameObject);
+        NPCManager.Instance.Villagers.Add(gameObject);
 
         
         health.DeathEvent += Reaction;
         health.DeathEvent += Die;
 
-        foreach (var villager in manager.Villagers)
+        foreach (var villager in NPCManager.Instance.Villagers)
         {
             villager.GetComponent<Health>().DeathEvent += Reaction;
         }
@@ -70,7 +68,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
     //reacting to own death
     public void Die(GameObject me)
     {
-        manager.Villagers.Remove(gameObject);
+        NPCManager.Instance.Villagers.Remove(gameObject);
         Destroy(gameObject);
     }
 }
