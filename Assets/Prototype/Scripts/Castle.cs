@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Tom;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Castle : MonoBehaviour
 {
@@ -22,6 +23,6 @@ public class Castle : MonoBehaviour
     {
         MessageManager.Instance.ShowMessage("The villagers destroyed your castle!", 3f);
         yield return new WaitForSeconds(3f);
-        // Change to Main Menu scene
+        SceneManager.LoadScene("MainMenu");
     }
 }

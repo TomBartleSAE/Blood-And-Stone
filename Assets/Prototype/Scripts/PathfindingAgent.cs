@@ -16,10 +16,16 @@ public class PathfindingAgent : MonoBehaviour
     public List<Node> path;
 
     public event Action NewPathEvent;
+    public event Action PathFailedEvent;
+
+    public bool pathOnStart = false;
 
     public void Start()
     {
-        //FindPath(transform.position, destination.position);
+        if (pathOnStart)
+        {
+            FindPath(transform.position, destination.position);
+        }
     }
 
     public List<Node> FindPath(Vector3 start, Vector3 destination)
@@ -58,7 +64,7 @@ public class PathfindingAgent : MonoBehaviour
             openNodes.Remove(currentNode);
             closedNodes.Add(currentNode);
 
-            if (currentNode.index == (Vector2Int) destinationIndex)
+            if (currentNode.index == destinationIndex)
             {
                 break;
             }
@@ -105,6 +111,14 @@ public class PathfindingAgent : MonoBehaviour
         }
         
         path.Reverse();
+
+        if (path[0].index != destinationIndex)
+        {
+            // Used if path is blocked or cannot reach destination
+            path.Clear();
+            PathFailedEvent?.Invoke();
+            return path;
+        }
         
         NewPathEvent?.Invoke();
 
