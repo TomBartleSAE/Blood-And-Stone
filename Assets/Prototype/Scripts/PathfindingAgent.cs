@@ -110,8 +110,6 @@ public class PathfindingAgent : MonoBehaviour
             currentNode = currentNode.parent;
         }
         
-        path.Reverse();
-
         if (path[0].index != destinationIndex)
         {
             // Used if path is blocked or cannot reach destination
@@ -119,6 +117,8 @@ public class PathfindingAgent : MonoBehaviour
             PathFailedEvent?.Invoke();
             return path;
         }
+        
+        path.Reverse();
         
         NewPathEvent?.Invoke();
 

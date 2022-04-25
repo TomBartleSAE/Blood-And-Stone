@@ -8,6 +8,7 @@ using Tom;
 public class DamageTower : TowerBase
 {
     public float damage = 1f;
+    [Tooltip("Numbers of seconds between firing")]
     public float delay = 1f;
     private float attackTimer;
 

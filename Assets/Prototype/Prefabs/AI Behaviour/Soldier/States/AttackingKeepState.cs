@@ -21,15 +21,15 @@ public class AttackingKeepState : AntAIState
     {
         base.Create(aGameObject);
 
-        castle = soldier.castle;
-
         owner = aGameObject;
+        soldier = owner.GetComponent<SoldierModel>();
+        castle = soldier.castle;
     }
     public override void Enter()
     {
         base.Enter();
 
-        soldier = owner.GetComponent<SoldierModel>();
+        
         pathfinding = owner.GetComponent<PathfindingAgent>();
 
         pathfinding.FindPath(transform.position, castle.position);

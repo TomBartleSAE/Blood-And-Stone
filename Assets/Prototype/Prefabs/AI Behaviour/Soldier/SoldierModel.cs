@@ -29,7 +29,7 @@ public class SoldierModel : MonoBehaviour
         health.DeathEvent += Die;
     }
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class Spawner : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>();
     
     public Wave[] waves;
+
+    public Transform castleTarget;
+
+    public event Action FinishedSpawningEvent;
     
     public IEnumerator SpawnWaves(int waveIndex)
     {
@@ -23,11 +29,14 @@ public class Spawner : MonoBehaviour
             {
                 // Gives each object and random offset to prevent them spawning on top of each other
                 Vector3 positionOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
-                Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
+                GameObject newEnemy = Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
+                newEnemy.GetComponent<SoldierModel>().castle = castleTarget;
             }
 
             yield return new WaitForSeconds(currentGroup.timeToNextGroup);
             groupIndex++;
         }
+        
+        FinishedSpawningEvent?.Invoke();
     }
 }

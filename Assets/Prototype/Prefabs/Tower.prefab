@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1192532264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 5271138710105583861}
   - component: {fileID: 3240955513614846527}
   - component: {fileID: 6599336096723608043}
-  m_Layer: 0
+  - component: {fileID: -4480982740973044769}
+  m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,10 +96,24 @@ MonoBehaviour:
   trigger: {fileID: 3240955513614846527}
   range: 2
   targets: []
-  damage: 1
-  delay: 1
+  damage: 2
+  delay: 3
   projectilePrefab: {fileID: 8298075679117116914, guid: 2f25621323fb5e04fbaa6689a55aed99, type: 3}
   projectileSpawn: {fileID: 1192532264}
+--- !u!114 &-4480982740973044769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271138710105583862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbfc6d1aeb0ba3418e53806da973d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 40
 --- !u!1 &5271138710127269070
 GameObject:
   m_ObjectHideFlags: 0
