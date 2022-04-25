@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3240955513614846527}
   - component: {fileID: 6599336096723608043}
   - component: {fileID: -4480982740973044769}
+  - component: {fileID: 4366255913895675115}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -93,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
+  health: {fileID: 0}
+  grid: {fileID: 0}
   trigger: {fileID: 3240955513614846527}
   range: 2
   targets: []
@@ -114,6 +117,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 40
+--- !u!65 &4366255913895675115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271138710105583862}
+  m_Material: {fileID: 13400000, guid: a991ad27fa87b0640a73771bb035fa44, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5271138710127269070
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +141,6 @@ GameObject:
   - component: {fileID: 5271138710127269069}
   - component: {fileID: 5271138710127269066}
   - component: {fileID: 5271138710127269067}
-  - component: {fileID: 5271138710127269068}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -198,16 +213,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5271138710127269068
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5271138710127269070}
-  m_Material: {fileID: 13400000, guid: 2d8bafc770f067a4d90649b8a1e4bd50, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
