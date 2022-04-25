@@ -27,7 +27,7 @@ public class DamageTower : TowerBase
     public void Attack()
     {
         Collider target = targets[Random.Range(0, targets.Count)];
-        target.GetComponent<Health>().ChangeHealth(-damage);
+        target.GetComponent<Health>().ChangeHealth(-damage, gameObject);
 
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
         newProjectile.GetComponent<Rigidbody>().AddForce((target.transform.position - projectileSpawn.position) * 100f);

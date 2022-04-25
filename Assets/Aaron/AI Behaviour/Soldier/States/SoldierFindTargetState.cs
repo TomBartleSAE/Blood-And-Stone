@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
+using Tanks;
 using UnityEngine;
 
 public class SoldierFindTargetState : AntAIState
 {
-    public Wander wander;
     public SoldierModel soldierModel;
-    public GameObject target;
+    public PathfindingAgent pathfinding;
     public NPCManager manager;
+
+    public GameObject target;
+    public GameObject castle;
+    private GameObject owner;
     
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
+
+        owner = aGameObject;
     }
 
     public override void Enter()
     {
         base.Enter();
         
-        wander = GetComponentInParent<Wander>();
-        soldierModel = GetComponentInParent<SoldierModel>();
+        soldierModel = owner.GetComponent<SoldierModel>();
+        pathfinding = owner.GetComponent<PathfindingAgent>();
         manager = FindObjectOfType<NPCManager>();
 
-        wander.enabled = true;
+        castle = soldierModel.castle;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -58,5 +64,17 @@ public class SoldierFindTargetState : AntAIState
                 }
             }
         }
+    }
+
+    public void FindCastle(GameObject castle)
+    {
+        pathfinding.FindPath(transform.position, castle.transform.position);
+        
+        //if Path not clear, find the nearest wall and target it to make a path
+    }
+
+    public void BreakThroughWall()
+    {
+        
     }
 }

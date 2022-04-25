@@ -11,22 +11,25 @@ namespace Tom
         public float maxHealth;
 
         public event Action<GameObject> DeathEvent;
-    
+        public event Action<GameObject> DamageChangeEvent;
+
         public void Awake()
         {
             currentHealth = maxHealth;
         }
 
-        public void ChangeHealth(float amount)
+        public void ChangeHealth(float amount, GameObject perp)
         {
             currentHealth += amount;
+            
+            DamageChangeEvent?.Invoke(perp);
 
             if (currentHealth <= 0)
             {
                 DeathEvent?.Invoke(gameObject);
                 
                 //trying static global event
-                GlobalEvents.TriggerDeathEvent(gameObject);
+                //GlobalEvents.TriggerDeathEvent(gameObject);
             }
         }
     }

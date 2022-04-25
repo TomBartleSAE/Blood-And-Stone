@@ -56,7 +56,7 @@ public class AttackingKeepState : AntAIState
 
     public IEnumerator AttackCastle()
     {
-        castle.GetComponent<Health>().ChangeHealth(damage);
+        castle.GetComponent<Health>().ChangeHealth(damage, gameObject);
         canAttack = false;
         
         for (int i = 0; i < attackTime; i++)

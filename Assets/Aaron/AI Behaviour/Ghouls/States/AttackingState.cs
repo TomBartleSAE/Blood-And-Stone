@@ -64,7 +64,7 @@ public class AttackingState : AntAIState
         
         foreach (var target in Targets)
         {
-            target.GetComponent<Health>().ChangeHealth(damage);
+            target.GetComponent<Health>().ChangeHealth(damage, gameObject);
         }
 
         StartCoroutine(AttackTimer());

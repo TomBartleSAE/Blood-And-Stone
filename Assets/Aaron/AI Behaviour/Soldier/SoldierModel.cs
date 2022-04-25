@@ -11,8 +11,10 @@ public class SoldierModel : MonoBehaviour
     public Rigidbody rb;
     public PathfindingAgent pathfinding;
     public Health health;
-    public GameObject target;
     public NPCManager manager;
+
+    public GameObject target;
+    public GameObject castle;
 
     public bool hasTarget = false;
     public bool attackedByGhoul = false;
@@ -20,8 +22,13 @@ public class SoldierModel : MonoBehaviour
     public bool castleStanding = true;
     public bool inRange = false;
     public bool targetAlive = false;
-    
-    // Start is called before the first frame update
+
+
+    public void OnEnable()
+    {
+        health.DamageChangeEvent += ChangeTarget;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,5 +36,25 @@ public class SoldierModel : MonoBehaviour
         health = GetComponent<Health>();
 
         manager.Soldiers.Add(this.gameObject);
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void ChangeTarget(GameObject newTarget)
+    {
+        target = newTarget;
+
+        if (target.GetComponent<GhoulModel>())
+        {
+            attackedByGhoul = true;
+        }
+
+        if (target.GetComponent<TowerBase>())
+        {
+            attackedByTower = true;
+        }
     }
 }

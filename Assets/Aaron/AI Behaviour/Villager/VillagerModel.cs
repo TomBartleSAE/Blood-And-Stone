@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
+using Tanks;
 using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,7 +27,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     public bool testBool;
 
-
     public event Action<GameObject> HackTestDeathEvent;
 
     // Start is called before the first frame update
@@ -37,10 +37,19 @@ public class VillagerModel : MonoBehaviour, IStunnable
         manager = FindObjectOfType<NPCManager>();
         health = GetComponentInParent<Health>();
         
-        health.DeathEvent += Reaction;
         manager.Villagers.Add(gameObject);
 
-        GlobalEvents.DeathEvent += Reaction;
+        
+        health.DeathEvent += Reaction;
+        health.DeathEvent += Die;
+
+
+        //GlobalEvents.DeathEvent += Reaction;
+
+        foreach (var villager in manager.Villagers)
+        {
+            villager.GetComponent<Health>().DeathEvent += Reaction;
+        }
 
         //for test
         if (testBool)
@@ -63,14 +72,12 @@ public class VillagerModel : MonoBehaviour, IStunnable
                 isScared = true;
             }   
         }
-
     }
 
     public void GetStunned()
     {
         isStunned = true;
     }
-
     
     //hacked in test
     public IEnumerator CertainDeath()
@@ -80,6 +87,13 @@ public class VillagerModel : MonoBehaviour, IStunnable
             yield return new WaitForSeconds(1);
         }
         
-        health.ChangeHealth(-20);
+        health.ChangeHealth(-20, gameObject);
+        Debug.Log(gameObject);
+    }
+
+    public void Die(GameObject me)
+    {
+        manager.Villagers.Remove(gameObject);
+        Destroy(gameObject);
     }
 }
