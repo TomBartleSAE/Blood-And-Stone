@@ -31,7 +31,6 @@ public class FollowPath : MonoBehaviour
                 {
                     targetNode = agent.path[index];
                 }
-                print(index + "/" + agent.path.Count);
             }
         }
     }
