@@ -8,7 +8,8 @@ using UnityEngine;
 public class AttackingDefensesState : AntAIState
 {
     public SoldierModel soldier;
-    public PathfindingAgent pathfinding;
+    //public PathfindingAgent pathfinding;
+    public Rigidbody rb;
 
     public GameObject owner;
     public Transform target;
@@ -31,19 +32,23 @@ public class AttackingDefensesState : AntAIState
         base.Enter();
 
         soldier = owner.GetComponent<SoldierModel>();
-        pathfinding = owner.GetComponent<PathfindingAgent>();
+        //pathfinding = owner.GetComponent<PathfindingAgent>();
         target = soldier.target;
+        rb = owner.GetComponent<Rigidbody>();
 
         canAttack = true;
         
-        pathfinding.FindPath(owner.transform.position, target.transform.position);
-        
-        Debug.Log("Entering Attacking Defenses State");
+        //pathfinding.FindPath(owner.transform.position, target.transform.position);
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+
+        if (!inRange)
+        {
+            rb.AddForce((target.transform.position - owner.transform.position).normalized * owner.GetComponent<FollowPath>().moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+        }
 
         CheckRange();
         
@@ -51,15 +56,11 @@ public class AttackingDefensesState : AntAIState
         {
             StartCoroutine(Attack());
         }
-        
-        Debug.Log("Executing Attacking Defenses State");
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Debug.Log("Exiting Attacking Defenses State");
     }
 
     public void CheckRange()
@@ -77,6 +78,8 @@ public class AttackingDefensesState : AntAIState
     public IEnumerator Attack()
     {
         canAttack = false;
+        
+        print("Attacking wall");
         
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, owner);
         

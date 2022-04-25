@@ -22,11 +22,13 @@ public class SoldierModel : MonoBehaviour
     public bool inRange = false;
     public bool targetAlive = false;
 
+    public LayerMask buildingLayer;
 
     public void OnEnable()
     {
         health.DamageChangeEvent += ChangeTarget;
         health.DeathEvent += Die;
+        pathfinding.PathFailedEvent += BreakThroughWall;
     }
 
     void Awake()
@@ -58,5 +60,25 @@ public class SoldierModel : MonoBehaviour
         NPCManager.Instance.Soldiers.Remove(gameObject);
         
         Destroy(gameObject);
+    }
+    
+    public void BreakThroughWall()
+    {
+
+        Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
+
+        foreach (var building in towers)
+        {
+            float shortestDistance = 100000;
+            float distance = Vector3.Distance(transform.position, building.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                target = building.transform;
+            }
+        }
+        
+        //will change to AttackingDefensesState
+        attackedByTower = true;
     }
 }

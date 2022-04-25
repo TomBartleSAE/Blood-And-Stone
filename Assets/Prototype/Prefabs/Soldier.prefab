@@ -218,6 +218,9 @@ MonoBehaviour:
   castleStanding: 1
   inRange: 0
   targetAlive: 0
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2645878115345322752
 MonoBehaviour:
   m_ObjectHideFlags: 0
