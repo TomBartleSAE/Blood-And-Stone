@@ -46,7 +46,6 @@ public class FleeingState : AntAIState
         for (int i = 0; i < fleeTime; i++)
         {
             yield return new WaitForSeconds(1);
-            Debug.Log(i);
         }
 
         villager.isScared = false;

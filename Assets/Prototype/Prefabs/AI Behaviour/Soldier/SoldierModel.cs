@@ -11,7 +11,6 @@ public class SoldierModel : MonoBehaviour
     public Rigidbody rb;
     public PathfindingAgent pathfinding;
     public Health health;
-    public NPCManager manager;
 
     public Transform target;
     public Transform castle;
@@ -35,7 +34,7 @@ public class SoldierModel : MonoBehaviour
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
 
-        manager.Soldiers.Add(this.gameObject);
+        NPCManager.Instance.Soldiers.Add(this.gameObject);
     }
 
     private void Update()
