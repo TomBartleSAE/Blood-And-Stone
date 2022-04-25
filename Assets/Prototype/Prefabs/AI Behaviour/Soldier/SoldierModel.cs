@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngineInternal;
 
-public class SoldierModel : MonoBehaviour
+public class SoldierModel : EnemyBase
 {
     public Rigidbody rb;
     public PathfindingAgent pathfinding;

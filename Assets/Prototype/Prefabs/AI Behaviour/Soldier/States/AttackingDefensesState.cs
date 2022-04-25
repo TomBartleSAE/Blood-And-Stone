@@ -37,7 +37,9 @@ public class AttackingDefensesState : AntAIState
         rb = owner.GetComponent<Rigidbody>();
 
         canAttack = true;
-        
+
+        target.GetComponent<Tom.Health>().DeathEvent += ChangeBool;
+
         //pathfinding.FindPath(owner.transform.position, target.transform.position);
     }
 
@@ -89,5 +91,10 @@ public class AttackingDefensesState : AntAIState
         }
 
         canAttack = true;
+    }
+
+    public void ChangeBool(GameObject go)
+    {
+        soldier.attackedByTower = false;
     }
 }
