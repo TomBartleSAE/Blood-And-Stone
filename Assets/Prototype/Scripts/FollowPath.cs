@@ -24,7 +24,7 @@ public class FollowPath : MonoBehaviour
         {
             rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-            if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.1f)
+            if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
             {
                 index++;
                 if (index < agent.path.Count)
