@@ -24,6 +24,8 @@ public class SoldierModel : EnemyBase
 
     public LayerMask buildingLayer;
 
+    public event Action<Transform> NewTargetEvent;
+
     public void OnEnable()
     {
         health.DamageChangeEvent += ChangeTarget;
@@ -52,6 +54,7 @@ public class SoldierModel : EnemyBase
         if (target.GetComponent<TowerBase>())
         {
             attackedByTower = true;
+            NewTargetEvent?.Invoke(target);
         }
     }
 

@@ -38,6 +38,7 @@ public class AttackingDefensesState : AntAIState
         target = soldier.target;
         rb = owner.GetComponent<Rigidbody>();
 
+        soldier.NewTargetEvent += ChangeTarget;
         followPath.enabled = false;
 
         canAttack = true;
@@ -102,5 +103,10 @@ public class AttackingDefensesState : AntAIState
     public void ChangeBool(GameObject go)
     {
         soldier.attackedByTower = false;
+    }
+
+    public void ChangeTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 }
