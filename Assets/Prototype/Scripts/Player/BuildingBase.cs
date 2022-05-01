@@ -12,7 +12,7 @@ public class BuildingBase : MonoBehaviour
 
     public PathfindingGrid grid;
 
-    private void Awake()
+    public virtual void Awake()
     {
         health.DeathEvent += GetDestroyed;
     }

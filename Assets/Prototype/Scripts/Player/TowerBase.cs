@@ -10,7 +10,7 @@ public class TowerBase : BuildingBase
     
     public List<Collider> targets;
 
-    private void Awake()
+    public override void Awake()
     {
         trigger.radius = range;
     }
