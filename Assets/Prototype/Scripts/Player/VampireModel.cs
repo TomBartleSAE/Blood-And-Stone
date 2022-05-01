@@ -12,17 +12,6 @@ public class VampireModel : MonoBehaviour
     public float feedRange = 0.6f; // Slightly larger than distance when touching to ensure feeding is triggered
     public int bloodGain = 10;
     
-    public void OnTriggerEnter(Collider other)
-    {
-        // Uses trigger zone to stun villagers and guards
-        IStunnable stunnable = other.gameObject.GetComponentInParent<IStunnable>();
-
-        if (stunnable != null)
-        {
-            stunnable.GetStunned();
-        }
-    }
-
     private void Update()
     {
         if (movement.target != null)

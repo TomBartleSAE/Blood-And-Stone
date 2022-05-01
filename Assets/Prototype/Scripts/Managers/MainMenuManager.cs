@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
     
     public void Play()
     {
-        SceneManager.LoadScene(levelToLoad.name);
+        SceneManager.LoadScene("DayTest");
     }
 
     public void Quit()
