@@ -10,10 +10,10 @@ public class PhaseTimerScript : MonoBehaviour
 
     public GameObject sunMoon;
     
-    private Transform p1Sunrise;
-    private Transform p4Sunset;
-    private Transform p2;
-    private Transform p3;
+    public Transform p1Sunrise;
+    public Transform p4Sunset;
+    public Transform p2;
+    public Transform p3;
     private Vector2 point;
 
     private float timeElapsed;

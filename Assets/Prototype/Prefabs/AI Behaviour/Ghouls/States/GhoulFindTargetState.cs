@@ -71,7 +71,7 @@ public class GhoulFindTargetState : AntAIState
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;
-                        ghoulModel.target = villager;
+                        ghoulModel.target = villager.transform;
                         ghoulModel.hasTarget = true;
                     }
                 }

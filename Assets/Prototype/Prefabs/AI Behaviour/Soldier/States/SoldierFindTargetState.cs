@@ -44,28 +44,6 @@ public class SoldierFindTargetState : AntAIState
         base.Exit();
     }
 
-    /*void FindTarget()
-    {
-        float distance = 10000000;
-        float shortestDistance;
-        shortestDistance = distance;
-
-        foreach (var ghoul in manager.Ghouls)
-        {
-            if (ghoul != null)
-            {
-                distance = Vector3.Distance(this.transform.position, ghoul.transform.position);
-
-                if (distance < shortestDistance)
-                {
-                    shortestDistance = distance;
-                    soldierModel.target = ghoul.transform;
-                    soldierModel.hasTarget = true;
-                }
-            }
-        }
-    }*/
-
     public void FindCastle()
     {
         pathfinding.FindPath(transform.position, castle.position);

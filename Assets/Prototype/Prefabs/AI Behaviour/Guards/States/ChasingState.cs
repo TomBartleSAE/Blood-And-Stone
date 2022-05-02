@@ -11,7 +11,7 @@ public class ChasingState : AntAIState
     public GameObject owner;
     private GuardModel guard;
     public PathfindingAgent pathfinding;
-    private GameObject target;
+    private Transform target;
 
     private Coroutine coroutine;
 
@@ -63,7 +63,7 @@ public class ChasingState : AntAIState
 
     public void CheckRange()
     {
-        GameObject target = guard.chaseTarget;
+        Transform target = guard.chaseTarget;
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
@@ -104,7 +104,7 @@ public class ChasingState : AntAIState
         }
 
         guard.isAlert = false;
-        guard.InvestigateTarget = null;
+        guard.investigateTarget = null;
     }
 
     public void ChaseTarget()

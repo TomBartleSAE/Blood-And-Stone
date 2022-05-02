@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 
 public class VillagerModel : MonoBehaviour, IStunnable
 {
-    public AntAIAgent antAIAgent;
     public Health health;
 
     public RaycastHit hit;

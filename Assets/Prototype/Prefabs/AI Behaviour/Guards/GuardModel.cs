@@ -11,14 +11,13 @@ using Random = UnityEngine.Random;
 
 public class GuardModel : MonoBehaviour
 {
-    public AntAIAgent antAIAgent;
     public NPCManager npcManager;
     public Health health;
     public PathfindingAgent pathfindingAgent;
     public PathfindingGrid grid;
     
-    public GameObject InvestigateTarget;
-    public GameObject chaseTarget;
+    public Transform investigateTarget;
+    public Transform chaseTarget;
 
     public event Action VampireCapturedEvent;
 
@@ -39,8 +38,6 @@ public class GuardModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        antAIAgent = GetComponent<AntAIAgent>();
-        antAIAgent.SetGoal("CaptureTarget");
         npcManager = FindObjectOfType<NPCManager>();
         pathfindingAgent = GetComponent<PathfindingAgent>();
         grid = FindObjectOfType<PathfindingGrid>();
@@ -67,7 +64,7 @@ public class GuardModel : MonoBehaviour
 
         else
         {
-            InvestigateTarget = deadThing;
+            investigateTarget = deadThing.transform;
             Investigate(deadThing);
         }
     }
@@ -109,7 +106,7 @@ public class GuardModel : MonoBehaviour
             if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
             {
                 hasTarget = true;
-                chaseTarget = other.gameObject;
+                chaseTarget = other.gameObject.transform;
             }
         }
     }

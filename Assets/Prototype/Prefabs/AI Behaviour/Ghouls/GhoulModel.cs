@@ -21,7 +21,7 @@ public class GhoulModel : MonoBehaviour
 
     public int damage;
 
-    public GameObject target;
+    public Transform target;
     public Vector3 targetPos;
 
     // Start is called before the first frame update
@@ -37,8 +37,8 @@ public class GhoulModel : MonoBehaviour
         if (target != null)
         {
             hasTarget = true;
-            targetPos = target.transform.position;
-            pathfinding.destination = target.transform;
+            targetPos = target.position;
+            pathfinding.destination = target;
         }
     }
 

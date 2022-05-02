@@ -27,7 +27,7 @@ public class InvestigatingState : AntAIState
         owner.GetComponent<Wander>().enabled = false;
 
         //Run FindPath to get to event site
-        pathfinding.FindPath(transform.position, guard.InvestigateTarget.transform.position);
+        pathfinding.FindPath(transform.position, guard.investigateTarget.transform.position);
         investigating = false;
     }
 
@@ -46,7 +46,7 @@ public class InvestigatingState : AntAIState
     //checking to see if at event site/place to investigate; if so, begin investigation
     public void CheckInvestigationPosition()
     {
-        float investigationSpot = Vector3.Distance(transform.position, guard.InvestigateTarget.transform.position);
+        float investigationSpot = Vector3.Distance(transform.position, guard.investigateTarget.transform.position);
 
         if (investigationSpot < 0.5f && investigating == false)
         {

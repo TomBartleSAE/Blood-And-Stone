@@ -59,7 +59,7 @@ MonoBehaviour:
     isDefault: 1
     state: {fileID: 5808321601648382795, guid: c320874527d1fd744936e85827ebb7d2, type: 3}
     cost: 10
-    position: {x: 552.215, y: 308.01935}
+    position: {x: 327.21503, y: 317.01935}
     pre:
     - id: 3
       value: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 1022765470523554323, guid: 7c10f288672821e44ba4993fde654035, type: 3}
     cost: 2
-    position: {x: 769.53845, y: 309.0879}
+    position: {x: 543.53845, y: 326.0879}
     pre:
     - id: 2
       value: 1
