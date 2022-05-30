@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class DayPhaseState : StateBase
 {
-    public Spawner spawner;
+    private Spawner spawner;
     public float timeBeforeVillagersSpawn = 15f;
 
     public override void Enter()
     {
         base.Enter();
 
-        spawner = FindObjectOfType<Spawner>(); // HUGE HACK: DON'T DO THIS!
+        spawner = Spawner.Instance;
         spawner.FinishedSpawningEvent += FinishedSpawning;
         StartCoroutine(StartWave());
     }
@@ -51,7 +51,7 @@ public class DayPhaseState : StateBase
         
         MessageManager.Instance.ShowMessage("The villagers are here!", 3f);
         
-        StartCoroutine(spawner.SpawnWaves(GameManager.Instance.currentDay));
+        StartCoroutine(spawner.SpawnWaves(GameManager.Instance.currentDay - 1)); // Adjust by 1 to account for array index starting at 0
     }
     
     public IEnumerator EndDay()

@@ -12,8 +12,10 @@ public class PathfindingGrid : MonoBehaviour
 
     public Node[,] nodes;
 
-    public LayerMask buildingLayer;
-    public LayerMask blockedLayer;
+    public LayerMask buildingLayer; // Determines which layers block pathfinding agents
+    public LayerMask blockedLayer; // Determines which layers prevent building during the Day phase
+
+    public event Action GridGeneratedEvent;
 
     public void Awake()
     {
@@ -44,6 +46,8 @@ public class PathfindingGrid : MonoBehaviour
                 }
             }
         }
+        
+        GridGeneratedEvent?.Invoke();
     }
 
     public Node GetNodeFromPosition(Vector3 position)

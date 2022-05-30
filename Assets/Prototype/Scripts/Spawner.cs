@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Spawner : MonoBehaviour
+public class Spawner : ManagerBase<Spawner>
 {
     // Add transforms to this list when new spawn points become available
     public List<Transform> spawnPoints = new List<Transform>();

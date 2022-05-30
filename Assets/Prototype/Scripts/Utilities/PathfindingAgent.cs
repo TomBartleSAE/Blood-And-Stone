@@ -20,8 +20,20 @@ public class PathfindingAgent : MonoBehaviour
 
     public bool pathOnStart = false;
 
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        grid.GridGeneratedEvent -= RefindPath;
+    }
+    
     public void Start()
     {
+        grid.GridGeneratedEvent += RefindPath;
+        
         if (pathOnStart)
         {
             FindPath(transform.position, destination.position);
@@ -123,7 +135,7 @@ public class PathfindingAgent : MonoBehaviour
         path.Reverse();
         
         NewPathEvent?.Invoke();
-
+        
         return path;
     }
 
@@ -138,6 +150,14 @@ public class PathfindingAgent : MonoBehaviour
         }
 
         return distance.x * 14 + 10 * (distance.y - distance.x);
+    }
+
+    private void RefindPath()
+    {
+        if (path != null)
+        {
+            FindPath(transform.position, path[path.Count - 1].coordinates);
+        }
     }
     
     private void OnDrawGizmosSelected()
@@ -155,14 +175,14 @@ public class PathfindingAgent : MonoBehaviour
                             Gizmos.color = Color.green;
                             Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
                         }
-                        if (closedNodes.Contains(grid.nodes[x,y]))
-                        {
-                            Gizmos.color = Color.yellow;
-                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
-                        }
-                        if (path.Contains(grid.nodes[x,y]))
+                        else if (path.Contains(grid.nodes[x,y]))
                         {
                             Gizmos.color = Color.blue;
+                            Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
+                        }
+                        else if (closedNodes.Contains(grid.nodes[x,y]))
+                        {
+                            Gizmos.color = Color.yellow;
                             Gizmos.DrawCube(grid.nodes[x,y].coordinates, (Vector3.one * grid.tileSize));
                         }
                     }

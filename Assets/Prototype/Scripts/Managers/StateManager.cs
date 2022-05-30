@@ -7,6 +7,11 @@ public class StateManager : MonoBehaviour
 {
     public StateBase currentState;
 
+    private void Start()
+    {
+        currentState?.Enter();
+    }
+
     public void ChangeState(StateBase newState)
     {
         currentState?.Exit();
