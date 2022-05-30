@@ -27,9 +27,6 @@ namespace Tom
             if (currentHealth <= 0)
             {
                 DeathEvent?.Invoke(gameObject);
-                
-                //trying static global event
-                //GlobalEvents.TriggerDeathEvent(gameObject);
             }
         }
     }

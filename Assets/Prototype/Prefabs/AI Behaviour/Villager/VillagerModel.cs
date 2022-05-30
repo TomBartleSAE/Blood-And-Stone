@@ -22,40 +22,37 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public bool isScared;
     public bool isStunned;
     public bool isEaten;
-
-
+    
     private void Awake()
     {
         health = GetComponent<Health>();
-                
-        health.DeathEvent += Reaction;
-        health.DeathEvent += Die;
+        //health.DeathEvent += Reaction;
+        //health.DeathEvent += Die;
+        health.DeathEvent += DeathCheck;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         NPCManager.Instance.Villagers.Add(gameObject);
-
-        foreach (var villager in NPCManager.Instance.Villagers)
-        {
-            villager.GetComponent<Health>().DeathEvent += Reaction;
-        }
+    }
+    
+    //reacting to own death
+    public void Die(GameObject me)
+    {
+        NPCManager.Instance.Villagers.Remove(gameObject);
+        Destroy(gameObject);
     }
 
     //Reacting to other thing's death
     public void Reaction(GameObject deadThing)
     {
-        if (deadThing != gameObject)
+        Vector3 targetDirection = transform.position - deadThing.transform.position;
+        
+        if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
         {
-            Vector3 targetDirection = transform.position - deadThing.transform.position;
-            
-            RaycastHit hit;
-            
-            if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
-            {
-                isScared = true;
-            }   
+            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection);
+            isScared = true;
         }
     }
 
@@ -64,10 +61,16 @@ public class VillagerModel : MonoBehaviour, IStunnable
         isStunned = true;
     }
 
-    //reacting to own death
-    public void Die(GameObject me)
+    void DeathCheck(GameObject deadThing)
     {
-        NPCManager.Instance.Villagers.Remove(gameObject);
-        Destroy(gameObject);
+        if (deadThing == gameObject)
+        {
+            Die(deadThing);
+        }
+
+        if (deadThing != gameObject)
+        {
+            Reaction(deadThing);
+        }
     }
 }

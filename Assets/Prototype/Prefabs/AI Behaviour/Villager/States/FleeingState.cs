@@ -28,6 +28,8 @@ public class FleeingState : AntAIState
         fleeTime = 5;
         wander.speed = 15;
 
+        Debug.Log(gameObject + "FLEE");
+
         StartCoroutine(Flee());
     }
 

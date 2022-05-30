@@ -239,8 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc28378db5d61d64e9de2448aa8d80f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  antAIAgent: {fileID: 1152092510813912212}
-  manager: {fileID: 0}
   health: {fileID: 0}
   rayDistance: 0
   moveSpeed: 0
@@ -248,7 +246,6 @@ MonoBehaviour:
   isScared: 0
   isStunned: 0
   isEaten: 0
-  testBool: 1
 --- !u!114 &2062415260244514593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 1
 --- !u!114 &2776466084584230898
 MonoBehaviour:
   m_ObjectHideFlags: 0
