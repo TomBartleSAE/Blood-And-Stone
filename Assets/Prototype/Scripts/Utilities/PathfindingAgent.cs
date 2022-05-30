@@ -11,17 +11,16 @@ public class PathfindingAgent : MonoBehaviour
     private List<Node> openNodes = new List<Node>();
     private List<Node> closedNodes = new List<Node>();
 
-    public Transform destination;
+    public bool canMoveDiagonally = true; // Diagonally on grid, not on screen
     
     public List<Node> path;
 
     public event Action NewPathEvent;
     public event Action PathFailedEvent;
-
+    [Header("Debug")]
+    public Transform destination;
     public bool pathOnStart = false;
-
-    public bool canMoveDiagonally = true; // Diagonally on grid, not on screen
-
+    
     private void OnDisable()
     {
         grid.GridGeneratedEvent -= RefindPath;
