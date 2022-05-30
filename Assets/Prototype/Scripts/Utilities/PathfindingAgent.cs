@@ -20,10 +20,7 @@ public class PathfindingAgent : MonoBehaviour
 
     public bool pathOnStart = false;
 
-    private void OnEnable()
-    {
-        
-    }
+    public bool canMoveDiagonally = true; // Diagonally on grid, not on screen
 
     private void OnDisable()
     {
@@ -81,13 +78,22 @@ public class PathfindingAgent : MonoBehaviour
                 break;
             }
 
-            for (int i = currentNode.index.x - 1; i <= currentNode.index.x + 1; i++)
+            for (int i = -1; i <= 1; i++)
             {
-                for (int j = currentNode.index.y - 1; j <= currentNode.index.y + 1; j++)
+                for (int j = -1; j <= 1; j++)
                 {
-                    if (grid.IsIndexWithinGrid(new Vector2Int(i,j)))
+                    if (grid.IsIndexWithinGrid(new Vector2Int(currentNode.index.x + i,currentNode.index.y + j)))
                     {
-                        Node neighbour = grid.nodes[i, j];
+                        // Prevents pathfinding diagonally
+                        if (!canMoveDiagonally)
+                        {
+                            if (i != 0 && j != 0)
+                            {
+                                continue;
+                            }
+                        }
+                        
+                        Node neighbour = grid.nodes[currentNode.index.x + i, currentNode.index.y + j];
                         if (neighbour.isBlocked || closedNodes.Contains(neighbour))
                         {
                             continue;

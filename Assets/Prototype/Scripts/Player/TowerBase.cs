@@ -12,6 +12,7 @@ public class TowerBase : BuildingBase
 
     public override void Awake()
     {
+        base.Awake();
         trigger.radius = range;
     }
 
