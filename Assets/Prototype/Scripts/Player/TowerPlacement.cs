@@ -73,9 +73,13 @@ public class TowerPlacement : MonoBehaviour
         {
             BuildingBase newBuilding = Instantiate(selectedBuilding, position, Quaternion.identity);
             newBuilding.grid = grid;
+            
             selectedNode.isBlocked = true;
             selectedNode.canBuild = false;
+            
             blood.ChangeBlood(-selectedBuilding.cost);
+            
+            grid.Generate();
         }
     }
 

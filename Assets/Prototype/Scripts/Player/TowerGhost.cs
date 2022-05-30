@@ -7,6 +7,7 @@ public class TowerGhost : MonoBehaviour
 {
     public TowerPlacement tower;
     public GameObject ghost;
+    public ParticleSystem rangeRing;
 
     public Material openMaterial, blockedMaterial;
     
@@ -21,13 +22,25 @@ public class TowerGhost : MonoBehaviour
     {
         ghost.GetComponentInChildren<MeshFilter>().mesh = building.GetComponentInChildren<MeshFilter>().sharedMesh;
 
-        if (node.isBlocked)
+        if (!node.canBuild)
         {
             ghost.GetComponentInChildren<MeshRenderer>().material = blockedMaterial;
         }
         else
         {
             ghost.GetComponentInChildren<MeshRenderer>().material = openMaterial;
+        }
+
+        if (building.GetComponent<TowerBase>())
+        {
+            // Remove this if we use something other than ParticleSystem to show range
+            ParticleSystem.ShapeModule ringShape = rangeRing.shape;
+            ringShape.radius = building.GetComponent<TowerBase>().range + 0.5f; 
+            rangeRing.Play();
+        }
+        else
+        {
+            rangeRing.Stop();
         }
 
         ghost.transform.position = node.coordinates;
