@@ -26,15 +26,30 @@ public class VillagerModel : MonoBehaviour, IStunnable
     private void Awake()
     {
         health = GetComponent<Health>();
-        //health.DeathEvent += Reaction;
-        //health.DeathEvent += Die;
-        health.DeathEvent += DeathCheck;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         NPCManager.Instance.Villagers.Add(gameObject);
+
+        foreach (var villager in NPCManager.Instance.Villagers)
+        {
+            villager.GetComponent<Health>().DeathEvent += DeathCheck;
+        }
+    }
+    
+    //not sure if entirely necessary, but checks to see if IT died or if something else did
+    void DeathCheck(GameObject deadThing)
+    {
+        if (deadThing == gameObject)
+        {
+            Die(deadThing);
+        }
+        else if (deadThing != gameObject)
+        {
+            Reaction(deadThing);
+        }
     }
     
     //reacting to own death
@@ -61,16 +76,5 @@ public class VillagerModel : MonoBehaviour, IStunnable
         isStunned = true;
     }
 
-    void DeathCheck(GameObject deadThing)
-    {
-        if (deadThing == gameObject)
-        {
-            Die(deadThing);
-        }
 
-        if (deadThing != gameObject)
-        {
-            Reaction(deadThing);
-        }
-    }
 }

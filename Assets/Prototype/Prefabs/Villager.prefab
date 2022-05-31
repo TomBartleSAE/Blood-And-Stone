@@ -242,7 +242,7 @@ MonoBehaviour:
   health: {fileID: 0}
   rayDistance: 0
   moveSpeed: 0
-  viewRange: 2
+  viewRange: 10
   isScared: 0
   isStunned: 0
   isEaten: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1152092510813912214}
-  speed: 5
+  speed: 1.5
   turn: 0
   turnMultiplier: 1
 --- !u!114 &297143199648334005
