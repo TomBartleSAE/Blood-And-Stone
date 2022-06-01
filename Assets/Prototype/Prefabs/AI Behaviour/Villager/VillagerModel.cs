@@ -10,8 +10,6 @@ using Random = UnityEngine.Random;
 
 public class VillagerModel : MonoBehaviour, IStunnable
 {
-    public Health health;
-
     public RaycastHit hit;
 
     public float rayDistance = 20;
@@ -22,23 +20,18 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public bool isScared;
     public bool isStunned;
     public bool isEaten;
-    
-    private void Awake()
-    {
-        health = GetComponent<Health>();
-    }
 
-    // Start is called before the first frame update
+    // Having an issue here with the ordering of villagers subbing to things before all villagers are in the list
     void Start()
     {
         NPCManager.Instance.Villagers.Add(gameObject);
-
+        
         foreach (var villager in NPCManager.Instance.Villagers)
         {
             villager.GetComponent<Health>().DeathEvent += DeathCheck;
         }
     }
-    
+
     //not sure if entirely necessary, but checks to see if IT died or if something else did
     void DeathCheck(GameObject deadThing)
     {
@@ -66,7 +59,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
         
         if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
         {
-            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection);
             isScared = true;
         }
     }
@@ -75,6 +67,4 @@ public class VillagerModel : MonoBehaviour, IStunnable
     {
         isStunned = true;
     }
-
-
 }

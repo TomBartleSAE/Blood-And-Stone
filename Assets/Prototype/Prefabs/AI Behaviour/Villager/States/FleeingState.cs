@@ -26,7 +26,7 @@ public class FleeingState : AntAIState
         base.Enter();
 
         fleeTime = 5;
-        wander.speed = 15;
+        wander.speed = 10;
 
         StartCoroutine(Flee());
     }

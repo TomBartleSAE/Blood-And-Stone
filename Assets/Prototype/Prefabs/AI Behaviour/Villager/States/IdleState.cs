@@ -22,7 +22,7 @@ public class IdleState : AntAIState
 
         wander.enabled = true;
         
-        wander.speed = 8;
+        wander.speed = 6.5f;
     }
 
      public override void Execute(float aDeltaTime, float aTimeScale)
