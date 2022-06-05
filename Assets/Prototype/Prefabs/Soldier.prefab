@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2645878115077316667}
   - component: {fileID: 2645878115077316666}
   - component: {fileID: 2645878115077316645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2645878115345322752}
   - component: {fileID: 2645878115345322755}
   - component: {fileID: 2645878115345322754}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  canMoveDiagonally: 1
   destination: {fileID: 0}
   pathOnStart: 0
 --- !u!114 &2645878115345322755
@@ -274,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2645878115819848678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: View Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
