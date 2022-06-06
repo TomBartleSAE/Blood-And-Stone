@@ -21,15 +21,9 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public bool isStunned;
     public bool isEaten;
 
-    // Having an issue here with the ordering of villagers subbing to things before all villagers are in the list
-    void Start()
+    private void Start()
     {
-        NPCManager.Instance.Villagers.Add(gameObject);
-        
-        foreach (var villager in NPCManager.Instance.Villagers)
-        {
-            villager.GetComponent<Health>().DeathEvent += DeathCheck;
-        }
+        NPCManager.Instance.VillagerDeathEvent += DeathCheck;
     }
 
     //not sure if entirely necessary, but checks to see if IT died or if something else did
@@ -48,7 +42,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
     //reacting to own death
     public void Die(GameObject me)
     {
-        NPCManager.Instance.Villagers.Remove(gameObject);
         Destroy(gameObject);
     }
 

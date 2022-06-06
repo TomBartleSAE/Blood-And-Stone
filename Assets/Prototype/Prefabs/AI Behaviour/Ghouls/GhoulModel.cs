@@ -19,6 +19,8 @@ public class GhoulModel : MonoBehaviour
     public bool inRange;
     public bool isIdle;
 
+    public bool autoAttack;
+
     public int damage;
 
     public Transform target;
@@ -28,12 +30,18 @@ public class GhoulModel : MonoBehaviour
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
+        //Put this into NPCManager?
         manager.Ghouls.Add(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (autoAttack && !hasTarget)
+        {
+            
+        }
+            
         if (target != null)
         {
             hasTarget = true;
