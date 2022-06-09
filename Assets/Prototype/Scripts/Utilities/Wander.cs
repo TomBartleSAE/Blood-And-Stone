@@ -18,7 +18,6 @@ public class Wander : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         startOffset = Random.Range(0, 100000);
-        speed = 6.5f;
     }
 
     // Update is called once per frame

@@ -9,10 +9,11 @@ using UnityEngine;
 public class AttackingState : AntAIState
 {
     public GhoulModel ghoulModel;
+    public Transform target;
+    public GameObject me;
 
+    public bool canAttack;
     public float attackCooldown;
-    
-    public List<GameObject> Targets = new List<GameObject>();
 
     public override void Create(GameObject aGameObject)
     {
@@ -25,20 +26,19 @@ public class AttackingState : AntAIState
     {
         base.Enter();
 
-        attackCooldown = 3;
+        target = ghoulModel.target;
+        canAttack = true;
+
+        me = ghoulModel.gameObject;
+        
         Attack();
         
-        StartCoroutine(AttackTimer());
+        //StartCoroutine(AttackTimer());
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
-
-        if (Targets == null)
-        {
-            ghoulModel.hasTarget = false;
-        }
     }
 
     public override void Exit()
@@ -48,6 +48,7 @@ public class AttackingState : AntAIState
         ghoulModel.hasTarget = false;
     }
 
+    //cooldown timer
     IEnumerator AttackTimer()
     {
         for (int i = 0; i < attackCooldown; i++)
@@ -55,16 +56,19 @@ public class AttackingState : AntAIState
             yield return new WaitForSeconds(1);
         }
 
+        canAttack = true;
         Attack();
     }
 
+    //deals damage then starts the cooldown timer
     public void Attack()
     {
         int damage = ghoulModel.damage;
-        
-        foreach (var target in Targets)
+
+        if (canAttack == true)
         {
-            target.GetComponent<Health>().ChangeHealth(damage, gameObject);
+            target.GetComponent<Health>().ChangeHealth(damage, me);
+            canAttack = false;
         }
 
         StartCoroutine(AttackTimer());

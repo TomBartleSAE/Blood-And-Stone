@@ -51,8 +51,8 @@ Rigidbody:
   m_GameObject: {fileID: 833944671312180753}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 2
+  m_Drag: 2
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -83,7 +83,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.17
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &833944671312180777
 MonoBehaviour:
@@ -126,12 +126,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacking: {fileID: 767760982043892881, guid: 49d1ef3f06047cd4caba9c240e9efd22, type: 3}
   health: {fileID: 6559976953810290360}
-  manager: {fileID: 0}
   hasTarget: 0
   targetAlive: 0
   castleStanding: 0
   inRange: 0
   isIdle: 0
+  autoAttack: 1
+  isSelected: 0
   damage: -3
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -148,9 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 833944671312180783}
-  speed: 6
+  speed: 5
   turn: 0
-  turnMultiplier: 1
+  turnMultiplier: 0.3
 --- !u!114 &6559976953810290360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,13 +173,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833944671312180753}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b521d3e1b05081428d246e85e374dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  canMoveDiagonally: 1
   destination: {fileID: 0}
+  pathOnStart: 0
 --- !u!114 &267632786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833944671312180753}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a419fc1c621157244aeacd7bfbe41b8c, type: 3}
   m_Name: 

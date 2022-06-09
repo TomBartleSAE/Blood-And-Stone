@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0d30716588d2c47b9ec1cbba5b2e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Targets: []
+  ghoulModel: {fileID: 0}
+  attackCooldown: 3
   target: {fileID: 0}
+  canAttack: 0

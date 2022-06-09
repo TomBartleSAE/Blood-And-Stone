@@ -10,16 +10,16 @@ public class GhoulModel : MonoBehaviour
 {
     public AttackingState attacking;
     public Health health;
-    public NPCManager manager;
     private PathfindingAgent pathfinding;
 
     public bool hasTarget;
     public bool targetAlive;
     public bool castleStanding = true;
     public bool inRange;
-    public bool isIdle;
-
+    public bool isIdle = true;
     public bool autoAttack;
+
+    public bool isSelected;
 
     public int damage;
 
@@ -31,41 +31,54 @@ public class GhoulModel : MonoBehaviour
     {
         pathfinding = GetComponent<PathfindingAgent>();
         //Put this into NPCManager?
-        manager.Ghouls.Add(gameObject);
+        NPCManager.Instance.Ghouls.Add(gameObject);
+        pathfinding.grid = FindObjectOfType<PathfindingGrid>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (autoAttack && !hasTarget)
+        if (autoAttack)
         {
-            
+            isIdle = false;
         }
-            
+        
         if (target != null)
         {
             hasTarget = true;
             targetPos = target.position;
             pathfinding.destination = target;
         }
-    }
-
-    public void OnEnable()
-    {
-       health.DeathEvent += RemoveTarget;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.GetComponent<Health>())
+        else if (target == null)
         {
-            inRange = true;
-            attacking.Targets.Add(other.GameObject());
+            hasTarget = false;
         }
     }
 
-    public void RemoveTarget(GameObject deadVillager)
+    
+    //will switch to AttackState when in range to attack
+    public void OnTriggerEnter(Collider other)
     {
-        attacking.Targets.Remove(deadVillager);
+        if(other.GetComponent<SoldierModel>())
+        {
+            inRange = true;
+            other.GetComponent<Health>().DeathEvent += TargetDeath;
+        }
+    }
+
+    //will go back to MoveToTargetState and find path again to get into range
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject == target.gameObject)
+        {
+            inRange = false;
+        }
+    }
+
+    //will return to FindTargetState and look for new target
+    void TargetDeath(GameObject deadThing)
+    {
+        hasTarget = false;
+        inRange = false;
     }
 }

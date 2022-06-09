@@ -20,7 +20,6 @@ public class GhoulFindTargetState : AntAIState
 
         manager = FindObjectOfType<NPCManager>();
         ghoulModel = GetComponentInParent<GhoulModel>();
-        wander = GetComponentInParent<Wander>();
     }
 
     public override void Enter()
@@ -30,9 +29,9 @@ public class GhoulFindTargetState : AntAIState
         //need to adjust for build
         autoAttack = true;
 
-        FindTarget();
-        
-        wander.enabled = true;
+        Spawner.Instance.FinishedSpawningEvent += FindTarget;
+
+        //FindTarget();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -62,16 +61,16 @@ public class GhoulFindTargetState : AntAIState
         //This can serve as an auto target if the player hasn't selected a target to attack.
         if (autoAttack)
         {
-            foreach (var villager in manager.Villagers)
+            foreach (var soldier in manager.Soldiers)
             {
-                if (villager != null)
+                if (soldier != null)
                 {
-                    distance = Vector3.Distance(this.transform.position, villager.transform.position);
+                    distance = Vector3.Distance(this.transform.position, soldier.transform.position);
 
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;
-                        ghoulModel.target = villager.transform;
+                        ghoulModel.target = soldier.transform;
                         ghoulModel.hasTarget = true;
                     }
                 }

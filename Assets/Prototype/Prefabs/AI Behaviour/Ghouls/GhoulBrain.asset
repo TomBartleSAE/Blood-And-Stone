@@ -24,6 +24,8 @@ MonoBehaviour:
       name: inRange
     - id: 4
       name: isIdle
+    - id: 5
+      name: autoAttack
   actions:
   - name: AttackingState
     isDefault: 0
@@ -38,6 +40,8 @@ MonoBehaviour:
     post:
     - id: 2
       value: 1
+    - id: 0
+      value: 0
   - name: MoveToTarget
     isDefault: 0
     state: {fileID: 3899031200594898589, guid: 904acdc3d8f5403489fa0faa507ed891, type: 3}
@@ -63,6 +67,8 @@ MonoBehaviour:
       value: 0
     - id: 4
       value: 0
+    - id: 5
+      value: 1
     post:
     - id: 0
       value: 1
@@ -83,7 +89,7 @@ MonoBehaviour:
     cost: 0
     position: {x: 263, y: 32}
     pre:
-    - id: 4
+    - id: 2
       value: 1
     post:
     - id: 1
@@ -100,7 +106,7 @@ MonoBehaviour:
     - id: 4
       value: 1
   worldStates:
-  - position: {x: 264, y: 508}
+  - position: {x: 255, y: 504}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -111,3 +117,5 @@ MonoBehaviour:
       value: 0
     - id: 4
       value: 0
+    - id: 5
+      value: 1

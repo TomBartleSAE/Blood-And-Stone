@@ -36,20 +36,6 @@ public class NPCManager : ManagerBase<NPCManager>
     {
         SpawnVillagers();
     }
-
-    //adds to list when villager spawned
-    void AddVillagerToList(GameObject villager)
-    {
-        Villagers.Add(villager);
-        //villager.GetComponent<Tom.Health>().DeathEvent += RemoveVillagerFromList;
-    }
-
-    //removes from list when villager dies; lets everyone know about the death
-    void RemoveVillagerFromList(GameObject villager)
-    {
-        VillagerDeathEvent?.Invoke(villager);
-        Villagers.Remove(villager);
-    }
     
     //temp spawning code
     void SpawnVillagers()
@@ -65,6 +51,20 @@ public class NPCManager : ManagerBase<NPCManager>
         }
     }
 
+    //adds to list when villager spawned
+    void AddVillagerToList(GameObject villager)
+    {
+        Villagers.Add(villager);
+        //villager.GetComponent<Tom.Health>().DeathEvent += RemoveVillagerFromList;
+    }
+
+    //removes from list when villager dies; lets everyone know about the death
+    void RemoveVillagerFromList(GameObject villager)
+    {
+        VillagerDeathEvent?.Invoke(villager);
+        Villagers.Remove(villager);
+    }
+    
     void Sub(GameObject villager)
     {
         villager.GetComponent<Health>().DeathEvent += RemoveVillagerFromList;

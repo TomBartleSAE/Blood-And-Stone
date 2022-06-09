@@ -11,7 +11,8 @@ public class GhoulSense : MonoBehaviour, ISense
         targetAlive = 1,
         castleStanding = 2,
         inRange = 3,
-        isIdle = 4
+        isIdle = 4,
+        autoAttack = 5
     }
 
     public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -23,6 +24,7 @@ public class GhoulSense : MonoBehaviour, ISense
         aWorldState.Set(GhoulBools.castleStanding, aAgent.GetComponent<GhoulModel>().castleStanding);
         aWorldState.Set(GhoulBools.inRange, aAgent.GetComponent<GhoulModel>().inRange);
         aWorldState.Set(GhoulBools.isIdle, aAgent.GetComponent<GhoulModel>().isIdle);
+        aWorldState.Set(GhoulBools.autoAttack, aAgent.GetComponent<GhoulModel>().autoAttack);
         
         aWorldState.EndUpdate();
     }
