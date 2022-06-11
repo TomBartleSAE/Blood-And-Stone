@@ -159,9 +159,9 @@ GameObject:
   - component: {fileID: 1152092510813912212}
   - component: {fileID: 1152092510813912211}
   - component: {fileID: 1152092510813912213}
-  - component: {fileID: 2062415260244514593}
   - component: {fileID: 297143199648334005}
-  - component: {fileID: 2776466084584230898}
+  - component: {fileID: 620010471}
+  - component: {fileID: 620010481}
   m_Layer: 9
   m_Name: Villager
   m_TagString: Townsfolk
@@ -192,7 +192,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152092510813912220}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a991ad27fa87b0640a73771bb035fa44, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.125
@@ -213,7 +213,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &1152092510813912212
 MonoBehaviour:
@@ -260,22 +260,6 @@ MonoBehaviour:
   isScared: 0
   isStunned: 0
   isEaten: 0
---- !u!114 &2062415260244514593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152092510813912220}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148dd14644936da4787018e45120c3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1152092510813912214}
-  speed: 5
-  turn: 0
-  turnMultiplier: 0.3
 --- !u!114 &297143199648334005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,20 +274,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 1
---- !u!114 &2776466084584230898
+--- !u!114 &620010471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152092510813912220}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6227d8d7fbf042641a0b2273e4b79501, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b521d3e1b05081428d246e85e374dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  canMoveDiagonally: 1
+  destination: {fileID: 0}
+  pathOnStart: 0
+--- !u!114 &620010481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152092510813912220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a419fc1c621157244aeacd7bfbe41b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 620010471}
   rb: {fileID: 1152092510813912214}
-  raycastDistance: 20
+  moveSpeed: 1.56
 --- !u!1 &1152092511017340208
 GameObject:
   m_ObjectHideFlags: 0

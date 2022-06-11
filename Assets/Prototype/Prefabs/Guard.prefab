@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3689531663806443234}
   - component: {fileID: 3689531663806443233}
+  - component: {fileID: 3689531663806443237}
   - component: {fileID: 3689531663806443232}
   - component: {fileID: 3689531663806443247}
   - component: {fileID: 3689531663806443236}
@@ -17,14 +18,14 @@ GameObject:
   - component: {fileID: 3689531663806443246}
   - component: {fileID: 3689531663806443245}
   - component: {fileID: 3689531663806443235}
-  - component: {fileID: 3689531663806443237}
+  - component: {fileID: 1303925034}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3689531663806443234
 Transform:
   m_ObjectHideFlags: 0
@@ -55,6 +56,19 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!135 &3689531663806443237
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689531663806443243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3689531663806443232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64,8 +78,8 @@ Rigidbody:
   m_GameObject: {fileID: 3689531663806443243}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -110,24 +124,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf2500588ed604438efc78542db7a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  antAIAgent: {fileID: 0}
-  npcManager: {fileID: 0}
   health: {fileID: 0}
   pathfindingAgent: {fileID: 0}
-  grid: {fileID: 0}
-  InvestigateTarget: {fileID: 0}
+  investigateTarget: {fileID: 0}
   chaseTarget: {fileID: 0}
   hasTarget: 0
   isAlert: 0
   inRange: 0
   targetCaptured: 0
+  isPatrolling: 0
   guardRange: 1
   captureTime: 5
   viewRange: 0
   searchCooldown: 0
   investigationTime: 5
-  patrolPointA: {x: 0, y: 0, z: 0}
-  patrolPointB: {x: 0, y: 0, z: 0}
 --- !u!114 &3689531663806443246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,13 +145,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3689531663806443243}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b521d3e1b05081428d246e85e374dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  canMoveDiagonally: 0
   destination: {fileID: 0}
+  pathOnStart: 0
 --- !u!114 &3689531663806443245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,14 +161,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3689531663806443243}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a419fc1c621157244aeacd7bfbe41b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3689531663806443246}
   rb: {fileID: 3689531663806443232}
-  moveSpeed: 5
+  moveSpeed: 1.5
 --- !u!114 &3689531663806443235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,19 +183,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
---- !u!135 &3689531663806443237
-SphereCollider:
+--- !u!114 &1303925034
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3689531663806443243}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.4
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3993fce2d4070004ab47a9018520dda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 45
+  distance: 10
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3689531664595969478
 GameObject:
   m_ObjectHideFlags: 0

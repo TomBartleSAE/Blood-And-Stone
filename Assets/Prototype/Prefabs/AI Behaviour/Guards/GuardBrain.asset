@@ -22,25 +22,27 @@ MonoBehaviour:
       name: inRange
     - id: 3
       name: targetCaptured
+    - id: 4
+      name: isPatrolling
   actions:
   - name: PatrollingState
-    isDefault: 1
+    isDefault: 0
     state: {fileID: 7539529682301998708, guid: b60bec39a5aba2f47bb5be01486ddb2c, type: 3}
     cost: 0
-    position: {x: 298, y: 71}
+    position: {x: 503.9701, y: 282.94022}
     pre:
-    - id: 1
-      value: 0
-    - id: 0
-      value: 0
+    - id: 4
+      value: 1
     post:
     - id: 1
       value: 1
+    - id: 4
+      value: 0
   - name: InvestigatingState
     isDefault: 0
     state: {fileID: 5892653942159949528, guid: 387d6247c1560f2488aad083bfd42d12, type: 3}
     cost: 0
-    position: {x: 515, y: 68}
+    position: {x: 732.91034, y: 287.4029}
     pre:
     - id: 1
       value: 1
@@ -51,7 +53,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 4649901966125166521, guid: beaebd4285ab1db4eba6d5280ec7271d, type: 3}
     cost: 0
-    position: {x: 946, y: 67}
+    position: {x: 1156.4478, y: 283.41785}
     pre:
     - id: 0
       value: 1
@@ -64,7 +66,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 6155038574833507872, guid: c2614dd6eeac3da408efe6cd5bae8f02, type: 3}
     cost: 0
-    position: {x: 731, y: 66}
+    position: {x: 950.40295, y: 283.91034}
     pre:
     - id: 0
       value: 1
@@ -73,15 +75,26 @@ MonoBehaviour:
     post:
     - id: 2
       value: 1
+  - name: GuardIdleState
+    isDefault: 1
+    state: {fileID: 5255798067474121339, guid: bd0e5aecad4b46e4ab4db5429bae8461, type: 3}
+    cost: 0
+    position: {x: 292.9989, y: 285.4232}
+    pre:
+    - id: 4
+      value: 0
+    post:
+    - id: 4
+      value: 1
   goals:
   - name: CaptureTarget
     isDefault: 1
-    position: {x: 1161, y: 64}
+    position: {x: 1368.4626, y: 289.37302}
     conditions:
     - id: 3
       value: 1
   worldStates:
-  - position: {x: 277, y: 353}
+  - position: {x: 302.61932, y: 524.05695}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -92,3 +105,5 @@ MonoBehaviour:
       value: 0
     - id: 3
       value: 0
+    - id: 4
+      value: 1

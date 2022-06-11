@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Anthill.AI;
 using Tanks;
 using Tom;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -10,46 +11,65 @@ public class PatrollingState : AntAIState
 {
     public GameObject owner;
     public PathfindingAgent pathfinding;
-    public FollowPath followPath;
     public GuardModel guard;
-            
-    private Vector3 pointA;
-    private Vector3 pointB;
 
+    public Transform pointA;
+    public Transform pointB;
+
+    public Vector3 pointACoords;
+    public Vector3 pointBCoords;
+
+    public enum PatrolType
+    {
+        goingTo,
+        returning
+    };
+
+    public PatrolType patrolType;
+    
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         owner = aGameObject;
+        
+        //all this needed in Create() as the event is fired in Enter in GuardModel
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+        guard = owner.GetComponent<GuardModel>();
+        pointA = new GameObject().transform;
+        pointB = new GameObject().transform;
+        owner.GetComponent<GuardModel>().GetPatrolPointsEvent += GetPatrolPoints;
     }
     public override void Enter()
     {
         base.Enter();
 
-        pathfinding = owner.GetComponent<PathfindingAgent>();
-        followPath = owner.GetComponent<FollowPath>();
-        guard = owner.GetComponent<GuardModel>();
-        
-        pointA = guard.patrolPointA;
-        pointB = guard.patrolPointB;
+        pointACoords = pointA.position;
+        pointBCoords = pointB.position;
 
-        guard.viewRange = 10;
-        
-        //Not sure if we want to have them spawn at their patrol start point? If not then can use this
-        //find path to patrolPointA;
-        MoveToPatrol();
-
-        //then this, but in a different part
-        //pathfinding.FindPath(guard.patrolPointA, guard.patrolPointB);
-
-        Debug.Log("Entering Patrolling State");
+        //allows to find (same patrol route) even if has exited state previously
+        FindPatrolPath(pointA.position, pointB.position);
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        Debug.Log("Executing Patrolling State");
+        //HACK for if it's reached the destination - I'd rather a PathCompletedEvent or something
+        if (Vector3.Distance(pathfinding.destination.position, transform.position) < 0.5)
+        {
+            //determines which way on the route it's going
+            if (patrolType == PatrolType.goingTo)
+            {
+                patrolType = PatrolType.returning;
+            }
+            else if(patrolType == PatrolType.returning)
+            {
+                patrolType = PatrolType.goingTo;
+            }
+            
+            PatrolRoute();
+        }
     }
 
     public override void Exit()
@@ -61,21 +81,49 @@ public class PatrollingState : AntAIState
         Debug.Log("Exiting Patrolling State");
     }
 
-    public void MoveToPatrol()
+    //Gets points for patrol route per night
+    public void GetPatrolPoints()
     {
-        pathfinding.FindPath(transform.position, guard.patrolPointA);
+        //useful later perhaps
+        //int gridRangeX = pathfinding.grid.gridSize.x;
+        //int gridRangeZ = pathfinding.grid.gridSize.y;
+
+        //gets second patrol point; makes sure it isn't blocked
+        Node tempPointB = new Node();
+        tempPointB.coordinates = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+
+        if (tempPointB.isBlocked == false)
+        {
+            pointA.position = this.transform.position;
+            pointB.position = tempPointB.coordinates;
+            pathfinding.destination = pointB;
+        }
+        
+        else if(tempPointB.isBlocked == true)
+        {
+            GetPatrolPoints();
+        }
     }
 
-    //probably not actually going to work tbh
-    public void Patrol()
+    //changes path destination according to patrol direction
+    void PatrolRoute()
     {
-        if (transform.position == pointA)
+        switch (patrolType)
         {
-            pathfinding.FindPath(pointA, pointB);
+            case PatrolType.goingTo :
+                pathfinding.destination = pointB;
+                FindPatrolPath(transform.position, pointB.position);
+                break;
+            case PatrolType.returning :
+                pathfinding.destination = pointA;
+                FindPatrolPath(transform.position, pointA.position);
+                break;
         }
-        else if (transform.position == pointB)
-        {
-            pathfinding.FindPath(pointB, pointA);
-        }
+    }
+
+    //Finds the path
+    void FindPatrolPath(Vector3 startingPoint, Vector3 destinationCoords)
+    {
+        pathfinding.FindPath(startingPoint, destinationCoords);
     }
 }

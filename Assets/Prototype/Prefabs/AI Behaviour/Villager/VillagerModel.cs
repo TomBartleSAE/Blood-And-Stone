@@ -13,7 +13,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public RaycastHit hit;
 
     public float rayDistance = 20;
-    public float moveSpeed;
 
     public float viewRange;
     
