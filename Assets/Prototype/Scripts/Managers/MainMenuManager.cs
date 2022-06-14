@@ -9,7 +9,8 @@ public class MainMenuManager : MonoBehaviour
     
     public void Play()
     {
-        SceneManager.LoadScene("DayTest");
+        SceneManager.UnloadSceneAsync("MainMenu");
+        SceneManager.LoadScene("NightTest", LoadSceneMode.Additive);
     }
 
     public void Quit()

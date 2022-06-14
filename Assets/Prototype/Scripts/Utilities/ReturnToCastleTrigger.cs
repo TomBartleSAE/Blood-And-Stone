@@ -9,7 +9,7 @@ public class ReturnToCastleTrigger : MonoBehaviour
     {
         if (other.GetComponent<VampireModel>())
         {
-            GameManager.Instance.ChangeToDayPhase();
+            GameManager.Instance.CallPhaseChange("DayTest", "NightTest", GameManager.Instance.dayPhaseState);
         }
     }
 }

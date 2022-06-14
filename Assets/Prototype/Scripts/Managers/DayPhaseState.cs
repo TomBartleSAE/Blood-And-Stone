@@ -58,6 +58,6 @@ public class DayPhaseState : StateBase
     {
         MessageManager.Instance.ShowMessage("The villagers are all dead, for now...", 5f);
         yield return new WaitForSeconds(5f);
-        GameManager.Instance.ChangeToNightPhase();
+        //StartCoroutine(GameManager.Instance.ChangeToNightPhase());
     }
 }
