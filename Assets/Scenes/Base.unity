@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1659434417592835435, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 1680963210}
+    - target: {fileID: 1659434419030389965, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+      propertyPath: timeBeforeVillagersSpawn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
 --- !u!1 &333020783
@@ -438,3 +446,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122821120}
   m_CullTransparentMesh: 1
+--- !u!114 &1680963210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1659434419030389965, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+  m_PrefabInstance: {fileID: 233490601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81640ab620692f14f8e0ddf1866e7558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
