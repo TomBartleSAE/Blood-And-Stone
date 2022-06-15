@@ -17,7 +17,7 @@ public class GameManager : ManagerBase<GameManager>
     {
         base.Awake();
 
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
     }
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
