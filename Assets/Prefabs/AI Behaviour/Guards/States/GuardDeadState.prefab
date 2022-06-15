@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399400053748001989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73115176, y: -27.861603, z: 18.878054}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03f829ba4fa7414fbc62c4b0152d760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  guard: {fileID: 0}
+  guardView: {fileID: 0}
+  ghoulView: {fileID: 0}
+  currentPos: {x: 0, y: 0, z: 0}
+  destination: {fileID: 0}
+  destinationPos: {x: 0, y: 0, z: 0}

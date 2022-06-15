@@ -10,7 +10,7 @@ public class GhoulSpawner : MonoBehaviour
     public Transform locationToSpawn;
     public int amountToSpawn;
     
-    public event Action<GameObject> GhoulSpawnedEvent;  
+    public event Action GhoulSpawnedEvent;  
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class GhoulSpawner : MonoBehaviour
         for (int i = 0; i < amountToSpawn; i++)
         {
             Instantiate(copy, locationToSpawn.position, copy.transform.rotation);
-            GhoulSpawnedEvent?.Invoke(copy);        
+            GhoulSpawnedEvent?.Invoke();        
         }
     }
 }

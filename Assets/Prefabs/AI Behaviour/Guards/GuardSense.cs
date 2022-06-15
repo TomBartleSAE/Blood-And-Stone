@@ -12,7 +12,8 @@ public class GuardSense : MonoBehaviour, ISense
         isAlert = 1,
         inRange = 2,
         targetCaptured = 3,
-        isPatrolling = 4
+        isPatrolling = 4,
+        isDead = 5
     }
 
     public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -24,6 +25,7 @@ public class GuardSense : MonoBehaviour, ISense
         aWorldState.Set(GuardBools.inRange, aAgent.GetComponent<GuardModel>().inRange);
         aWorldState.Set(GuardBools.targetCaptured, aAgent.GetComponent<GuardModel>().targetCaptured);
         aWorldState.Set(GuardBools.isPatrolling, aAgent.GetComponent<GuardModel>().isPatrolling);
+        aWorldState.Set(GuardBools.isDead, aAgent.GetComponent<GuardModel>().isDead);
         
         aWorldState.EndUpdate();
     }

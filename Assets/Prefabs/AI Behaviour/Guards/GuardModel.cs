@@ -15,6 +15,10 @@ public class GuardModel : MonoBehaviour
     public Transform investigateTarget;
     public Transform chaseTarget;
 
+    public GameObject guardView;
+    public GameObject ghoulView;
+    public GameObject mapExit;
+
     public event Action VampireCapturedEvent;
     public event Action GetPatrolPointsEvent;
 
@@ -23,42 +27,44 @@ public class GuardModel : MonoBehaviour
     public bool inRange;
     public bool targetCaptured;
     public bool isPatrolling;
+    public bool isDead = false;
 
     public float guardRange;
     public float captureTime;
     public float viewRange;
     public float searchCooldown;
     public float investigationTime;
+    
+    public event Action<GameObject> NewConversionEvent;
+
+    private void Awake()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        AddToList();
+        
         pathfindingAgent = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
-
-        //TODO probably move this to NPCManager/spawn code
-        NPCManager.Instance.Guards.Add(gameObject);
-
+        mapExit = GameObject.Find("Return to Castle Trigger");
+        
         isPatrolling = true;
         GetPatrolPointsEvent?.Invoke();
 
+        GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
 
-        //TODO sub to death events for alert
+        //TODO get reference to own Guard and Ghoul objects
     }
 
+    #region Investigation
     public void Reaction(GameObject deadThing)
     {
-        Debug.Log("Guard Reacting ok");
         isAlert = true;
         
-        //TODO clear this out maybe
-        if (deadThing == this)
-        {
-            NPCManager.Instance.Guards.Remove(this.gameObject);
-            Destroy(this.gameObject);
-        }
-
-        else
+        if (deadThing != this)
         {
             investigateTarget = deadThing.transform;
             Investigate(deadThing);
@@ -82,5 +88,38 @@ public class GuardModel : MonoBehaviour
             hasTarget = false;
             chaseTarget = null;
         }
+    }
+    #endregion
+
+    void CheckGhoulCapacity(GameObject thing)
+    {
+        NPCManager.Instance.Guards.Remove(gameObject);
+        int ghoulMax = NPCManager.Instance.maxGhoulCapacity;
+        int ghoulCurrent = NPCManager.Instance.currentGhoulAmount;
+
+        if (ghoulCurrent < ghoulMax)
+        {
+            GhoulConversion();
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public void GhoulConversion()
+    {
+        isPatrolling = false;
+        isDead = true;
+        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<FollowPath>().moveSpeed = 3;
+        GameObject ghoul = ghoulView;
+        NewConversionEvent?.Invoke(ghoul);
+    }
+
+    void AddToList()
+    {
+        NPCManager.Instance.Guards.Add(gameObject);
     }
 }

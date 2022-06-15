@@ -24,15 +24,19 @@ MonoBehaviour:
       name: targetCaptured
     - id: 4
       name: isPatrolling
+    - id: 5
+      name: isDead
   actions:
   - name: PatrollingState
-    isDefault: 0
+    isDefault: 1
     state: {fileID: 7539529682301998708, guid: b60bec39a5aba2f47bb5be01486ddb2c, type: 3}
     cost: 0
-    position: {x: 503.9701, y: 282.94022}
+    position: {x: 517.9701, y: 290.94022}
     pre:
     - id: 4
       value: 1
+    - id: 5
+      value: 0
     post:
     - id: 1
       value: 1
@@ -46,6 +50,8 @@ MonoBehaviour:
     pre:
     - id: 1
       value: 1
+    - id: 5
+      value: 0
     post:
     - id: 0
       value: 1
@@ -59,6 +65,8 @@ MonoBehaviour:
       value: 1
     - id: 2
       value: 1
+    - id: 5
+      value: 0
     post:
     - id: 3
       value: 1
@@ -72,29 +80,40 @@ MonoBehaviour:
       value: 1
     - id: 2
       value: 0
+    - id: 5
+      value: 0
     post:
     - id: 2
       value: 1
   - name: GuardIdleState
-    isDefault: 1
+    isDefault: 0
     state: {fileID: 5255798067474121339, guid: bd0e5aecad4b46e4ab4db5429bae8461, type: 3}
     cost: 0
-    position: {x: 292.9989, y: 285.4232}
+    position: {x: 316.9989, y: 89.42322}
     pre:
-    - id: 4
+    - id: 5
       value: 0
-    post:
-    - id: 4
+    post: []
+  - name: GuardDeadState
+    isDefault: 0
+    state: {fileID: 399400053748001989, guid: 3edb33bdd98bc7847abd5fcf6e1bfd23, type: 3}
+    cost: 0
+    position: {x: 314, y: 292}
+    pre:
+    - id: 5
       value: 1
+    post:
+    - id: 5
+      value: 0
   goals:
   - name: CaptureTarget
     isDefault: 1
-    position: {x: 1368.4626, y: 289.37302}
+    position: {x: 1561.4626, y: 286.37302}
     conditions:
     - id: 3
       value: 1
   worldStates:
-  - position: {x: 302.61932, y: 524.05695}
+  - position: {x: 302.61932, y: 547.05695}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -106,4 +125,6 @@ MonoBehaviour:
     - id: 3
       value: 0
     - id: 4
-      value: 1
+      value: 0
+    - id: 5
+      value: 0

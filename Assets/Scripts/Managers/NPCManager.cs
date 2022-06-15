@@ -12,45 +12,37 @@ public class NPCManager : ManagerBase<NPCManager>
     public List<GameObject> Ghouls = new List<GameObject>();
     public List<GameObject> Soldiers = new List<GameObject>();
     public List<GameObject> Guards = new List<GameObject>();
+    public List<GameObject> ConvertedGuards = new List<GameObject>();
 
     public Transform[] SpawnPoints;
 
-    public GameObject villagerToSpawn;
-    
-    public int amountToSpawn;
+    //ghoul pop cap
+    public int maxGhoulCapacity;
+    public int currentGhoulAmount;
 
+    //temp variables
+    public GameObject villagerToSpawn;
+    public GameObject guardToSpawn;
+    public int amountToSpawn;
     public GhoulSpawner ghoulSpawner;
 
     public event Action<GameObject> VillagerDeathEvent;
-
-
-    private void OnEnable()
-    {
-        if (ghoulSpawner != null)
-        {
-            ghoulSpawner.GhoulSpawnedEvent += AddGhoulToList;
-        }
-    }
+    public event Action GhoulDeathEvent;
 
     private void Start()
     {
-        SpawnVillagers();
-    }
-    
-    //temp spawning code
-    void SpawnVillagers()
-    {
-        GameObject go = villagerToSpawn;
-        
-        for (int i = 0; i < amountToSpawn; i++)
+        foreach (var guard in Guards)
         {
-            int randomSpawn = Mathf.RoundToInt(Random.Range(0, SpawnPoints.Length));
-            Instantiate(go, SpawnPoints[randomSpawn].position, villagerToSpawn.transform.rotation);
-            AddVillagerToList(go);
-            Sub(go);
+            guard.GetComponent<GuardModel>().NewConversionEvent += AddConversion;
         }
     }
 
+    private void Update()
+    {
+        currentGhoulAmount = Ghouls.Count;
+    }
+
+    #region Villagers
     //adds to list when villager spawned
     void AddVillagerToList(GameObject villager)
     {
@@ -69,9 +61,27 @@ public class NPCManager : ManagerBase<NPCManager>
     {
         villager.GetComponent<Health>().DeathEvent += RemoveVillagerFromList;
     }
+    #endregion
 
-    void AddGhoulToList(GameObject ghoulToAdd)
+    void AddGhoulToList(GameObject newGhoul)
     {
-        Ghouls.Add(ghoulToAdd);
+        Ghouls.Add(newGhoul);
+    }
+
+    void AddGuardToList(GameObject newGuard)
+    {
+        Guards.Add(newGuard);
+    }
+
+    void RemoveGhoulFromList(GameObject ghoul)
+    {
+        GhoulDeathEvent?.Invoke();
+        Ghouls.Remove(ghoul);
+    }
+
+    //temp list for guards converted through the night phase
+    void AddConversion(GameObject newConversion)
+    {
+        ConvertedGuards.Add(newConversion);
     }
 }
