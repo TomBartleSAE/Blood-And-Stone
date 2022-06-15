@@ -12,7 +12,7 @@ public class TowerPlacement : MonoBehaviour
     public BuildingBase selectedBuilding;
     private Node selectedNode;
 
-    private Camera cam;
+    public Camera cam;
 
     private MainControls controls;
     private InputAction leftClick;
@@ -24,8 +24,6 @@ public class TowerPlacement : MonoBehaviour
 
     private void Awake()
     {
-        cam = Camera.main;
-
         controls = new MainControls();
     }
 

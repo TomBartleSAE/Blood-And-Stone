@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  canMoveDiagonally: 1
+  canMoveDiagonally: 0
   destination: {fileID: 0}
   pathOnStart: 0
 --- !u!114 &2645878115345322755

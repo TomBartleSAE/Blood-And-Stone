@@ -18,11 +18,6 @@ public class Blood : MonoBehaviour
     /// </summary>
     public event Action<int> MaxBloodChangedEvent;
 
-    public void Awake()
-    {
-        currentBlood = maxBlood;
-    }
-
     public void ChangeBlood(int amount)
     {
         if (currentBlood + amount > maxBlood)

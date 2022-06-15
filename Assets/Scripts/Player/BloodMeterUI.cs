@@ -13,6 +13,7 @@ public class BloodMeterUI : MonoBehaviour
     {
         blood.BloodChangedEvent += UpdateUI;
         blood.MaxBloodChangedEvent += UpdateUI;
+        UpdateUI(0);
     }
 
     public void UpdateUI(int amount)

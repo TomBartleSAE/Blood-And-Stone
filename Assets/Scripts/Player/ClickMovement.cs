@@ -11,7 +11,7 @@ public class ClickMovement : MonoBehaviour
     private MainControls controls;
     private InputAction leftClick;
 
-    private Camera cam;
+    public Camera cam;
 
     public LayerMask enemyLayer;
     public LayerMask walkableLayers;
@@ -23,8 +23,6 @@ public class ClickMovement : MonoBehaviour
     private void Awake()
     {
         controls = new MainControls();
-
-        cam = Camera.main;
     }
 
     private void OnEnable()

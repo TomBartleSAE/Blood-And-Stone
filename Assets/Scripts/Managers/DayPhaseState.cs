@@ -27,6 +27,7 @@ public class DayPhaseState : StateBase
             if (NPCManager.Instance.Soldiers.Count <= 0)
             {
                 StartCoroutine(EndDay());
+                finishedSpawning = false; // HACK INSIDE A HACK (HACKCEPTION)
             }
         }
     }
@@ -58,6 +59,6 @@ public class DayPhaseState : StateBase
     {
         MessageManager.Instance.ShowMessage("The villagers are all dead, for now...", 5f);
         yield return new WaitForSeconds(5f);
-        //StartCoroutine(GameManager.Instance.ChangeToNightPhase());
+        GameManager.Instance.CallPhaseChange("NightTest", "DayTest", GameManager.Instance.nightPhaseState);
     }
 }

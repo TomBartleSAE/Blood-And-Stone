@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 public class NightPhaseState : StateBase
 {
     public LevelTimer timer;
+    [Tooltip("Total duration of the Night Phase in seconds")]
+    public float nightPhaseTime = 60f;
     
     public override void Enter()
     {
         base.Enter();
-
+        
         timer.TimerFinishedEvent += GameOver;
+        
+        timer.StartTimer(nightPhaseTime);
     }
 
     public override void Exit()

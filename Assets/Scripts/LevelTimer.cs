@@ -11,11 +11,6 @@ public class LevelTimer : MonoBehaviour
 
     public event Action TimerFinishedEvent;
 
-    private void Start()
-    {
-        StartTimer(5f);
-    }
-
     private void Update()
     {
         if (timerActive)

@@ -16,7 +16,8 @@ public class GameManager : ManagerBase<GameManager>
     public override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(this);
+
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
     }
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)

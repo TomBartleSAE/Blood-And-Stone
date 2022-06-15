@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8827472400073396508}
   - {fileID: 1659434419030389962}
   - {fileID: 1659434419025153084}
   m_Father: {fileID: 0}
@@ -51,6 +52,7 @@ MonoBehaviour:
   dayPhaseState: {fileID: 1659434419030389965}
   nightPhaseState: {fileID: 1659434419025153087}
   stateManager: {fileID: 1659434417592835435}
+  loadingImage: {fileID: 0}
 --- !u!114 &1659434417592835435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659434417592835433}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1659434419025153087
 MonoBehaviour:
@@ -109,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
+  nightPhaseTime: 60
 --- !u!1 &1659434419030389964
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +142,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659434417592835433}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1659434419030389965
 MonoBehaviour:
@@ -153,6 +156,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81640ab620692f14f8e0ddf1866e7558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
   timeBeforeVillagersSpawn: 15
   finishedSpawning: 0
+--- !u!1 &1762192503465136463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8827472400073396508}
+  - component: {fileID: 161310572739707197}
+  m_Layer: 0
+  m_Name: Menu Phase State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8827472400073396508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762192503465136463}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1659434417592835433}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161310572739707197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762192503465136463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80667f7b1061f594b8671086ecaa4b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

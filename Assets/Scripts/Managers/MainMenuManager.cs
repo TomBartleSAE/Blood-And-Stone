@@ -10,7 +10,8 @@ public class MainMenuManager : MonoBehaviour
     public void Play()
     {
         SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.LoadScene("NightTest", LoadSceneMode.Additive);
+        SceneManager.LoadScene(levelToLoad.name, LoadSceneMode.Additive);
+        GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
     }
 
     public void Quit()
