@@ -35,6 +35,11 @@ public class NPCManager : ManagerBase<NPCManager>
         {
             guard.GetComponent<GuardModel>().NewConversionEvent += AddConversion;
         }
+
+        foreach (var villager in Villagers)
+        {
+            villager.GetComponent<Health>().DeathEvent += RemoveVillagerFromList;
+        }
     }
 
     private void Update()
@@ -63,6 +68,8 @@ public class NPCManager : ManagerBase<NPCManager>
     }
     #endregion
 
+    #region Ghouls
+
     void AddGhoulToList(GameObject newGhoul)
     {
         Ghouls.Add(newGhoul);
@@ -78,6 +85,9 @@ public class NPCManager : ManagerBase<NPCManager>
         GhoulDeathEvent?.Invoke();
         Ghouls.Remove(ghoul);
     }
+
+    #endregion
+
 
     //temp list for guards converted through the night phase
     void AddConversion(GameObject newConversion)

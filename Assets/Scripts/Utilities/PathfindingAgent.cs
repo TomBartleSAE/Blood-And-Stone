@@ -28,6 +28,9 @@ public class PathfindingAgent : MonoBehaviour
     
     public void Start()
     {
+        //temp for testing - AM
+        grid = FindObjectOfType<PathfindingGrid>();
+        
         grid.GridGeneratedEvent += RefindPath;
         
         if (pathOnStart)
