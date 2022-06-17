@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2354ddbf4770984380ee41ed3410c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBlood: 20
+  currentBlood: 0
   maxBlood: 50
 --- !u!4 &1950177423
 Transform:
@@ -3849,6 +3849,6 @@ PrefabInstance:
     - target: {fileID: 8739776163063105087, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1950177422}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2824ca9222431ef458be079bee2c474a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
 --- !u!135 &8739776162418544767
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -193,9 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  canMoveDiagonally: 1
   destination: {fileID: 0}
   pathOnStart: 0
-  canMoveDiagonally: 1
 --- !u!114 &8739776163063105081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 8739776163063105062}
+  cam: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -246,7 +248,7 @@ MonoBehaviour:
   movement: {fileID: 8739776163063105081}
   blood: {fileID: 0}
   feedRange: 0.6
-  bloodGain: 20
+  bloodGain: 10
 --- !u!54 &8739776163063105083
 Rigidbody:
   m_ObjectHideFlags: 0
