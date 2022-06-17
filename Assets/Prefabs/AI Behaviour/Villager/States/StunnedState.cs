@@ -10,7 +10,6 @@ public class StunnedState : AntAIState
 {
     public GameObject owner;
     public VillagerModel villager;
-    public Wander wander;
 
     public float stunTime;
 
@@ -20,14 +19,13 @@ public class StunnedState : AntAIState
         
         owner = aGameObject;
         villager = aGameObject.GetComponentInParent<VillagerModel>();
-        wander = aGameObject.GetComponentInParent<Wander>();
     }
 
     public override void Enter()
     {
         base.Enter();
-        
-        wander.enabled = false;
+
+        villager.GetComponent<FollowPath>().moveSpeed = 0;
 
         StartCoroutine(StunnedTimer());
     }
@@ -52,8 +50,8 @@ public class StunnedState : AntAIState
         villager.isStunned = false;
         villager.isScared = true;
 
-        wander.enabled = true;
-        
+        villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
+
         Finish();
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class FleeingState : AntAIState
 {
-    public Wander wander;
     public VillagerModel villager;
     public GameObject owner;
     
@@ -18,7 +17,6 @@ public class FleeingState : AntAIState
         
         owner = aGameObject;
         villager = aGameObject.GetComponentInParent<VillagerModel>();
-        wander = GetComponentInParent<Wander>();
     }
     
     public override void Enter()
@@ -26,7 +24,8 @@ public class FleeingState : AntAIState
         base.Enter();
 
         fleeTime = 5;
-        wander.speed = 10;
+
+        villager.GetComponent<FollowPath>().moveSpeed = 5;
 
         StartCoroutine(Flee());
     }
@@ -38,6 +37,8 @@ public class FleeingState : AntAIState
 
     public override void Exit()
     {
+        
+        villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
         base.Exit();
     }
     
