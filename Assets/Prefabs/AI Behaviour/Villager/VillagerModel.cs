@@ -23,27 +23,15 @@ public class VillagerModel : MonoBehaviour, IStunnable
     private void Start()
     {
         NPCManager.Instance.Villagers.Add(gameObject);
+
+        GetComponent<Health>().DeathEvent += Die;
         
-        NPCManager.Instance.VillagerDeathEvent += DeathCheck;
+        NPCManager.Instance.VillagerDeathEvent += Reaction;
     }
 
-    //not sure if entirely necessary, but checks to see if IT died or if something else did
-    void DeathCheck(GameObject deadThing)
+    void Die(GameObject me)
     {
-        if (deadThing == gameObject)
-        {
-            Die(deadThing);
-        }
-        else if (deadThing != gameObject)
-        {
-            Reaction(deadThing);
-        }
-    }
-    
-    //reacting to own death
-    public void Die(GameObject me)
-    {
-        Destroy(gameObject);
+        Destroy(me);
     }
 
     //Reacting to other thing's death
