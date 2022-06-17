@@ -8,7 +8,7 @@ public class BloodMeterUI : MonoBehaviour
 {
     public Slider slider;
 
-    public void Awake()
+    public void Start()
     {
         PlayerManager.Instance.BloodChangedEvent += UpdateUI;
         PlayerManager.Instance.MaxBloodChangedEvent += UpdateUI;

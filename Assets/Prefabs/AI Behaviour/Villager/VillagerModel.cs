@@ -31,7 +31,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     void Die(GameObject me)
     {
-        Destroy(me);
+        gameObject.SetActive(false);
     }
 
     //Reacting to other thing's death
