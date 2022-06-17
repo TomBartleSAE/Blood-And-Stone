@@ -25,8 +25,9 @@ public class VampireModel : MonoBehaviour
     public void Feed(GameObject victim)
     {
         // Play animations on vampire and victim
-        PlayerManager.Instance.ChangeBlood(bloodGain);
         movement.target = null;
         victim.GetComponent<Health>().ChangeHealth(-1f, gameObject); // Kills the victim
+        //following line moved to bottom of function; wouldn't work otherwise - AM
+        PlayerManager.Instance.ChangeBlood(bloodGain);
     }
 }

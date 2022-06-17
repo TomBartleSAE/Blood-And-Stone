@@ -22,6 +22,8 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     private void Start()
     {
+        NPCManager.Instance.Villagers.Add(gameObject);
+        
         NPCManager.Instance.VillagerDeathEvent += DeathCheck;
     }
 
