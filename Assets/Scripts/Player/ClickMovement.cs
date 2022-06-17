@@ -34,6 +34,13 @@ public class ClickMovement : MonoBehaviour
         leftClick.performed += PerformClick;
     }
 
+    private void OnDisable()
+    {
+        controls.Disable();
+        leftClick.Disable();
+        leftClick.performed -= PerformClick;
+    }
+
     public void Update()
     {
         if (target != null)

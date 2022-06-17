@@ -6,19 +6,18 @@ using UnityEngine.UI;
 
 public class BloodMeterUI : MonoBehaviour
 {
-    public Blood blood;
     public Slider slider;
 
     public void Awake()
     {
-        blood.BloodChangedEvent += UpdateUI;
-        blood.MaxBloodChangedEvent += UpdateUI;
+        PlayerManager.Instance.BloodChangedEvent += UpdateUI;
+        PlayerManager.Instance.MaxBloodChangedEvent += UpdateUI;
         UpdateUI(0);
     }
 
     public void UpdateUI(int amount)
     {
-        float bloodPercentage = (float)blood.currentBlood / (float)blood.maxBlood;
+        float bloodPercentage = (float)PlayerManager.Instance.currentBlood / (float)PlayerManager.Instance.maxBlood;
         slider.value = bloodPercentage;
     }
 }

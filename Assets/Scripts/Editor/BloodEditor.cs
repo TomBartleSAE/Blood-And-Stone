@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Blood))]
+[CustomEditor(typeof(PlayerManager))]
 public class BloodEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -12,22 +12,22 @@ public class BloodEditor : Editor
 
         if (GUILayout.Button("+5 Blood"))
         {
-            (target as Blood)?.ChangeBlood(5);
+            (target as PlayerManager)?.ChangeBlood(5);
         }
         
         if (GUILayout.Button("-5 Blood"))
         {
-            (target as Blood)?.ChangeBlood(-5);
+            (target as PlayerManager)?.ChangeBlood(-5);
         }
         
         if (GUILayout.Button("+5 Max Blood"))
         {
-            (target as Blood)?.ChangeMaxBlood(5);
+            (target as PlayerManager)?.ChangeMaxBlood(5);
         }
         
         if (GUILayout.Button("-5 Max Blood"))
         {
-            (target as Blood)?.ChangeMaxBlood(-5);
+            (target as PlayerManager)?.ChangeMaxBlood(-5);
         }
     }
 }

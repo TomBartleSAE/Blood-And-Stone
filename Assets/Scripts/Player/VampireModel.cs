@@ -7,7 +7,6 @@ using UnityEngine;
 public class VampireModel : MonoBehaviour
 {
     public ClickMovement movement;
-    public Blood blood;
 
     public float feedRange = 0.6f; // Slightly larger than distance when touching to ensure feeding is triggered
     public int bloodGain = 10;
@@ -26,7 +25,7 @@ public class VampireModel : MonoBehaviour
     public void Feed(GameObject victim)
     {
         // Play animations on vampire and victim
-        blood.ChangeBlood(bloodGain);
+        PlayerManager.Instance.ChangeBlood(bloodGain);
         movement.target = null;
         victim.GetComponent<Health>().ChangeHealth(-1f, gameObject); // Kills the victim
     }

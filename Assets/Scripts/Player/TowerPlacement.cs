@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class TowerPlacement : MonoBehaviour
 {
     public PathfindingGrid grid;
-    public Blood blood;
 
     public BuildingBase selectedBuilding;
     private Node selectedNode;
@@ -33,6 +32,13 @@ public class TowerPlacement : MonoBehaviour
 
         leftClick = controls.Day.LeftClick;
         leftClick.Enable();
+        leftClick.performed += PerformClick;
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+        leftClick.Disable();
         leftClick.performed += PerformClick;
     }
 
@@ -67,7 +73,7 @@ public class TowerPlacement : MonoBehaviour
 
     public void Build(Vector3 position)
     {
-        if (blood.currentBlood >= selectedBuilding.cost)
+        if (PlayerManager.Instance.currentBlood >= selectedBuilding.cost)
         {
             BuildingBase newBuilding = Instantiate(selectedBuilding, position, Quaternion.identity);
             newBuilding.grid = grid;
@@ -75,7 +81,7 @@ public class TowerPlacement : MonoBehaviour
             selectedNode.isBlocked = true;
             selectedNode.canBuild = false;
             
-            blood.ChangeBlood(-selectedBuilding.cost);
+            PlayerManager.Instance.ChangeBlood(-selectedBuilding.cost);
             
             grid.Generate();
         }

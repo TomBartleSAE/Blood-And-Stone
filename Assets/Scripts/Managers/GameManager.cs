@@ -16,8 +16,12 @@ public class GameManager : ManagerBase<GameManager>
     public override void Awake()
     {
         base.Awake();
-
-        //SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        
+        // Build only loads the Base scene, need to load the menu separately
+        // The #if allows you to use the Base scene to test with the Day or Night scenes
+        #if !UNITY_EDITOR
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        #endif
     }
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
