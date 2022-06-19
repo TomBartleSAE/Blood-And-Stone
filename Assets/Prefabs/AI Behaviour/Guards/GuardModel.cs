@@ -40,7 +40,7 @@ public class GuardModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddToList();
+        NightNPCManager.Instance.AddToGuardList(gameObject);
         
         pathfindingAgent = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
@@ -50,11 +50,16 @@ public class GuardModel : MonoBehaviour
         GetPatrolPointsEvent?.Invoke();
 
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
+        foreach (var villager in NightNPCManager.Instance.Villagers)
+        {
+            villager.GetComponent<Health>().DeathEvent += Reaction;
+        }
 
         //TODO get reference to own Guard and Ghoul objects
     }
 
     #region Investigation
+    
     public void Reaction(GameObject deadThing)
     {
         isAlert = true;
@@ -86,12 +91,16 @@ public class GuardModel : MonoBehaviour
     }
     #endregion
 
+    #region Guard to Ghoul Conversion
+
     public void CheckGhoulCapacity(GameObject thing)
     {
         NightNPCManager.Instance.Guards.Remove(gameObject);
+        //gets current population capacity situation
         int ghoulMax = DayNPCManager.Instance.maxPop;
         int ghoulCurrent = NightNPCManager.Instance.currentPop;
 
+        //creates a ghoul if space; otherwise gets rid of the guard
         if (ghoulCurrent < ghoulMax)
         {
             GhoulConversion();
@@ -99,24 +108,23 @@ public class GuardModel : MonoBehaviour
 
         else
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         }
     }
     
     public void GhoulConversion()
     {
+        //bools change the state
         isPatrolling = false;
         isDead = true;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
+        //changes model view
         GameObject ghoul = ghoulView;
         NightNPCManager.Instance.AddToConvertedGhoulList(gameObject);
-        NewConversionEvent?.Invoke(ghoul);
     }
 
-    void AddToList()
-    {
-        NightNPCManager.Instance.Guards.Add(gameObject);
-    }
+    #endregion
+    
 }
