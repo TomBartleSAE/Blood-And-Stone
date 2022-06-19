@@ -24,7 +24,7 @@ public class DayPhaseState : StateBase
         // HUGE HACK: Should be reacting to soldier death events
         if (finishedSpawning)
         {
-            if (NPCManager.Instance.Soldiers.Count <= 0)
+            if (DayNPCManager.Instance.Soldiers.Count <= 0)
             {
                 StartCoroutine(EndDay());
                 finishedSpawning = false; // HACK INSIDE A HACK (HACKCEPTION)

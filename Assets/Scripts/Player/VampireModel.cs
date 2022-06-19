@@ -17,7 +17,16 @@ public class VampireModel : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, movement.target.position) < feedRange)
             {
-                Feed(movement.target.gameObject);
+                if (movement.target.GetComponent<VillagerModel>())
+                {
+                    Feed(movement.target.gameObject);
+                }
+
+                //Added for guard conversion interaction - AM
+                if (movement.target.GetComponent<GuardModel>())
+                {
+                    ConvertGuard(movement.target.gameObject);
+                }
             }
         }
     }
@@ -29,5 +38,12 @@ public class VampireModel : MonoBehaviour
         victim.GetComponent<Health>().ChangeHealth(-1f, gameObject); // Kills the victim
         //following line moved to bottom of function; wouldn't work otherwise - AM
         PlayerManager.Instance.ChangeBlood(bloodGain);
+    }
+
+    //Guard Conversion Interaction - AM
+    public void ConvertGuard(GameObject victim)
+    {
+        movement.target = null;
+        victim.GetComponent<Health>().ChangeHealth(-1f, gameObject);
     }
 }

@@ -31,7 +31,7 @@ public class GhoulModel : MonoBehaviour
     {
         pathfinding = GetComponent<PathfindingAgent>();
         //Put this into NPCManager?
-        NPCManager.Instance.Ghouls.Add(gameObject);
+        DayNPCManager.Instance.AddToGhoulList(gameObject);
         pathfinding.grid = FindObjectOfType<PathfindingGrid>();
     }
 

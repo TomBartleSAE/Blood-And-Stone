@@ -37,11 +37,6 @@ public class GuardModel : MonoBehaviour
     
     public event Action<GameObject> NewConversionEvent;
 
-    private void Awake()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -91,11 +86,11 @@ public class GuardModel : MonoBehaviour
     }
     #endregion
 
-    void CheckGhoulCapacity(GameObject thing)
+    public void CheckGhoulCapacity(GameObject thing)
     {
-        NPCManager.Instance.Guards.Remove(gameObject);
-        int ghoulMax = NPCManager.Instance.maxGhoulCapacity;
-        int ghoulCurrent = NPCManager.Instance.currentGhoulAmount;
+        NightNPCManager.Instance.Guards.Remove(gameObject);
+        int ghoulMax = DayNPCManager.Instance.maxPop;
+        int ghoulCurrent = NightNPCManager.Instance.currentPop;
 
         if (ghoulCurrent < ghoulMax)
         {
@@ -105,6 +100,7 @@ public class GuardModel : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         }
     }
     
@@ -115,11 +111,12 @@ public class GuardModel : MonoBehaviour
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
         GameObject ghoul = ghoulView;
+        NightNPCManager.Instance.AddToConvertedGhoulList(gameObject);
         NewConversionEvent?.Invoke(ghoul);
     }
 
     void AddToList()
     {
-        NPCManager.Instance.Guards.Add(gameObject);
+        NightNPCManager.Instance.Guards.Add(gameObject);
     }
 }

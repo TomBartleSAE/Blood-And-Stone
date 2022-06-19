@@ -39,7 +39,7 @@ public class SoldierModel : EnemyBase
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         
-        NPCManager.Instance.Soldiers.Add(gameObject);
+        DayNPCManager.Instance.AddToSoldierList(gameObject);
     }
 
     public void ChangeTarget(GameObject newTarget)
@@ -60,7 +60,7 @@ public class SoldierModel : EnemyBase
 
     void Die(GameObject me)
     {
-        NPCManager.Instance.Soldiers.Remove(gameObject);
+        DayNPCManager.Instance.RemoveFromSoldierList(me);
         
         Destroy(gameObject);
     }

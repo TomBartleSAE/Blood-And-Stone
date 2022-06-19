@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GhoulFindTargetState : AntAIState
 {
-    public NPCManager manager;
     public GhoulModel ghoulModel;
     public Wander wander;
 
@@ -17,8 +16,7 @@ public class GhoulFindTargetState : AntAIState
         base.Create(aGameObject);
 
         Debug.Log("Entering Find Target State");
-
-        manager = FindObjectOfType<NPCManager>();
+        
         ghoulModel = GetComponentInParent<GhoulModel>();
     }
 
@@ -61,7 +59,7 @@ public class GhoulFindTargetState : AntAIState
         //This can serve as an auto target if the player hasn't selected a target to attack.
         if (autoAttack)
         {
-            foreach (var soldier in manager.Soldiers)
+            foreach (var soldier in DayNPCManager.Instance.Soldiers)
             {
                 if (soldier != null)
                 {

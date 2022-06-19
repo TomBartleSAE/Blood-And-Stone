@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5087244431270158183}
   - component: {fileID: 6834803394319362535}
   - component: {fileID: 448058551041949542}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ghoul_View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 3689531663806443245}
   - component: {fileID: 3689531663806443235}
   - component: {fileID: 1303925034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 3689531664595969479}
   - component: {fileID: 3689531664595969497}
   - component: {fileID: 3689531664595969496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Guard_View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
