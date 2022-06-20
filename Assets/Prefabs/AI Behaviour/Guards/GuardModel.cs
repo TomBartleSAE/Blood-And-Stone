@@ -21,6 +21,7 @@ public class GuardModel : MonoBehaviour
 
     public GameObject guardView;
     public GameObject ghoulView;
+    public GameObject lightCone;
     public GameObject mapExit;
 
     public event Action VampireCapturedEvent;
@@ -91,6 +92,7 @@ public class GuardModel : MonoBehaviour
         if (Vector3.Distance(transform.position, deadThing.transform.position) < hearingRange)
         {
             isAlert = true;
+            isPatrolling = false;
         
             investigateTarget = deadThing.transform;
             //Investigate(deadThing);
@@ -146,8 +148,6 @@ public class GuardModel : MonoBehaviour
         isDead = true;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
-        //changes model view
-        GameObject ghoul = ghoulView;
         NightNPCManager.Instance.AddToConvertedGhoulList(gameObject);
     }
 

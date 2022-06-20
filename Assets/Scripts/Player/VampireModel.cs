@@ -23,9 +23,13 @@ public class VampireModel : MonoBehaviour
                 }
 
                 //Added for guard conversion interaction - AM
-                if (movement.target.GetComponent<GuardModel>())
+                if (movement.target != null && movement.target.GetComponent<GuardModel>())
                 {
-                    ConvertGuard(movement.target.gameObject);
+                    //won't allow to convert if investigating/chasing
+                    if (!movement.target.GetComponent<GuardModel>().isAlert)
+                    {
+                        ConvertGuard(movement.target.gameObject);
+                    }
                 }
             }
         }

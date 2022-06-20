@@ -77,8 +77,6 @@ public class PatrollingState : AntAIState
         base.Exit();
         
         Finish();
-
-        Debug.Log("Exiting Patrolling State");
     }
 
     //Gets points for patrol route per night

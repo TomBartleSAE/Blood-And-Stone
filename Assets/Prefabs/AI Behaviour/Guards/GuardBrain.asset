@@ -59,7 +59,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 4649901966125166521, guid: beaebd4285ab1db4eba6d5280ec7271d, type: 3}
     cost: 0
-    position: {x: 1156.4478, y: 283.41785}
+    position: {x: 1158.4478, y: 287.41785}
     pre:
     - id: 0
       value: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 6155038574833507872, guid: c2614dd6eeac3da408efe6cd5bae8f02, type: 3}
     cost: 0
-    position: {x: 950.40295, y: 283.91034}
+    position: {x: 944.40295, y: 285.91034}
     pre:
     - id: 0
       value: 1
@@ -82,8 +82,12 @@ MonoBehaviour:
       value: 0
     - id: 5
       value: 0
+    - id: 1
+      value: 0
     post:
     - id: 2
+      value: 1
+    - id: 3
       value: 1
   - name: GuardIdleState
     isDefault: 0
@@ -113,11 +117,11 @@ MonoBehaviour:
     - id: 3
       value: 1
   worldStates:
-  - position: {x: 302.61932, y: 547.05695}
+  - position: {x: 304.61932, y: 546.05695}
     isAutoUpdate: 1
     list:
     - id: 0
-      value: 0
+      value: 1
     - id: 1
       value: 0
     - id: 2

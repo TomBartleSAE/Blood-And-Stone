@@ -70,7 +70,6 @@ public class ChasingState : AntAIState
         if (distance <= guard.guardRange && isCapturing != true)
         {
             inRange = true;
-            isCapturing = true;
             coroutine = StartCoroutine(CapturingTarget());
         }
         else if (distance > guard.guardRange)
@@ -92,7 +91,7 @@ public class ChasingState : AntAIState
         guard.targetCaptured = true;
         isCapturing = false;
         
-        //Can remove if not needed
+        //TODO Game Over Lose State
         GameOverEvent?.Invoke();
     }
 
