@@ -35,7 +35,7 @@ public class ChasingState : AntAIState
         coroutine = null;  
 
         guard = owner.GetComponent<GuardModel>();
-        target = guard.chaseTarget;
+        target = guard.vampire;
         
         //Gets path to target every 5 seconds. Note repeat time for testing/changing
         InvokeRepeating("ChaseTarget",0, 5 );
@@ -45,7 +45,7 @@ public class ChasingState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (guard.chaseTarget != null)
+        if (guard.vampire != null)
         {
             CheckRange();  
         }
@@ -63,7 +63,7 @@ public class ChasingState : AntAIState
 
     public void CheckRange()
     {
-        Transform target = guard.chaseTarget;
+        Transform target = guard.vampire;
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
 

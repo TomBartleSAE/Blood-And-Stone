@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
 using Unity.VisualScripting;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class InvestigatingState : AntAIState
@@ -9,7 +10,7 @@ public class InvestigatingState : AntAIState
     public GameObject owner;
     private PathfindingAgent pathfinding;
     private GuardModel guard;
-
+    
     private bool investigating;
 
     public override void Create(GameObject aGameObject)
@@ -23,8 +24,11 @@ public class InvestigatingState : AntAIState
         base.Enter();
         pathfinding = owner.GetComponent<PathfindingAgent>();
         guard = owner.GetComponent<GuardModel>();
-
-        owner.GetComponent<Wander>().enabled = false;
+        guard.isPatrolling = false;
+        
+        //values for vision cone - heightened awareness = higher values
+        guard.GetComponentInChildren<Vision>().angle = 45;
+        guard.GetComponentInChildren<Vision>().distance = 7.5f;
 
         //Run FindPath to get to event site
         pathfinding.FindPath(transform.position, guard.investigateTarget.transform.position);
@@ -40,6 +44,12 @@ public class InvestigatingState : AntAIState
 
     public override void Exit()
     {
+        guard.isAlert = false;
+
+        //restore back to default values for standard awareness
+        guard.GetComponentInChildren<Vision>().angle = 25;
+        guard.GetComponentInChildren<Vision>().distance = 5;
+        
         base.Exit();
     }
 
@@ -60,7 +70,7 @@ public class InvestigatingState : AntAIState
         for (int i = 0; i < guard.investigationTime; i++)
         {
             //if something found, go to chase state
-            if (guard.chaseTarget != null)
+            if (guard.vampire != null)
             {
                 guard.hasTarget = true;
             }
@@ -68,9 +78,10 @@ public class InvestigatingState : AntAIState
         }
         
         //if nothing spotted in time; return to patrol state
-        if (guard.chaseTarget == null)
+        if (guard.vampire == null)
         {
             guard.isAlert = false;
+            guard.isPatrolling = true;
         }
     }
 }

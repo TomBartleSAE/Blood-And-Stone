@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Anthill.AI;
+using DG.Tweening;
 using Tom;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,9 +13,11 @@ public class GuardModel : MonoBehaviour
 {
     public Health health;
     public PathfindingAgent pathfindingAgent;
+    public Vision vision;
+    public Rigidbody rb;
 
     public Transform investigateTarget;
-    public Transform chaseTarget;
+    public Transform vampire;
 
     public GameObject guardView;
     public GameObject ghoulView;
@@ -31,9 +35,9 @@ public class GuardModel : MonoBehaviour
 
     public float guardRange;
     public float captureTime;
-    public float viewRange;
     public float searchCooldown;
     public float investigationTime;
+    public float hearingRange;
     
     public event Action<GameObject> NewConversionEvent;
 
@@ -44,52 +48,74 @@ public class GuardModel : MonoBehaviour
         
         pathfindingAgent = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
+        vision = GetComponent<Vision>();
+        //Would love to not have FindObject
         mapExit = GameObject.Find("Return to Castle Trigger");
+        vampire = FindObjectOfType<VampireModel>().transform;
+        rb = GetComponent<Rigidbody>();
         
         isPatrolling = true;
         GetPatrolPointsEvent?.Invoke();
+        NightNPCManager.Instance.VillagerDeathEvent += Reaction;
 
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
-        foreach (var villager in NightNPCManager.Instance.Villagers)
-        {
-            villager.GetComponent<Health>().DeathEvent += Reaction;
-        }
 
         //TODO get reference to own Guard and Ghoul objects
     }
 
-    #region Investigation
-    
-    public void Reaction(GameObject deadThing)
+    public void Update()
     {
-        isAlert = true;
-        
-        if (deadThing != this)
+        //TODO sort this out
+        //if they see the vampire, will straight away enter chase state
+        if (vision.CanSeeObject(vampire))
         {
-            investigateTarget = deadThing.transform;
-            Investigate(deadThing);
+            hasTarget = true;
+        }
+
+        if (isDead)
+        {
+            NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
+        }
+
+        if (investigateTarget == null)
+        {
+            return;
         }
     }
 
-    public void Investigate(GameObject target)
+    #region Investigation
+    
+    //reacting to villager/guard death; will go to investigate
+    public void Reaction(GameObject deadThing)
     {
-        pathfindingAgent.FindPath(this.transform.position, target.transform.position);
+        if (Vector3.Distance(transform.position, deadThing.transform.position) < hearingRange)
+        {
+            isAlert = true;
+        
+            investigateTarget = deadThing.transform;
+            //Investigate(deadThing);
+        }
     }
 
+    /*public void Investigate(GameObject target)
+    {
+        pathfindingAgent.FindPath(this.transform.position, target.transform.position);
+    }*/
+
+    /*public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<VampireModel>())
+        {
+            hasTarget = false;
+            vampire = null;
+        }
+    }*/
+    #endregion
+    
     public void VampireCaptured()
     {
         VampireCapturedEvent?.Invoke();
     }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<ClickMovement>())
-        {
-            hasTarget = false;
-            chaseTarget = null;
-        }
-    }
-    #endregion
 
     #region Guard to Ghoul Conversion
 

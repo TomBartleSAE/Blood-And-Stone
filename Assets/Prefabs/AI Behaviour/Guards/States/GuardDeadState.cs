@@ -28,13 +28,17 @@ public class GuardDeadState : AntAIState
         base.Enter();
 
         guard = owner.GetComponent<GuardModel>();
-        
+
         CreateGhoul();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         currentPos = transform.position;
+
+        guard.hasTarget = false;
+        guard.isAlert = false;
+        guard.isPatrolling = false;
         
         base.Execute(aDeltaTime, aTimeScale);
     }
