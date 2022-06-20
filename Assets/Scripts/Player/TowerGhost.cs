@@ -18,6 +18,12 @@ public class TowerGhost : MonoBehaviour
         tower.MouseOffGridEvent += HideGhost;
     }
 
+    private void OnDestroy()
+    {
+        tower.MouseOverNodeEvent -= ShowGhost;
+        tower.MouseOffGridEvent -= HideGhost;
+    }
+
     public void ShowGhost(BuildingBase building, Node node)
     {
         ghost.GetComponentInChildren<MeshFilter>().mesh = building.GetComponentInChildren<MeshFilter>().sharedMesh;
@@ -31,9 +37,9 @@ public class TowerGhost : MonoBehaviour
             ghost.GetComponentInChildren<MeshRenderer>().material = openMaterial;
         }
 
+        // Remove this if we use something other than ParticleSystem to show range
         if (building.GetComponent<TowerBase>())
         {
-            // Remove this if we use something other than ParticleSystem to show range
             ParticleSystem.ShapeModule ringShape = rangeRing.shape;
             ringShape.radius = building.GetComponent<TowerBase>().range + 0.5f; 
             rangeRing.Play();
