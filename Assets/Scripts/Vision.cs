@@ -35,6 +35,7 @@ public class Vision : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, leftRayDirection * distance);
         Gizmos.DrawRay(transform.position, rightRayDirection * distance);
+        Gizmos.DrawRay(transform.position, transform.forward * distance);
         Gizmos.DrawLine(transform.position + leftRayDirection * distance, transform.position + rightRayDirection * distance);
     }
 }
