@@ -142,7 +142,7 @@ public class GuardModel : MonoBehaviour
 
     public void CapturedVampire()
     {
-        CapturedVampireEvent?.Invoke();
+        GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOverCapture();
     }
     
 }

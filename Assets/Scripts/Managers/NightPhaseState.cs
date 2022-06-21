@@ -12,10 +12,7 @@ public class NightPhaseState : StateBase
     public override void Enter()
     {
         base.Enter();
-        
-        timer.TimerFinishedEvent += GameOver;
-        NightNPCManager.Instance.GameOverCaptureEvent += GameOverCapture;
-        
+
         timer.StartTimer(nightPhaseTime);
     }
 
@@ -39,13 +36,13 @@ public class NightPhaseState : StateBase
         SceneManager.LoadScene("MainMenu");
     }
     
-    private void GameOverCapture()
+    public void GameOverCapture()
     {
         StartCoroutine(CapturedSequence());
     }
     
     //HACK C&P for now
-    private IEnumerator CapturedSequence()
+     private  IEnumerator CapturedSequence()
     {
         Destroy(FindObjectOfType<VampireModel>().gameObject); // HACK: Find vampire object another way
         MessageManager.Instance.ShowMessage("You were captured by the town guard and taken into custody...", 3f);

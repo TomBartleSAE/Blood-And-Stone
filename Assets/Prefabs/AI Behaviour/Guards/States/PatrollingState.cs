@@ -13,8 +13,8 @@ public class PatrollingState : AntAIState
     public PathfindingAgent pathfinding;
     public GuardModel guard;
 
-    public Transform pointA;
-    public Transform pointB;
+    public Vector3 pointA;
+    public Vector3 pointB;
 
     public Vector3 pointACoords;
     public Vector3 pointBCoords;
@@ -36,19 +36,17 @@ public class PatrollingState : AntAIState
         //all this needed in Create() as the event is fired in Enter in GuardModel
         pathfinding = owner.GetComponent<PathfindingAgent>();
         guard = owner.GetComponent<GuardModel>();
-        pointA = new GameObject().transform;
-        pointB = new GameObject().transform;
         GetPatrolPoints();
     }
     public override void Enter()
     {
         base.Enter();
 
-        pointACoords = pointA.position;
-        pointBCoords = pointB.position;
+        pointACoords = pointA;
+        pointBCoords = pointB;
 
         //allows to find (same patrol route) even if has exited state previously
-        FindPatrolPath(pointA.position, pointB.position);
+        FindPatrolPath(pointA, pointB);
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -56,7 +54,7 @@ public class PatrollingState : AntAIState
         base.Execute(aDeltaTime, aTimeScale);
 
         //HACK for if it's reached the destination - I'd rather a PathCompletedEvent or something
-        if (Vector3.Distance(pathfinding.destination.position, transform.position) < 0.5)
+        if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
         {
             //determines which way on the route it's going
             if (patrolType == PatrolType.goingTo)
@@ -92,9 +90,8 @@ public class PatrollingState : AntAIState
 
         if (tempPointB.isBlocked == false)
         {
-            pointA.position = this.transform.position;
-            pointB.position = tempPointB.coordinates;
-            pathfinding.destination = pointB;
+            pointA = transform.position;
+            pointB = tempPointB.coordinates;
         }
         
         else if(tempPointB.isBlocked == true)
@@ -109,12 +106,12 @@ public class PatrollingState : AntAIState
         switch (patrolType)
         {
             case PatrolType.goingTo :
-                pathfinding.destination = pointB;
-                FindPatrolPath(transform.position, pointB.position);
+                //pathfinding.destination = pointB;
+                FindPatrolPath(transform.position, pointB);
                 break;
             case PatrolType.returning :
-                pathfinding.destination = pointA;
-                FindPatrolPath(transform.position, pointA.position);
+                //pathfinding.destination = pointA;
+                FindPatrolPath(transform.position, pointA);
                 break;
         }
     }
