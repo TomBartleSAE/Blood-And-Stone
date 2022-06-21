@@ -13,9 +13,21 @@ public class FollowPath : MonoBehaviour
     private Node targetNode;
     private int index;
     
+    
+    //FOR TURN TOWARDS
+    private Vector3 cross;
+    private Vector3 targetLocalPosition;
+    public Vector3 target;
+    public float turnSpeed = 5f;
+    
     private void OnEnable()
     {
         agent.NewPathEvent += ResetPath;
+    }
+
+    private void Start()
+    {
+        target = targetNode.coordinates;
     }
 
     public void FixedUpdate()
@@ -33,7 +45,22 @@ public class FollowPath : MonoBehaviour
                 }
             }
         }
+        
+        //TURN TOWARDS
+        targetLocalPosition = transform.InverseTransformPoint(target);
+        float turnDirection = targetLocalPosition.x;
+            
+        // Prevents object going straight when facing the exact opposite direction
+        // by checking if the target is directly behind it in the local Z axis
+        if (turnDirection < 0.01f && turnDirection > -0.01f && targetLocalPosition.z < 0)
+        {
+            turnDirection = 1f;
+        }
+
+        rb.AddTorque(Vector3.up * turnDirection * turnSpeed * Time.fixedDeltaTime,
+            ForceMode.VelocityChange);
     }
+    
 
     public void ResetPath()
     {
