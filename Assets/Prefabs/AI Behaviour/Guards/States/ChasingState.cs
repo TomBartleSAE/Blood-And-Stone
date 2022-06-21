@@ -89,10 +89,8 @@ public class ChasingState : AntAIState
         }
 
         guard.targetCaptured = true;
+        guard.CapturedVampire();
         isCapturing = false;
-        
-        //TODO Game Over Lose State
-        GameOverEvent?.Invoke();
     }
 
     public IEnumerator TargetLost()

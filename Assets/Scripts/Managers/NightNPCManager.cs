@@ -10,6 +10,7 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public List<GameObject> ConvertedGhouls;
     
     public event Action GhoulDeathEvent;
+    public event Action GameOverCaptureEvent;
     public event Action<GameObject> VillagerDeathEvent;
 
     [SerializeField]
@@ -29,6 +30,7 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
         foreach (var guard in Guards)
         {
             guard.GetComponent<GuardModel>().NewConversionEvent += AddToConvertedGhoulList;
+            guard.GetComponent<GuardModel>().CapturedVampireEvent += VampireCapture;
         }
 
         foreach (var villager in Villagers)
@@ -69,5 +71,10 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     {
         ConvertedGhouls.Remove(ghoul);
         currentPop -= 1;
+    }
+
+    public void VampireCapture()
+    {
+        GameOverCaptureEvent?.Invoke();
     }
 }

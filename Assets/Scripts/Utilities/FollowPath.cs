@@ -25,11 +25,6 @@ public class FollowPath : MonoBehaviour
         agent.NewPathEvent += ResetPath;
     }
 
-    private void Start()
-    {
-        target = targetNode.coordinates;
-    }
-
     public void FixedUpdate()
     {
         if (agent.path != null && index < agent.path.Count)
@@ -42,6 +37,7 @@ public class FollowPath : MonoBehaviour
                 if (index < agent.path.Count)
                 {
                     targetNode = agent.path[index];
+                    target = targetNode.coordinates;
                 }
             }
         }

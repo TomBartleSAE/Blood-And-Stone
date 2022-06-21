@@ -41,6 +41,7 @@ public class GuardModel : MonoBehaviour
     public float hearingRange;
     
     public event Action<GameObject> NewConversionEvent;
+    public event Action CapturedVampireEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -95,23 +96,9 @@ public class GuardModel : MonoBehaviour
             isPatrolling = false;
         
             investigateTarget = deadThing.transform;
-            //Investigate(deadThing);
         }
     }
-
-    /*public void Investigate(GameObject target)
-    {
-        pathfindingAgent.FindPath(this.transform.position, target.transform.position);
-    }*/
-
-    /*public void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<VampireModel>())
-        {
-            hasTarget = false;
-            vampire = null;
-        }
-    }*/
+    
     #endregion
     
     public void VampireCaptured()
@@ -152,5 +139,11 @@ public class GuardModel : MonoBehaviour
     }
 
     #endregion
+
+
+    public void CapturedVampire()
+    {
+        CapturedVampireEvent?.Invoke();
+    }
     
 }
