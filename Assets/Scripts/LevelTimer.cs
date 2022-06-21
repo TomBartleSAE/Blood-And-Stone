@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class LevelTimer : MonoBehaviour
 {
-    private bool timerActive = false;
-    [HideInInspector]public float totalTime;
-    [HideInInspector]public float timer;
+    public bool timerActive = false;
+    public float totalTime;
+    public float timer;
 
     public event Action TimerFinishedEvent;
 
