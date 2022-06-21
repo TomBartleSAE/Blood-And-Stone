@@ -123,7 +123,7 @@ Transform:
   m_Children:
   - {fileID: 3689531664595969479}
   - {fileID: 5087244431270158183}
-  - {fileID: 6926873965644160882}
+  - {fileID: 4989948159921160769}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,7 +217,7 @@ MonoBehaviour:
   vampire: {fileID: 0}
   guardView: {fileID: 3689531664595969478}
   ghoulView: {fileID: 319821353597917564}
-  lightCone: {fileID: 7740249080507352520}
+  lightCone: {fileID: 0}
   mapExit: {fileID: 0}
   hasTarget: 0
   isAlert: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  canMoveDiagonally: 0
+  canMoveDiagonally: 1
   destination: {fileID: 0}
   pathOnStart: 0
 --- !u!114 &3689531663806443245
@@ -261,6 +261,8 @@ MonoBehaviour:
   agent: {fileID: 3689531663806443246}
   rb: {fileID: 3689531663806443232}
   moveSpeed: 1.5
+  target: {x: 0, y: 0, z: 0}
+  turnSpeed: 50
 --- !u!114 &3689531663806443235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +377,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &1734419022
+--- !u!1001 &2674830600326168445
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -416,15 +418,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -446,19 +448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Cone
       objectReference: {fileID: 0}
-    - target: {fileID: 7740249078882002822, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
---- !u!4 &6926873965644160882 stripped
+--- !u!4 &4989948159921160769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
-  m_PrefabInstance: {fileID: 1734419022}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7740249080507352520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7740249078882002822, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
-  m_PrefabInstance: {fileID: 1734419022}
+  m_PrefabInstance: {fileID: 2674830600326168445}
   m_PrefabAsset: {fileID: 0}
