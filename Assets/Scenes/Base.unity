@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 257868f26b8c153408934e8c8921356d, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1258946929}
+    - target: {fileID: 1659434419025153087, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+      propertyPath: nightPhaseTime
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
 --- !u!114 &233490602 stripped
@@ -705,8 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83213c52c649594081a2d32f5284aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 0
-  timer: 0
+  timerActive: 1
+  totalTime: 30
+  timer: 30
 --- !u!4 &1258946930
 Transform:
   m_ObjectHideFlags: 0
