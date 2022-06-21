@@ -38,7 +38,7 @@ public class PatrollingState : AntAIState
         guard = owner.GetComponent<GuardModel>();
         pointA = new GameObject().transform;
         pointB = new GameObject().transform;
-        owner.GetComponent<GuardModel>().GetPatrolPointsEvent += GetPatrolPoints;
+        GetPatrolPoints();
     }
     public override void Enter()
     {

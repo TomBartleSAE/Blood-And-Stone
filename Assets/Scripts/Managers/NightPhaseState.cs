@@ -38,8 +38,7 @@ public class NightPhaseState : StateBase
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MainMenu");
     }
-
-    //
+    
     private void GameOverCapture()
     {
         StartCoroutine(CapturedSequence());

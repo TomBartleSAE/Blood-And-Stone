@@ -57,7 +57,6 @@ public class GuardModel : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         
         isPatrolling = true;
-        GetPatrolPointsEvent?.Invoke();
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
 
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
