@@ -684,9 +684,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 186620991}
-  blood: {fileID: 58442760}
   selectedBuilding: {fileID: 0}
   cam: {fileID: 149927707}
+  rightClick:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   buildableLayers:
     serializedVersion: 2
     m_Bits: 256
