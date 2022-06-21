@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
-using Unity.VisualScripting;
-using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class InvestigatingState : AntAIState
