@@ -25,8 +25,7 @@ public class InvestigatingState : AntAIState
         guard.isPatrolling = false;
         
         //values for vision cone - heightened awareness = higher values
-        guard.GetComponentInChildren<Vision>().angle = 45;
-        guard.GetComponentInChildren<Vision>().distance = 7.5f;
+
 
         //Run FindPath to get to event site
         pathfinding.FindPath(transform.position, guard.investigateTarget.transform.position);
@@ -37,6 +36,9 @@ public class InvestigatingState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
+        guard.vision.angle = 45;
+        guard.vision.distance = 5f;
+        
         CheckInvestigationPosition();
     }
 
@@ -44,10 +46,6 @@ public class InvestigatingState : AntAIState
     {
         guard.isAlert = false;
 
-        //restore back to default values for standard awareness
-        guard.GetComponentInChildren<Vision>().angle = 25;
-        guard.GetComponentInChildren<Vision>().distance = 5;
-        
         base.Exit();
     }
 

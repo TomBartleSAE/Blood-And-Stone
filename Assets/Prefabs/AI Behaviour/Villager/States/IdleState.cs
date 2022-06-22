@@ -34,11 +34,20 @@ public class IdleState : AntAIState
          base.Execute(aDeltaTime, aTimeScale);
 
          //gets new path once destination reached, again, I'd prefer to have a PathCompletedEvent 
-         if (Vector3.Distance(destination, transform.position) < 0.5f)
+         if (pathfinding.path.Count != 0)
          {
-             pathfinding.path.Clear();
+             if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
+             {
+                 pathfinding.path.Clear();
+                 GetDestination();
+                 pathfinding.FindPath(transform.position, destination);
+             }
+         }
+
+         else
+         {
              GetDestination();
-             pathfinding.FindPath(transform.position, destination);
+             GoToDestination(transform.position, destination);
          }
      }
 

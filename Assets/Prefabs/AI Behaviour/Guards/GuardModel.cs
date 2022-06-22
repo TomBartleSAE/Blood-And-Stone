@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Anthill.AI;
-using DG.Tweening;
 using Tom;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,8 +19,9 @@ public class GuardModel : MonoBehaviour
 
     public GameObject guardView;
     public GameObject ghoulView;
-    public GameObject lightCone;
+    public VisionLightCone lightCone;
     public GameObject mapExit;
+    public GameObject lightConeObject;
 
     public event Action VampireCapturedEvent;
     public event Action GetPatrolPointsEvent;
@@ -51,10 +50,13 @@ public class GuardModel : MonoBehaviour
         pathfindingAgent = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         vision = GetComponent<Vision>();
-        //Would love to not have FindObject
+        lightCone = GetComponentInChildren<VisionLightCone>();
+        //HACK Would love to not have FindObject
         mapExit = GameObject.Find("Return to Castle Trigger");
         vampire = FindObjectOfType<VampireModel>().transform;
         rb = GetComponent<Rigidbody>();
+
+        lightConeObject = GetComponentInChildren<VisionLightCone>().gameObject;
         
         isPatrolling = true;
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
@@ -68,14 +70,9 @@ public class GuardModel : MonoBehaviour
     {
         //TODO sort this out
         //if they see the vampire, will straight away enter chase state
-        if (vision.CanSeeObject(vampire))
+        if (vision != null && vision.CanSeeObject(vampire))
         {
             hasTarget = true;
-        }
-
-        if (isDead)
-        {
-            NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
         }
 
         if (investigateTarget == null)
@@ -100,10 +97,7 @@ public class GuardModel : MonoBehaviour
     
     #endregion
     
-    public void VampireCaptured()
-    {
-        VampireCapturedEvent?.Invoke();
-    }
+
 
     #region Guard to Ghoul Conversion
 
@@ -134,7 +128,9 @@ public class GuardModel : MonoBehaviour
         isDead = true;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
+        //adds to list; unsubs from death event to prevent reacting while dead
         NightNPCManager.Instance.AddToConvertedGhoulList(gameObject);
+        NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
     }
 
     #endregion
@@ -143,6 +139,11 @@ public class GuardModel : MonoBehaviour
     public void CapturedVampire()
     {
         GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOverCapture();
+    }
+    
+    public void VampireCaptured()
+    {
+        VampireCapturedEvent?.Invoke();
     }
     
 }

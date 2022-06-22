@@ -219,6 +219,7 @@ MonoBehaviour:
   ghoulView: {fileID: 319821353597917564}
   lightCone: {fileID: 0}
   mapExit: {fileID: 0}
+  lightConeObject: {fileID: 0}
   hasTarget: 0
   isAlert: 0
   inRange: 0
@@ -227,7 +228,7 @@ MonoBehaviour:
   isDead: 0
   guardRange: 2
   captureTime: 5
-  searchCooldown: 0
+  searchCooldown: 3
   investigationTime: 5
   hearingRange: 20
 --- !u!114 &3689531663806443246
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 25
-  distance: 5
+  distance: 2
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 128

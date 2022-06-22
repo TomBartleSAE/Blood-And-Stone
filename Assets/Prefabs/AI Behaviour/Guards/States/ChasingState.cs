@@ -3,23 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
 using Tanks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChasingState : AntAIState
 {
-    public GameObject owner;
+    private GameObject owner;
     private GuardModel guard;
-    public PathfindingAgent pathfinding;
+    private PathfindingAgent pathfinding;
     private Transform target;
 
     private Coroutine coroutine;
 
-    public bool isCapturing = false;
-    public bool inRange = false;
+    private bool isCapturing = false;
+    private bool inRange = false;
+    private bool losingTarget;
 
-    public static event Action GameOverEvent;
-    
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -36,14 +34,18 @@ public class ChasingState : AntAIState
 
         guard = owner.GetComponent<GuardModel>();
         target = guard.vampire;
+        losingTarget = false;
         
-        //Gets path to target every 5 seconds. Note repeat time for testing/changing
-        InvokeRepeating("ChaseTarget",0, 5 );
+        //Gets path to target every 2 seconds. Note repeat time for testing/changing
+        InvokeRepeating("ChaseTarget",0, 2 );
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+
+        guard.vision.angle = 45f;
+        guard.vision.distance = 5f;
 
         if (guard.vampire != null)
         {
@@ -53,6 +55,16 @@ public class ChasingState : AntAIState
         if (inRange == false && coroutine != null)
         {
             StopCoroutine(coroutine);
+        }
+
+        if (!guard.vision.CanSeeObject(guard.vampire))
+        {
+            losingTarget = true;
+            StartCoroutine(TargetLost());
+        }
+        else
+        {
+            losingTarget = false;
         }
     }
 
@@ -79,6 +91,7 @@ public class ChasingState : AntAIState
         }
     }
 
+    //will capture the vampire after capture time has been reached
     public IEnumerator CapturingTarget()
     {
         isCapturing = true;
@@ -93,19 +106,26 @@ public class ChasingState : AntAIState
         isCapturing = false;
     }
 
+    //if vampire is out of sight, this will run to determine if they have been lost
     public IEnumerator TargetLost()
     {
+        losingTarget = true;
+        
         for (int i = 0; i < guard.searchCooldown; i++)
         {
             yield return new WaitForSeconds(1);
         }
 
         guard.isAlert = false;
+        guard.hasTarget = false;
         guard.investigateTarget = null;
     }
-
+    
     public void ChaseTarget()
     {
-        pathfinding.FindPath(transform.position, target.transform.position);
+        if (!losingTarget)
+        {
+            pathfinding.FindPath(transform.position, target.transform.position);
+        }
     }
 }

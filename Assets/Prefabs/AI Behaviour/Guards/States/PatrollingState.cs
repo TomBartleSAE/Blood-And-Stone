@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Anthill.AI;
 using Tanks;
 using Tom;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class PatrollingState : AntAIState
 {
@@ -45,6 +43,9 @@ public class PatrollingState : AntAIState
         pointACoords = pointA;
         pointBCoords = pointB;
 
+        guard.vision.angle = 25;
+        guard.vision.distance = 2.5f;
+
         //allows to find (same patrol route) even if has exited state previously
         FindPatrolPath(pointA, pointB);
     }
@@ -54,18 +55,27 @@ public class PatrollingState : AntAIState
         base.Execute(aDeltaTime, aTimeScale);
 
         //HACK for if it's reached the destination - I'd rather a PathCompletedEvent or something
-        if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
+        if (pathfinding.path.Count != 0)
         {
-            //determines which way on the route it's going
-            if (patrolType == PatrolType.goingTo)
+            if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
             {
-                patrolType = PatrolType.returning;
-            }
-            else if(patrolType == PatrolType.returning)
-            {
-                patrolType = PatrolType.goingTo;
-            }
+                //determines which way on the route it's going
+                if (patrolType == PatrolType.goingTo)
+                {
+                    patrolType = PatrolType.returning;
+                }
+                else if(patrolType == PatrolType.returning)
+                {
+                    patrolType = PatrolType.goingTo;
+                }
             
+                PatrolRoute();
+            }
+        }
+        
+        if (pathfinding.path.Count == 0)
+        {
+            GetPatrolPoints();
             PatrolRoute();
         }
     }

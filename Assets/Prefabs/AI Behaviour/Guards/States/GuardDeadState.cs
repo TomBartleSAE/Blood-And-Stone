@@ -7,16 +7,15 @@ using UnityEngine;
 
 public class GuardDeadState : AntAIState
 {
-    public GameObject owner;
-    public GuardModel guard;
+    private GameObject owner;
+    private GuardModel guard;
 
-    public GameObject guardView;
-    public GameObject ghoulView;
-    public GameObject lightCone;
-    
-    public Vector3 destinationPos;
-    public Vector3 currentPos;
-    public Transform destination;
+    private GameObject guardView;
+    private GameObject ghoulView;
+    private GameObject lightConeObject;
+
+    private Vector3 destinationPos;
+    private Transform destination;
 
     public override void Create(GameObject aGameObject)
     {
@@ -30,13 +29,15 @@ public class GuardDeadState : AntAIState
 
         guard = owner.GetComponent<GuardModel>();
 
+        guard.vampire = null;
+        lightConeObject = guard.lightConeObject;
+
         CreateGhoul();
     }
 
+    //preventing entering other states after death
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
-        currentPos = transform.position;
-
         guard.hasTarget = false;
         guard.isAlert = false;
         guard.isPatrolling = false;
@@ -49,25 +50,30 @@ public class GuardDeadState : AntAIState
         base.Exit();
     }
 
-    void GetOutOfTown(Vector3 startPos, Vector3 destPos)
+    //clears current path, gets path to exit, repeats every few seconds
+    IEnumerator GetOutOfTown(Vector3 startPos, Vector3 destPos)
     {
         guard.pathfindingAgent.path.Clear();
-        guard.pathfindingAgent.destination = destination;
         guard.pathfindingAgent.FindPath(startPos, destPos);
+
+        //HACK will continue to get the path every half second. Will hopefully avoid the case of ghouls standing around after death
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(GetOutOfTown(transform.position, destinationPos));
     }
 
+    //changes model; gets the exit Vector3, starts to move off screen
     void CreateGhoul()
     {
         guardView = guard.guardView;
         ghoulView = guard.ghoulView;
-        lightCone = guard.lightCone;
         destination = FindObjectOfType<ReturnToCastleTrigger>().transform;
         destinationPos = new Vector3(destination.position.x, destination.position.y - 0.5f, destination.position.z);
 
         guardView.SetActive(false);
         ghoulView.SetActive(true);
-        lightCone.SetActive(false);
+        lightConeObject.SetActive(false);
 
-        GetOutOfTown(transform.position, destinationPos);
+        StartCoroutine(GetOutOfTown(transform.position, destinationPos));
     }
 }
