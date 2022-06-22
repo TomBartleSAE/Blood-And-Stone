@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class ClickMovement : MonoBehaviour
@@ -60,6 +61,12 @@ public class ClickMovement : MonoBehaviour
         Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
         Ray ray = cam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+
+        // Does not move the player if they click on the UI
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))
         {
