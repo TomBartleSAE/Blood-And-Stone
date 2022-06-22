@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tanks;
+using Tom;
 using UnityEngine;
 
 public class DayNPCManager : ManagerBase<DayNPCManager>
 {
-    public List<GameObject> Ghouls;
-    public List<GameObject> Soldiers;
+    public List<GameObject> Ghouls = new List<GameObject>();
+    public List<GameObject> Soldiers = new List<GameObject>();
 
     public event Action GhoulDeathEvent;
+    public event Action SoldierDeathEvent;
 
     public int maxPop;
     public int currentPop;
@@ -17,10 +19,12 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     // Start is called before the first frame update
     void Start()
     {
-        Ghouls = new List<GameObject>();
-        Soldiers = new List<GameObject>();
-
         currentPop = Ghouls.Count;
+
+        /*foreach (var soldier in Soldiers)
+        {
+            GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
+        }*/
     }
 
     // Update is called once per frame
@@ -43,10 +47,12 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     public void AddToSoldierList(GameObject newSoldier)
     {
         Soldiers.Add(newSoldier);
+        newSoldier.GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
     }
 
     public void RemoveFromSoldierList(GameObject soldier)
     {
+        SoldierDeathEvent?.Invoke();
         Soldiers.Remove(soldier);
     }
 }
