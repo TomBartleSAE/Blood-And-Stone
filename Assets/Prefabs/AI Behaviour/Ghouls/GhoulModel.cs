@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class GhoulModel : MonoBehaviour
 {
-    public AttackingState attacking;
     public Health health;
     private PathfindingAgent pathfinding;
 
@@ -29,15 +28,24 @@ public class GhoulModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pathfinding = GetComponent<PathfindingAgent>();
-        //Put this into NPCManager?
         DayNPCManager.Instance.AddToGhoulList(gameObject);
+        pathfinding = GetComponent<PathfindingAgent>();
         pathfinding.grid = FindObjectOfType<PathfindingGrid>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isSelected)
+        {
+            GetComponent<GhoulClickMovement>().enabled = true;
+            isIdle = true;
+        }
+        else
+        {
+            GetComponent<GhoulClickMovement>().enabled = false;
+        }
+        
         if (autoAttack)
         {
             isIdle = false;
@@ -45,9 +53,9 @@ public class GhoulModel : MonoBehaviour
         
         if (target != null)
         {
+            isIdle = false;
             hasTarget = true;
             targetPos = target.position;
-            pathfinding.destination = target;
         }
         else if (target == null)
         {

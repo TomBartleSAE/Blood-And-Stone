@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 6559976953810290360}
   - component: {fileID: 267632787}
   - component: {fileID: 267632786}
+  - component: {fileID: 3715843146105334905}
+  - component: {fileID: -3227832520213065484}
   m_Layer: 9
   m_Name: Ghoul
   m_TagString: Untagged
@@ -197,6 +199,42 @@ MonoBehaviour:
   agent: {fileID: 267632787}
   rb: {fileID: 833944671312180783}
   moveSpeed: 6
+  target: {x: 0, y: 0, z: 0}
+  turnSpeed: 5
+--- !u!114 &3715843146105334905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833944671312180753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44acf2a0cfcdc04469ebde0501c11863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghoulMaterial: {fileID: 2100000, guid: 15d749c86ae3a9f42a0efeb925d17f2f, type: 2}
+--- !u!114 &-3227832520213065484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833944671312180753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44816dd440807df48a402e02987fe19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathfinding: {fileID: 0}
+  cam: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  walkableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  target: {fileID: 0}
 --- !u!1 &833944672601593751
 GameObject:
   m_ObjectHideFlags: 0
