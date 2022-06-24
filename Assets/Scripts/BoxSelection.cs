@@ -13,12 +13,24 @@ public class BoxSelection : MonoBehaviour
 
     public Vector2 startPos;
 
+    private void Start()
+    {
+        cam = FindObjectOfType<Camera>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         //mouse down
         if (Input.GetMouseButtonDown(0))
         {
+            if (units.Count != 0)
+            {
+                units.Clear();
+            }
+            
+            //TODO raycast for individual select
+            
             startPos = Input.mousePosition;
         }
         
@@ -31,6 +43,10 @@ public class BoxSelection : MonoBehaviour
         //mouse held down
         if (Input.GetMouseButton(0))
         {
+            if (units.Count != 0)
+            {
+                units.Clear();
+            }
             UpdateSelectionBox(Input.mousePosition);
         }
     }
@@ -67,12 +83,15 @@ public class BoxSelection : MonoBehaviour
         {
              Vector3 screenPos = cam.WorldToScreenPoint(ghoul.transform.position);
 
+             //if inside the box, will get selected
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
                 units.Add(ghoul);
                 ghoul.GetComponent<GhoulModel>().isSelected = true;
                 ghoul.GetComponent<SelectionIndicator>().EnableIndicator();
             }
+            
+            //if outside the box, will not get selected/get deselected
             else
             {
                 ghoul.GetComponent<GhoulModel>().isSelected = false;
