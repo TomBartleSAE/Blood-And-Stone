@@ -1,30 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Tanks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class GhoulSpawner : MonoBehaviour
+public class GhoulSpawner : SpawnerBase
 {
-    public GameObject thingToSpawn;
-    public Transform locationToSpawn;
-    public int amountToSpawn;
-    
-    public event Action GhoulSpawnedEvent;  
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        SpawnGhouls();
+        //gets total number to spawn including additions from previous night phase
+        int amount = NightNPCManager.Instance.ConvertedGhouls.Count + DayNPCManager.Instance.Ghouls.Count;
+
+        //SpawnCharacter(thingToSpawn, amount, spawnLocation);
     }
-    
-    void SpawnGhouls()
+
+    public override void SpawnCharacter(GameObject thing, int amount, Transform location)
     {
-        GameObject copy = thingToSpawn;
-        for (int i = 0; i < amountToSpawn; i++)
-        {
-            Instantiate(copy, locationToSpawn.position, copy.transform.rotation);
-            GhoulSpawnedEvent?.Invoke();        
-        }
+        base.SpawnCharacter(thing, amount, location);
     }
 }

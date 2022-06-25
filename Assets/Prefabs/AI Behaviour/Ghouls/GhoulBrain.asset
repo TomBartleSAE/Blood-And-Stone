@@ -68,7 +68,7 @@ MonoBehaviour:
     - id: 4
       value: 0
     - id: 5
-      value: 1
+      value: 0
     post:
     - id: 0
       value: 1
@@ -118,4 +118,4 @@ MonoBehaviour:
     - id: 4
       value: 0
     - id: 5
-      value: 1
+      value: 0

@@ -24,12 +24,7 @@ public class GhoulFindTargetState : AntAIState
     {
         base.Enter();
         
-        //need to adjust for build
-        autoAttack = true;
-
         Spawner.Instance.FinishedSpawningEvent += FindTarget;
-
-        //FindTarget();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
