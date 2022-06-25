@@ -15,7 +15,7 @@ public class TowerPlacement : MonoBehaviour
 
     private MainControls controls;
     private InputAction leftClick;
-    public InputAction rightClick;
+    [HideInInspector] public InputAction rightClick;
 
     public LayerMask buildableLayers;
 
