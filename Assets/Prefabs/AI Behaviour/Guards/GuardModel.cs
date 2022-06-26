@@ -26,7 +26,7 @@ public class GuardModel : MonoBehaviour
     public event Action VampireCapturedEvent;
     public event Action GetPatrolPointsEvent;
 
-    public bool hasTarget;
+    public bool hasTarget = false;
     public bool isAlert;
     public bool inRange;
     public bool targetCaptured;

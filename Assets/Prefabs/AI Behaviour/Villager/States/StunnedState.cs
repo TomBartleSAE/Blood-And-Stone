@@ -11,6 +11,9 @@ public class StunnedState : AntAIState
     public GameObject owner;
     public VillagerModel villager;
 
+    public event Action StunBeginEvent;
+    public event Action StunEndEvent;
+
     public float stunTime;
 
     public override void Create(GameObject aGameObject)
@@ -50,7 +53,7 @@ public class StunnedState : AntAIState
         villager.isStunned = false;
         villager.isScared = true;
 
-        villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
+        //villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
 
         Finish();
     }

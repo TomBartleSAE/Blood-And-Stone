@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class VillagerModel : MonoBehaviour, IStunnable
 {
     public RaycastHit hit;
+    public Rigidbody rb;
 
     public float rayDistance = 20;
 
@@ -23,8 +24,8 @@ public class VillagerModel : MonoBehaviour, IStunnable
     {
         NightNPCManager.Instance.Villagers.Add(gameObject);
 
+        rb = GetComponent<Rigidbody>();
         GetComponent<Health>().DeathEvent += Die;
-        
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
     }
     void Die(GameObject me)
