@@ -8,10 +8,28 @@ namespace Tom
     public class Health : MonoBehaviour
     {
         public float currentHealth;
-        public float maxHealth;
+        [SerializeField] private float maxHealth;
+        
+        public float MaxHealth
+        {
+            get => maxHealth;
+            set
+            {
+                maxHealth = value;
+
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+
+                MaxHealthChangedEvent?.Invoke();
+            }
+        }
 
         public event Action<GameObject> DeathEvent;
         public event Action<GameObject> DamageChangeEvent;
+
+        public event Action MaxHealthChangedEvent;
 
         public void Awake()
         {

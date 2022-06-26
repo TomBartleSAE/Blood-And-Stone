@@ -15,6 +15,12 @@ public class BloodMeterUI : MonoBehaviour
         UpdateUI(0);
     }
 
+    public void OnDestroy()
+    {
+        PlayerManager.Instance.BloodChangedEvent -= UpdateUI;
+        PlayerManager.Instance.MaxBloodChangedEvent -= UpdateUI;
+    }
+
     public void UpdateUI(int amount)
     {
         float bloodPercentage = (float)PlayerManager.Instance.currentBlood / (float)PlayerManager.Instance.maxBlood;
