@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ClickMovement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class ClickMovement : MonoBehaviour
     public Transform target;
 
     private float timer;
+
+    public GraphicRaycaster graphicRaycaster;
 
     private void Awake()
     {
@@ -62,8 +65,12 @@ public class ClickMovement : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
-        // Does not move the player if they click on the UI
-        if (EventSystem.current.IsPointerOverGameObject())
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        data.position = mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(data, results);
+
+        if (results.Count > 0)
         {
             return;
         }
