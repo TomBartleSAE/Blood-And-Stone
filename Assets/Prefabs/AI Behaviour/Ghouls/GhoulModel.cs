@@ -56,6 +56,8 @@ public class GhoulModel : MonoBehaviour
             isIdle = false;
             hasTarget = true;
             targetPos = target.position;
+            
+            //TODO GetDistance for target range etc
         }
         else if (target == null)
         {
@@ -65,7 +67,7 @@ public class GhoulModel : MonoBehaviour
 
     
     //will switch to AttackState when in range to attack
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<SoldierModel>())
         {
@@ -81,7 +83,7 @@ public class GhoulModel : MonoBehaviour
         {
             inRange = false;
         }
-    }
+    }*/
 
     //will return to FindTargetState and look for new target
     void TargetDeath(GameObject deadThing)

@@ -2,25 +2,49 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BoxSelection : MonoBehaviour
 {
     public RectTransform selectionBox;
     public Camera cam;
+    public GraphicRaycaster graphicRaycaster;
+
+    public LayerMask ghoulLayer;
 
     public List<GameObject> units = new List<GameObject>();
 
     public Vector2 startPos;
 
+    public bool HUDClick;
+
     private void Start()
     {
-        cam = FindObjectOfType<Camera>();
+        //cam = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //mouse up
+        if (Input.GetMouseButtonUp(0))
+        {
+            ReleaseSelectionBox();
+        }
+        
+        //Prevents clicking/dragging onto HUD elements
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        data.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(data, results);
+
+        if (results.Count > 0)
+        {
+            HUDClick = true;
+            return;
+        }
+
         //mouse down
         if (Input.GetMouseButtonDown(0))
         {
@@ -32,28 +56,40 @@ public class BoxSelection : MonoBehaviour
             //TODO raycast for individual select
             
             startPos = Input.mousePosition;
-        }
-        
-        //mouse up
-        if (Input.GetMouseButtonUp(0))
-        {
-            ReleaseSelectionBox();
+
+            RaycastHit hit;
+            
+            if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ghoulLayer))
+            {
+                if (hit.transform.GetComponent<GhoulModel>())
+                {
+                    units.Add(hit.transform.gameObject);
+                    hit.transform.GetComponent<GhoulModel>().isSelected = true;
+                    hit.transform.GetComponent<SelectionIndicator>().EnableIndicator();
+                }
+            }
+            HUDClick = false;
         }
         
         //mouse held down
         if (Input.GetMouseButton(0))
         {
-            if (units.Count != 0)
+            /*if (units.Count != 0)
             {
                 units.Clear();
+            }*/
+
+            if (HUDClick == false)
+            {
+                UpdateSelectionBox(Input.mousePosition);
             }
-            UpdateSelectionBox(Input.mousePosition);
         }
     }
 
     //creating a selection box
     void UpdateSelectionBox(Vector2 currentMousePos)
     {
+
         if (!selectionBox.gameObject.activeInHierarchy)
         {
             selectionBox.gameObject.SetActive(true);
@@ -86,7 +122,14 @@ public class BoxSelection : MonoBehaviour
              //if inside the box, will get selected
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
-                units.Add(ghoul);
+                if (!units.Contains(ghoul))
+                {
+                    units.Add(ghoul);
+                }
+            }
+
+            if (units.Contains(ghoul))
+            {
                 ghoul.GetComponent<GhoulModel>().isSelected = true;
                 ghoul.GetComponent<SelectionIndicator>().EnableIndicator();
             }

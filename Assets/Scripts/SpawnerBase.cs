@@ -9,8 +9,7 @@ public class SpawnerBase : MonoBehaviour
     public GameObject thingToSpawn;
     public int amountToSpawn;
     public Vector3 spawnLocation;
-
-    public bool waypoints;
+    public Transform[] SpawnPoints;
 
     public event Action spawnFinish;
 
@@ -20,24 +19,18 @@ public class SpawnerBase : MonoBehaviour
 
         for (int i = 0; i < amountToSpawn; i++)
         {
-            if (waypoints)
-            {
-                Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
-                Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
-            }
-
-            if (!waypoints)
-            {
-                GetSpawnPoint();
-                Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
-                Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
-            }
+            //Get random waypoint from array; set spawn location
+            Transform spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Length - 1)];
+            spawnLocation = spawnPoint.position;
+            Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
+            //Spawn thing
+            Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
         }
 
         spawnFinish?.Invoke();
     }
     
-    public void GetSpawnPoint()
+    /*public void GetSpawnPoint()
     {
         Node tempPointB = new Node();
         tempPointB.coordinates = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
@@ -51,5 +44,5 @@ public class SpawnerBase : MonoBehaviour
         {
             GetSpawnPoint();
         }
-    }
+    }*/
 }

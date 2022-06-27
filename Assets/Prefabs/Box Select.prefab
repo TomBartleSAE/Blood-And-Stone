@@ -136,7 +136,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &3220443521546325954
 MonoBehaviour:
@@ -192,5 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionBox: {fileID: 3220443521209165942}
   cam: {fileID: 0}
+  graphicRaycaster: {fileID: 0}
+  ghoulLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   units: []
   startPos: {x: 0, y: 0}
+  HUDClick: 0
