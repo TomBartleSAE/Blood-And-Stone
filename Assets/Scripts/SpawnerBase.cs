@@ -8,8 +8,10 @@ public class SpawnerBase : MonoBehaviour
 {
     public GameObject thingToSpawn;
     public int amountToSpawn;
-    public Vector3 spawnLocation;
     public Transform[] SpawnPoints;
+    public Vector3 spawnLocation;
+
+    public event Action<GameObject> ThingSpawned;
 
     public event Action spawnFinish;
 
@@ -25,24 +27,9 @@ public class SpawnerBase : MonoBehaviour
             Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
             //Spawn thing
             Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
+            ThingSpawned?.Invoke(go);
         }
 
         spawnFinish?.Invoke();
     }
-    
-    /*public void GetSpawnPoint()
-    {
-        Node tempPointB = new Node();
-        tempPointB.coordinates = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-        
-        if (tempPointB.isBlocked == false)
-        {
-            spawnLocation = tempPointB.coordinates;
-        }
-    
-        else if(tempPointB.isBlocked == true)
-        {
-            GetSpawnPoint();
-        }
-    }*/
 }

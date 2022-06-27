@@ -10,10 +10,11 @@ public class GuardSpawner : SpawnerBase
     private void Start()
     {
         SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
+        ThingSpawned += AddToList;
     }
 
-    public override void SpawnCharacter(GameObject thing, int amount, Vector3 location)
+    void AddToList(GameObject guard)
     {
-        base.SpawnCharacter(thing, amount, location);
+        NightNPCManager.Instance.AddToGuardList(guard);
     }
 }
