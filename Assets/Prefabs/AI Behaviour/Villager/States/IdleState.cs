@@ -17,13 +17,14 @@ public class IdleState : AntAIState
         base.Create(aGameObject);
         
         owner = aGameObject;
-        pathfinding = owner.GetComponent<PathfindingAgent>();
     }
     
     public override void Enter()
     {
         base.Enter();
         
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+
         GetDestination();
 
         GoToDestination(transform.position, destination);
@@ -65,7 +66,7 @@ public class IdleState : AntAIState
         if (!destinationNode.isBlocked)
         {
             destination = destinationNode.coordinates;
-            newPath = false;
+             newPath = false;
         }
         else
         {

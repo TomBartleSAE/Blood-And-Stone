@@ -46,6 +46,7 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
 
     public void RemoveFromVillagerList(GameObject villager)
     {
+        //Lets other subs know about dead villager; removes from list
         VillagerDeathEvent?.Invoke(villager);
         Villagers.Remove(villager);
     }

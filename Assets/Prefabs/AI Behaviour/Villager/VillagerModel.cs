@@ -11,6 +11,8 @@ public class VillagerModel : MonoBehaviour, IStunnable
 {
     public RaycastHit hit;
     public Rigidbody rb;
+    public PathfindingAgent pathfinding;
+    public LayerMask floor;
 
     public float rayDistance = 20;
 
@@ -22,15 +24,15 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     private void Start()
     {
-        NightNPCManager.Instance.Villagers.Add(gameObject);
-
         rb = GetComponent<Rigidbody>();
+        pathfinding = GetComponent<PathfindingAgent>();
         GetComponent<Health>().DeathEvent += Die;
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
     }
+
     void Die(GameObject me)
     {
-        NightNPCManager.Instance.RemoveFromVillagerList(me);
+        //NightNPCManager.Instance.RemoveFromVillagerList(me);
         gameObject.SetActive(false);
     }
 

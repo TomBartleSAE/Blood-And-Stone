@@ -13,6 +13,7 @@ public class VillagerSpawner : SpawnerBase
 
     void AddToList(GameObject villager)
     {
+        Debug.Log("Event Worked");
         NightNPCManager.Instance.AddToVillagerList(villager);
     }
 }
