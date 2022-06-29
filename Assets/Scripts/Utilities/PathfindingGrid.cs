@@ -52,7 +52,7 @@ public class PathfindingGrid : MonoBehaviour
 
     public Node GetNodeFromPosition(Vector3 position)
     {
-        Vector3 coordinates = new Vector3(Mathf.Round(position.x/tileSize) * tileSize, Mathf.RoundToInt(position.y/tileSize) * tileSize,
+        Vector3 coordinates = new Vector3(Mathf.Round(position.x/tileSize) * tileSize, 0,
             Mathf.RoundToInt(position.z/ tileSize) * tileSize);
 
         foreach (Node n in nodes)
