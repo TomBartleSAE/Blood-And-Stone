@@ -6124,6 +6124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149927707}
     - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 5087221705293015488}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: castleLayer.m_Bits
       value: 2048
       objectReference: {fileID: 0}
@@ -6199,8 +6203,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8764580139910373241, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764580139910373241, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+--- !u!1 &5087221705293015488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1218579870839952403, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+  m_PrefabInstance: {fileID: 5087221705293015487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5795904370705048089
 Transform:
   m_ObjectHideFlags: 0
