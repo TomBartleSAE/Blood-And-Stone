@@ -32,16 +32,18 @@ public class PatrollingState : AntAIState
         owner = aGameObject;
         
         //all this needed in Create() as the event is fired in Enter in GuardModel
-        pathfinding = owner.GetComponent<PathfindingAgent>();
-        guard = owner.GetComponent<GuardModel>();
-        GetPatrolPoints();
     }
     public override void Enter()
     {
         base.Enter();
-
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+        pathfinding.PathCompletedEvent += ChangeDirection;
+        guard = owner.GetComponent<GuardModel>();
+        
         pointACoords = pointA;
         pointBCoords = pointB;
+        
+        GetPatrolPoints();
 
         guard.vision.angle = 25;
         guard.vision.distance = 2.5f;
@@ -53,8 +55,7 @@ public class PatrollingState : AntAIState
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
-
-        //HACK for if it's reached the destination - I'd rather a PathCompletedEvent or something
+        
         if (pathfinding.path.Count != 0)
         {
             if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
@@ -72,12 +73,6 @@ public class PatrollingState : AntAIState
                 PatrolRoute();
             }
         }
-        
-        if (pathfinding.path.Count == 0)
-        {
-            GetPatrolPoints();
-            PatrolRoute();
-        }
     }
 
     public override void Exit()
@@ -90,13 +85,9 @@ public class PatrollingState : AntAIState
     //Gets points for patrol route per night
     public void GetPatrolPoints()
     {
-        //useful later perhaps
-        //int gridRangeX = pathfinding.grid.gridSize.x;
-        //int gridRangeZ = pathfinding.grid.gridSize.y;
-
         //gets second patrol point; makes sure it isn't blocked
         Node tempPointB = new Node();
-        tempPointB.coordinates = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        tempPointB.coordinates = new Vector3(Random.Range(-8, 8), 0, Random.Range(-7, 5));
 
         if (tempPointB.isBlocked == false)
         {
@@ -110,17 +101,21 @@ public class PatrollingState : AntAIState
         }
     }
 
+    void ChangeDirection()
+    {
+        GetPatrolPoints();
+        PatrolRoute();
+    }
+
     //changes path destination according to patrol direction
     void PatrolRoute()
     {
         switch (patrolType)
         {
             case PatrolType.goingTo :
-                //pathfinding.destination = pointB;
                 FindPatrolPath(transform.position, pointB);
                 break;
             case PatrolType.returning :
-                //pathfinding.destination = pointA;
                 FindPatrolPath(transform.position, pointA);
                 break;
         }

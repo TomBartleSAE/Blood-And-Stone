@@ -9,13 +9,13 @@ public class SelectionIndicator : MonoBehaviour
     // Start is called before the first frame update
     public void EnableIndicator()
     {
-        this.enabled = true;
+        enabled = true;
         GetComponentInChildren<MeshRenderer>().material.color = Color.red;
     }
 
     public void DisableIndicator()
     {
-        this.enabled = false;
+        enabled = false;
         GetComponentInChildren<MeshRenderer>().material = ghoulMaterial;
     }
 }

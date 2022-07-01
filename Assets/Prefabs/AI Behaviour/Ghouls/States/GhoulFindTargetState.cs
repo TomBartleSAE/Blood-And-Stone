@@ -7,7 +7,6 @@ using UnityEngine;
 public class GhoulFindTargetState : AntAIState
 {
     public GhoulModel ghoulModel;
-    public Wander wander;
 
     public bool autoAttack;
 
@@ -41,7 +40,6 @@ public class GhoulFindTargetState : AntAIState
 
     public override void Exit()
     {
-        GetComponentInParent<Wander>().enabled = false;
         base.Exit();
     }
 

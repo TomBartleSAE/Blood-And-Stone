@@ -82,28 +82,12 @@ public class ChasingState : AntAIState
         if (distance <= guard.guardRange && isCapturing != true)
         {
             inRange = true;
-            coroutine = StartCoroutine(CapturingTarget());
         }
         else if (distance > guard.guardRange)
         {
             inRange = false;
             isCapturing = false;
         }
-    }
-
-    //will capture the vampire after capture time has been reached
-    public IEnumerator CapturingTarget()
-    {
-        isCapturing = true;
-
-        for (int i = 0; i < guard.captureTime; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
-        guard.targetCaptured = true;
-        guard.CapturedVampire();
-        isCapturing = false;
     }
 
     //if vampire is out of sight, this will run to determine if they have been lost
@@ -120,12 +104,13 @@ public class ChasingState : AntAIState
         guard.hasTarget = false;
         guard.investigateTarget = null;
     }
-    
+
     public void ChaseTarget()
     {
         if (!losingTarget)
         {
             pathfinding.FindPath(transform.position, target.transform.position);
+            CheckRange();
         }
     }
 }

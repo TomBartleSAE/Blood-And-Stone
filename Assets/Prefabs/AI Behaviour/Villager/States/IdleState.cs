@@ -61,16 +61,17 @@ public class IdleState : AntAIState
     void GetDestination()
     {
         Node destinationNode = new Node();
-        destinationNode.coordinates = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        destinationNode.coordinates = new Vector3(Random.Range(-8, 8), 0, Random.Range(5,-7));
 
-        if (!destinationNode.isBlocked)
+        if (destinationNode.isBlocked)
+        {
+            GetDestination();
+        }
+        
+        if (!destinationNode.isBlocked || pathfinding.path.Count == 0)
         {
             destination = destinationNode.coordinates;
              newPath = false;
-        }
-        else
-        {
-            GetDestination();
         }
     }
 

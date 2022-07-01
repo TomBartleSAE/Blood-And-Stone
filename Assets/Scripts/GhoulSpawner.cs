@@ -12,13 +12,13 @@ public class GhoulSpawner : SpawnerBase
     {
         //gets total number to spawn including additions from previous night phase
         int amount = NightNPCManager.Instance.ConvertedGhouls.Count + DayNPCManager.Instance.Ghouls.Count;
-        //spawnLocation = spawnWaypoint.position;
 
         SpawnCharacter(thingToSpawn, amount, spawnLocation);
+        ThingSpawned += AddToList;
     }
 
-    /*public override void SpawnCharacter(GameObject thing, int amount, Vector3 location)
+    void AddToList(GameObject ghoul)
     {
-        base.SpawnCharacter(thing, amount, location);
-    }*/
+        DayNPCManager.Instance.AddToGhoulList(ghoul);
+    }
 }

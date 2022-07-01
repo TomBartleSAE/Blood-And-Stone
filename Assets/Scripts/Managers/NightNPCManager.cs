@@ -8,7 +8,9 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public List<GameObject> Villagers;
     public List<GameObject> Guards;
     public List<GameObject> ConvertedGhouls;
-    
+
+    //public GameObject villagerSpawner;
+
     public event Action GhoulDeathEvent;
     public event Action GameOverCaptureEvent;
     public event Action<GameObject> VillagerDeathEvent;
@@ -26,7 +28,7 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
 
         currentPop = DayNPCManager.Instance.Ghouls.Count;
         popCap = DayNPCManager.Instance.maxPop;
-        
+
         foreach (var guard in Guards)
         {
             guard.GetComponent<GuardModel>().NewConversionEvent += AddToConvertedGhoulList;

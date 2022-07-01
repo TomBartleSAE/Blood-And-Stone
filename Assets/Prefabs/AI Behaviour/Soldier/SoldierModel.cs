@@ -42,7 +42,6 @@ public class SoldierModel : EnemyBase
 
     private void Start()
     {
-        DayNPCManager.Instance.AddToSoldierList(gameObject);
     }
 
     public void ChangeTarget(GameObject newTarget)

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4207955421081625578
 Transform:
   m_ObjectHideFlags: 0
@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1173ad24968b52141a6c6973eb120a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thingToSpawn: {fileID: 0}
-  amountToSpawn: 0
+  thingToSpawn: {fileID: 3689531663806443243, guid: 7924d889e45f5204b89c7f23f2f938be, type: 3}
+  amountToSpawn: 4
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnLocation: {x: 0, y: 0, z: 0}
-  waypoints: 0

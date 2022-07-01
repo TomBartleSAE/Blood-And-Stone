@@ -17,6 +17,8 @@ public class PathfindingAgent : MonoBehaviour
 
     public event Action NewPathEvent;
     public event Action PathFailedEvent;
+
+    public event Action PathCompletedEvent;
     [Header("Debug")]
     public Transform destination;
     public bool pathOnStart = false;
@@ -77,6 +79,7 @@ public class PathfindingAgent : MonoBehaviour
 
             if (currentNode.index == destinationIndex)
             {
+                PathCompletedEvent?.Invoke();
                 break;
             }
 

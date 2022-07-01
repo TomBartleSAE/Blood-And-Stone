@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7621921801392273964}
-  - component: {fileID: 7621921801392273967}
+  - component: {fileID: 8331414240849668853}
+  - component: {fileID: 4410560965193921257}
   m_Layer: 0
   m_Name: NPC Manager
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7621921801392273967
+--- !u!114 &8331414240849668853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +42,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7621921801392273966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e31f6b45ac2a1c48bd8dc60933a33ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff2cd1b344281841aa46083fb05457e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ghouls: []
+  Soldiers: []
+  maxPop: 0
+  currentPop: 0
+--- !u!114 &4410560965193921257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621921801392273966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d34420c79d40140af60700ca1deb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Villagers: []
+  Guards: []
+  ConvertedGhouls: []
+  villagerSpawner: {fileID: 0}
+  popCap: 0
+  currentPop: 0

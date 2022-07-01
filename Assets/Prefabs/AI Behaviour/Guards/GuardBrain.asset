@@ -28,7 +28,7 @@ MonoBehaviour:
       name: isDead
   actions:
   - name: PatrollingState
-    isDefault: 1
+    isDefault: 0
     state: {fileID: 7539529682301998708, guid: b60bec39a5aba2f47bb5be01486ddb2c, type: 3}
     cost: 0
     position: {x: 517.9701, y: 290.94022}
@@ -90,14 +90,16 @@ MonoBehaviour:
     - id: 3
       value: 1
   - name: GuardIdleState
-    isDefault: 0
+    isDefault: 1
     state: {fileID: 5255798067474121339, guid: bd0e5aecad4b46e4ab4db5429bae8461, type: 3}
     cost: 0
     position: {x: 316.9989, y: 89.42322}
     pre:
     - id: 5
       value: 0
-    post: []
+    post:
+    - id: 4
+      value: 1
   - name: GuardDeadState
     isDefault: 0
     state: {fileID: 399400053748001989, guid: 3edb33bdd98bc7847abd5fcf6e1bfd23, type: 3}
@@ -117,11 +119,11 @@ MonoBehaviour:
     - id: 3
       value: 1
   worldStates:
-  - position: {x: 304.61932, y: 546.05695}
+  - position: {x: 302.61932, y: 557.05695}
     isAutoUpdate: 1
     list:
     - id: 0
-      value: 1
+      value: 0
     - id: 1
       value: 0
     - id: 2

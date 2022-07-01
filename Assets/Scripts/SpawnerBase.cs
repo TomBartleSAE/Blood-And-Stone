@@ -24,7 +24,8 @@ public class SpawnerBase : MonoBehaviour
             //Get random waypoint from array; set spawn location
             Transform spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Length - 1)];
             spawnLocation = spawnPoint.position;
-            Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
+            Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), 
+                spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
             //Spawn thing
             Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
             ThingSpawned?.Invoke(go);

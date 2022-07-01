@@ -21,10 +21,10 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     {
         currentPop = Ghouls.Count;
 
-        /*foreach (var soldier in Soldiers)
+        foreach (var soldier in Soldiers)
         {
             GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
-        }*/
+        }
     }
 
     // Update is called once per frame

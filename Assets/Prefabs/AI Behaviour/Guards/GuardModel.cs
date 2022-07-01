@@ -45,8 +45,6 @@ public class GuardModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NightNPCManager.Instance.AddToGuardList(gameObject);
-        
         pathfindingAgent = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         vision = GetComponent<Vision>();
@@ -62,6 +60,8 @@ public class GuardModel : MonoBehaviour
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
 
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
+        
+        isPatrolling = true;
 
         //TODO get reference to own Guard and Ghoul objects
     }
@@ -97,8 +97,6 @@ public class GuardModel : MonoBehaviour
     
     #endregion
     
-
-
     #region Guard to Ghoul Conversion
 
     public void CheckGhoulCapacity(GameObject thing)
@@ -134,8 +132,7 @@ public class GuardModel : MonoBehaviour
     }
 
     #endregion
-
-
+    
     public void CapturedVampire()
     {
         GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOverCapture();

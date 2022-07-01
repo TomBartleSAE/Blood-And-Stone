@@ -209,15 +209,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf2500588ed604438efc78542db7a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  pathfindingAgent: {fileID: 0}
-  vision: {fileID: 0}
-  rb: {fileID: 0}
+  health: {fileID: 3689531663806443235}
+  pathfindingAgent: {fileID: 3689531663806443246}
+  vision: {fileID: 1303925034}
+  rb: {fileID: 3689531663806443232}
   investigateTarget: {fileID: 0}
   vampire: {fileID: 0}
   guardView: {fileID: 3689531664595969478}
   ghoulView: {fileID: 319821353597917564}
-  lightCone: {fileID: 0}
+  lightCone: {fileID: 4806856018028553636}
   mapExit: {fileID: 0}
   lightConeObject: {fileID: 0}
   hasTarget: 0
@@ -391,15 +391,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.3315384
+      value: 0.93261534
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.3315384
+      value: 0.93261534
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,6 +451,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
+--- !u!114 &4806856018028553636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7470216513052695257, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
+  m_PrefabInstance: {fileID: 2674830600326168445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3521dce3aaddfb4182becc201877843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4989948159921160769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6926873963955895612, guid: b8511b1d214a4c447882673d34bd9411, type: 3}
