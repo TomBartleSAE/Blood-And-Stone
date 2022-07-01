@@ -13,50 +13,29 @@ public class TowerPlacement : MonoBehaviour
 
     public Camera cam;
 
-    private MainControls controls;
-    private InputAction leftClick;
-    [HideInInspector] public InputAction rightClick;
-
     public LayerMask buildableLayers;
 
     public event Action<BuildingBase, Node> MouseOverNodeEvent;
     public event Action MouseOffGridEvent;
 
-    private void Awake()
-    {
-        controls = new MainControls();
-    }
 
     private void OnEnable()
     {
-        controls.Enable();
-
-        leftClick = controls.Day.LeftClick;
-        leftClick.Enable();
-        leftClick.performed += PerformLeftClick;
-
-        rightClick = controls.Day.RightClick;
-        rightClick.Enable();
-        rightClick.performed += PerformRightClick;
+        InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
+        InputManager.Instance.OnRightClickEvent += PerformRightClick;
     }
 
     private void OnDisable()
     {
-        controls.Disable();
-        
-        leftClick.Disable();
-        leftClick.performed += PerformLeftClick;
-        
-        rightClick.Disable();
-        rightClick.performed -= PerformRightClick;
+        InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
+        InputManager.Instance.OnRightClickEvent -= PerformRightClick;
     }
 
     void Update()
     {
         if (selectedBuilding)
         {
-            Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
-            Ray ray = cam.ScreenPointToRay(mousePosition);
+            Ray ray = cam.ScreenPointToRay(InputManager.Instance.GetMousePosition());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, buildableLayers))
@@ -96,7 +75,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    public void PerformLeftClick(InputAction.CallbackContext obj)
+    public void PerformLeftClick(ClickEventArgs args)
     {
         if (selectedNode != null && selectedBuilding != null)
         {
@@ -107,7 +86,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    public void PerformRightClick(InputAction.CallbackContext obj)
+    public void PerformRightClick(ClickEventArgs args)
     {
         selectedBuilding = null;
         MouseOffGridEvent?.Invoke(); // Not the best name for this but the tower ghost needs to turn off when you right click

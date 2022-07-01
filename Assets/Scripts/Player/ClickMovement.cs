@@ -3,15 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ClickMovement : MonoBehaviour
 {
     public PathfindingAgent agent;
-
-    private MainControls controls;
-    private InputAction leftClick;
 
     public Camera cam;
 
@@ -24,25 +20,14 @@ public class ClickMovement : MonoBehaviour
 
     public GraphicRaycaster graphicRaycaster;
 
-    private void Awake()
-    {
-        controls = new MainControls();
-    }
-
     private void OnEnable()
     {
-        controls.Enable();
-
-        leftClick = controls.Night.MouseClick;
-        leftClick.Enable();
-        leftClick.performed += PerformClick;
+        InputManager.Instance.OnLeftClickEvent += PerformClick;
     }
 
     private void OnDisable()
     {
-        controls.Disable();
-        leftClick.Disable();
-        leftClick.performed -= PerformClick;
+        InputManager.Instance.OnLeftClickEvent -= PerformClick;
     }
 
     public void Update()
@@ -59,14 +44,13 @@ public class ClickMovement : MonoBehaviour
         }
     }
 
-    private void PerformClick(InputAction.CallbackContext obj)
+    private void PerformClick(ClickEventArgs args)
     {
-        Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
-        Ray ray = cam.ScreenPointToRay(mousePosition);
+        Ray ray = cam.ScreenPointToRay(args.mousePosition);
         RaycastHit hit;
 
         PointerEventData data = new PointerEventData(EventSystem.current);
-        data.position = mousePosition;
+        data.position = args.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
         graphicRaycaster.Raycast(data, results);
 

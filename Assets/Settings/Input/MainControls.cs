@@ -28,15 +28,6 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
             ""id"": ""ab1eb040-ddae-4ff2-a0c9-ab2833a70699"",
             ""actions"": [
                 {
-                    ""name"": ""MoveKeyboard"",
-                    ""type"": ""Value"",
-                    ""id"": ""c9b5ff33-d851-4b13-8765-c5c5b5dda8d4"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""MouseClick"",
                     ""type"": ""Button"",
                     ""id"": ""c50802cd-e8af-4bc4-83bf-6426f12accbc"",
@@ -56,61 +47,6 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""528f59c2-b98b-42ba-b19a-e16c9056eaa8"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveKeyboard"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""06ef41ba-47bc-4aba-a773-e2f44cad6fd6"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""8b8490f6-0df1-4708-a677-800f33d99616"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""87e1ae6b-d71c-4c65-8344-b62be9c8d48c"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""6438063d-02ed-44f6-b7dd-43a077dca2d6"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": """",
                     ""id"": ""8ae4fc09-b410-4b61-80a6-450c658beb93"",
@@ -202,13 +138,80 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Game"",
+            ""id"": ""41b8475e-bcaa-41fe-9e50-5910f5831b0f"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""364a959e-2c52-48f8-9ebc-d579c05ba951"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""59a3877f-5a20-4fcf-bf39-70be93481c1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""defdb1c9-212c-4e51-b5e8-1818aa3f17c7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4763b148-36fb-47d2-8451-e54a89a58a6d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de0d5446-514b-4813-b1db-7034859f8998"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35d6187a-249f-4dcc-879e-aab9cdbb0cf5"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
         // Night
         m_Night = asset.FindActionMap("Night", throwIfNotFound: true);
-        m_Night_MoveKeyboard = m_Night.FindAction("MoveKeyboard", throwIfNotFound: true);
         m_Night_MouseClick = m_Night.FindAction("MouseClick", throwIfNotFound: true);
         m_Night_MousePosition = m_Night.FindAction("MousePosition", throwIfNotFound: true);
         // Day
@@ -216,6 +219,11 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
         m_Day_MousePosition = m_Day.FindAction("MousePosition", throwIfNotFound: true);
         m_Day_LeftClick = m_Day.FindAction("LeftClick", throwIfNotFound: true);
         m_Day_RightClick = m_Day.FindAction("RightClick", throwIfNotFound: true);
+        // Game
+        m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game_LeftClick = m_Game.FindAction("LeftClick", throwIfNotFound: true);
+        m_Game_RightClick = m_Game.FindAction("RightClick", throwIfNotFound: true);
+        m_Game_MousePosition = m_Game.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -275,14 +283,12 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
     // Night
     private readonly InputActionMap m_Night;
     private INightActions m_NightActionsCallbackInterface;
-    private readonly InputAction m_Night_MoveKeyboard;
     private readonly InputAction m_Night_MouseClick;
     private readonly InputAction m_Night_MousePosition;
     public struct NightActions
     {
         private @MainControls m_Wrapper;
         public NightActions(@MainControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveKeyboard => m_Wrapper.m_Night_MoveKeyboard;
         public InputAction @MouseClick => m_Wrapper.m_Night_MouseClick;
         public InputAction @MousePosition => m_Wrapper.m_Night_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Night; }
@@ -294,9 +300,6 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_NightActionsCallbackInterface != null)
             {
-                @MoveKeyboard.started -= m_Wrapper.m_NightActionsCallbackInterface.OnMoveKeyboard;
-                @MoveKeyboard.performed -= m_Wrapper.m_NightActionsCallbackInterface.OnMoveKeyboard;
-                @MoveKeyboard.canceled -= m_Wrapper.m_NightActionsCallbackInterface.OnMoveKeyboard;
                 @MouseClick.started -= m_Wrapper.m_NightActionsCallbackInterface.OnMouseClick;
                 @MouseClick.performed -= m_Wrapper.m_NightActionsCallbackInterface.OnMouseClick;
                 @MouseClick.canceled -= m_Wrapper.m_NightActionsCallbackInterface.OnMouseClick;
@@ -307,9 +310,6 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
             m_Wrapper.m_NightActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @MoveKeyboard.started += instance.OnMoveKeyboard;
-                @MoveKeyboard.performed += instance.OnMoveKeyboard;
-                @MoveKeyboard.canceled += instance.OnMoveKeyboard;
                 @MouseClick.started += instance.OnMouseClick;
                 @MouseClick.performed += instance.OnMouseClick;
                 @MouseClick.canceled += instance.OnMouseClick;
@@ -369,9 +369,57 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
         }
     }
     public DayActions @Day => new DayActions(this);
+
+    // Game
+    private readonly InputActionMap m_Game;
+    private IGameActions m_GameActionsCallbackInterface;
+    private readonly InputAction m_Game_LeftClick;
+    private readonly InputAction m_Game_RightClick;
+    private readonly InputAction m_Game_MousePosition;
+    public struct GameActions
+    {
+        private @MainControls m_Wrapper;
+        public GameActions(@MainControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftClick => m_Wrapper.m_Game_LeftClick;
+        public InputAction @RightClick => m_Wrapper.m_Game_RightClick;
+        public InputAction @MousePosition => m_Wrapper.m_Game_MousePosition;
+        public InputActionMap Get() { return m_Wrapper.m_Game; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+        public void SetCallbacks(IGameActions instance)
+        {
+            if (m_Wrapper.m_GameActionsCallbackInterface != null)
+            {
+                @LeftClick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
+                @RightClick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRightClick;
+                @MousePosition.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+            }
+            m_Wrapper.m_GameActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+            }
+        }
+    }
+    public GameActions @Game => new GameActions(this);
     public interface INightActions
     {
-        void OnMoveKeyboard(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
     }
@@ -380,5 +428,11 @@ public partial class @MainControls : IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+    }
+    public interface IGameActions
+    {
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

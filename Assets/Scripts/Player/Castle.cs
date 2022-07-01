@@ -19,43 +19,33 @@ public class Castle : MonoBehaviour
 
     public int[] ghoulPopcaps = new int[4];
     public GameObject[] meshes = new GameObject[4];
-    
-    private MainControls controls;
-    private InputAction leftClick;
 
-    private void Awake()
-    {
-        controls = new MainControls();
-
-        health.DeathEvent += DestroyCastle;
-    }
-
+    public GameObject tooltip;
 
     private void OnEnable()
     {
-        controls.Enable();
-
-        leftClick = controls.Day.LeftClick;
-        leftClick.Enable();
-        leftClick.performed += PerformLeftClick;
+        health.DeathEvent += DestroyCastle;
+        InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
+        ShowTooltip(false);
     }
 
     private void OnDisable()
     {
-        controls.Disable();
-        
-        leftClick.Disable();
-        leftClick.performed += PerformLeftClick;
+        health.DeathEvent -= DestroyCastle;
+        InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
     }
 
-    private void PerformLeftClick(InputAction.CallbackContext obj)
+    private void PerformLeftClick(ClickEventArgs args)
     {
-        Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
-        Ray ray = cam.ScreenPointToRay(mousePosition);
+        Ray ray = cam.ScreenPointToRay(args.mousePosition);
 
         if (Physics.Raycast(ray, Mathf.Infinity, castleLayer))
         {
-            Upgrade();
+            ShowTooltip(true);
+        }
+        else
+        {
+            ShowTooltip(false);
         }
     }
 
@@ -69,6 +59,11 @@ public class Castle : MonoBehaviour
         MessageManager.Instance.ShowMessage("The villagers destroyed your castle!", 3f);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShowTooltip(bool active)
+    {
+        tooltip.SetActive(active);
     }
 
     public void Upgrade()
