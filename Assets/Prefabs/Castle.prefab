@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 5087221706454770326}
   - component: {fileID: 5087221706454770324}
   - component: {fileID: 5087221706454770323}
+  - component: {fileID: 520551853}
   m_Layer: 11
   m_Name: Castle
   m_TagString: Untagged
@@ -442,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 75
+  healthMultiplier: 1
 --- !u!114 &5087221706454770324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,21 +456,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0084adb5b0cd2d41bb9f9586884bf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  castleLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   health: {fileID: 5087221706454770326}
   level: 1
   upgradeCosts: 000000003200000064000000c8000000
+  maxHealths: 4b000000500000005a00000064000000
   ghoulPopcaps: 00000000000000000000000000000000
   meshes:
   - {fileID: 2888240702209591209}
   - {fileID: 5756707820787728052}
   - {fileID: 0}
   - {fileID: 0}
-  tooltip: {fileID: 1218579870839952403}
-  graphicRaycaster: {fileID: 2306759167490734477}
 --- !u!65 &5087221706454770323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -482,6 +479,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &520551853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087221706454770327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea721f1d8f43a24fb991c6d81469c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  graphicRaycaster: {fileID: 2306759167490734477}
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  tooltip: {fileID: 1218579870839952403}
 --- !u!1 &5087221706708482426
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +759,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Castle, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1218579870839952403}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
