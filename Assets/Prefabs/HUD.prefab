@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 4040519950426860784}
   - component: {fileID: 3685797953740493857}
   m_Layer: 5
-  m_Name: Bats Button
+  m_Name: Bat Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
         m_MethodName: SelectBuilding
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: -6301402830904355005, guid: 079cb639186c14a429e5fbd9976f48e0, type: 3}
           m_ObjectArgumentAssemblyTypeName: BuildingBase, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

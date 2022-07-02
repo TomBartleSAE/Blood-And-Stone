@@ -489,7 +489,7 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 0
+  currentBlood: 50
   maxBlood: 50
 --- !u!4 &578789428
 Transform:

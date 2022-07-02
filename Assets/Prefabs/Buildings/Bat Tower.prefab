@@ -41,10 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5271138710105583861}
   - component: {fileID: 3240955513614846527}
-  - component: {fileID: 6599336096723608043}
+  - component: {fileID: -6301402830904355005}
   - component: {fileID: -4480982740973044769}
   m_Layer: 0
-  m_Name: Base Tower
+  m_Name: Bat Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6599336096723608043
+--- !u!114 &-6301402830904355005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,19 +89,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5271138710105583862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0833f2cb25b5ab149aa62410f5f4cff4, type: 3}
+  m_Script: {fileID: 11500000, guid: f33047a3b372f1743bca3e19d49bfdd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
+  cost: 0
   health: {fileID: -4480982740973044769}
   grid: {fileID: 0}
   trigger: {fileID: 3240955513614846527}
   range: 2
   targets: []
-  damage: 2
-  delay: 3
-  projectilePrefab: {fileID: 8298075679117116914, guid: 2f25621323fb5e04fbaa6689a55aed99, type: 3}
-  projectileSpawn: {fileID: 1192532264}
 --- !u!114 &-4480982740973044769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 40
+  maxHealth: 70
+  healthMultiplier: 1
 --- !u!1 &5271138710127269070
 GameObject:
   m_ObjectHideFlags: 0

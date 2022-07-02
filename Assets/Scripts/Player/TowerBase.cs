@@ -16,7 +16,7 @@ public class TowerBase : BuildingBase
         trigger.radius = range;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<EnemyBase>())
         {
@@ -25,7 +25,7 @@ public class TowerBase : BuildingBase
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<EnemyBase>())
         {

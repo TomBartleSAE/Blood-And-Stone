@@ -688,15 +688,6 @@ MonoBehaviour:
   grid: {fileID: 186620991}
   selectedBuilding: {fileID: 0}
   cam: {fileID: 149927707}
-  rightClick:
-    m_Name: Right Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c89ea464-5cf0-4715-9e38-088fa9d6f00f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   buildableLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -6042,6 +6033,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
+      propertyPath: amountToSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: SpawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 53722053}
@@ -6115,33 +6110,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2048819866735754173, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 149927707}
     - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: tooltip
-      value: 
-      objectReference: {fileID: 5087221705293015488}
-    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: castleLayer.m_Bits
-      value: 2048
+      propertyPath: maxHealths.Array.data[0]
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: upgradeCosts.Array.data[1]
-      value: 50
+      propertyPath: maxHealths.Array.data[1]
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: upgradeCosts.Array.data[2]
+      propertyPath: maxHealths.Array.data[2]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: maxHealths.Array.data[3]
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: upgradeCosts.Array.data[3]
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5087221706454770325, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: m_RootOrder
@@ -6191,18 +6178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
-    - target: {fileID: 5087221706454770327, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087221706708482426, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357059113881043003, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8764580139910373241, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6213,11 +6188,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
---- !u!1 &5087221705293015488 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1218579870839952403, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
-  m_PrefabInstance: {fileID: 5087221705293015487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5795904370705048089
 Transform:
   m_ObjectHideFlags: 0

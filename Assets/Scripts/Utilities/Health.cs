@@ -9,6 +9,7 @@ namespace Tom
     {
         public float currentHealth;
         [SerializeField] private float maxHealth;
+        [HideInInspector] public float healthMultiplier = 1f;
         
         public float MaxHealth
         {
@@ -36,9 +37,10 @@ namespace Tom
             currentHealth = maxHealth;
         }
 
+        // TODO: Consider changing this to property
         public void ChangeHealth(float amount, GameObject perp)
         {
-            currentHealth += amount;
+            currentHealth += amount * healthMultiplier;
             
             DamageChangeEvent?.Invoke(perp);
 
