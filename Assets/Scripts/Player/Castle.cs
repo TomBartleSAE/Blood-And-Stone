@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Tom;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Castle : MonoBehaviour
 {
@@ -17,10 +19,12 @@ public class Castle : MonoBehaviour
     [Tooltip("Use elements 1, 2 and 3 for upgrades to level 2, 3 and 4, leave element 0 at 0")]
     public int[] upgradeCosts = new int[4];
 
+    public int[] maxHealths = new int[4];
     public int[] ghoulPopcaps = new int[4];
     public GameObject[] meshes = new GameObject[4];
 
     public GameObject tooltip;
+    public GraphicRaycaster graphicRaycaster;
 
     private void OnEnable()
     {
@@ -39,11 +43,16 @@ public class Castle : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(args.mousePosition);
 
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        data.position = args.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(data, results);
+        
         if (Physics.Raycast(ray, Mathf.Infinity, castleLayer))
         {
             ShowTooltip(true);
         }
-        else
+        else if (results.Count == 0)
         {
             ShowTooltip(false);
         }
@@ -70,13 +79,15 @@ public class Castle : MonoBehaviour
     {
         if (PlayerManager.Instance.currentBlood >= upgradeCosts[level])
         {
-            // TODO: Uncomment this and assign meshes when they are done
-            //meshes[level - 1].SetActive(false);
-            //meshes[level].SetActive(true);
+            meshes[level - 1].SetActive(false);
+            meshes[level].SetActive(true);
             
             // TODO: Find out where ghoul pop cap is and set it to the next level
-            PlayerManager.Instance.currentBlood -= upgradeCosts[level];
+            PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
+            health.MaxHealth = maxHealths[level];
+            health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
             level++;
+            ShowTooltip(false);
         }
     }
 }
