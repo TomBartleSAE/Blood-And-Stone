@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 public class SpawnerBase : MonoBehaviour
 {
     public GameObject thingToSpawn;
-    public GameObject nPCManager;
     public int amountToSpawn;
     public Transform[] SpawnPoints;
     public Vector3 spawnLocation;

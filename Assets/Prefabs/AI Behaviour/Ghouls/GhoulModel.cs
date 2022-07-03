@@ -28,6 +28,7 @@ public class GhoulModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DayNPCManager.Instance.AddToGhoulList(gameObject);
         pathfinding = GetComponent<PathfindingAgent>();
         pathfinding.grid = FindObjectOfType<PathfindingGrid>();
     }
