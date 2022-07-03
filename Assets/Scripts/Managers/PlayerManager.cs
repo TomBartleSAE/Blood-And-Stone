@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class PlayerManager : ManagerBase<PlayerManager>
 {
+    private SaveData saveData = new SaveData();
+    
     public int soldiersKilled;
     public int villagersDrained;
     public int ghoulsCreated;
 
     [Header("Blood")] public int currentBlood;
     public int maxBlood = 50;
+
+    public int[,] towerLayout = new int[11, 11];
 
     /// <summary>
     /// Sends out how much the blood has changed by
@@ -64,5 +68,10 @@ public class PlayerManager : ManagerBase<PlayerManager>
         soldiersKilled = 0;
         villagersDrained = 0;
         ghoulsCreated = 0;
+    }
+
+    public void SetSaveData()
+    {
+        saveData.day = GameManager.Instance.currentDay;
     }
 }

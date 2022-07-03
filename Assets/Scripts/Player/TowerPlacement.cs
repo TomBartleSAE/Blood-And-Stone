@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class TowerPlacement : MonoBehaviour
 {
     public PathfindingGrid grid;
+    
+    public BuildingBase[] towerPrefabs;
 
     public BuildingBase selectedBuilding;
     private Node selectedNode;
@@ -29,6 +31,11 @@ public class TowerPlacement : MonoBehaviour
     {
         InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
         InputManager.Instance.OnRightClickEvent -= PerformRightClick;
+    }
+
+    private void Awake()
+    {
+        SetupTowerLayout();
     }
 
     void Update()
@@ -59,31 +66,40 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    public void Build(Vector3 position)
+    public void Build(BuildingBase building, Vector3 position)
     {
-        if (PlayerManager.Instance.currentBlood >= selectedBuilding.cost)
-        {
-            BuildingBase newBuilding = Instantiate(selectedBuilding, position, Quaternion.identity);
-            newBuilding.grid = grid;
+        BuildingBase newBuilding = Instantiate(building, position, Quaternion.identity); 
+        newBuilding.grid = grid;
+
+        Node node = grid.GetNodeFromPosition(position);
+        node.isBlocked = true;
+        node.canBuild = false;
+
+        PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
+        print(PlayerManager.Instance.towerLayout[node.index.x, node.index.y]);
             
-            selectedNode.isBlocked = true;
-            selectedNode.canBuild = false;
-            
-            PlayerManager.Instance.ChangeBlood(-selectedBuilding.cost);
-            
-            grid.Generate();
-        }
+        grid.Generate();
     }
 
     public void PerformLeftClick(ClickEventArgs args)
     {
-        if (selectedNode != null && selectedBuilding != null)
+        if (selectedNode == null || selectedBuilding == null)
         {
-            if (selectedNode.canBuild)
-            {
-                Build(selectedNode.coordinates);
-            }
+            return;
         }
+        
+        if (!selectedNode.canBuild)
+        {
+            return;
+        }
+
+        if (PlayerManager.Instance.currentBlood < selectedBuilding.cost)
+        {
+            return;
+        }
+        
+        Build(selectedBuilding, selectedNode.coordinates);
+        PlayerManager.Instance.ChangeBlood(-selectedBuilding.cost);
     }
 
     public void PerformRightClick(ClickEventArgs args)
@@ -95,5 +111,22 @@ public class TowerPlacement : MonoBehaviour
     public void SelectBuilding(BuildingBase building)
     {
         selectedBuilding = building;
+    }
+    
+    public void SetupTowerLayout()
+    {
+        int[,] towerLayout = PlayerManager.Instance.towerLayout;
+
+        for (int x = 0; x < towerLayout.GetLength(0); x++)
+        {
+            for (int y = 0; y < towerLayout.GetLength(1); y++)
+            {
+                if (towerLayout[x, y] >= 1)
+                {
+                    int index = towerLayout[x, y] - 1;
+                    Build(towerPrefabs[index], grid.nodes[x,y].coordinates);
+                }
+            }
+        }
     }
 }
