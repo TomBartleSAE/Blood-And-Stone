@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class NightNPCManager : ManagerBase<NightNPCManager>
 {
-    public List<GameObject> Villagers;
-    public List<GameObject> Guards;
-    public List<GameObject> ConvertedGhouls;
-
-    //public GameObject villagerSpawner;
+    public List<GameObject> Villagers = new List<GameObject>();
+    public List<GameObject> Guards = new List<GameObject>();
+    public List<GameObject> ConvertedGhouls = new List<GameObject>();
 
     public event Action GhoulDeathEvent;
     public event Action GameOverCaptureEvent;
@@ -18,13 +16,11 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     [SerializeField]
     private int popCap;
     public int currentPop;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        Villagers = new List<GameObject>();
-        Guards = new List<GameObject>();
-        ConvertedGhouls = new List<GameObject>();
+
 
         currentPop = DayNPCManager.Instance.Ghouls.Count;
         popCap = DayNPCManager.Instance.maxPop;
@@ -32,7 +28,7 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
         foreach (var guard in Guards)
         {
             guard.GetComponent<GuardModel>().NewConversionEvent += AddToConvertedGhoulList;
-            guard.GetComponent<GuardModel>().CapturedVampireEvent += VampireCapture;
+            guard.GetComponent<GuardModel>().VampireCapturedEvent += VampireCapture;
         }
 
         foreach (var villager in Villagers)

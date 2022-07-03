@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class SpawnerBase : MonoBehaviour
 {
     public GameObject thingToSpawn;
+    public GameObject nPCManager;
     public int amountToSpawn;
     public Transform[] SpawnPoints;
     public Vector3 spawnLocation;
@@ -28,7 +29,6 @@ public class SpawnerBase : MonoBehaviour
                 spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
             //Spawn thing
             Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
-            ThingSpawned?.Invoke(go);
         }
 
         spawnFinish?.Invoke();

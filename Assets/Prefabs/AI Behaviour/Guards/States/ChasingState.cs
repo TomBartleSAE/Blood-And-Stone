@@ -36,6 +36,8 @@ public class ChasingState : AntAIState
         target = guard.vampire;
         losingTarget = false;
         
+        guard.GetComponent<GuardModel>().IsAlerted();
+        
         //Gets path to target every 2 seconds. Note repeat time for testing/changing
         InvokeRepeating("ChaseTarget",0, 2 );
     }
@@ -71,6 +73,8 @@ public class ChasingState : AntAIState
     public override void Exit()
     {
         base.Exit();
+        
+        guard.GetComponent<GuardModel>().NotAlertedAnymore();
     }
 
     public void CheckRange()
@@ -103,6 +107,7 @@ public class ChasingState : AntAIState
         guard.isAlert = false;
         guard.hasTarget = false;
         guard.investigateTarget = null;
+        guard.NotAlertedAnymore();
     }
 
     public void ChaseTarget()

@@ -78,6 +78,7 @@ public class InvestigatingState : AntAIState
         {
             guard.isAlert = false;
             guard.isPatrolling = true;
+            guard.NotAlertedAnymore();
         }
     }
 }

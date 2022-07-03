@@ -25,6 +25,8 @@ public class GuardModel : MonoBehaviour
 
     public event Action VampireCapturedEvent;
     public event Action GetPatrolPointsEvent;
+    public event Action AlertedEvent;
+    public event Action NotAlertedEvent;
 
     public bool hasTarget = false;
     public bool isAlert;
@@ -40,7 +42,7 @@ public class GuardModel : MonoBehaviour
     public float hearingRange;
     
     public event Action<GameObject> NewConversionEvent;
-    public event Action CapturedVampireEvent;
+    //public event Action CapturedVampireEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,7 @@ public class GuardModel : MonoBehaviour
         
         isPatrolling = true;
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
-
+        
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
         
         isPatrolling = true;
@@ -141,6 +143,16 @@ public class GuardModel : MonoBehaviour
     public void VampireCaptured()
     {
         VampireCapturedEvent?.Invoke();
+    }
+
+    public void IsAlerted()
+    {
+        AlertedEvent?.Invoke();
+    }
+
+    public void NotAlertedAnymore()
+    {
+        NotAlertedEvent?.Invoke();
     }
     
 }
