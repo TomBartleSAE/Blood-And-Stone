@@ -24,8 +24,6 @@ public class VillagerModel : MonoBehaviour, IStunnable
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        pathfinding = GetComponent<PathfindingAgent>();
         GetComponent<Health>().DeathEvent += Die;
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
     }

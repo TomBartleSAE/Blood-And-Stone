@@ -27,20 +27,27 @@ public class FollowPath : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (agent.path != null && index < agent.path.Count)
+        if (agent.path != null)
         {
-            rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
-            //TODO Rotate towards
-            if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
+            if (index < agent.path.Count)
+            
             {
-                index++;
-                if (index < agent.path.Count)
+                rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+                //TODO Rotate towards
+                if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
                 {
-                    targetNode = agent.path[index];
-                    target = targetNode.coordinates;
+                    index++;
+                    if (index < agent.path.Count)
+                    {
+                        targetNode = agent.path[index];
+                        target = targetNode.coordinates;
+                    }
                 }
             }
         }
+            
+            
+        
         
         //TURN TOWARDS
         targetLocalPosition = transform.InverseTransformPoint(target);

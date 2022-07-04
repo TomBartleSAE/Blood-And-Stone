@@ -13,21 +13,12 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public event Action GameOverCaptureEvent;
     public event Action<GameObject> VillagerDeathEvent;
 
-    [SerializeField]
-    private int popCap;
-    public int currentPop;
-
     // Start is called before the first frame update
     void Start()
     {
-
-
-        currentPop = DayNPCManager.Instance.Ghouls.Count;
-        popCap = DayNPCManager.Instance.maxPop;
-
         foreach (var guard in Guards)
         {
-            guard.GetComponent<GuardModel>().NewConversionEvent += AddToConvertedGhoulList;
+            guard.GetComponent<GuardModel>().NewConversionEvent += AddToGhoulCurrentPop;
             guard.GetComponent<GuardModel>().VampireCapturedEvent += VampireCapture;
         }
 
@@ -54,26 +45,21 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
         Guards.Add(newGuard);
     }
 
+    //removes from guard list if killed/converted
     public void RemoveFromGuardList(GameObject guard)
     {
-
         Guards.Remove(guard);
     }
-
-    public void AddToConvertedGhoulList(GameObject newGhoul)
-    {
-        ConvertedGhouls.Add(newGhoul);
-        currentPop += 1;
-    }
-
-    public void RemoveFromConvertedGhoulList(GameObject ghoul)
-    {
-        ConvertedGhouls.Remove(ghoul);
-        currentPop -= 1;
-    }
-
+    
+    //Fires off game over event
     public void VampireCapture()
     {
         GameOverCaptureEvent?.Invoke();
+    }
+
+    //adds to current ghoul count
+    public void AddToGhoulCurrentPop()
+    {
+        PlayerManager.Instance.currentGhouls += 1;
     }
 }

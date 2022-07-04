@@ -44,6 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fd6f6dca7178542b537ad74a124d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  owner: {fileID: 0}
   pathfinding: {fileID: 0}
-  followPath: {fileID: 0}
+  guard: {fileID: 0}
+  waypoints: []
+  pointA: {x: 0, y: 0, z: 0}
+  pointB: {x: 0, y: 0, z: 0}
+  pointACoords: {x: 0, y: 0, z: 0}
+  pointBCoords: {x: 0, y: 0, z: 0}
+  patrolType: 0

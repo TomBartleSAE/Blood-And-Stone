@@ -94,7 +94,7 @@ public class ChasingState : AntAIState
         }
     }
 
-    //if vampire is out of sight, this will run to determine if they have been lost
+    //if vampire is out of sight, this will run to determine if they have been. Will return to patrol state 
     public IEnumerator TargetLost()
     {
         losingTarget = true;

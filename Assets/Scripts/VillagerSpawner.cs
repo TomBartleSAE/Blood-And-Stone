@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class VillagerSpawner : SpawnerBase
 {
-    // Start is called before the first frame update
+    public PathfindingGrid thisGrid;
+
     void Start()
     {
-        SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
-        ThingSpawned += AddToList;
-    }
+        List<GameObject> villagerList = SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
 
-    void AddToList(GameObject villager)
-    {
-        Debug.Log("Event Worked");
-        NightNPCManager.Instance.AddToVillagerList(villager);
+        foreach (var villager in villagerList)
+        {
+            villager.GetComponent<PathfindingAgent>().grid = thisGrid;
+        }
     }
 }

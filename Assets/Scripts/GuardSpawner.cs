@@ -5,10 +5,18 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GuardSpawner : SpawnerBase
-
 {
+    public PathfindingGrid thisGrid;
+    public GameObject[] waypoints;
+    
     private void Start()
     {
-        SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
+        List<GameObject> guardList = SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
+
+        foreach (var guard in guardList)
+        {
+            guard.GetComponent<PathfindingAgent>().grid = thisGrid;
+            guard.GetComponent<GuardModel>().waypoints = waypoints;
+        }
     }
 }

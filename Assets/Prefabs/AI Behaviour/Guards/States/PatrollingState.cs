@@ -10,12 +10,10 @@ public class PatrollingState : AntAIState
     public GameObject owner;
     public PathfindingAgent pathfinding;
     public GuardModel guard;
+    public GameObject[] waypoints;
 
     public Vector3 pointA;
     public Vector3 pointB;
-
-    public Vector3 pointACoords;
-    public Vector3 pointBCoords;
 
     public enum PatrolType
     {
@@ -30,23 +28,21 @@ public class PatrollingState : AntAIState
         base.Create(aGameObject);
 
         owner = aGameObject;
-        
-        //all this needed in Create() as the event is fired in Enter in GuardModel
     }
+    
     public override void Enter()
     {
         base.Enter();
         pathfinding = owner.GetComponent<PathfindingAgent>();
         pathfinding.PathCompletedEvent += ChangeDirection;
+        //seems like a redundant reference but makes life easier
         guard = owner.GetComponent<GuardModel>();
-        
-        pointACoords = pointA;
-        pointBCoords = pointB;
-        
-        GetPatrolPoints();
-
+        waypoints = guard.waypoints;
         guard.vision.angle = 25;
         guard.vision.distance = 2.5f;
+
+        //gets random waypoint from array of possible waypoints
+        GetPatrolPoints();
 
         //allows to find (same patrol route) even if has exited state previously
         FindPatrolPath(pointA, pointB);
@@ -85,20 +81,8 @@ public class PatrollingState : AntAIState
     //Gets points for patrol route per night
     public void GetPatrolPoints()
     {
-        //gets second patrol point; makes sure it isn't blocked
-        Node tempPointB = new Node();
-        tempPointB.coordinates = new Vector3(Random.Range(-8, 8), 0, Random.Range(-7, 5));
-
-        if (tempPointB.isBlocked == false)
-        {
-            pointA = transform.position;
-            pointB = tempPointB.coordinates;
-        }
-        
-        else if(tempPointB.isBlocked == true)
-        {
-            GetPatrolPoints();
-        }
+        int tempPatrolPoint = Random.Range(0, waypoints.Length - 1);
+        pointB = waypoints[tempPatrolPoint].transform.position;
     }
 
     void ChangeDirection()
@@ -124,6 +108,6 @@ public class PatrollingState : AntAIState
     //Finds the path
     void FindPatrolPath(Vector3 startingPoint, Vector3 destinationCoords)
     {
-        pathfinding.FindPath(startingPoint, destinationCoords);
+        owner.GetComponent<PathfindingAgent>().FindPath(pointA, pointB);
     }
 }

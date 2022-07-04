@@ -192,8 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc28378db5d61d64e9de2448aa8d80f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  pathfinding: {fileID: 0}
+  rb: {fileID: 1152092510813912214}
+  pathfinding: {fileID: 620010471}
+  floor:
+    serializedVersion: 2
+    m_Bits: 0
   rayDistance: 0
   viewRange: 10
   isScared: 0
@@ -213,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 1
+  healthMultiplier: 1
 --- !u!114 &620010471
 MonoBehaviour:
   m_ObjectHideFlags: 0

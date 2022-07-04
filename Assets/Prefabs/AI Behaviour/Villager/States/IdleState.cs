@@ -35,7 +35,7 @@ public class IdleState : AntAIState
          base.Execute(aDeltaTime, aTimeScale);
 
          //gets new path once destination reached, again, I'd prefer to have a PathCompletedEvent 
-         if (pathfinding.path.Count != 0)
+         if (owner.GetComponent<PathfindingAgent>().path.Count != 0)
          {
              if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
              {
@@ -71,13 +71,13 @@ public class IdleState : AntAIState
         if (!destinationNode.isBlocked || pathfinding.path.Count == 0)
         {
             destination = destinationNode.coordinates;
-             newPath = false;
+            newPath = false;
         }
     }
 
     //finds the path
     void GoToDestination(Vector3 startPos, Vector3 destinationPos)
     {
-        pathfinding.FindPath(startPos, destinationPos);
+        owner.GetComponent<PathfindingAgent>().FindPath(startPos, destinationPos);
     }
 }

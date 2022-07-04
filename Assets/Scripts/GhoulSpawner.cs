@@ -10,15 +10,9 @@ public class GhoulSpawner : SpawnerBase
     
     private void Start()
     {
-        //gets total number to spawn including additions from previous night phase
-        int amount = NightNPCManager.Instance.ConvertedGhouls.Count + DayNPCManager.Instance.Ghouls.Count;
-
+        //current population of ghouls to spawn
+        int amount = PlayerManager.Instance.currentGhouls;
+        
         SpawnCharacter(thingToSpawn, amount, spawnLocation);
-        ThingSpawned += AddToList;
-    }
-
-    void AddToList(GameObject ghoul)
-    {
-        DayNPCManager.Instance.AddToGhoulList(ghoul);
     }
 }

@@ -15,9 +15,9 @@ public class SpawnerBase : MonoBehaviour
 
     public event Action spawnFinish;
 
-    public virtual void SpawnCharacter(GameObject thing, int amount, Vector3 location)
+    public virtual List<GameObject> SpawnCharacter(GameObject thing, int amount, Vector3 location)
     {
-        GameObject go = thing;
+        List<GameObject> listOfThings = new List<GameObject>();
 
         for (int i = 0; i < amountToSpawn; i++)
         {
@@ -27,9 +27,12 @@ public class SpawnerBase : MonoBehaviour
             Vector3 spawnPointOffset = new Vector3(spawnLocation.x + Random.Range(-0.5f, 0.5f), 
                 spawnLocation.y, spawnLocation.z + Random.Range(-0.5f, 0.5f));
             //Spawn thing
-            Instantiate(go, location = spawnPointOffset, thing.transform.rotation);
+            GameObject thingSpawned = Instantiate(thing, location = spawnPointOffset, thing.transform.rotation);
+            listOfThings.Add(thingSpawned);
         }
 
         spawnFinish?.Invoke();
+
+        return listOfThings;
     }
 }

@@ -40,31 +40,30 @@ public class GuardModel : MonoBehaviour
     public float searchCooldown;
     public float investigationTime;
     public float hearingRange;
-    
-    public event Action<GameObject> NewConversionEvent;
+
+    public GameObject[] waypoints;
+
+    public event Action NewConversionEvent;
     //public event Action CapturedVampireEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        pathfindingAgent = GetComponent<PathfindingAgent>();
-        health = GetComponent<Health>();
-        vision = GetComponent<Vision>();
         lightCone = GetComponentInChildren<VisionLightCone>();
+        lightConeObject = GetComponentInChildren<VisionLightCone>().gameObject;
+
         //HACK Would love to not have FindObject
         mapExit = GameObject.Find("Return to Castle Trigger");
         vampire = FindObjectOfType<VampireModel>().transform;
-        rb = GetComponent<Rigidbody>();
-
-        lightConeObject = GetComponentInChildren<VisionLightCone>().gameObject;
         
         isPatrolling = true;
+        
+        //reaction to villager dying
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
         
+        //reaction to own death event
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
         
-        isPatrolling = true;
-
         //TODO get reference to own Guard and Ghoul objects
     }
 
@@ -105,8 +104,8 @@ public class GuardModel : MonoBehaviour
     {
         NightNPCManager.Instance.Guards.Remove(gameObject);
         //gets current population capacity situation
-        int ghoulMax = DayNPCManager.Instance.maxPop;
-        int ghoulCurrent = NightNPCManager.Instance.currentPop;
+        int ghoulMax = PlayerManager.Instance.ghoulPopcap;
+        int ghoulCurrent = PlayerManager.Instance.currentGhouls;
 
         //creates a ghoul if space; otherwise gets rid of the guard
         if (ghoulCurrent < ghoulMax)
@@ -123,13 +122,14 @@ public class GuardModel : MonoBehaviour
     
     public void GhoulConversion()
     {
+        NewConversionEvent?.Invoke();
         //bools change the state
         isPatrolling = false;
         isDead = true;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
         //adds to list; unsubs from death event to prevent reacting while dead
-        NightNPCManager.Instance.AddToConvertedGhoulList(gameObject);
+        NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
     }
 
