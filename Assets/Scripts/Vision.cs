@@ -11,7 +11,8 @@ public class Vision : MonoBehaviour
 
     public bool CanSeeObject(Transform target)
     {
-        float angleToTarget = Vector3.Angle(transform.forward, target.position);
+        float dot = Vector3.Dot(transform.forward.normalized, (target.position - transform.position).normalized);
+        float angleToTarget = dot * -90 + 90; // Convert from dot product to angle in degrees
 
         if (angleToTarget < angle)
         {
