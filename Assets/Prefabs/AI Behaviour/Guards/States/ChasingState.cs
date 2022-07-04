@@ -12,7 +12,8 @@ public class ChasingState : AntAIState
     private PathfindingAgent pathfinding;
     private Transform target;
 
-    private Coroutine coroutine;
+    public float timer;
+    public float captureTimer;
 
     private bool isCapturing = false;
     private bool inRange = false;
@@ -29,93 +30,61 @@ public class ChasingState : AntAIState
     public override void Enter()
     {
         base.Enter();
-        
-        coroutine = null;  
 
         guard = owner.GetComponent<GuardModel>();
+        
+        //get vampire location
         target = guard.vampire;
-        losingTarget = false;
-        
-        guard.GetComponent<GuardModel>().IsAlerted();
-        
-        //Gets path to target every 2 seconds. Note repeat time for testing/changing
-        InvokeRepeating("ChaseTarget",0, 2 );
+        captureTimer = guard.captureTime;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        guard.vision.angle = 45f;
-        guard.vision.distance = 5f;
-
-        if (guard.vampire != null)
+        //pathfinding to chase vampire
+        if (target != null)
         {
-            CheckRange();  
+            timer -= Time.deltaTime;
+            
+            if (timer < 0)
+            {
+                MoveToPoint(target.position);
+                timer = 1f;
+            }
         }
-
-        if (inRange == false && coroutine != null)
-        {
-            StopCoroutine(coroutine);
-        }
-
-        if (!guard.vision.CanSeeObject(guard.vampire))
-        {
-            losingTarget = true;
-            StartCoroutine(TargetLost());
-        }
-        else
-        {
-            losingTarget = false;
-        }
+        
+        CheckRange();
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        guard.GetComponent<GuardModel>().NotAlertedAnymore();
+        //change chasing bool
+        guard.isAlert = false;
     }
 
+    //checking to see if in range to capture; if true will change to capturing state
     public void CheckRange()
     {
-        Transform target = guard.vampire;
-
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-
-        if (distance <= guard.guardRange && isCapturing != true)
+        if (Vector3.Distance(transform.position, target.position) < 0.5f)
         {
-            inRange = true;
+            captureTimer -= Time.deltaTime;
+
+            if (captureTimer <= 0)
+            {
+                guard.targetCaptured = true;
+            }
         }
-        else if (distance > guard.guardRange)
+        else
         {
-            inRange = false;
-            isCapturing = false;
+            captureTimer = guard.captureTime;
         }
     }
 
-    //if vampire is out of sight, this will run to determine if they have been. Will return to patrol state 
-    public IEnumerator TargetLost()
+    public void MoveToPoint(Vector3 targetPos)
     {
-        losingTarget = true;
-        
-        for (int i = 0; i < guard.searchCooldown; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
-        guard.isAlert = false;
-        guard.hasTarget = false;
-        guard.investigateTarget = null;
-        guard.NotAlertedAnymore();
-    }
-
-    public void ChaseTarget()
-    {
-        if (!losingTarget)
-        {
-            pathfinding.FindPath(transform.position, target.transform.position);
-            CheckRange();
-        }
+        pathfinding.FindPath(transform.position, targetPos);
     }
 }

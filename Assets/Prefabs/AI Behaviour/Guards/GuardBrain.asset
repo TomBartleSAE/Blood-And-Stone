@@ -31,7 +31,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 7539529682301998708, guid: b60bec39a5aba2f47bb5be01486ddb2c, type: 3}
     cost: 0
-    position: {x: 517.9701, y: 290.94022}
+    position: {x: 311.9701, y: 274.94022}
     pre:
     - id: 4
       value: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 5892653942159949528, guid: 387d6247c1560f2488aad083bfd42d12, type: 3}
     cost: 0
-    position: {x: 732.91034, y: 287.4029}
+    position: {x: 518.91034, y: 275.4029}
     pre:
     - id: 1
       value: 1
@@ -54,27 +54,12 @@ MonoBehaviour:
       value: 0
     post:
     - id: 0
-      value: 1
-  - name: CapturingState
-    isDefault: 0
-    state: {fileID: 4649901966125166521, guid: beaebd4285ab1db4eba6d5280ec7271d, type: 3}
-    cost: 0
-    position: {x: 1158.4478, y: 287.41785}
-    pre:
-    - id: 0
-      value: 1
-    - id: 2
-      value: 1
-    - id: 5
-      value: 0
-    post:
-    - id: 3
       value: 1
   - name: ChasingState
     isDefault: 0
     state: {fileID: 6155038574833507872, guid: c2614dd6eeac3da408efe6cd5bae8f02, type: 3}
     cost: 0
-    position: {x: 944.40295, y: 285.91034}
+    position: {x: 729.40295, y: 276.91034}
     pre:
     - id: 0
       value: 1
@@ -89,22 +74,11 @@ MonoBehaviour:
       value: 1
     - id: 3
       value: 1
-  - name: GuardIdleState
-    isDefault: 1
-    state: {fileID: 5255798067474121339, guid: bd0e5aecad4b46e4ab4db5429bae8461, type: 3}
-    cost: 0
-    position: {x: 316.9989, y: 89.42322}
-    pre:
-    - id: 5
-      value: 0
-    post:
-    - id: 4
-      value: 1
   - name: GuardDeadState
     isDefault: 0
     state: {fileID: 399400053748001989, guid: 3edb33bdd98bc7847abd5fcf6e1bfd23, type: 3}
     cost: 0
-    position: {x: 314, y: 292}
+    position: {x: 1202, y: 465}
     pre:
     - id: 5
       value: 1

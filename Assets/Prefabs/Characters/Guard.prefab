@@ -227,7 +227,7 @@ MonoBehaviour:
   isPatrolling: 0
   isDead: 0
   guardRange: 2
-  captureTime: 5
+  captureTime: 0.2
   searchCooldown: 3
   investigationTime: 5
   hearingRange: 20
