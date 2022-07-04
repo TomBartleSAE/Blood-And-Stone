@@ -19,14 +19,17 @@ public class Castle : MonoBehaviour
     {
         health.DeathEvent += DestroyCastle;
         health.DamageChangeEvent += UpdateCastleHealth;
-        
-        UpdateCastleHealth(gameObject);
     }
 
     private void OnDisable()
     {
         health.DeathEvent -= DestroyCastle;
         health.DamageChangeEvent -= UpdateCastleHealth;
+    }
+
+    private void Start()
+    {
+        UpdateCastleHealth(gameObject);
     }
 
     public void DestroyCastle(GameObject castle)
@@ -51,17 +54,33 @@ public class Castle : MonoBehaviour
     public void Upgrade()
     {
         int level = PlayerManager.Instance.castleLevel;
-        
-        if (PlayerManager.Instance.currentBlood >= upgradeCosts[level])
+
+        if (level < 4)
         {
-            meshes[level - 1].SetActive(false);
-            meshes[level].SetActive(true);
-            
-            // TODO: Find out where ghoul pop cap is and set it to the next level
-            PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
-            health.MaxHealth = maxHealths[level];
-            health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
-            PlayerManager.Instance.castleLevel++;
+            if (PlayerManager.Instance.currentBlood >= upgradeCosts[level])
+            {
+                meshes[level - 1].SetActive(false);
+                meshes[level].SetActive(true);
+
+                PlayerManager.Instance.ghoulPopcap = ghoulPopcaps[level];
+                PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
+                health.MaxHealth = maxHealths[level];
+                health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
+                PlayerManager.Instance.castleLevel++;
+            }
         }
+    }
+
+    public void SetupCastle()
+    {
+        int level = PlayerManager.Instance.castleLevel;
+        health.MaxHealth = maxHealths[level];
+
+        foreach (GameObject mesh in meshes)
+        {
+            mesh.SetActive(false);
+        }
+        
+        meshes[level].SetActive(true);
     }
 }

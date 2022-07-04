@@ -13,7 +13,7 @@ public class TooltipObject : MonoBehaviour
     public LayerMask objectLayer;
     public GameObject tooltip;
     
-    private void OnEnable()
+    private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
         ShowTooltip(false);
@@ -24,7 +24,7 @@ public class TooltipObject : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
     }

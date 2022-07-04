@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class InputManager : ManagerBase<InputManager>
 {
     private MainControls controls;
-    public InputAction leftClick, rightClick;
+    [HideInInspector] public InputAction leftClick, rightClick;
 
     public event Action<ClickEventArgs> OnLeftClickEvent, OnRightClickEvent;
 

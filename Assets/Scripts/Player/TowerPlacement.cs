@@ -19,23 +19,19 @@ public class TowerPlacement : MonoBehaviour
 
     public event Action<BuildingBase, Node> MouseOverNodeEvent;
     public event Action MouseOffGridEvent;
-
-
-    private void OnEnable()
+    
+    private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
         InputManager.Instance.OnRightClickEvent += PerformRightClick;
+        
+        SetupTowerLayout();
     }
-
-    private void OnDisable()
+    
+    private void OnDestroy()
     {
         InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
         InputManager.Instance.OnRightClickEvent -= PerformRightClick;
-    }
-
-    private void Awake()
-    {
-        SetupTowerLayout();
     }
 
     void Update()
