@@ -7,6 +7,10 @@ public class SaveData
 {
     public int day;
     
+    public int soldiersKilled;
+    public int villagersDrained;
+    public int ghoulsCreated;
+    
     public int currentBlood;
     public int maxBlood;
     

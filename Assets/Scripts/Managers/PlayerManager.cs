@@ -12,11 +12,10 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public int villagersDrained;
     public int ghoulsCreated;
 
-    [Header("Blood")] public int currentBlood;
+    [Header("Blood")] 
+    public int currentBlood;
     public int maxBlood = 50;
-
-    public int[,] towerLayout = new int[11, 11];
-
+    
     [Header("Castle")]
     public int castleLevel = 1;
     public float castleHealth;
@@ -24,7 +23,9 @@ public class PlayerManager : ManagerBase<PlayerManager>
     [Header("Ghouls")] 
     public int currentGhouls;
     public int ghoulPopcap;
-
+    
+    public int[,] towerLayout = new int[11, 11];
+    
     /// <summary>
     /// Sends out how much the blood has changed by
     /// </summary>
@@ -83,6 +84,10 @@ public class PlayerManager : ManagerBase<PlayerManager>
     {
         saveData.day = GameManager.Instance.currentDay;
 
+        saveData.soldiersKilled = soldiersKilled;
+        saveData.villagersDrained = villagersDrained;
+        saveData.ghoulsCreated = ghoulsCreated;
+        
         saveData.currentBlood = currentBlood;
         saveData.maxBlood = maxBlood;
 
@@ -91,5 +96,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
 
         saveData.ghoulCount = currentGhouls;
         saveData.maxGhouls = ghoulPopcap;
+
+        saveData.towerLayout = towerLayout;
     }
 }
