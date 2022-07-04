@@ -32,6 +32,8 @@ public class ChasingState : AntAIState
         base.Enter();
 
         guard = owner.GetComponent<GuardModel>();
+        guard.vision.angle = 45f;
+        guard.vision.distance = 5f;
         
         //get vampire location
         target = guard.vampire;
@@ -54,6 +56,9 @@ public class ChasingState : AntAIState
             }
         }
         
+        //if can't see target, start timer
+        //else reset timer
+        
         CheckRange();
     }
 
@@ -75,6 +80,7 @@ public class ChasingState : AntAIState
             if (captureTimer <= 0)
             {
                 guard.targetCaptured = true;
+                guard.CapturedVampire();
             }
         }
         else
