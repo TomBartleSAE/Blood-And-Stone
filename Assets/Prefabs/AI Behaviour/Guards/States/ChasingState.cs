@@ -85,6 +85,6 @@ public class ChasingState : AntAIState
 
     public void MoveToPoint(Vector3 targetPos)
     {
-        pathfinding.FindPath(transform.position, targetPos);
+        pathfinding.FindPath(owner.transform.position, targetPos);
     }
 }

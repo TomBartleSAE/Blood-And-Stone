@@ -71,7 +71,7 @@ public class GuardModel : MonoBehaviour
     {
         //TODO sort this out
         //if they see the vampire, will straight away enter chase state
-        if (vision != null && vision.CanSeeObject(vampire))
+        if (vision.CanSeeObject(vampire))
         {
             hasTarget = true;
         }

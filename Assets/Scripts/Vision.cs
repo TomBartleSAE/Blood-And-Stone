@@ -7,7 +7,7 @@ public class Vision : MonoBehaviour
 {
     public float angle;
     public float distance;
-    public LayerMask obstacleLayers;
+    public LayerMask visionLayers;
 
     public bool CanSeeObject(Transform target)
     {
@@ -16,9 +16,14 @@ public class Vision : MonoBehaviour
 
         if (angleToTarget < angle)
         {
-            if (!Physics.Raycast(transform.position, target.position, distance, obstacleLayers))
+            RaycastHit hit;
+            
+            if (Physics.Raycast(transform.position, target.position - transform.position, out hit, distance, visionLayers, QueryTriggerInteraction.Ignore))
             {
-                return true;
+                if (hit.transform == target)
+                {
+                    return true;
+                }
             }
         }
 

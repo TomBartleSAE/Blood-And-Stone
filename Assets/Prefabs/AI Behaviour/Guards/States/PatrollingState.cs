@@ -34,7 +34,7 @@ public class PatrollingState : AntAIState
     {
         base.Enter();
         pathfinding = owner.GetComponent<PathfindingAgent>();
-        pathfinding.PathCompletedEvent += ChangeDirection;
+        //pathfinding.PathCompletedEvent += ChangeDirection;
         //seems like a redundant reference but makes life easier
         guard = owner.GetComponent<GuardModel>();
         waypoints = guard.waypoints;
@@ -54,7 +54,7 @@ public class PatrollingState : AntAIState
         
         if (pathfinding.path.Count != 0)
         {
-            if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
+            if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, owner.transform.position) < 0.5)
             {
                 //determines which way on the route it's going
                 if (patrolType == PatrolType.goingTo)
@@ -81,14 +81,15 @@ public class PatrollingState : AntAIState
     //Gets points for patrol route per night
     public void GetPatrolPoints()
     {
+        // HACK
         int tempPatrolPoint = Random.Range(0, waypoints.Length - 1);
+        while(Vector3.Distance(waypoints[tempPatrolPoint].transform.position, owner.transform.position) < 0.5f)
+        {
+            tempPatrolPoint = Random.Range(0, waypoints.Length - 1);
+        }
+        
+        pointA = owner.transform.position;
         pointB = waypoints[tempPatrolPoint].transform.position;
-    }
-
-    void ChangeDirection()
-    {
-        GetPatrolPoints();
-        PatrolRoute();
     }
 
     //changes path destination according to patrol direction
@@ -97,10 +98,10 @@ public class PatrollingState : AntAIState
         switch (patrolType)
         {
             case PatrolType.goingTo :
-                FindPatrolPath(transform.position, pointB);
+                FindPatrolPath(owner.transform.position, pointB);
                 break;
             case PatrolType.returning :
-                FindPatrolPath(transform.position, pointA);
+                FindPatrolPath(owner.transform.position, pointA);
                 break;
         }
     }

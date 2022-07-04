@@ -27,7 +27,7 @@ public class FollowPath : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (agent.path != null)
+        if (agent.path != null && targetNode != null)
         {
             if (index < agent.path.Count)
             
