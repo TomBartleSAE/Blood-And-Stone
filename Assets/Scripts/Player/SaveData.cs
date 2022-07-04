@@ -11,7 +11,7 @@ public class SaveData
     public int maxBlood;
     
     public int castleLevel;
-    public int castleHealth;
+    public float castleHealth;
     
     public int ghoulCount;
     public int maxGhouls;
