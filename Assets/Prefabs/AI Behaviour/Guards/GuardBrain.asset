@@ -28,7 +28,7 @@ MonoBehaviour:
       name: isDead
   actions:
   - name: PatrollingState
-    isDefault: 0
+    isDefault: 1
     state: {fileID: 7539529682301998708, guid: b60bec39a5aba2f47bb5be01486ddb2c, type: 3}
     cost: 0
     position: {x: 311.9701, y: 274.94022}
