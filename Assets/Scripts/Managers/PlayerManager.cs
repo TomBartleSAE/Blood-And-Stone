@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerManager : ManagerBase<PlayerManager>
 {
-    private SaveData saveData = new SaveData();
-    
+    public SaveData saveData = new SaveData();
+
     [Header("Stats")]
     public int soldiersKilled;
     public int villagersDrained;
@@ -98,5 +98,25 @@ public class PlayerManager : ManagerBase<PlayerManager>
         saveData.maxGhouls = ghoulPopcap;
 
         saveData.towerLayout = towerLayout;
+    }
+
+    public void LoadSaveData(SaveData loadedData)
+    {
+        GameManager.Instance.currentDay = loadedData.day;
+
+        soldiersKilled = loadedData.soldiersKilled;
+        villagersDrained = loadedData.villagersDrained;
+        ghoulsCreated = loadedData.ghoulsCreated;
+        
+        currentBlood = loadedData.currentBlood;
+        maxBlood = loadedData.maxBlood;
+
+        castleLevel = loadedData.castleLevel;
+        castleHealth = loadedData.castleHealth;
+
+        currentGhouls = loadedData.ghoulsCreated;
+        ghoulPopcap = loadedData.maxGhouls;
+
+        towerLayout = loadedData.towerLayout;
     }
 }

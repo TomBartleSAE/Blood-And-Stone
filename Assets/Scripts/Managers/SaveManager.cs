@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,7 @@ public class SaveManager : ManagerBase<SaveManager>
 
     public SaveData LoadGame()
     {
-        if (File.Exists(filePath)) // If a file exists at this path (i.e. is there a save game file)
+        if (SaveFileExists()) // If a file exists at this path (i.e. is there a save game file)
         {
             FileStream fileStream = new FileStream(filePath, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
@@ -39,4 +40,21 @@ public class SaveManager : ManagerBase<SaveManager>
             return null;
         }
     }
+
+    public bool SaveFileExists()
+    {
+        return File.Exists(filePath);
+    }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerManager.Instance.SetSaveData();
+            SaveGame(PlayerManager.Instance.saveData);
+        }
+    }
+#endif
+
 }

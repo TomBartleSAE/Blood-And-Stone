@@ -20,12 +20,12 @@ public class ClickMovement : MonoBehaviour
 
     public GraphicRaycaster graphicRaycaster;
 
-    private void OnEnable()
+    private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformClick;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         InputManager.Instance.OnLeftClickEvent -= PerformClick;
     }

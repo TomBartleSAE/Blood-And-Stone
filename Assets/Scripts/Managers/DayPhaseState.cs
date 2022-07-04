@@ -11,6 +11,9 @@ public class DayPhaseState : StateBase
     public override void Enter()
     {
         base.Enter();
+        
+        PlayerManager.Instance.SetSaveData();
+        SaveManager.Instance.SaveGame(PlayerManager.Instance.saveData);
 
         spawner = Spawner.Instance;
         spawner.FinishedSpawningEvent += FinishedSpawning;
