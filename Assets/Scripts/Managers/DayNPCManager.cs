@@ -33,4 +33,14 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
         SoldierDeathEvent?.Invoke();
         Soldiers.Remove(soldier);
     }
+
+    public void AddToGhoulList(GameObject ghoul)
+    {
+        Ghouls.Add(ghoul);
+    }
+
+    public void RemoveFromGhoulList(GameObject ghoul)
+    {
+        Ghouls.Remove(ghoul);
+    }
 }

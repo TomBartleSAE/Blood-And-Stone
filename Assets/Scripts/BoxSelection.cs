@@ -19,12 +19,16 @@ public class BoxSelection : MonoBehaviour
 
     public bool HUDClick;
 
-    private void Start()
+    private void OnEnable()
     {
-        //cam = FindObjectOfType<Camera>();
+        InputManager.Instance.OnLeftClickEvent += PerformClick;
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        InputManager.Instance.OnLeftClickEvent -= PerformClick;
+    }
+
     void Update()
     {
         //mouse up
@@ -90,18 +94,7 @@ public class BoxSelection : MonoBehaviour
     void UpdateSelectionBox(Vector2 currentMousePos)
     {
 
-        if (!selectionBox.gameObject.activeInHierarchy)
-        {
-            selectionBox.gameObject.SetActive(true);
-        }
-
-        //mouse positions to set size
-        float width = currentMousePos.x - startPos.x;
-        float height = currentMousePos.y - startPos.y;
-
-        //setting size of box
-        selectionBox.sizeDelta = new Vector2(Math.Abs(width), Math.Abs(height));
-        selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
+        
     }
 
     //clearing the box from the screen
@@ -141,5 +134,21 @@ public class BoxSelection : MonoBehaviour
                 ghoul.GetComponent<SelectionIndicator>().DisableIndicator();
             }
         }
+    }
+
+    void PerformClick(ClickEventArgs args)
+    {
+        if (!selectionBox.gameObject.activeInHierarchy)
+        {
+            selectionBox.gameObject.SetActive(true);
+        }
+
+        //mouse positions to set size
+        float width = args.mousePosition.x - startPos.x;
+        float height = args.mousePosition.y - startPos.y;
+
+        //setting size of box
+        selectionBox.sizeDelta = new Vector2(Math.Abs(width), Math.Abs(height));
+        selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
     }
 }

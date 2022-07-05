@@ -13,6 +13,7 @@ public class VillagerSpawner : SpawnerBase
         foreach (var villager in villagerList)
         {
             villager.GetComponent<PathfindingAgent>().grid = thisGrid;
+            NightNPCManager.Instance.AddToVillagerList(villager);
         }
     }
 }

@@ -1132,9 +1132,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
+      propertyPath: thisGrid
+      value: 
+      objectReference: {fileID: 186620991}
+    - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: amountToSpawn
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
+      propertyPath: graphicRaycaster
+      value: 
+      objectReference: {fileID: 1907611250}
     - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: SpawnPoints.Array.data[0]
       value: 

@@ -486,6 +486,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9635eeda3feb2e4a9f9c0fc28b228c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData:
+    day: 0
+    soldiersKilled: 0
+    villagersDrained: 0
+    ghoulsCreated: 0
+    currentBlood: 0
+    maxBlood: 0
+    castleLevel: 0
+    castleHealth: 0
+    ghoulCount: 0
+    maxGhouls: 0
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
@@ -493,8 +504,8 @@ MonoBehaviour:
   maxBlood: 50
   castleLevel: 1
   castleHealth: 0
-  currentGhouls: 0
-  ghoulPopcap: 0
+  currentGhouls: 5
+  ghoulPopcap: 5
 --- !u!4 &578789428
 Transform:
   m_ObjectHideFlags: 0
@@ -767,8 +778,6 @@ MonoBehaviour:
   Villagers: []
   Guards: []
   ConvertedGhouls: []
-  popCap: 0
-  currentPop: 0
 --- !u!114 &1310713149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,8 +792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ghouls: []
   Soldiers: []
-  maxPop: 2
-  currentPop: 0
 --- !u!4 &1310713150
 Transform:
   m_ObjectHideFlags: 0

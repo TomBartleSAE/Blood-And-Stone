@@ -17,6 +17,7 @@ public class GuardSpawner : SpawnerBase
         {
             guard.GetComponent<PathfindingAgent>().grid = thisGrid;
             guard.GetComponent<GuardModel>().waypoints = waypoints;
+            NightNPCManager.Instance.AddToGuardList(guard);
         }
     }
 }

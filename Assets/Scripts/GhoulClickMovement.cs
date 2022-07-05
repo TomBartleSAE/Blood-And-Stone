@@ -4,19 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GhoulClickMovement : MonoBehaviour
 {
     public PathfindingAgent pathfinding;
+    
     public Camera cam;
+    
     public LayerMask enemyLayer;
     public LayerMask walkableLayer;
+    
     public Transform target;
     
     private MainControls controls;
     private InputAction rightClick;
 
-    private void Awake()
+    public GraphicRaycaster graphicRaycaster;
+
+    /*private void Awake()
     {
         controls = new MainControls();
         pathfinding = GetComponent<PathfindingAgent>();
@@ -37,15 +43,29 @@ public class GhoulClickMovement : MonoBehaviour
         controls.Disable();
         rightClick.Disable();
         rightClick.performed -= PerformClick;
+    }*/
+
+    private void Start()
+    {
+        InputManager.Instance.OnRightClickEvent += PerformClick;
     }
 
-    void PerformClick(InputAction.CallbackContext obj)
+    private void OnDestroy()
     {
-        Vector2 mousePosition = controls.Day.MousePosition.ReadValue<Vector2>();
-        Ray ray = cam.ScreenPointToRay(mousePosition);
+        InputManager.Instance.OnRightClickEvent -= PerformClick;
+    }
+
+    void PerformClick(ClickEventArgs args)
+    {
+        Ray ray = cam.ScreenPointToRay(args.mousePosition);
         RaycastHit hit;
 
-        if (EventSystem.current.IsPointerOverGameObject())
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        data.position = args.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(data, results);
+        
+        if (results.Count > 0)
         {
             return;
         }
