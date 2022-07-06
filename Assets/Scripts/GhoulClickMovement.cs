@@ -22,14 +22,13 @@ public class GhoulClickMovement : MonoBehaviour
 
     public GraphicRaycaster graphicRaycaster;
 
-    /*private void Awake()
+    private void Awake()
     {
         controls = new MainControls();
-        pathfinding = GetComponent<PathfindingAgent>();
         cam = FindObjectOfType<Camera>();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         
         controls.Enable();

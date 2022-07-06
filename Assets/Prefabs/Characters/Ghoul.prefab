@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 20
+  healthMultiplier: 1
 --- !u!114 &267632787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44816dd440807df48a402e02987fe19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathfinding: {fileID: 0}
+  pathfinding: {fileID: 267632787}
   cam: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
@@ -203,6 +204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
+  graphicRaycaster: {fileID: 0}
 --- !u!1 &833944672601593751
 GameObject:
   m_ObjectHideFlags: 0
