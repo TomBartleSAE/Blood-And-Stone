@@ -50,11 +50,6 @@ public class BoxSelection : MonoBehaviour
         //if click is being held down, will draw a box from click start point to current position
         if (clickHold)
         {
-            if (units.Count != 0)
-            {
-                units.Clear();
-            }
-
             if (HUDClick == false)
             {
                 if (!selectionBox.gameObject.activeInHierarchy)
@@ -100,6 +95,8 @@ public class BoxSelection : MonoBehaviour
 
     void ReleaseClick(ClickEventArgs args)
     {
+        clickHold = false;
+        
         //box removed
         selectionBox.gameObject.SetActive(false);
 
@@ -134,7 +131,5 @@ public class BoxSelection : MonoBehaviour
                 ghoul.GetComponent<SelectionIndicator>().DisableIndicator();
             }
         }
-        
-        clickHold = false;
     }
 }

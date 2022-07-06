@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GhoulClickMovement : MonoBehaviour
 {
     public PathfindingAgent pathfinding;
+    public GhoulModel ghoulModel;
     
     public Camera cam;
     
@@ -26,6 +27,7 @@ public class GhoulClickMovement : MonoBehaviour
     {
         controls = new MainControls();
         cam = FindObjectOfType<Camera>();
+        ghoulModel = GetComponent<GhoulModel>();
     }
 
     /*private void OnEnable()
@@ -97,6 +99,9 @@ public class GhoulClickMovement : MonoBehaviour
 
     public void MoveToPoint(Vector3 destination)
     {
-        pathfinding.FindPath(transform.position, destination);
+        if (ghoulModel.isSelected)
+        {
+            pathfinding.FindPath(transform.position, destination);
+        }
     }
 }
