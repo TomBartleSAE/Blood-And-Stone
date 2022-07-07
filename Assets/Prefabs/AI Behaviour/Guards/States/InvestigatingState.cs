@@ -23,6 +23,7 @@ public class InvestigatingState : AntAIState
         pathfinding = owner.GetComponent<PathfindingAgent>();
         guard = owner.GetComponent<GuardModel>();
         guard.isPatrolling = false;
+        guard.IsAlerted();
         
         //values for vision cone - heightened awareness = higher values
 
@@ -45,6 +46,7 @@ public class InvestigatingState : AntAIState
     public override void Exit()
     {
         guard.isAlert = false;
+        guard.NotAlertedAnymore();
 
         base.Exit();
     }

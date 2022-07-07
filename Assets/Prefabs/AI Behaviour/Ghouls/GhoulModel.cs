@@ -25,6 +25,8 @@ public class GhoulModel : MonoBehaviour
     public Transform target;
     public Vector3 targetPos;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

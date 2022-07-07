@@ -12,6 +12,8 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public event Action GhoulDeathEvent;
     public event Action GameOverCaptureEvent;
     public event Action<GameObject> VillagerDeathEvent;
+    public event Action GuardAlertEvent;
+    public event Action GuardNotAlertEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
         {
             guard.GetComponent<GuardModel>().NewConversionEvent += AddToGhoulCurrentPop;
             guard.GetComponent<GuardModel>().VampireCapturedEvent += VampireCapture;
+            guard.GetComponent<GuardModel>().AlertedEvent += GuardAlert;
+            guard.GetComponent<GuardModel>().NotAlertedEvent += GuardNotAlert;
         }
 
         foreach (var villager in Villagers)
@@ -61,5 +65,15 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public void AddToGhoulCurrentPop()
     {
         PlayerManager.Instance.currentGhouls += 1;
+    }
+
+    public void GuardAlert()
+    {
+        GuardAlertEvent?.Invoke();
+    }
+
+    public void GuardNotAlert()
+    {
+        GuardNotAlertEvent?.Invoke();
     }
 }

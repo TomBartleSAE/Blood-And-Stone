@@ -12,14 +12,15 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public event Action GhoulDeathEvent;
     public event Action SoldierDeathEvent;
+
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var soldier in Soldiers)
+        /*foreach (var soldier in Soldiers)
         {
             GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
-        }
+        }*/
     }
     
     public void AddToSoldierList(GameObject newSoldier)

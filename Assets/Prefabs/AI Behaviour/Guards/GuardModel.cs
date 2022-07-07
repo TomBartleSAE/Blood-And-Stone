@@ -145,11 +145,11 @@ public class GuardModel : MonoBehaviour
         VampireCapturedEvent?.Invoke();
     }
 
+    //Alert events for UI interaction
     public void IsAlerted()
     {
         AlertedEvent?.Invoke();
     }
-
     public void NotAlertedAnymore()
     {
         NotAlertedEvent?.Invoke();

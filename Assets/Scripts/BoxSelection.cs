@@ -13,13 +13,16 @@ public class BoxSelection : MonoBehaviour
 
     public LayerMask ghoulLayer;
 
-    public List<GameObject> units = new List<GameObject>();
+    private List<GameObject> units = new List<GameObject>();
 
-    public Vector2 startPos;
+    private Vector2 startPos;
 
-    public bool HUDClick;
-    public bool clickHold;
-
+    private bool HUDClick;
+    private bool clickHold;
+    
+    public event Action GhoulSelectedEvent;
+    public event Action GhoulNotSelectedEvent;
+    
     private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformClick;
@@ -30,7 +33,6 @@ public class BoxSelection : MonoBehaviour
     {
         InputManager.Instance.OnLeftClickEvent -= PerformClick;
         InputManager.Instance.OnLeftReleaseEvent -= ReleaseClick;
-
     }
 
     void Update()
@@ -66,8 +68,19 @@ public class BoxSelection : MonoBehaviour
                 selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
             }
         }
+
+        //fired to GhoulIconUI to show eyes if any units selected
+        if (units.Count > 0)
+        {
+            GhoulSelectedEvent?.Invoke();
+        }
+        else
+        {
+            GhoulNotSelectedEvent?.Invoke();
+        }
     }
 
+    //single click/click start
     void PerformClick(ClickEventArgs args)
     {
         clickHold = true;
@@ -93,6 +106,7 @@ public class BoxSelection : MonoBehaviour
         HUDClick = false;
     }
 
+    //releasing click
     void ReleaseClick(ClickEventArgs args)
     {
         clickHold = false;
