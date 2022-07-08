@@ -12,6 +12,7 @@ public class Castle : MonoBehaviour
     [Tooltip("Use elements 1, 2 and 3 for upgrades to level 2, 3 and 4, leave element 0 at 0")]
     public int[] upgradeCosts = new int[4];
     public int[] maxHealths = new int[4];
+    public int[] maxBloods = new int[4];
     public int[] ghoulPopcaps = new int[4];
     public GameObject[] meshes = new GameObject[4];
 
@@ -64,6 +65,7 @@ public class Castle : MonoBehaviour
 
                 PlayerManager.Instance.ghoulPopcap = ghoulPopcaps[level];
                 PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
+                PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);
                 health.MaxHealth = maxHealths[level];
                 health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
                 PlayerManager.Instance.castleLevel++;
