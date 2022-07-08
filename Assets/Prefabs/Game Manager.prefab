@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bd8cf25a745594fb8ec841defda6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 1659434419025153087}
+  currentState: {fileID: 161310572739707197}
 --- !u!1 &1659434419025153086
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
-  nightPhaseTime: 60
+  nightPhaseTime: 30
+  burnParticle: {fileID: 4087533388648067238, guid: 472a1a5fbe6214248ad236a7ad514810, type: 3}
 --- !u!1 &1659434419030389964
 GameObject:
   m_ObjectHideFlags: 0

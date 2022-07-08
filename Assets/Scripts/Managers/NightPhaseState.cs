@@ -8,6 +8,8 @@ public class NightPhaseState : StateBase
     public LevelTimer timer;
     [Tooltip("Total duration of the Night Phase in seconds")]
     public float nightPhaseTime = 60f;
+
+    public ParticleSystem burnParticle;
     
     public override void Enter()
     {
@@ -31,7 +33,10 @@ public class NightPhaseState : StateBase
     
     private IEnumerator GameOverSequence()
     {
-        Destroy(FindObjectOfType<VampireModel>().gameObject); // HACK: Find vampire object another way
+        GameObject vampire = FindObjectOfType<VampireModel>().gameObject; // HACK: Find vampire object another way
+        ParticleSystem newParticle = Instantiate(burnParticle, vampire.transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        newParticle.Play();
+        Destroy(vampire);
         MessageManager.Instance.ShowMessage("The sun has risen and you are burnt to ashes...", 3f);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
