@@ -11,10 +11,12 @@ public class PauseSystem : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
+        AudioListener.pause = true;
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }
