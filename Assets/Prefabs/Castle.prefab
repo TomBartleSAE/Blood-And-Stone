@@ -464,8 +464,7 @@ MonoBehaviour:
   meshes:
   - {fileID: 2888240702209591209}
   - {fileID: 5756707820787728052}
-  - {fileID: 0}
-  - {fileID: 0}
+  castleLevelText: {fileID: 0}
 --- !u!65 &5087221706454770323
 BoxCollider:
   m_ObjectHideFlags: 0
