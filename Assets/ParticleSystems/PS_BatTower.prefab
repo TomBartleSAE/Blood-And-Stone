@@ -1365,7 +1365,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 0
     mode: 0
-    timeMode: 0
+    timeMode: 2
     fps: 30
     frameOverTime:
       serializedVersion: 2
@@ -1474,13 +1474,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 1
-    tilesY: 1
-    animationType: 0
+    tilesX: 4
+    tilesY: 6
+    animationType: 1
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
-    rowMode: 1
+    rowMode: 2
     sprites:
     - sprite: {fileID: 0}
     flipU: 0
@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39babc0a61c17df41bca722640cfc289, type: 2}
+  - {fileID: 2100000, guid: adb233ee058772a4faaad89cdd7c49aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

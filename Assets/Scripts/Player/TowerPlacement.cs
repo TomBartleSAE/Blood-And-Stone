@@ -26,6 +26,7 @@ public class TowerPlacement : MonoBehaviour
         InputManager.Instance.OnRightClickEvent += PerformRightClick;
         
         SetupTowerLayout();
+        grid.Generate();
     }
     
     private void OnDestroy()

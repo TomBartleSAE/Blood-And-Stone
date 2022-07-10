@@ -19,7 +19,7 @@ public class Stunner : MonoBehaviour
         IStunnable stunnable = other.gameObject.GetComponentInParent<IStunnable>();
 
         //isolating effect to targeted object only
-        if (movement.target != null && movement.target.gameObject == other.gameObject)
+        //if (movement.target != null && movement.target.gameObject == other.gameObject)
         {
             if (stunnable != null)
             {

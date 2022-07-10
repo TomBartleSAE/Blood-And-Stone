@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ActiveScene : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // HACK: Script execution order set before default time
+    // This code needs to run in Start function but also occur before any spawning code in Start
     void Start()
     {
         SceneManager.SetActiveScene(gameObject.scene);
