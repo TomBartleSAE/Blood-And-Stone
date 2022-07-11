@@ -23,6 +23,7 @@ public class GhoulModel : MonoBehaviour
     public bool isSelected;
 
     public int damage;
+    public float attackCooldown;
 
     public Transform target;
     public Vector3 targetPos;
@@ -93,5 +94,15 @@ public class GhoulModel : MonoBehaviour
     {
         hasTarget = false;
         inRange = false;
+    }
+
+    public void SetLevel(int level)
+    {
+        // Use this to set the ghoul's stats to the respective values outlined in the DayNPCManager
+        // They're set to "level - 1" to adjust for array element order (Level 1 is element 0)
+        damage = DayNPCManager.Instance.ghoulDamageLevels[level - 1];
+        health.MaxHealth = DayNPCManager.Instance.ghoulHealthLevels[level - 1];
+        attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
+        GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
     }
 }

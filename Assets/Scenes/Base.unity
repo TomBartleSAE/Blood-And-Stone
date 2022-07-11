@@ -792,6 +792,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ghouls: []
   Soldiers: []
+  ghoulDamageLevels: 050000000a000000140000001e000000
+  ghoulHealthLevels:
+  - 15
+  - 30
+  - 55
+  - 75
+  ghoulAttackRateLevels:
+  - 2
+  - 3
+  - 4
+  - 5
+  ghoulMovementSpeedLevels:
+  - 3
+  - 4
+  - 5
+  - 5
 --- !u!4 &1310713150
 Transform:
   m_ObjectHideFlags: 0
