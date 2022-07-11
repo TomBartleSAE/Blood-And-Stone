@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GhoulIconUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GhoulIconUI : MonoBehaviour
 
     //Hardcoded to the box select; was hoping to do it via DayNPCManager but alas
     public BoxSelection boxSelection;
+
+    public TMP_Text popcapText;
 
     public bool ghoulSelected;
 
@@ -44,5 +47,7 @@ public class GhoulIconUI : MonoBehaviour
             eyesClosed.SetActive(true);
             eyesOpen.SetActive(false);
         }
+
+        popcapText.text = PlayerManager.Instance.currentGhouls + "/" + PlayerManager.Instance.ghoulPopcap;
     }
 }
