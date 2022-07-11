@@ -5,11 +5,13 @@ using Tanks;
 using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhoulModel : MonoBehaviour
 {
     public Health health;
     private PathfindingAgent pathfinding;
+    public GameObject toggle;
 
     public bool hasTarget;
     public bool targetAlive;
@@ -24,9 +26,7 @@ public class GhoulModel : MonoBehaviour
 
     public Transform target;
     public Vector3 targetPos;
-
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +40,13 @@ public class GhoulModel : MonoBehaviour
         if (isSelected)
         {
             GetComponent<GhoulClickMovement>().enabled = true;
+            toggle.SetActive(true);
             isIdle = true;
         }
         else
         {
             GetComponent<GhoulClickMovement>().enabled = false;
+            toggle.SetActive(false); 
         }
         
         if (autoAttack)
