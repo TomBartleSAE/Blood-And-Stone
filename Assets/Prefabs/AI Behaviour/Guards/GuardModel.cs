@@ -74,6 +74,7 @@ public class GuardModel : MonoBehaviour
         if (vision.CanSeeObject(vampire))
         {
             hasTarget = true;
+            isAlert = true;
         }
 
         if (investigateTarget == null)
