@@ -8,6 +8,8 @@ public class GuardSpawner : SpawnerBase
 {
     public PathfindingGrid thisGrid;
     public GameObject[] waypoints;
+
+    public event Action FinishedSpawningEvent;
     
     private void Start()
     {
@@ -19,5 +21,7 @@ public class GuardSpawner : SpawnerBase
             guard.GetComponent<GuardModel>().waypoints = waypoints;
             NightNPCManager.Instance.AddToGuardList(guard);
         }
+        
+        FinishedSpawningEvent?.Invoke();
     }
 }
