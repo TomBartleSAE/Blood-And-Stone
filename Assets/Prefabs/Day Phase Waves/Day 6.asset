@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: Day 6
   m_EditorClassIdentifier: 
   groups:
-  - enemy: {fileID: 0}
-    numberToSpawn: 0
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
+    numberToSpawn: 5
+    timeToNextGroup: 10
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
+    numberToSpawn: 5
+    timeToNextGroup: 10
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
+    numberToSpawn: 10
+    timeToNextGroup: 10
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
+    numberToSpawn: 10
     timeToNextGroup: 0
