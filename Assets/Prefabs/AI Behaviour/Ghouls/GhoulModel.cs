@@ -5,11 +5,13 @@ using Tanks;
 using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhoulModel : MonoBehaviour
 {
     public Health health;
     private PathfindingAgent pathfinding;
+    public GameObject toggle;
 
     public bool hasTarget;
     public bool targetAlive;
@@ -21,12 +23,11 @@ public class GhoulModel : MonoBehaviour
     public bool isSelected;
 
     public int damage;
+    public float attackCooldown;
 
     public Transform target;
     public Vector3 targetPos;
-
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +41,13 @@ public class GhoulModel : MonoBehaviour
         if (isSelected)
         {
             GetComponent<GhoulClickMovement>().enabled = true;
+            toggle.SetActive(true);
             isIdle = true;
         }
         else
         {
             GetComponent<GhoulClickMovement>().enabled = false;
+            toggle.SetActive(false); 
         }
         
         if (autoAttack)
@@ -91,5 +94,15 @@ public class GhoulModel : MonoBehaviour
     {
         hasTarget = false;
         inRange = false;
+    }
+
+    public void SetLevel(int level)
+    {
+        // Use this to set the ghoul's stats to the respective values outlined in the DayNPCManager
+        // They're set to "level - 1" to adjust for array element order (Level 1 is element 0)
+        damage = DayNPCManager.Instance.ghoulDamageLevels[level - 1];
+        health.MaxHealth = DayNPCManager.Instance.ghoulHealthLevels[level - 1];
+        attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
+        GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
     }
 }

@@ -13,7 +13,7 @@ public class AttackingState : AntAIState
     public GameObject me;
 
     public bool canAttack;
-    public float attackCooldown;
+    //public float attackCooldown; // Move this to the GhoulModel script so it can be changed when ghoul's level up
 
     public override void Create(GameObject aGameObject)
     {
@@ -51,7 +51,7 @@ public class AttackingState : AntAIState
     //cooldown timer
     IEnumerator AttackTimer()
     {
-        for (int i = 0; i < attackCooldown; i++)
+        for (int i = 0; i < ghoulModel.attackCooldown; i++)
         {
             yield return new WaitForSeconds(1);
         }
@@ -67,7 +67,7 @@ public class AttackingState : AntAIState
 
         if (canAttack == true)
         {
-            target.GetComponent<Health>().ChangeHealth(damage, me);
+            target.GetComponent<Health>().ChangeHealth(-damage, me); // Changing health by negative damage means damage values can be positive which makes more sense
             canAttack = false;
         }
 

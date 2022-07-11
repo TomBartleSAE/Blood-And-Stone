@@ -13,6 +13,11 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     public event Action GhoulDeathEvent;
     public event Action SoldierDeathEvent;
 
+    public int[] ghoulDamageLevels = new int[4];
+    public float[] ghoulHealthLevels = new float[4];
+    public float[] ghoulAttackRateLevels = new float[4];
+    public float[] ghoulMovementSpeedLevels = new float[4];
+
     
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,7 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public void AddToGhoulList(GameObject ghoul)
     {
+        ghoul.GetComponent<GhoulModel>().SetLevel(PlayerManager.Instance.castleLevel);
         Ghouls.Add(ghoul);
     }
 

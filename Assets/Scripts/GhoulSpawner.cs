@@ -14,8 +14,8 @@ public class GhoulSpawner : SpawnerBase
     private void Start()
     {
         //current population of ghouls to spawn
-        int amount = PlayerManager.Instance.currentGhouls;
-        List<GameObject> Ghouls = SpawnCharacter(thingToSpawn, amount, spawnLocation);
+        amountToSpawn = PlayerManager.Instance.currentGhouls;
+        List<GameObject> Ghouls = SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
 
         foreach (var ghoul in Ghouls)
         {

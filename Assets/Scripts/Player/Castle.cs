@@ -71,6 +71,12 @@ public class Castle : MonoBehaviour
                 PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);
                 health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
                 PlayerManager.Instance.castleLevel++;
+
+                foreach (GameObject ghoul in DayNPCManager.Instance.Ghouls)
+                {
+                    ghoul.GetComponent<GhoulModel>().SetLevel(level);
+                }
+                
                 SetupCastle();
             }
         }
