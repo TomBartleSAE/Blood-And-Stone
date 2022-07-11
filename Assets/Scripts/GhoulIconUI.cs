@@ -11,7 +11,7 @@ public class GhoulIconUI : MonoBehaviour
     public GameObject eyesClosed;
 
     //Hardcoded to the box select; was hoping to do it via DayNPCManager but alas
-    public BoxSelection boxSelection;
+    //public BoxSelection boxSelection;
 
     public TMP_Text popcapText;
 
@@ -19,8 +19,10 @@ public class GhoulIconUI : MonoBehaviour
 
     private void Start()
     {
-        boxSelection.GhoulSelectedEvent += EyesOn;
-        boxSelection.GhoulNotSelectedEvent += EyesOff;
+        //boxSelection.GhoulSelectedEvent += EyesOn;
+        //boxSelection.GhoulNotSelectedEvent += EyesOff;
+        DayNPCManager.Instance.GhoulSelectedEvent += EyesOn;
+        DayNPCManager.Instance.GhoulNotSelectedEvent += EyesOff;
     }
     
     //ultimately changes images according to selection
@@ -48,6 +50,7 @@ public class GhoulIconUI : MonoBehaviour
             eyesOpen.SetActive(false);
         }
 
+        //displays ghoul amounts on HUD
         popcapText.text = PlayerManager.Instance.currentGhouls + "/" + PlayerManager.Instance.ghoulPopcap;
     }
 }

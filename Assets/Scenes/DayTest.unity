@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &19268934 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7348650432822777680, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+  m_PrefabInstance: {fileID: 7563689502026767065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &53722052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1020,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149927707}
     - target: {fileID: 3220443521546325952, guid: ceed4e8bb1ad9ca4a95c4f7c15ad601e, type: 3}
+      propertyPath: towerPlacement
+      value: 
+      objectReference: {fileID: 486343744}
+    - target: {fileID: 3220443521546325952, guid: ceed4e8bb1ad9ca4a95c4f7c15ad601e, type: 3}
       propertyPath: graphicRaycaster
       value: 
       objectReference: {fileID: 1907611250}
@@ -1159,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 186620991}
     - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: amountToSpawn
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 483912071374664701, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: graphicRaycaster
@@ -1172,6 +1187,10 @@ PrefabInstance:
     - target: {fileID: 483912071374664702, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
       propertyPath: m_Name
       value: Ghoul Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 483912071374664702, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b172d588e4f02b44f87eb114d37683ff, type: 3}
@@ -1445,6 +1464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22923238, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: popcapText
+      value: 
+      objectReference: {fileID: 19268934}
     - target: {fileID: 22923238, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: boxSelection
       value: 

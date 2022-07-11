@@ -27,15 +27,37 @@ public class GhoulModel : MonoBehaviour
 
     public Transform target;
     public Vector3 targetPos;
+
+    //not sure about this working
+    public bool IsSelected
+    {
+        get
+        {
+            return isSelected;
+        }
+        set
+        {
+            if (isSelected == false)
+            {
+                isSelected = true;
+                DayNPCManager.Instance.GhoulSelected();
+            }
+
+            if (isSelected == true)
+            {
+                isSelected = false;
+                DayNPCManager.Instance.GhoulNotSelected();
+            }
+
+        }
+    }
     
-    // Start is called before the first frame update
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
         pathfinding.grid = FindObjectOfType<PathfindingGrid>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (isSelected)
@@ -105,4 +127,6 @@ public class GhoulModel : MonoBehaviour
         attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
         GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
     }
+
+    
 }

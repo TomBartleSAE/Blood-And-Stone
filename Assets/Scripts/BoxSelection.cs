@@ -10,6 +10,7 @@ public class BoxSelection : MonoBehaviour
     public RectTransform selectionBox;
     public Camera cam;
     public GraphicRaycaster graphicRaycaster;
+    public TowerPlacement towerPlacement;
 
     public LayerMask ghoulLayer;
 
@@ -43,6 +44,12 @@ public class BoxSelection : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         graphicRaycaster.Raycast(data, results);
 
+        //can't select units while building selected
+        if (towerPlacement.selectedBuilding != null)
+        {
+            HUDClick = true;
+        }
+
         if (results.Count > 0)
         {
             HUDClick = true;
@@ -56,7 +63,7 @@ public class BoxSelection : MonoBehaviour
             {
                 if (!selectionBox.gameObject.activeInHierarchy)
                 {
-                    selectionBox.gameObject.SetActive(true);
+                    selectionBox.gameObject.SetActive(true);    
                 }
 
                 //mouse positions to set size
