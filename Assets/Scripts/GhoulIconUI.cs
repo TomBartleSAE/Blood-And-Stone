@@ -13,7 +13,7 @@ public class GhoulIconUI : MonoBehaviour
     //Hardcoded to the box select; was hoping to do it via DayNPCManager but alas
     //public BoxSelection boxSelection;
 
-    public TMP_Text popcapText;
+    public TextMeshProUGUI popcapText;
 
     public bool ghoulSelected;
 

@@ -20,7 +20,6 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     {
         foreach (var guard in Guards)
         {
-            guard.GetComponent<GuardModel>().NewConversionEvent += AddToGhoulCurrentPop;
             guard.GetComponent<GuardModel>().VampireCapturedEvent += VampireCapture;
             guard.GetComponent<GuardModel>().AlertedEvent += GuardAlert;
             guard.GetComponent<GuardModel>().NotAlertedEvent += GuardNotAlert;
@@ -59,12 +58,6 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public void VampireCapture()
     {
         GameOverCaptureEvent?.Invoke();
-    }
-
-    //adds to current ghoul count
-    public void AddToGhoulCurrentPop()
-    {
-        PlayerManager.Instance.currentGhouls += 1;
     }
 
     public void GuardAlert()
