@@ -1431,7 +1431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4644785391841003884, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4907544181141665960, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: thisGrid

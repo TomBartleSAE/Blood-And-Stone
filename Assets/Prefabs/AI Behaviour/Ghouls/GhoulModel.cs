@@ -20,7 +20,8 @@ public class GhoulModel : MonoBehaviour
     public bool isIdle = true;
     public bool autoAttack;
 
-    public bool isSelected;
+    [SerializeField]
+    private bool isSelected;
 
     public int damage;
     public float attackCooldown;
@@ -35,17 +36,18 @@ public class GhoulModel : MonoBehaviour
         {
             return isSelected;
         }
+        
         set
         {
-            if (isSelected == false)
+            if (!isSelected)
             {
-                isSelected = true;
+                isSelected = value;
                 DayNPCManager.Instance.GhoulSelected();
             }
 
-            if (isSelected == true)
+            if (isSelected)
             {
-                isSelected = false;
+                isSelected = value;
                 DayNPCManager.Instance.GhoulNotSelected();
             }
 
@@ -60,7 +62,7 @@ public class GhoulModel : MonoBehaviour
     
     void Update()
     {
-        if (isSelected)
+        if (IsSelected)
         {
             GetComponent<GhoulClickMovement>().enabled = true;
             toggle.SetActive(true);

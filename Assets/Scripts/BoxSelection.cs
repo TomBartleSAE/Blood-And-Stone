@@ -14,7 +14,7 @@ public class BoxSelection : MonoBehaviour
 
     public LayerMask ghoulLayer;
 
-    private List<GameObject> units = new List<GameObject>();
+    public List<GameObject> units = new List<GameObject>();
 
     private Vector2 startPos;
 
@@ -106,7 +106,7 @@ public class BoxSelection : MonoBehaviour
             if (hit.transform.GetComponent<GhoulModel>())
             {
                 units.Add(hit.transform.gameObject);
-                hit.transform.GetComponent<GhoulModel>().isSelected = true;
+                hit.transform.GetComponent<GhoulModel>().IsSelected = true;
                 hit.transform.GetComponent<SelectionIndicator>().EnableIndicator();
             }
         }
@@ -141,14 +141,14 @@ public class BoxSelection : MonoBehaviour
 
             if (units.Contains(ghoul))
             {
-                ghoul.GetComponent<GhoulModel>().isSelected = true;
+                ghoul.GetComponent<GhoulModel>().IsSelected = true;
                 ghoul.GetComponent<SelectionIndicator>().EnableIndicator();
             }
             
             //if outside the box, will not get selected/get deselected
             else
             {
-                ghoul.GetComponent<GhoulModel>().isSelected = false;
+                ghoul.GetComponent<GhoulModel>().IsSelected = false;
                 ghoul.GetComponent<SelectionIndicator>().DisableIndicator();
             }
         }
