@@ -20,6 +20,8 @@ public class ClickMovement : MonoBehaviour
 
     public GraphicRaycaster graphicRaycaster;
 
+    public float repathTime = 1f;
+
     private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformClick;
@@ -39,7 +41,7 @@ public class ClickMovement : MonoBehaviour
             if (timer < 0)
             {
                 MoveToPoint(target.position);
-                timer = 1f;
+                timer = repathTime;
             }
         }
     }

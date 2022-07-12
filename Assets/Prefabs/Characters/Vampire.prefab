@@ -219,6 +219,7 @@ MonoBehaviour:
     m_Bits: 256
   target: {fileID: 0}
   graphicRaycaster: {fileID: 0}
+  repathTime: 0.5
 --- !u!114 &8739776163063105082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +252,6 @@ MonoBehaviour:
   movement: {fileID: 8739776163063105081}
   feedRange: 0.6
   bloodGain: 10
-  burnParticle: {fileID: 0}
 --- !u!54 &8739776163063105083
 Rigidbody:
   m_ObjectHideFlags: 0

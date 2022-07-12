@@ -500,11 +500,11 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 50
+  currentBlood: 0
   maxBlood: 50
   castleLevel: 1
   castleHealth: 0
-  currentGhouls: 5
+  currentGhouls: 0
   ghoulPopcap: 5
 --- !u!4 &578789428
 Transform:
