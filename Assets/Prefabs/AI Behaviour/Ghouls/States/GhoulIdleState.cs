@@ -13,8 +13,6 @@ public class GhoulIdleState : AntAIState
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("Entering Ghoul Idle State");
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)

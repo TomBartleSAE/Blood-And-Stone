@@ -32,6 +32,7 @@ public class Spawner : ManagerBase<Spawner>
                 // Gives each object and random offset to prevent them spawning on top of each other
                 Vector3 positionOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
                 GameObject newEnemy = Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
+                DayNPCManager.Instance.AddToSoldierList(newEnemy);
                 newEnemy.GetComponent<SoldierModel>().castle = castleTarget;
                 newEnemy.GetComponent<PathfindingAgent>().grid = grid; // HACK: Find another way to do this
             }

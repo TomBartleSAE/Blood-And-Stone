@@ -74,6 +74,7 @@ public class GuardModel : MonoBehaviour
         if (vision.CanSeeObject(vampire))
         {
             hasTarget = true;
+            isAlert = true;
         }
 
         if (investigateTarget == null)
@@ -111,6 +112,7 @@ public class GuardModel : MonoBehaviour
         if (ghoulCurrent < ghoulMax)
         {
             GhoulConversion();
+            PlayerManager.Instance.currentGhouls += 1;
         }
 
         else
@@ -145,11 +147,11 @@ public class GuardModel : MonoBehaviour
         VampireCapturedEvent?.Invoke();
     }
 
+    //Alert events for UI interaction
     public void IsAlerted()
     {
         AlertedEvent?.Invoke();
     }
-
     public void NotAlertedAnymore()
     {
         NotAlertedEvent?.Invoke();

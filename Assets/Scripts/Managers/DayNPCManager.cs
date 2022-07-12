@@ -12,14 +12,23 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public event Action GhoulDeathEvent;
     public event Action SoldierDeathEvent;
+    public event Action GhoulSelectedEvent;
+    public event Action GhoulNotSelectedEvent;
+    
+
+    public int[] ghoulDamageLevels = new int[4];
+    public float[] ghoulHealthLevels = new float[4];
+    public float[] ghoulAttackRateLevels = new float[4];
+    public float[] ghoulMovementSpeedLevels = new float[4];
+
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var soldier in Soldiers)
+        /*foreach (var soldier in Soldiers)
         {
             GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
-        }
+        }*/
     }
     
     public void AddToSoldierList(GameObject newSoldier)
@@ -36,11 +45,22 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public void AddToGhoulList(GameObject ghoul)
     {
+        ghoul.GetComponent<GhoulModel>().SetLevel(PlayerManager.Instance.castleLevel);
         Ghouls.Add(ghoul);
     }
 
     public void RemoveFromGhoulList(GameObject ghoul)
     {
         Ghouls.Remove(ghoul);
+    }
+
+    public void GhoulSelected()
+    {
+        GhoulSelectedEvent?.Invoke();
+    }
+
+    public void GhoulNotSelected()
+    {
+        GhoulNotSelectedEvent?.Invoke();
     }
 }

@@ -12,8 +12,9 @@ public class ChasingState : AntAIState
     private PathfindingAgent pathfinding;
     private Transform target;
 
-    public float timer;
+    public float timer = 1;
     public float captureTimer;
+    public float loseTimer = 3;
 
     private bool isCapturing = false;
     private bool inRange = false;
@@ -34,6 +35,8 @@ public class ChasingState : AntAIState
         guard = owner.GetComponent<GuardModel>();
         guard.vision.angle = 45f;
         guard.vision.distance = 5f;
+        guard.isAlert = true;
+        guard.IsAlerted();
         
         //get vampire location
         target = guard.vampire;
@@ -58,6 +61,19 @@ public class ChasingState : AntAIState
         
         //if can't see target, start timer
         //else reset timer
+        if (!guard.vision.CanSeeObject(target))
+        {
+            losingTarget = true;
+
+            loseTimer -= Time.deltaTime;
+
+            if (loseTimer < 0)
+            {
+                guard.hasTarget = false;
+                guard.isAlert = false;
+                loseTimer = 3;
+            }
+        }
         
         CheckRange();
     }
@@ -68,6 +84,7 @@ public class ChasingState : AntAIState
         
         //change chasing bool
         guard.isAlert = false;
+        guard.NotAlertedAnymore();
     }
 
     //checking to see if in range to capture; if true will change to capturing state

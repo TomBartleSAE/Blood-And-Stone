@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groups:
   - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
-    numberToSpawn: 10
+    numberToSpawn: 2
+    timeToNextGroup: 20
+  - enemy: {fileID: 2645878115345322764, guid: cc75ed8aa07c95944a632e49f23a89c7, type: 3}
+    numberToSpawn: 3
     timeToNextGroup: 0

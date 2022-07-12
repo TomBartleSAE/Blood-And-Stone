@@ -99,7 +99,7 @@ public class GhoulClickMovement : MonoBehaviour
 
     public void MoveToPoint(Vector3 destination)
     {
-        if (ghoulModel.isSelected)
+        if (ghoulModel.IsSelected)
         {
             pathfinding.FindPath(transform.position, destination);
         }

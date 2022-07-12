@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8739776161763565999}
   - component: {fileID: 8739776161763565996}
   - component: {fileID: 8739776161763565997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8739776162418544760}
   - component: {fileID: 8739776162418544766}
   - component: {fileID: 8739776162418544767}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Stun Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 8739776163063105087}
   - component: {fileID: 8739776163063105083}
   - component: {fileID: 8739776163063105060}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Vampire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
+  graphicRaycaster: {fileID: 0}
+  repathTime: 0.5
 --- !u!114 &8739776163063105082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +235,8 @@ MonoBehaviour:
   agent: {fileID: 8739776163063105062}
   rb: {fileID: 8739776163063105083}
   moveSpeed: 20
+  target: {x: 0, y: 0, z: 0}
+  turnSpeed: 5
 --- !u!114 &8739776163063105087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 8739776163063105081}
-  blood: {fileID: 0}
   feedRange: 0.6
   bloodGain: 10
 --- !u!54 &8739776163063105083

@@ -500,11 +500,11 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 50
+  currentBlood: 0
   maxBlood: 50
   castleLevel: 1
   castleHealth: 0
-  currentGhouls: 5
+  currentGhouls: 0
   ghoulPopcap: 5
 --- !u!4 &578789428
 Transform:
@@ -792,6 +792,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ghouls: []
   Soldiers: []
+  ghoulDamageLevels: 050000000a000000140000001e000000
+  ghoulHealthLevels:
+  - 15
+  - 30
+  - 55
+  - 75
+  ghoulAttackRateLevels:
+  - 2
+  - 3
+  - 4
+  - 5
+  ghoulMovementSpeedLevels:
+  - 3
+  - 4
+  - 5
+  - 5
 --- !u!4 &1310713150
 Transform:
   m_ObjectHideFlags: 0

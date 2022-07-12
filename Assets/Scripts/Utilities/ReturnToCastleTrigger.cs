@@ -6,6 +6,20 @@ using UnityEngine;
 
 public class ReturnToCastleTrigger : MonoBehaviour
 {
+    public Collider collider;
+    public GameObject view;
+
+    private void Start()
+    {
+        SetTrigger(false);
+        PlayerManager.Instance.BloodChangedEvent += EnableTrigger;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.Instance.BloodChangedEvent -= EnableTrigger;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<VampireModel>())
@@ -18,5 +32,16 @@ public class ReturnToCastleTrigger : MonoBehaviour
         {
             other.gameObject.SetActive(false);
         }
+    }
+
+    public void EnableTrigger(int blood)
+    {
+        SetTrigger(true);
+    }
+
+    public void SetTrigger(bool enable)
+    {
+        collider.enabled = enable;
+        view.SetActive(enable);
     }
 }

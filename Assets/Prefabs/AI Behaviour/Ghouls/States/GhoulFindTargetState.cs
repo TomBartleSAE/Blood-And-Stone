@@ -14,8 +14,6 @@ public class GhoulFindTargetState : AntAIState
     {
         base.Create(aGameObject);
 
-        Debug.Log("Entering Find Target State");
-        
         ghoulModel = GetComponentInParent<GhoulModel>();
     }
 

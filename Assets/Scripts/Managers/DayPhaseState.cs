@@ -11,6 +11,9 @@ public class DayPhaseState : StateBase
     public override void Enter()
     {
         base.Enter();
+
+        GameManager.Instance.currentDay++;
+        MessageManager.Instance.ShowMessage("Day " + GameManager.Instance.currentDay, 3f);
         
         PlayerManager.Instance.SetSaveData();
         SaveManager.Instance.SaveGame(PlayerManager.Instance.saveData);
