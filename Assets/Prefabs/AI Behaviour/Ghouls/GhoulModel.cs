@@ -12,6 +12,7 @@ public class GhoulModel : MonoBehaviour
     public Health health;
     private PathfindingAgent pathfinding;
     public GameObject toggle;
+    public ClickMovement clickMovement;
 
     public bool hasTarget;
     public bool targetAlive;
@@ -23,8 +24,7 @@ public class GhoulModel : MonoBehaviour
 
     public int damage;
     public float attackCooldown;
-
-    public Transform target;
+    
     public Vector3 targetPos;
 
     void Start()
@@ -42,32 +42,20 @@ public class GhoulModel : MonoBehaviour
 
     void Update()
     {
-        if (isSelected)
-        {
-            GetComponent<GhoulClickMovement>().enabled = true;
-            toggle.SetActive(true);
-            isIdle = true;
-        }
-        else
-        {
-            GetComponent<GhoulClickMovement>().enabled = false;
-            toggle.SetActive(false); 
-        }
-        
         if (autoAttack)
         {
             isIdle = false;
         }
         
-        if (target != null)
+        if (clickMovement.target != null)
         {
             isIdle = false;
             hasTarget = true;
-            targetPos = target.position;
+            targetPos = clickMovement.target.position;
             
             //TODO GetDistance for target range etc
         }
-        else if (target == null)
+        else if (clickMovement.target == null)
         {
             hasTarget = false;
         }

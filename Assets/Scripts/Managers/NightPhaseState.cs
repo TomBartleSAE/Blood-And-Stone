@@ -49,6 +49,7 @@ public class NightPhaseState : StateBase
     }
     
     //HACK C&P for now
+    //TODO merge both coroutines; hook up to UI for messages etc
      private  IEnumerator CapturedSequence()
     {
         Destroy(FindObjectOfType<VampireModel>().gameObject); // HACK: Find vampire object another way

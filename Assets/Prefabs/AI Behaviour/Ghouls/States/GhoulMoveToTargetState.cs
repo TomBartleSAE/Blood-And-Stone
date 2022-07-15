@@ -28,7 +28,7 @@ public class GhoulMoveToTargetState : AntAIState
     {
         base.Enter();
         
-        targetDestination = ghoulModel.target.transform;
+        targetDestination = ghoulModel.clickMovement.target.transform;
         
         InvokeRepeating("FindPath",0f,1.5f);
     }

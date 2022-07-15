@@ -25,6 +25,7 @@ public class AlertIndicator : MonoBehaviour
             eyeOpen.SetActive(true);
             eyeClosed.SetActive(false);
         }
+        
         else
         {
             eyeOpen.SetActive(false);

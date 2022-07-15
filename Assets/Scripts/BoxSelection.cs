@@ -130,14 +130,14 @@ public class BoxSelection : MonoBehaviour
 
             if (units.Contains(ghoul))
             {
-                ghoul.GetComponent<GhoulModel>().isSelected = true;
+                ghoul.GetComponent<ClickMovement>().isSelected = true;
                 ghoul.GetComponent<SelectionIndicator>().EnableIndicator();
             }
             
             //if outside the box, will not get selected/get deselected
             else
             {
-                ghoul.GetComponent<GhoulModel>().isSelected = false;
+                ghoul.GetComponent<ClickMovement>().isSelected = false;
                 ghoul.GetComponent<SelectionIndicator>().DisableIndicator();
             }
         }

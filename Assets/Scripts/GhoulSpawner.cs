@@ -20,7 +20,7 @@ public class GhoulSpawner : SpawnerBase
         foreach (var ghoul in Ghouls)
         {
             ghoul.GetComponent<PathfindingAgent>().grid = thisGrid;
-            ghoul.GetComponent<GhoulClickMovement>().graphicRaycaster = graphicRaycaster;
+            ghoul.GetComponent<ClickMovement>().graphicRaycaster = graphicRaycaster;
             DayNPCManager.Instance.AddToGhoulList(ghoul);
         }
     }

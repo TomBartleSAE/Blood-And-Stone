@@ -152,6 +152,7 @@ public class GuardModel : MonoBehaviour
     {
         NightNPCManager.Instance.GuardAlert(true);
     }
+    
     public void NotAlertedAnymore()
     {
         NightNPCManager.Instance.GuardAlert(false);

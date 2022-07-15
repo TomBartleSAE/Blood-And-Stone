@@ -218,6 +218,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
+  isSelected: 1
   graphicRaycaster: {fileID: 0}
   repathTime: 0.5
 --- !u!114 &8739776163063105082

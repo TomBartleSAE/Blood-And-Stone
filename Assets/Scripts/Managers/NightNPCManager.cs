@@ -7,27 +7,8 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
 {
     public List<GameObject> Villagers = new List<GameObject>();
     public List<GameObject> Guards = new List<GameObject>();
-    public List<GameObject> ConvertedGhouls = new List<GameObject>();
-
-    public event Action GhoulDeathEvent;
-    public event Action GameOverCaptureEvent;
     public event Action<GameObject> VillagerDeathEvent;
     public event Action<bool> GuardAlertEvent;
-    public event Action GuardNotAlertEvent;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        foreach (var guard in Guards)
-        {
-            guard.GetComponent<GuardModel>().VampireCapturedEvent += VampireCapture;
-        }
-
-        foreach (var villager in Villagers)
-        {
-            villager.GetComponent<Tom.Health>().DeathEvent += RemoveFromVillagerList;
-        }
-    }
 
     public void AddToVillagerList(GameObject newVillager)
     {
@@ -51,15 +32,18 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     {
         Guards.Remove(guard);
     }
-    
-    //Fires off game over event
-    public void VampireCapture()
-    {
-        GameOverCaptureEvent?.Invoke();
-    }
 
     public void GuardAlert(bool value)
     {
-        GuardAlertEvent?.Invoke(value);
+        foreach (var guard in Guards)
+        {
+            if (guard.GetComponent<GuardModel>().isAlert)
+            {
+                GuardAlertEvent?.Invoke(true);
+                return;
+            }
+        }
+        
+        GuardAlertEvent?.Invoke(false);
     }
 }

@@ -28,9 +28,15 @@ public class VillagerModel : MonoBehaviour, IStunnable
         NightNPCManager.Instance.VillagerDeathEvent += Reaction;
     }
 
+    private void OnDisable()
+    {
+        GetComponent<Health>().DeathEvent -= Die;
+        NightNPCManager.Instance.VillagerDeathEvent += Reaction;
+    }
+
     void Die(GameObject me)
     {
-        //NightNPCManager.Instance.RemoveFromVillagerList(me);
+        NightNPCManager.Instance.RemoveFromVillagerList(me);
         gameObject.SetActive(false);
     }
 

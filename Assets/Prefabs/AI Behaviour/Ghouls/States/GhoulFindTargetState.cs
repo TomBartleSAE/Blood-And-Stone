@@ -59,7 +59,7 @@ public class GhoulFindTargetState : AntAIState
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;
-                        ghoulModel.target = soldier.transform;
+                        ghoulModel.clickMovement.target = soldier.transform;
                         ghoulModel.hasTarget = true;
                     }
                 }

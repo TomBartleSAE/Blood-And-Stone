@@ -18,18 +18,24 @@ public class ClickMovement : MonoBehaviour
 
     private float timer;
 
+    public bool isSelected;
+
     public GraphicRaycaster graphicRaycaster;
 
     public float repathTime = 1f;
 
     private void Start()
     {
-        InputManager.Instance.OnLeftClickEvent += PerformClick;
+        InputManager.Instance.OnRightClickEvent += PerformClick;
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
     }
 
     private void OnDestroy()
     {
-        InputManager.Instance.OnLeftClickEvent -= PerformClick;
+        InputManager.Instance.OnRightClickEvent -= PerformClick;
     }
 
     public void Update()
@@ -48,43 +54,49 @@ public class ClickMovement : MonoBehaviour
 
     private void PerformClick(ClickEventArgs args)
     {
-        Ray ray = cam.ScreenPointToRay(args.mousePosition);
-        RaycastHit hit;
-
-        PointerEventData data = new PointerEventData(EventSystem.current);
-        data.position = args.mousePosition;
-        List<RaycastResult> results = new List<RaycastResult>();
-        graphicRaycaster.Raycast(data, results);
-
-        if (results.Count > 0)
+        if (isSelected)
         {
-            return;
-        }
+            Ray ray = cam.ScreenPointToRay(args.mousePosition);
+            RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))
-        {
-            target = hit.transform;
-            return;
-        }
-        else
-        {
-            // HACK
-            target = null;
-        }
+            PointerEventData data = new PointerEventData(EventSystem.current);
+            data.position = args.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            graphicRaycaster.Raycast(data, results);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayers))
-        {
-            Node hitNode = agent.grid.GetNodeFromPosition(hit.point);
-
-            if (!hitNode.isBlocked)
+            if (results.Count > 0)
             {
-                MoveToPoint(hitNode.coordinates);
+                return;
+            }
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))
+            {
+                target = hit.transform;
+                return;
+            }
+            else
+            {
+                // HACK
+                target = null;
+            }
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayers))
+            {
+                Node hitNode = agent.grid.GetNodeFromPosition(hit.point);
+
+                if (!hitNode.isBlocked)
+                {
+                    MoveToPoint(hitNode.coordinates);
+                }
             }
         }
     }
 
     public void MoveToPoint(Vector3 destination)
     {
-        agent.FindPath(transform.position, destination);
+        if (isSelected)
+        {
+            agent.FindPath(transform.position, destination);
+        }
     }
 }

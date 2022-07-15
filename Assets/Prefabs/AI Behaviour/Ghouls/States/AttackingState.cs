@@ -26,7 +26,7 @@ public class AttackingState : AntAIState
     {
         base.Enter();
 
-        target = ghoulModel.target;
+        target = ghoulModel.clickMovement.target;
         canAttack = true;
 
         me = ghoulModel.gameObject;
