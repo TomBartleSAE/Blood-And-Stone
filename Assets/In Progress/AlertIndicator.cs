@@ -8,33 +8,27 @@ public class AlertIndicator : MonoBehaviour
     public GameObject eyeOpen;
     public GameObject eyeClosed;
 
-    private void OnEnable()
+    private void Start()
     {
-        foreach (var guard in NightNPCManager.Instance.Guards)
+        NightNPCManager.Instance.GuardAlertEvent += EyeIcon;
+    }
+
+    private void OnDestroy()
+    {
+        NightNPCManager.Instance.GuardAlertEvent -= EyeIcon;
+    }
+
+    void EyeIcon(bool value)
+    {
+        if (value)
         {
-            guard.GetComponent<GuardModel>().AlertedEvent += OpenEyeIcon;
-            guard.GetComponent<GuardModel>().NotAlertedEvent += CloseEyeIcon;
+            eyeOpen.SetActive(true);
+            eyeClosed.SetActive(false);
         }
-    }
-
-    private void OnDisable()
-    {
-        foreach (var guard in NightNPCManager.Instance.Guards)
+        else
         {
-            guard.GetComponent<GuardModel>().AlertedEvent -= OpenEyeIcon;
-            guard.GetComponent<GuardModel>().NotAlertedEvent -= CloseEyeIcon;
+            eyeOpen.SetActive(false);
+            eyeClosed.SetActive(true);
         }
-    }
-
-    void OpenEyeIcon()
-    {
-        eyeOpen.SetActive(true);
-        eyeClosed.SetActive(false);
-    }
-
-    void CloseEyeIcon()
-    {
-        eyeClosed.SetActive(true);
-        eyeOpen.SetActive(false);
     }
 }

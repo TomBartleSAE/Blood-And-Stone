@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class PauseMenuUI : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         //for build
         //Application.Quit();
+    }
+    
+    public void Load()
+    {
+        if (SaveManager.Instance.SaveFileExists())
+        {
+            PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame());
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
+            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
+        }
+        
     }
     
 }

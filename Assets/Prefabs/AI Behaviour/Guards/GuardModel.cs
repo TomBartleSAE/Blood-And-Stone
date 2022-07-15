@@ -150,11 +150,10 @@ public class GuardModel : MonoBehaviour
     //Alert events for UI interaction
     public void IsAlerted()
     {
-        AlertedEvent?.Invoke();
+        NightNPCManager.Instance.GuardAlert(true);
     }
     public void NotAlertedAnymore()
     {
-        NotAlertedEvent?.Invoke();
+        NightNPCManager.Instance.GuardAlert(false);
     }
-    
 }
