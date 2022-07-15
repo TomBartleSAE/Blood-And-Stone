@@ -1492,6 +1492,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3685797953740493857, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 486343744}
+    - target: {fileID: 3685797953740493857, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336561881751572938, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 486343744}
+    - target: {fileID: 4336561881751572938, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectBuilding
+      objectReference: {fileID: 0}
     - target: {fileID: 5025374054414895680, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1551,6 +1567,14 @@ PrefabInstance:
     - target: {fileID: 5475142978220414328, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061688620697957224, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 486343744}
+    - target: {fileID: 6061688620697957224, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 7187911778979031954, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1663,6 +1687,14 @@ PrefabInstance:
     - target: {fileID: 7563689501722212780, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563689502018888818, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 486343744}
+    - target: {fileID: 7563689502018888818, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 8410998372765849774, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
