@@ -12,6 +12,8 @@ public class BoxSelection : MonoBehaviour
     public GraphicRaycaster graphicRaycaster;
     public TowerPlacement towerPlacement;
 
+    public event Action<bool> GhoulSelectedEvent; 
+
     public LayerMask ghoulLayer;
 
     public List<GameObject> units = new List<GameObject>();
@@ -20,10 +22,7 @@ public class BoxSelection : MonoBehaviour
 
     private bool HUDClick;
     private bool clickHold;
-    
-    public event Action GhoulSelectedEvent;
-    public event Action GhoulNotSelectedEvent;
-    
+
     private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformClick;
@@ -59,6 +58,8 @@ public class BoxSelection : MonoBehaviour
         //if click is being held down, will draw a box from click start point to current position
         if (clickHold)
         {
+            //May need to add a timer to determine whether was single click or drag
+            
             if (HUDClick == false)
             {
                 if (!selectionBox.gameObject.activeInHierarchy)
@@ -74,16 +75,6 @@ public class BoxSelection : MonoBehaviour
                 selectionBox.sizeDelta = new Vector2(Math.Abs(width), Math.Abs(height));
                 selectionBox.anchoredPosition = startPos + new Vector2(width / 2, height / 2);
             }
-        }
-
-        //fired to GhoulIconUI to show eyes if any units selected
-        if (units.Count > 0)
-        {
-            GhoulSelectedEvent?.Invoke();
-        }
-        else
-        {
-            GhoulNotSelectedEvent?.Invoke();
         }
     }
 
@@ -106,8 +97,6 @@ public class BoxSelection : MonoBehaviour
             if (hit.transform.GetComponent<GhoulModel>())
             {
                 units.Add(hit.transform.gameObject);
-                hit.transform.GetComponent<GhoulModel>().IsSelected = true;
-                hit.transform.GetComponent<SelectionIndicator>().EnableIndicator();
             }
         }
         HUDClick = false;
@@ -141,16 +130,25 @@ public class BoxSelection : MonoBehaviour
 
             if (units.Contains(ghoul))
             {
-                ghoul.GetComponent<GhoulModel>().IsSelected = true;
+                ghoul.GetComponent<GhoulModel>().isSelected = true;
                 ghoul.GetComponent<SelectionIndicator>().EnableIndicator();
             }
             
             //if outside the box, will not get selected/get deselected
             else
             {
-                ghoul.GetComponent<GhoulModel>().IsSelected = false;
+                ghoul.GetComponent<GhoulModel>().isSelected = false;
                 ghoul.GetComponent<SelectionIndicator>().DisableIndicator();
             }
+        }
+
+        if (units.Count > 0)
+        {
+            GhoulSelectedEvent?.Invoke(true);
+        }
+        else
+        {
+            GhoulSelectedEvent?.Invoke(false);
         }
     }
 }

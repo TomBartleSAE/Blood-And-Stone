@@ -65,7 +65,7 @@ public class Castle : MonoBehaviour
         {
             if (PlayerManager.Instance.currentBlood >= upgradeCosts[level])
             {
-                PlayerManager.Instance.ghoulPopcap = ghoulPopcaps[level];
+                PlayerManager.Instance.GhoulPopcap = ghoulPopcaps[level];
                 PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
                 // Should probably make Max Blood a property and just set the value rather than use this function
                 PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);

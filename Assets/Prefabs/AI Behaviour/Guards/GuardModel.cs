@@ -105,14 +105,14 @@ public class GuardModel : MonoBehaviour
     {
         NightNPCManager.Instance.Guards.Remove(gameObject);
         //gets current population capacity situation
-        int ghoulMax = PlayerManager.Instance.ghoulPopcap;
-        int ghoulCurrent = PlayerManager.Instance.currentGhouls;
+        int ghoulMax = PlayerManager.Instance.GhoulPopcap;
+        int ghoulCurrent = PlayerManager.Instance.CurrentGhouls;
 
         //creates a ghoul if space; otherwise gets rid of the guard
         if (ghoulCurrent < ghoulMax)
         {
             GhoulConversion();
-            PlayerManager.Instance.currentGhouls += 1;
+            PlayerManager.Instance.CurrentGhouls += 1;
         }
 
         else

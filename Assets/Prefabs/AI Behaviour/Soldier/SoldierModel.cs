@@ -29,8 +29,15 @@ public class SoldierModel : EnemyBase
     public void OnEnable()
     {
         health.DamageChangeEvent += ChangeTarget;
-        DayNPCManager.Instance.SoldierDeathEvent += Die;
+        health.DeathEvent += Die;
         pathfinding.PathFailedEvent += BreakThroughWall;
+    }
+
+    public void OnDisable()
+    {
+        health.DamageChangeEvent -= ChangeTarget;
+        health.DeathEvent -= Die;
+        pathfinding.PathFailedEvent -= BreakThroughWall;
     }
 
     void Awake()
@@ -38,10 +45,6 @@ public class SoldierModel : EnemyBase
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
-    }
-
-    private void Start()
-    {
     }
 
     public void ChangeTarget(GameObject newTarget)
@@ -60,7 +63,7 @@ public class SoldierModel : EnemyBase
         }
     }
 
-    void Die()
+    void Die(GameObject deadGuy)
     {
         DayNPCManager.Instance.RemoveFromSoldierList(gameObject);
         gameObject.SetActive(false);

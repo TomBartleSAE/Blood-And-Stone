@@ -19,9 +19,7 @@ public class GhoulModel : MonoBehaviour
     public bool inRange;
     public bool isIdle = true;
     public bool autoAttack;
-
-    [SerializeField]
-    private bool isSelected;
+    public bool isSelected;
 
     public int damage;
     public float attackCooldown;
@@ -29,40 +27,22 @@ public class GhoulModel : MonoBehaviour
     public Transform target;
     public Vector3 targetPos;
 
-    //not sure about this working
-    public bool IsSelected
-    {
-        get
-        {
-            return isSelected;
-        }
-        
-        set
-        {
-            if (!isSelected)
-            {
-                isSelected = value;
-                DayNPCManager.Instance.GhoulSelected();
-            }
-
-            if (isSelected)
-            {
-                isSelected = value;
-                DayNPCManager.Instance.GhoulNotSelected();
-            }
-
-        }
-    }
-    
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
         pathfinding.grid = FindObjectOfType<PathfindingGrid>();
+        health = GetComponent<Health>();
+        health.DeathEvent += Die;
     }
-    
+
+    private void OnDestroy()
+    {
+        DayNPCManager.Instance.RemoveFromGhoulList(gameObject);
+    }
+
     void Update()
     {
-        if (IsSelected)
+        if (isSelected)
         {
             GetComponent<GhoulClickMovement>().enabled = true;
             toggle.SetActive(true);
@@ -93,7 +73,12 @@ public class GhoulModel : MonoBehaviour
         }
     }
 
-    
+    void Die(GameObject thisDeadThing)
+    {
+        DayNPCManager.Instance.GhoulDeath();
+        Destroy(gameObject);
+    }
+
     //will switch to AttackState when in range to attack
     /*public void OnTriggerEnter(Collider other)
     {
@@ -129,6 +114,4 @@ public class GhoulModel : MonoBehaviour
         attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
         GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
     }
-
-    
 }

@@ -21,8 +21,41 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public float castleHealth;
 
     [Header("Ghouls")] 
-    public int currentGhouls;
-    public int ghoulPopcap;
+    private int currentGhouls;
+    private int ghoulPopcap;
+
+    public int CurrentGhouls
+    {
+        get
+        {
+            return currentGhouls;
+        }
+
+        set
+        {
+            if (value > ghoulPopcap)
+            {
+                value = ghoulPopcap;
+            }
+            
+            currentGhouls = value;
+            CurrentGhoulsChangedEvent?.Invoke();
+        }
+    }
+
+    public int GhoulPopcap
+    {
+        get
+        {
+            return ghoulPopcap;
+        }
+
+        set
+        {
+            ghoulPopcap = value;
+            MaxGhoulsChangedEvent?.Invoke();
+        }
+    }
     
     public int[,] towerLayout = new int[11, 11];
     
@@ -35,6 +68,9 @@ public class PlayerManager : ManagerBase<PlayerManager>
     /// Sends out how much the max blood has changed by
     /// </summary>
     public event Action<int> MaxBloodChangedEvent;
+
+    public event Action CurrentGhoulsChangedEvent;
+    public event Action MaxGhoulsChangedEvent;
 
     private void Start()
     {
