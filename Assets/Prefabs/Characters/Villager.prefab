@@ -198,10 +198,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   rayDistance: 0
+  moveSpeed: 1.5
   viewRange: 10
   isScared: 0
   isStunned: 0
   isEaten: 0
+  fleeTime: 5
+  fleeSpeed: 5
+  stunTime: 3
 --- !u!114 &297143199648334005
 MonoBehaviour:
   m_ObjectHideFlags: 0

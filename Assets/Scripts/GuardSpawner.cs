@@ -9,11 +9,9 @@ public class GuardSpawner : SpawnerBase
     public PathfindingGrid thisGrid;
     public GameObject[] waypoints;
 
-    public event Action FinishedSpawningEvent;
-    
     private void Start()
     {
-        List<GameObject> guardList = SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
+        List<GameObject> guardList = SpawnCharacter(thingToSpawn);
 
         foreach (var guard in guardList)
         {
@@ -21,7 +19,5 @@ public class GuardSpawner : SpawnerBase
             guard.GetComponent<GuardModel>().waypoints = waypoints;
             NightNPCManager.Instance.AddToGuardList(guard);
         }
-        
-        FinishedSpawningEvent?.Invoke();
     }
 }

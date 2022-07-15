@@ -8,9 +8,7 @@ public class FleeingState : AntAIState
 {
     public VillagerModel villager;
     public GameObject owner;
-    
-    public float fleeTime;
-    
+
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -23,9 +21,8 @@ public class FleeingState : AntAIState
     {
         base.Enter();
 
-        fleeTime = 5;
-
-        villager.GetComponent<FollowPath>().moveSpeed = 5;
+        //TODO path to flee along
+        villager.GetComponent<FollowPath>().moveSpeed = villager.fleeSpeed;
 
         StartCoroutine(Flee());
     }
@@ -37,17 +34,13 @@ public class FleeingState : AntAIState
 
     public override void Exit()
     {
-        
-        villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
+        villager.GetComponent<FollowPath>().moveSpeed = villager.moveSpeed;
         base.Exit();
     }
     
     IEnumerator Flee()
     {
-        for (int i = 0; i < fleeTime; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
+        yield return new WaitForSeconds(villager.fleeTime);
 
         villager.isScared = false;
     }

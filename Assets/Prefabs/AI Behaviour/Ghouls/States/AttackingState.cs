@@ -13,7 +13,8 @@ public class AttackingState : AntAIState
     public GameObject me;
 
     public bool canAttack;
-    //public float attackCooldown; // Move this to the GhoulModel script so it can be changed when ghoul's level up
+
+    public float timer;
 
     public override void Create(GameObject aGameObject)
     {
@@ -32,13 +33,23 @@ public class AttackingState : AntAIState
         me = ghoulModel.gameObject;
         
         Attack();
-        
-        //StartCoroutine(AttackTimer());
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            Attack();
+        }
+
+        float distance = Vector3.Distance(ghoulModel.transform.position, target.position);
+        if (distance > ghoulModel.attackRange)
+        {
+            ghoulModel.inRange = false;
+        }
     }
 
     public override void Exit()
@@ -48,29 +59,16 @@ public class AttackingState : AntAIState
         ghoulModel.hasTarget = false;
     }
 
-    //cooldown timer
-    IEnumerator AttackTimer()
-    {
-        for (int i = 0; i < ghoulModel.attackCooldown; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
-        canAttack = true;
-        Attack();
-    }
-
     //deals damage then starts the cooldown timer
     public void Attack()
     {
         int damage = ghoulModel.damage;
 
-        if (canAttack == true)
+        if (canAttack)
         {
             target.GetComponent<Health>().ChangeHealth(-damage, me); // Changing health by negative damage means damage values can be positive which makes more sense
             canAttack = false;
+            timer = ghoulModel.attackCooldown;
         }
-
-        StartCoroutine(AttackTimer());
     }
 }

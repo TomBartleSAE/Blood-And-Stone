@@ -20,17 +20,14 @@ public class GhoulModel : MonoBehaviour
     public bool inRange;
     public bool isIdle = true;
     public bool autoAttack;
-    public bool isSelected;
 
     public int damage;
     public float attackCooldown;
-    
-    public Vector3 targetPos;
+    public float attackRange;
 
     void Start()
     {
         pathfinding = GetComponent<PathfindingAgent>();
-        pathfinding.grid = FindObjectOfType<PathfindingGrid>();
         health = GetComponent<Health>();
         health.DeathEvent += Die;
     }
@@ -46,19 +43,6 @@ public class GhoulModel : MonoBehaviour
         {
             isIdle = false;
         }
-        
-        if (clickMovement.target != null)
-        {
-            isIdle = false;
-            hasTarget = true;
-            targetPos = clickMovement.target.position;
-            
-            //TODO GetDistance for target range etc
-        }
-        else if (clickMovement.target == null)
-        {
-            hasTarget = false;
-        }
     }
 
     void Die(GameObject thisDeadThing)
@@ -66,25 +50,6 @@ public class GhoulModel : MonoBehaviour
         DayNPCManager.Instance.GhoulDeath();
         Destroy(gameObject);
     }
-
-    //will switch to AttackState when in range to attack
-    /*public void OnTriggerEnter(Collider other)
-    {
-        if(other.GetComponent<SoldierModel>())
-        {
-            inRange = true;
-            other.GetComponent<Health>().DeathEvent += TargetDeath;
-        }
-    }
-
-    //will go back to MoveToTargetState and find path again to get into range
-    public void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject == target.gameObject)
-        {
-            inRange = false;
-        }
-    }*/
 
     //will return to FindTargetState and look for new target
     void TargetDeath(GameObject deadThing)

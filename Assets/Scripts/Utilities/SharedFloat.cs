@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class SharedFloat : ScriptableObject
+public class  SharedFloat : ScriptableObject
 {
     public float initialValue, currentValue, initialMaxValue, maxValue;
 

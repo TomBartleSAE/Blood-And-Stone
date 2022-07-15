@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SoldierMoveToTargetState : AntAIState
 {
-    public Wander wander;
     public PathfindingAgent pathfinding;
     public FollowPath followPath;
     public SoldierModel soldier;
@@ -15,14 +14,11 @@ public class SoldierMoveToTargetState : AntAIState
     public override void Enter()
     {
         base.Enter();
-
-        wander = GetComponentInParent<Wander>();
+        
         pathfinding = GetComponentInParent<PathfindingAgent>();
         followPath = GetComponentInParent<FollowPath>();
         soldier = GetComponentInParent<SoldierModel>();
 
-        wander.enabled = false;
-        
         targetDestination = soldier.target.transform;
         
         pathfinding.FindPath(this.transform.position, targetDestination.position);

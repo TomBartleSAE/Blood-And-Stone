@@ -22,8 +22,7 @@ public class GuardModel : MonoBehaviour
     public VisionLightCone lightCone;
     public GameObject mapExit;
     public GameObject lightConeObject;
-
-    public event Action VampireCapturedEvent;
+    
     public event Action GetPatrolPointsEvent;
     public event Action AlertedEvent;
     public event Action NotAlertedEvent;
@@ -42,17 +41,14 @@ public class GuardModel : MonoBehaviour
     public float hearingRange;
 
     public GameObject[] waypoints;
-
-    public event Action NewConversionEvent;
-    //public event Action CapturedVampireEvent;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         lightCone = GetComponentInChildren<VisionLightCone>();
         lightConeObject = GetComponentInChildren<VisionLightCone>().gameObject;
 
-        //HACK Would love to not have FindObject
+        //TODO assign variable in guard Spawner and get from there in place of FindObject
         mapExit = GameObject.Find("Return to Castle Trigger");
         vampire = FindObjectOfType<VampireModel>().transform;
         
@@ -69,17 +65,11 @@ public class GuardModel : MonoBehaviour
 
     public void Update()
     {
-        //TODO sort this out
         //if they see the vampire, will straight away enter chase state
         if (vision.CanSeeObject(vampire))
         {
             hasTarget = true;
             isAlert = true;
-        }
-
-        if (investigateTarget == null)
-        {
-            return;
         }
     }
 
@@ -118,13 +108,11 @@ public class GuardModel : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
-            NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         }
     }
     
     public void GhoulConversion()
     {
-        NewConversionEvent?.Invoke();
         //bools change the state
         isPatrolling = false;
         isDead = true;
@@ -140,11 +128,6 @@ public class GuardModel : MonoBehaviour
     public void CapturedVampire()
     {
         GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOverCapture();
-    }
-    
-    public void VampireCaptured()
-    {
-        VampireCapturedEvent?.Invoke();
     }
 
     //Alert events for UI interaction

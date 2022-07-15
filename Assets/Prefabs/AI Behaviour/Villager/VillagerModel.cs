@@ -9,18 +9,19 @@ using Random = UnityEngine.Random;
 
 public class VillagerModel : MonoBehaviour, IStunnable
 {
-    public RaycastHit hit;
-    public Rigidbody rb;
     public PathfindingAgent pathfinding;
-    public LayerMask floor;
 
-    public float rayDistance = 20;
+    public float moveSpeed;
 
     public float viewRange;
     
     public bool isScared;
     public bool isStunned;
     public bool isEaten;
+
+    public float fleeTime;
+    public float fleeSpeed;
+    public float stunTime;
 
     private void Start()
     {
@@ -45,6 +46,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
     {
         Vector3 targetDirection = transform.position - deadThing.transform.position;
         
+        RaycastHit hit;
         if (Physics.Raycast( new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), targetDirection, out hit, viewRange))
         {
             isScared = true;

@@ -14,8 +14,6 @@ public class StunnedState : AntAIState
     public event Action StunBeginEvent;
     public event Action StunEndEvent;
 
-    public float stunTime;
-
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -45,15 +43,10 @@ public class StunnedState : AntAIState
 
     IEnumerator StunnedTimer()
     {
-        for (int i = 0; i < stunTime; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
+        yield return new WaitForSeconds(villager.stunTime);
 
         villager.isStunned = false;
         villager.isScared = true;
-
-        //villager.GetComponent<FollowPath>().moveSpeed = 1.5f;
 
         Finish();
     }

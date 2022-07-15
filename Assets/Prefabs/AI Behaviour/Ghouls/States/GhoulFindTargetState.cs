@@ -10,6 +10,8 @@ public class GhoulFindTargetState : AntAIState
 
     public bool autoAttack;
 
+    private float timer;
+
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -20,17 +22,17 @@ public class GhoulFindTargetState : AntAIState
     public override void Enter()
     {
         base.Enter();
-        
-        Spawner.Instance.FinishedSpawningEvent += FindTarget;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (ghoulModel.hasTarget == false)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
             FindTarget();
+            timer = 1;
         }
 
         Finish();
@@ -46,16 +48,15 @@ public class GhoulFindTargetState : AntAIState
         float distance = 10000000;
         float shortestDistance;
         shortestDistance = distance;
-        
+
         //This can serve as an auto target if the player hasn't selected a target to attack.
         if (autoAttack)
         {
-            foreach (var soldier in DayNPCManager.Instance.Soldiers)
+            if (DayNPCManager.Instance.Soldiers.Count > 0)
             {
-                if (soldier != null)
+                foreach (var soldier in DayNPCManager.Instance.Soldiers)
                 {
                     distance = Vector3.Distance(this.transform.position, soldier.transform.position);
-
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;

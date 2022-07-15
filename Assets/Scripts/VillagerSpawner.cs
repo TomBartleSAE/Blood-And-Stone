@@ -8,7 +8,7 @@ public class VillagerSpawner : SpawnerBase
 
     void Start()
     {
-        List<GameObject> villagerList = SpawnCharacter(thingToSpawn, amountToSpawn, spawnLocation);
+        List<GameObject> villagerList = SpawnCharacter(thingToSpawn);
 
         foreach (var villager in villagerList)
         {

@@ -14,6 +14,7 @@ public class GhoulMoveToTargetState : AntAIState
     public PathfindingAgent pathfinding;
 
     public Transform targetDestination;
+    private float timer;
 
     public override void Create(GameObject aGameObject)
     {
@@ -29,13 +30,26 @@ public class GhoulMoveToTargetState : AntAIState
         base.Enter();
         
         targetDestination = ghoulModel.clickMovement.target.transform;
-        
-        InvokeRepeating("FindPath",0f,1.5f);
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            FindPath();
+            timer = 0.5f;
+        }
+
+        float distance = Vector3.Distance(ghoulModel.transform.position, targetDestination.position);
+        
+        if (distance <= ghoulModel.attackRange)
+        {
+            ghoulModel.inRange = true;
+        }
     }
 
     public override void Exit()
@@ -45,6 +59,6 @@ public class GhoulMoveToTargetState : AntAIState
 
     void FindPath()
     {
-        pathfinding.FindPath(this.transform.position, targetDestination.position);
+        pathfinding.FindPath(ghoulModel.transform.position, targetDestination.position);
     }
 }
