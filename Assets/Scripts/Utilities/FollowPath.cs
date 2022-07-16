@@ -13,7 +13,6 @@ public class FollowPath : MonoBehaviour
     private Node targetNode;
     private int index;
     
-    
     //FOR TURN TOWARDS
     private Vector3 cross;
     private Vector3 targetLocalPosition;
@@ -30,10 +29,9 @@ public class FollowPath : MonoBehaviour
         if (agent.path != null && targetNode != null)
         {
             if (index < agent.path.Count)
-            
             {
                 rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
-                //TODO Rotate towards
+                
                 if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
                 {
                     index++;
@@ -45,9 +43,6 @@ public class FollowPath : MonoBehaviour
                 }
             }
         }
-            
-            
-        
         
         //TURN TOWARDS
         targetLocalPosition = transform.InverseTransformPoint(target);

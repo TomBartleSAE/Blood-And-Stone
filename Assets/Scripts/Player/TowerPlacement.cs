@@ -73,13 +73,13 @@ public class TowerPlacement : MonoBehaviour
         node.canBuild = false;
 
         PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
-        print(PlayerManager.Instance.towerLayout[node.index.x, node.index.y]);
             
         grid.Generate();
     }
 
     public void PerformLeftClick(ClickEventArgs args)
     {
+        // TODO: Add custom messages to each scenario
         if (selectedNode == null || selectedBuilding == null)
         {
             return;

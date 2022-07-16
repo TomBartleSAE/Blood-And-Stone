@@ -8,6 +8,8 @@ public class PauseSystem : MonoBehaviour
     // I.e. having to set the pause behaviour for every active object in the game
     // To allow objects to continue moving while paused (e.g. menu animations), use unscaled time
     
+    // NOTE: To allow music to play when paused, use AudioSource.ignoreListenerPause=true (e.g. in Start)
+    
     public void Pause()
     {
         Time.timeScale = 0;

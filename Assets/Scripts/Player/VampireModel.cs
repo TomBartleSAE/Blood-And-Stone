@@ -30,11 +30,8 @@ public class VampireModel : MonoBehaviour
                     {
                         return;
                     }
-
-                    else
-                    {
-                        ConvertGuard(movement.target.gameObject);
-                    }
+                    
+                    ConvertGuard(movement.target.gameObject);
                 }
             }
         }

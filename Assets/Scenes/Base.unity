@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1659434417592835432, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+      propertyPath: currentDay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659434417592835432, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 1122821122}
@@ -185,7 +189,7 @@ PrefabInstance:
     - target: {fileID: 1659434417592835435, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 233490602}
+      objectReference: {fileID: 512085651}
     - target: {fileID: 1659434419025153087, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: timer
       value: 
@@ -196,17 +200,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
---- !u!114 &233490602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 161310572739707197, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
-  m_PrefabInstance: {fileID: 233490601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80667f7b1061f594b8671086ecaa4b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &277944162
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +450,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 277944163}
+--- !u!114 &512085651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 161310572739707197, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+  m_PrefabInstance: {fileID: 233490601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80667f7b1061f594b8671086ecaa4b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &578789426
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,12 +504,9 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 0
+  currentBlood: 20
   maxBlood: 50
-  castleLevel: 1
   castleHealth: 0
-  currentGhouls: 0
-  ghoulPopcap: 5
 --- !u!4 &578789428
 Transform:
   m_ObjectHideFlags: 0
@@ -777,7 +778,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Villagers: []
   Guards: []
-  ConvertedGhouls: []
 --- !u!114 &1310713149
 MonoBehaviour:
   m_ObjectHideFlags: 0

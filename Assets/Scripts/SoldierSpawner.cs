@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Spawner : ManagerBase<Spawner>
+public class SoldierSpawner : ManagerBase<SoldierSpawner>
 {
     // Add transforms to this list when new spawn points become available
     public List<Transform> spawnPoints = new List<Transform>();
@@ -34,7 +34,7 @@ public class Spawner : ManagerBase<Spawner>
                 GameObject newEnemy = Instantiate(currentGroup.enemy, currentSpawn.position + positionOffset, Quaternion.identity);
                 DayNPCManager.Instance.AddToSoldierList(newEnemy);
                 newEnemy.GetComponent<SoldierModel>().castle = castleTarget;
-                newEnemy.GetComponent<PathfindingAgent>().grid = grid; // HACK: Find another way to do this
+                newEnemy.GetComponent<PathfindingAgent>().grid = grid;
             }
 
             yield return new WaitForSeconds(currentGroup.timeToNextGroup);

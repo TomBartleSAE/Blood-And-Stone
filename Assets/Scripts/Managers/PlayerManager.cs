@@ -17,13 +17,24 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public int maxBlood = 50;
     
     [Header("Castle")]
-    public int castleLevel = 1;
+    private int castleLevel = 1;
+
+    public int CastleLevel
+    {
+        get => castleLevel;
+        set
+        {
+            castleLevel = value;
+            CastleLevelChangedEvent?.Invoke();
+        }
+    }
     public float castleHealth;
 
     [Header("Ghouls")] 
     private int currentGhouls;
-    private int ghoulPopcap;
-
+    private int ghoulPopcap = 5;
+    
+    [SerializeField]
     public int CurrentGhouls
     {
         get
@@ -71,6 +82,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
 
     public event Action CurrentGhoulsChangedEvent;
     public event Action MaxGhoulsChangedEvent;
+    public event Action CastleLevelChangedEvent;
 
     private void Start()
     {

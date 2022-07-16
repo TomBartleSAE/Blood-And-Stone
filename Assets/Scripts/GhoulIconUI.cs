@@ -14,11 +14,17 @@ public class GhoulIconUI : MonoBehaviour
 
     public TextMeshProUGUI popcapText;
 
+    public bool isDayPhase;
+
     private void Start()
     {
-        boxSelection.GhoulSelectedEvent += SetEyes;
+        if (isDayPhase)
+        {
+            boxSelection.GhoulSelectedEvent += SetEyes;
+        }
         PlayerManager.Instance.CurrentGhoulsChangedEvent += UpdateGhoulCount;
         PlayerManager.Instance.MaxGhoulsChangedEvent += UpdateGhoulCount;
+        UpdateGhoulCount();
     }
     
     //changes icon view

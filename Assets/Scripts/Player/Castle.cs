@@ -40,7 +40,8 @@ public class Castle : MonoBehaviour
 
     public void DestroyCastle(GameObject castle)
     {
-        StartCoroutine(ReturnToMenu());
+        DayPhaseState dayPhase = GameManager.Instance.dayPhaseState as DayPhaseState;
+        dayPhase.CallCastleDestroyed();
     }
 
     public void UpdateCastleHealth(GameObject a)
@@ -49,17 +50,9 @@ public class Castle : MonoBehaviour
         PlayerManager.Instance.castleHealth = health.currentHealth;
     }
 
-    // TODO: Move this to the GameManager
-    public IEnumerator ReturnToMenu()
-    {
-        MessageManager.Instance.ShowMessage("The villagers destroyed your castle!", 3f);
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void Upgrade()
     {
-        int level = PlayerManager.Instance.castleLevel;
+        int level = PlayerManager.Instance.CastleLevel;
 
         if (level < 4)
         {
@@ -70,7 +63,7 @@ public class Castle : MonoBehaviour
                 // Should probably make Max Blood a property and just set the value rather than use this function
                 PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);
                 health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
-                PlayerManager.Instance.castleLevel++;
+                PlayerManager.Instance.CastleLevel++;
 
                 foreach (GameObject ghoul in DayNPCManager.Instance.Ghouls)
                 {
@@ -84,7 +77,7 @@ public class Castle : MonoBehaviour
 
     public void SetupCastle()
     {
-        int level = PlayerManager.Instance.castleLevel - 1;
+        int level = PlayerManager.Instance.CastleLevel - 1;
         health.MaxHealth = maxHealths[level];
 
         foreach (GameObject mesh in meshes)
@@ -94,6 +87,6 @@ public class Castle : MonoBehaviour
         
         meshes[level].SetActive(true);
 
-        castleLevelText.text = "Lv. " + PlayerManager.Instance.castleLevel; // HACK
+        castleLevelText.text = "Lv. " + PlayerManager.Instance.CastleLevel; // HACK
     }
 }

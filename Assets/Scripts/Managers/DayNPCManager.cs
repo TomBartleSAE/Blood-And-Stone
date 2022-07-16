@@ -32,7 +32,7 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public void AddToGhoulList(GameObject ghoul)
     {
-        ghoul.GetComponent<GhoulModel>().SetLevel(PlayerManager.Instance.castleLevel);
+        ghoul.GetComponent<GhoulModel>().SetLevel(PlayerManager.Instance.CastleLevel);
         Ghouls.Add(ghoul);
         PlayerManager.Instance.CurrentGhouls = Ghouls.Count;
     }

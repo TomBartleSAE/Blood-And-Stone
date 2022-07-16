@@ -22,9 +22,14 @@ public class PauseMenuUI : MonoBehaviour
     {
 
         //for testing
+        #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        
         //for build
-        //Application.Quit();
+        #if !UNITY_EDITOR
+        Application.Quit();
+        #endif
     }
     
     public void Load()
