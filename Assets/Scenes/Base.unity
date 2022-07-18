@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
   sounds:
   - name: MainMenuMusic
     clip: {fileID: 8300000, guid: 64264abcc370b5d47a30e78f67bfd74b, type: 3}
@@ -784,7 +784,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     source: {fileID: 0}
   - name: ButtonHover
     clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
