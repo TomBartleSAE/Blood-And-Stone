@@ -18,13 +18,14 @@ public class GhoulIconUI : MonoBehaviour
 
     private void Start()
     {
+        PlayerManager.Instance.CurrentGhoulsChangedEvent += UpdateGhoulCount;
+        PlayerManager.Instance.MaxGhoulsChangedEvent += UpdateGhoulCount;
+        UpdateGhoulCount();
         if (isDayPhase)
         {
             boxSelection.GhoulSelectedEvent += SetEyes;
         }
-        PlayerManager.Instance.CurrentGhoulsChangedEvent += UpdateGhoulCount;
-        PlayerManager.Instance.MaxGhoulsChangedEvent += UpdateGhoulCount;
-        UpdateGhoulCount();
+
     }
     
     //changes icon view

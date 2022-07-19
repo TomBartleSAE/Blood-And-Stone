@@ -135,6 +135,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659434417592835432, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+      propertyPath: levelTimer
+      value: 
+      objectReference: {fileID: 1258946929}
+    - target: {fileID: 1659434417592835432, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 1122821122}

@@ -22,8 +22,6 @@ public class DayPhaseState : StateBase
         _soldierSpawner.FinishedSpawningEvent += FinishedSpawning;
 
         DayNPCManager.Instance.SoldierDeathEvent += CheckDayEnd;
-        
-        StartCoroutine(StartWave());
     }
 
     public override void Exit()
@@ -40,10 +38,8 @@ public class DayPhaseState : StateBase
         finishedSpawning = true;
     }
     
-    public IEnumerator StartWave()
+    public void StartWave()
     {
-        yield return new WaitForSeconds(timeBeforeVillagersSpawn);
-        
         MessageManager.Instance.ShowMessage("The villagers are here!", 3f);
         
         StartCoroutine(_soldierSpawner.SpawnWaves(GameManager.Instance.currentDay - 1)); // Adjust by 1 to account for array index starting at 0
