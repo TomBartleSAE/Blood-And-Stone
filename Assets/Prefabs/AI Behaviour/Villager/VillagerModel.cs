@@ -5,7 +5,6 @@ using Anthill.AI;
 using Tanks;
 using Tom;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class VillagerModel : MonoBehaviour, IStunnable
 {

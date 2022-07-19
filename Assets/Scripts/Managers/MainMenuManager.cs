@@ -4,10 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public TextMeshProUGUI continueText;
+    
+    public Slider volumeSlider;
+    public Toggle muteToggle;
+
+    public float previousVolume;
     
     private void Start()
     {
@@ -19,6 +25,13 @@ public class MainMenuManager : MonoBehaviour
         {
             continueText.color = Color.gray;
         }
+    }
+
+    //should this be in here, or a property?
+    private void FixedUpdate()
+    {
+        //changes volume according to slider
+        AudioListener.volume = volumeSlider.value;
     }
 
     public void Play()
