@@ -841,24 +841,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30558a065e9145499562aa3375ef414, type: 3}
---- !u!1 &1522006770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8831457905408894623, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-  m_PrefabInstance: {fileID: 7563689502026767065}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1522006775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522006770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c44929d684317940a4c62bfe0b80012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayPhase: {fileID: 0}
 --- !u!1 &1591265693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,34 +1477,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 486343744}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1522006775}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartWaves
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayButtonUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7563689501484821733, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
