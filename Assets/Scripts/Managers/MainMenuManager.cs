@@ -14,6 +14,11 @@ public class MainMenuManager : MonoBehaviour
     public Toggle muteToggle;
 
     public float previousVolume;
+
+    private float defaultVolume = 100;
+    private bool defaultMute = false;
+    //TODO need screensize when added
+
     
     private void Start()
     {
@@ -51,6 +56,29 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
         }
     }
+
+    public void RestoreDefaultSettings()
+    {
+        AudioListener.volume = defaultVolume;
+        MuteAudio(defaultMute);
+        //TODO restore to default resolution
+    }
+
+    public void MuteAudio(bool value)
+    {
+        if (value)
+        {
+            previousVolume = AudioListener.volume;
+            volumeSlider.value = 0;
+        }
+
+        if (!value)
+        {
+            volumeSlider.value = previousVolume;
+            muteToggle.isOn = false;
+        }
+    }
+    
 
     public void Quit()
     {
