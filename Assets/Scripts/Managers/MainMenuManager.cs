@@ -53,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
             PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame());
             SceneManager.UnloadSceneAsync("MainMenu");
             SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
-            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
+            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.dayPhaseState);
         }
     }
 
