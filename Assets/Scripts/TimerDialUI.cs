@@ -10,7 +10,7 @@ public class TimerDialUI : MonoBehaviour
 
     private void Start()
     {
-        timer = FindObjectOfType<LevelTimer>(); // HACK
+        timer = GameManager.Instance.levelTimer;
     }
 
     private void Update()

@@ -12,7 +12,9 @@ public class GameManager : ManagerBase<GameManager>
     public StateBase dayPhaseState, nightPhaseState;
     public StateManager stateManager;
     public Image loadingImage;
-
+    
+    public LevelTimer levelTimer;
+    
     public override void Awake()
     {
         base.Awake();

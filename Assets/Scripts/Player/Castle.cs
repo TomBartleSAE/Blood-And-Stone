@@ -17,7 +17,7 @@ public class Castle : MonoBehaviour
     public int[] ghoulPopcaps = new int[4];
     public GameObject[] meshes = new GameObject[4];
 
-    public TextMeshProUGUI castleLevelText;
+    //public TextMeshProUGUI castleLevelText;
 
     private void OnEnable()
     {
@@ -87,6 +87,6 @@ public class Castle : MonoBehaviour
         
         meshes[level].SetActive(true);
 
-        castleLevelText.text = "Lv. " + PlayerManager.Instance.CastleLevel; // HACK
+        //castleLevelText.text = "Lv. " + PlayerManager.Instance.CastleLevel; // HACK
     }
 }
