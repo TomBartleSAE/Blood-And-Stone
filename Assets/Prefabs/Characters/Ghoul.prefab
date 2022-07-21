@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6189588480527387754}
+  - {fileID: 4125167682360621606}
   m_Father: {fileID: 833944672601593748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,16 +215,17 @@ MonoBehaviour:
   health: {fileID: 6559976953810290360}
   toggle: {fileID: 1778820536018751420}
   clickMovement: {fileID: 0}
+  boxSelection: {fileID: 0}
+  autoAttackPanel: {fileID: 1778820536018751420}
   hasTarget: 0
   targetAlive: 0
   castleStanding: 0
   inRange: 0
   isIdle: 0
-  autoAttack: 1
-  isSelected: 0
+  autoAttack: 0
   damage: -3
   attackCooldown: 0
-  targetPos: {x: 0, y: 0, z: 0}
+  attackRange: 0
 --- !u!114 &6559976953810290360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +437,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5319527824226730219}
   - component: {fileID: 4584941924492542362}
-  - component: {fileID: 1290219621083713344}
   m_Layer: 0
   m_Name: Toggle
   m_TagString: Untagged
@@ -453,17 +453,17 @@ RectTransform:
   m_GameObject: {fileID: 1266141235340616865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.7389, y: 4.7389, z: 4.7389}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 512575295723436460}
   - {fileID: 7886700753130437248}
-  m_Father: {fileID: 6189588480527387754}
+  m_Father: {fileID: 4125167682360621606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 470, y: -480.6}
+  m_AnchoredPosition: {x: -100, y: 23}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4584941924492542362
@@ -513,7 +513,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290219621083713344}
+      - m_Target: {fileID: 7762865063422175210}
         m_TargetAssemblyTypeName: AutoAttackUI, Assembly-CSharp
         m_MethodName: ChangeAutoAttack
         m_Mode: 0
@@ -526,19 +526,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
---- !u!114 &1290219621083713344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266141235340616865}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c01cef45843f2a49b21650f3d77f384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghoulModel: {fileID: 833944671312180779}
 --- !u!1 &1778820536018751420
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +534,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6189588480527387754}
+  - component: {fileID: 4125167682360621606}
+  - component: {fileID: 1677714186498803446}
+  - component: {fileID: 3264774888590055283}
+  - component: {fileID: 7762865063422175210}
   m_Layer: 0
   m_Name: AutoAttack
   m_TagString: Untagged
@@ -555,8 +545,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6189588480527387754
-Transform:
+--- !u!224 &4125167682360621606
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -564,13 +554,69 @@ Transform:
   m_GameObject: {fileID: 1778820536018751420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.226021, y: 0.1426, z: 0.1426}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5319527824226730219}
   m_Father: {fileID: 7682163335081164446}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 748, y: -374}
+  m_SizeDelta: {x: 1419, y: 495}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1677714186498803446
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778820536018751420}
+  m_CullTransparentMesh: 1
+--- !u!114 &3264774888590055283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778820536018751420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2e0ac6e5a219723449e39db5b1e5cf3b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7762865063422175210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778820536018751420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c01cef45843f2a49b21650f3d77f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghoulModel: {fileID: 833944671312180779}
 --- !u!1 &2499758542581214801
 GameObject:
   m_ObjectHideFlags: 0

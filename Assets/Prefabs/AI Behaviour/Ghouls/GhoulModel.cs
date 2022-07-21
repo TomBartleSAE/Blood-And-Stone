@@ -13,6 +13,8 @@ public class GhoulModel : MonoBehaviour
     private PathfindingAgent pathfinding;
     public GameObject toggle;
     public ClickMovement clickMovement;
+    public BoxSelection boxSelection;
+    public GameObject autoAttackPanel;
 
     public bool hasTarget;
     public bool targetAlive;
@@ -30,6 +32,7 @@ public class GhoulModel : MonoBehaviour
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         health.DeathEvent += Die;
+        boxSelection.GhoulSelectedEvent += SetAutoAttackPanel;
     }
 
     private void OnDestroy()
@@ -66,5 +69,10 @@ public class GhoulModel : MonoBehaviour
         health.MaxHealth = DayNPCManager.Instance.ghoulHealthLevels[level - 1];
         attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
         GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
+    }
+
+    public void SetAutoAttackPanel(bool value)
+    {
+        autoAttackPanel.SetActive(value);    
     }
 }
