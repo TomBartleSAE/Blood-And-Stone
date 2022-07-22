@@ -17,7 +17,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public int maxBlood = 50;
     
     [Header("Castle")]
-    private int castleLevel = 1;
+    [SerializeField] private int castleLevel = 1;
 
     public int CastleLevel
     {
@@ -31,10 +31,9 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public float castleHealth;
 
     [Header("Ghouls")] 
-    private int currentGhouls;
-    private int ghoulPopcap = 5;
+    [SerializeField] private int currentGhouls;
+    [SerializeField] private int ghoulPopcap = 5;
     
-    [SerializeField]
     public int CurrentGhouls
     {
         get
