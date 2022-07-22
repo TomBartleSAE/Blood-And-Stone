@@ -54,6 +54,7 @@ public class GhoulMoveToTargetState : AntAIState
 
     public override void Exit()
     {
+        targetDestination = null;
         base.Exit();
     }
 

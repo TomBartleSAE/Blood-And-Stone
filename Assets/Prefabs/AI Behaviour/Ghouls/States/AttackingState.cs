@@ -29,6 +29,11 @@ public class AttackingState : AntAIState
 
         target = ghoulModel.clickMovement.target;
         canAttack = true;
+        target.GetComponent<Health>().DeathEvent += TargetDead;
+        if (target.GetComponent<Health>().currentHealth > 0)
+        {
+            ghoulModel.targetAlive = true;
+        }
 
         me = ghoulModel.gameObject;
         
@@ -42,11 +47,12 @@ public class AttackingState : AntAIState
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
+            canAttack = true;
             Attack();
         }
 
         float distance = Vector3.Distance(ghoulModel.transform.position, target.position);
-        if (distance > ghoulModel.attackRange)
+        if (distance > ghoulModel.attackRange || target == null)
         {
             ghoulModel.inRange = false;
         }
@@ -56,7 +62,7 @@ public class AttackingState : AntAIState
     {
         base.Exit();
 
-        ghoulModel.hasTarget = false;
+        //ghoulModel.hasTarget = false;
     }
 
     //deals damage then starts the cooldown timer
@@ -64,11 +70,20 @@ public class AttackingState : AntAIState
     {
         int damage = ghoulModel.damage;
 
-        if (canAttack)
+        if (canAttack && ghoulModel.targetAlive)
         {
             target.GetComponent<Health>().ChangeHealth(-damage, me); // Changing health by negative damage means damage values can be positive which makes more sense
             canAttack = false;
             timer = ghoulModel.attackCooldown;
         }
+    }
+
+    public void TargetDead(GameObject deadThing)
+    {
+        target = null;
+        ghoulModel.hasTarget = false;
+        ghoulModel.inRange = false;
+        ghoulModel.targetAlive = false;
+        ghoulModel.isIdle = true;
     }
 }

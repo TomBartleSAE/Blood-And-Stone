@@ -112,19 +112,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 6559976953810290360}
-  toggle: {fileID: 0}
-  clickMovement: {fileID: 0}
+  clickMovement: {fileID: 7957953460022438710}
   boxSelection: {fileID: 0}
-  autoAttackPanel: {fileID: 0}
   hasTarget: 0
   targetAlive: 0
   castleStanding: 0
   inRange: 0
   isIdle: 0
   autoAttack: 0
+  localAutoAttack: 0
   damage: -3
   attackCooldown: 0
-  attackRange: 0
+  attackRange: 2
 --- !u!114 &6559976953810290360
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class ClickMovement : MonoBehaviour
 
     public float repathTime = 1f;
 
+    public event Action<bool> HasTargetEvent;
+
     private void Start()
     {
         InputManager.Instance.OnRightClickEvent += PerformClick;
@@ -72,12 +74,14 @@ public class ClickMovement : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))
             {
                 target = hit.transform;
+                HasTargetEvent?.Invoke(true);
                 return;
             }
             else
             {
                 // HACK
                 target = null;
+                HasTargetEvent?.Invoke(false);
             }
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayers))

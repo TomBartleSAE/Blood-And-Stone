@@ -47,6 +47,7 @@ public class GhoulModel : MonoBehaviour
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         health.DeathEvent += Die;
+        clickMovement.HasTargetEvent += HasTargetBoolChange;
     }
 
     private void OnDestroy()
@@ -83,5 +84,10 @@ public class GhoulModel : MonoBehaviour
         health.MaxHealth = DayNPCManager.Instance.ghoulHealthLevels[level - 1];
         attackCooldown = DayNPCManager.Instance.ghoulAttackRateLevels[level - 1];
         GetComponent<FollowPath>().moveSpeed = DayNPCManager.Instance.ghoulMovementSpeedLevels[level - 1];
+    }
+
+    public void HasTargetBoolChange(bool value)
+    {
+        hasTarget = value;
     }
 }
