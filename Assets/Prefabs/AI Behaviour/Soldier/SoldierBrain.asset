@@ -35,20 +35,16 @@ MonoBehaviour:
     cost: 0
     position: {x: 333.8235, y: 73.31543}
     pre:
-    - id: 0
-      value: 0
     - id: 3
       value: 1
     - id: 2
       value: 0
-    post:
-    - id: 0
-      value: 1
+    post: []
   - name: SoldierMoveToTargetState
     isDefault: 0
     state: {fileID: 4694208113020746779, guid: b7249b128f00a7a4dadc71319a6fd298, type: 3}
     cost: 0
-    position: {x: 546.8132, y: 74.90112}
+    position: {x: 556.8132, y: 74.90112}
     pre:
     - id: 6
       value: 1
@@ -104,15 +100,15 @@ MonoBehaviour:
     - id: 3
       value: 0
   worldStates:
-  - position: {x: 285.53738, y: 601.38214}
+  - position: {x: 330.53738, y: 593.7155}
     isAutoUpdate: 1
     list:
     - id: 0
       value: 0
     - id: 1
-      value: 0
-    - id: 2
       value: 1
+    - id: 2
+      value: 0
     - id: 3
       value: 1
     - id: 4

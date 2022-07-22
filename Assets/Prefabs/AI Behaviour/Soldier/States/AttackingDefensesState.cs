@@ -18,7 +18,8 @@ public class AttackingDefensesState : AntAIState
     public bool inRange = false;
     public bool canAttack = true;
 
-    public float attackTime;
+    public float pathTimer = 0.5f;
+    public float attackTimer;
     public float damage;
 
     public override void Create(GameObject aGameobject)
@@ -34,42 +35,47 @@ public class AttackingDefensesState : AntAIState
         base.Enter();
 
         soldier = owner.GetComponent<SoldierModel>();
-        //pathfinding = owner.GetComponent<PathfindingAgent>();
         target = soldier.target;
         rb = owner.GetComponent<Rigidbody>();
 
-        soldier.NewTargetEvent += ChangeTarget;
-        followPath.enabled = false;
-
+        soldier.pathfinding.FindPath(transform.position, target.position);
+        attackTimer = soldier.attackCooldown;
         canAttack = true;
 
-        target.GetComponent<Tom.Health>().DeathEvent += ChangeBool;
-
-        //pathfinding.FindPath(owner.transform.position, target.transform.position);
+        target.GetComponent<Tom.Health>().DeathEvent += LeaveState;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (!inRange)
+        pathTimer -= Time.deltaTime;
+        if (pathTimer <= 0)
         {
-            rb.AddForce((target.transform.position - owner.transform.position).normalized * owner.GetComponent<FollowPath>().moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+            if (!inRange)
+            {
+                soldier.pathfinding.FindPath(transform.position, target.position);
+                pathTimer = 0.5f;
+            }
         }
 
         CheckRange();
-        
-        if (inRange && canAttack)
+
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0)
         {
-            StartCoroutine(Attack());
+            if (inRange && canAttack)
+            {
+                canAttack = false;
+                Attack();
+                attackTimer = soldier.attackCooldown;
+            }
         }
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        followPath.enabled = true;
     }
 
     public void CheckRange()
@@ -78,35 +84,21 @@ public class AttackingDefensesState : AntAIState
         
         range = Vector3.Distance(owner.transform.position, target.transform.position);
 
-        if (range <= 1)
+        if (range <= 0.5)
         {
             inRange = true;
         }
     }
 
-    public IEnumerator Attack()
+    public void Attack()
     {
-        canAttack = false;
-        
-        print("Attacking wall");
-        
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, owner);
-        
-        for (int i = 0; i < attackTime; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
         canAttack = true;
     }
 
-    public void ChangeBool(GameObject go)
+    public void LeaveState(GameObject go)
     {
         soldier.attackedByTower = false;
-    }
-
-    public void ChangeTarget(Transform newTarget)
-    {
-        target = newTarget;
+        Finish();
     }
 }

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2645878115345322765}
   - component: {fileID: 2645878115345322759}
   - component: {fileID: 4942734067394492819}
+  - component: {fileID: 4019005588406790102}
   - component: {fileID: 2645878115345322758}
   - component: {fileID: 4392778748646304200}
   - component: {fileID: 2645878115345322753}
@@ -168,6 +169,19 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!135 &4019005588406790102
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2645878115345322764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2645878115345322758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +266,8 @@ MonoBehaviour:
   agent: {fileID: 2645878115345322752}
   rb: {fileID: 2645878115345322759}
   moveSpeed: 20
+  target: {x: 0, y: 0, z: 0}
+  turnSpeed: 5
 --- !u!114 &2645878115345322754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 15
+  healthMultiplier: 1
 --- !u!1 &2645878115819848673
 GameObject:
   m_ObjectHideFlags: 0

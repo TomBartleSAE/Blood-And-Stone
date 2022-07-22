@@ -56,7 +56,7 @@ MonoBehaviour:
   eyesClosed: {fileID: 695500661}
   boxSelection: {fileID: 0}
   popcapText: {fileID: 7348650432822777680}
-  isDayPhase: 1
+  isDayPhase: 0
 --- !u!1 &633974749
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,8 +84,8 @@ RectTransform:
   m_GameObject: {fileID: 633974749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.252, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2080354074}
   m_RootOrder: 0
@@ -93,7 +93,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 225, y: 225}
+  m_SizeDelta: {x: 580, y: 580}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &633974752
 CanvasRenderer:
@@ -916,7 +916,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2101,7 +2101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4890950310364254541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4414,6 +4414,7 @@ MonoBehaviour:
   ghoulModel: {fileID: 0}
   autoAttackPanel: {fileID: 5367183313026190271}
   boxSelection: {fileID: 0}
+  isDayPhase: 0
 --- !u!1 &5144468433531985590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5544,7 +5545,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 18, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6939,7 +6940,7 @@ RectTransform:
   m_GameObject: {fileID: 7563689501607816582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.79, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2080354074}
@@ -6949,7 +6950,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 299, y: 138}
+  m_SizeDelta: {x: 299, y: 133}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7563689501607816635
 CanvasRenderer:
@@ -6979,7 +6980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7e10ad72cb4de37448f7d7a5808c1dad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12494d83e86ebac43bcb641edf6f1e65, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7015,7 +7016,7 @@ GameObject:
   - component: {fileID: 7563689501722212782}
   - component: {fileID: 7563689501722212783}
   m_Layer: 5
-  m_Name: HUD
+  m_Name: HUD Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8006,6 +8007,7 @@ GameObject:
   - component: {fileID: 1365363175081055031}
   - component: {fileID: 6835360228033826243}
   - component: {fileID: 1522006775}
+  - component: {fileID: 1683514079}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -8115,7 +8117,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1522006775}
+      - m_Target: {fileID: 1683514079}
         m_TargetAssemblyTypeName: PlayButtonUI, Assembly-CSharp
         m_MethodName: StartWaves
         m_Mode: 1
@@ -8127,19 +8129,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6835360228033826243}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1522006775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831457905408894623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c44929d684317940a4c62bfe0b80012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayPhase: {fileID: 0}
+--- !u!114 &1683514079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

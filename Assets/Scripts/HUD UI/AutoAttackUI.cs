@@ -11,6 +11,8 @@ public class AutoAttackUI : MonoBehaviour
 
     public BoxSelection boxSelection;
 
+    public bool isDayPhase;
+
     public void Start()
     {
         boxSelection.GhoulSelectedEvent += SetAutoAttackPanel;

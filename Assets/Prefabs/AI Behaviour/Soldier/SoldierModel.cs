@@ -5,6 +5,7 @@ using Tom;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngineInternal;
+using Random = UnityEngine.Random;
 
 public class SoldierModel : EnemyBase
 {
@@ -15,6 +16,8 @@ public class SoldierModel : EnemyBase
     public Transform target;
     public Transform castle;
 
+    public List<Transform> TargetsInRange = new List<Transform>();
+
     public bool hasTarget = false;
     public bool attackedByGhoul = false;
     public bool attackedByTower = false;
@@ -22,22 +25,22 @@ public class SoldierModel : EnemyBase
     public bool inRange = false;
     public bool targetAlive = false;
 
-    public LayerMask buildingLayer;
+    public float attackCooldown;
 
-    public event Action<Transform> NewTargetEvent;
+    public LayerMask buildingLayer;
 
     public void OnEnable()
     {
-        health.DamageChangeEvent += ChangeTarget;
         health.DeathEvent += Die;
         pathfinding.PathFailedEvent += BreakThroughWall;
+        health.DamageChangeEvent += AttackTower;
     }
 
     public void OnDisable()
     {
-        health.DamageChangeEvent -= ChangeTarget;
         health.DeathEvent -= Die;
         pathfinding.PathFailedEvent -= BreakThroughWall;
+        health.DamageChangeEvent += AttackTower;
     }
 
     void Awake()
@@ -47,19 +50,39 @@ public class SoldierModel : EnemyBase
         health = GetComponent<Health>();
     }
 
-    public void ChangeTarget(GameObject newTarget)
+    private void OnTriggerEnter(Collider other)
     {
-        target = newTarget.transform;
-
-        if (target.GetComponent<GhoulModel>())
+        if (other.GetComponent<GhoulModel>()) ;
         {
+            TargetsInRange.Add(other.transform);
+            target = other.transform;
             attackedByGhoul = true;
         }
+    }
 
-        if (target.GetComponent<TowerBase>())
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<GhoulModel>())
         {
-            attackedByTower = true;
-            NewTargetEvent?.Invoke(target);
+            TargetsInRange.Remove(other.transform);
+        }
+        
+        if (other.gameObject == target.gameObject)
+        {
+            ChangeTarget();
+        }
+    }
+
+    public void ChangeTarget()
+    {
+        if (TargetsInRange.Count > 0)
+        {
+            target = TargetsInRange[Random.Range(0, TargetsInRange.Count - 1)];
+        }
+
+        else
+        {
+            attackedByGhoul = false;
         }
     }
 
@@ -87,5 +110,17 @@ public class SoldierModel : EnemyBase
         
         //will change to AttackingDefensesState
         attackedByTower = true;
+    }
+
+    void AttackTower(GameObject newTarget)
+    {
+        if (newTarget.GetComponent<TowerBase>())
+        {
+            if (!attackedByTower || !attackedByGhoul)
+            {
+                target = newTarget.transform;
+                attackedByTower = true;
+            }
+        }
     }
 }
