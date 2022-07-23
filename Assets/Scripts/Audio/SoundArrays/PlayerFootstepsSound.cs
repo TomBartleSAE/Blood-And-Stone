@@ -1,10 +1,13 @@
-﻿using UnityEngine.Audio;
+using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
-public class Sound {
+public class PlayerFootstepsSound
+{
 
 	public string name;
+
+	public int indexNumber;
 
 	public AudioClip clip;
 

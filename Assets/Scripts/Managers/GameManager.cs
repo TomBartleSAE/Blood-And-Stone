@@ -35,6 +35,7 @@ public class GameManager : ManagerBase<GameManager>
         yield return new WaitForSeconds(3);
         loadingImage.DOFade(0, 1);
         stateManager.ChangeState(newState);
+        FindObjectOfType<AudioManager>().Play(newSceneName);  //Here's where I think the audio code could go in, it could parse through the name of the state of the game to the music system, which would find the clip with the associated state name. The code I've written here assumes that the SceneNames are only EG "Dayphase" "Nightphase"
     }
 
     public void CallPhaseChange(string newSceneName, string oldSceneName, StateBase newState)

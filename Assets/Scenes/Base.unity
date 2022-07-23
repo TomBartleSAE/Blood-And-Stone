@@ -510,7 +510,10 @@ MonoBehaviour:
   ghoulsCreated: 0
   currentBlood: 20
   maxBlood: 50
+  castleLevel: 1
   castleHealth: 0
+  currentGhouls: 0
+  ghoulPopcap: 5
 --- !u!4 &578789428
 Transform:
   m_ObjectHideFlags: 0
@@ -759,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262527778}
-  - component: {fileID: 1262527777}
+  - component: {fileID: 1262527779}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -767,56 +770,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1262527777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262527776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
-  sounds:
-  - name: MainMenuMusic
-    clip: {fileID: 8300000, guid: 64264abcc370b5d47a30e78f67bfd74b, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
-    source: {fileID: 0}
-  - name: ButtonHover
-    clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonClick
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonEnter
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
 --- !u!4 &1262527778
 Transform:
   m_ObjectHideFlags: 0
@@ -832,6 +785,176 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1262527779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262527776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  ambienceSounds: []
+  menuSounds:
+  - name: ButtonSelectSFX
+    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ButtonHoverSFX
+    clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BloodMeterSFX
+    clip: {fileID: 8300000, guid: 1b3602be4f27fde4fb6b3500098e845b, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  musicSounds:
+  - name: DayPhaseMusic
+    clip: {fileID: 8300000, guid: e0d4a5e9abd3ed147a528689e14f2c09, type: 3}
+    associatedState: 
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: NightPhaseMusic
+    clip: {fileID: 8300000, guid: cfb8747b5d2341d40bce7ac0124de245, type: 3}
+    associatedState: 
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MainMenuMusic
+    clip: {fileID: 8300000, guid: 64264abcc370b5d47a30e78f67bfd74b, type: 3}
+    associatedState: 
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: NightPauseMusic
+    clip: {fileID: 8300000, guid: 372877946165d08478954bb5ad957ef3, type: 3}
+    associatedState: 
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  sfxSounds:
+  - name: PlayerAttackSFX
+    clip: {fileID: 8300000, guid: b135b7c77835b6c458756673e72a90b7, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VillagerAttackSFX
+    clip: {fileID: 8300000, guid: 2545b167158beb34dbfa38c9cb2c28a1, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VillagerDeathDaySFX
+    clip: {fileID: 8300000, guid: 3bc652e0cbc057e4f94b23eb65e14c58, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VillagerDeathNightSFX
+    clip: {fileID: 8300000, guid: e026e34163b91d341adb7e63ccbe33dd, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GuardAlertSFX
+    clip: {fileID: 8300000, guid: 169e5120f1d73dd4e8fa323ee02f3b9d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  playerFootstepsSounds:
+  - name: teststep1
+    indexNumber: 1
+    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: teststep2
+    indexNumber: 1
+    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: teststep3
+    indexNumber: 1
+    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: teststep4
+    indexNumber: 1
+    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &1310713147
 GameObject:
   m_ObjectHideFlags: 0
