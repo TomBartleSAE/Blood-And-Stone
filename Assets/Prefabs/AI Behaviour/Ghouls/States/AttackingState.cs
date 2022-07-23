@@ -47,12 +47,8 @@ public class AttackingState : AntAIState
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-<<<<<<< Updated upstream
             canAttack = true;
-            Attack();
-=======
             Invoke(nameof(Attack), 1.25f);
->>>>>>> Stashed changes
         }
 
         float distance = Vector3.Distance(ghoulModel.transform.position, target.position);
