@@ -9,7 +9,7 @@ public class MusicSound
 
 	public AudioClip clip;
 
-	public string associatedState; //this variable here correlates with the "newSceneName" variable within the game manager
+	//public string associatedState; //this variable here correlates with the "newSceneName" variable within the game manager
 
 	[Range(0f, 1f)]
 	public float volume = .75f;
