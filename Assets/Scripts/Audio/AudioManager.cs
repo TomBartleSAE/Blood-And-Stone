@@ -134,7 +134,25 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayMusic(string sound)
 	{
-		MusicSound s = Array.Find(musicSounds, item => item.associatedState == sound);
+		MusicSound s = Array.Find(musicSounds, item => item.name == sound);
+		if (s == null)
+		{
+			Debug.LogWarning("Sound: " + name + " not found!");
+			return;
+		}
+
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
+
+		s.source.Play();
+
+	}
+
+
+	// UI System below
+	public void PlayUI(string sound)
+	{
+		MenuSound s = Array.Find(menuSounds, item => item.name == sound);
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + name + " not found!");
@@ -221,6 +239,8 @@ public class AudioManager : MonoBehaviour
 
 		s.source.Play();
 	}
+
+	//
 
 
 	//        myAudioSource.PlayDelayed(Random.Range(minDelay, maxDelay)); <<<< This element will be good only for ambience

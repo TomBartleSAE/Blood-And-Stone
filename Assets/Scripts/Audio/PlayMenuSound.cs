@@ -19,19 +19,31 @@ public class PlayMenuSound : MonoBehaviour
 
     public void PlayHover()
     {
-        audioManager.Play("ButtonHover");
+        audioManager.PlayUI("ButtonHover");
 
     }
 
-    public void PlayClick()
+    public void PlayClickMain()
     {
-        audioManager.Play("ButtonClick");
+        audioManager.PlayUI("ButtonClickMain");
+
+    }
+
+    public void PlayClickBack()
+    {
+        audioManager.PlayUI("ButtonClickBack");
+
+    }
+
+    public void PlayClickHUD()
+    {
+        audioManager.PlayUI("ButtonClickHUD");
 
     }
 
     public void PlayEnter()
     {
-        audioManager.Play("ButtonEnter");
+        audioManager.PlayUI("ButtonEnter");
 
     }
 

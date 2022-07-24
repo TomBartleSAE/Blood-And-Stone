@@ -800,7 +800,7 @@ MonoBehaviour:
   mixerGroup: {fileID: 0}
   ambienceSounds: []
   menuSounds:
-  - name: ButtonSelectSFX
+  - name: ButtonEnter
     clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
     volume: 1
     volumeVariance: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: ButtonHoverSFX
+  - name: ButtonHover
     clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
     volume: 1
     volumeVariance: 0
@@ -818,8 +818,35 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: BloodMeterSFX
-    clip: {fileID: 8300000, guid: 1b3602be4f27fde4fb6b3500098e845b, type: 3}
+  - name: ButtonClickMain
+    clip: {fileID: 8300000, guid: 82228cd977bf4664c9e4a8c8ef090f6f, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ButtonClickBack
+    clip: {fileID: 8300000, guid: 25633f33406028340b1b5b990d43dcec, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ButtonClickHUD
+    clip: {fileID: 8300000, guid: 3fcad4c4d2ec8654aa13cf22c93195d6, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BloodMeter
+    clip: {fileID: 8300000, guid: caf1e0435de6c2f4a903b898b9d60cc9, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -829,8 +856,7 @@ MonoBehaviour:
     source: {fileID: 0}
   musicSounds:
   - name: DayPhaseMusic
-    clip: {fileID: 8300000, guid: e0d4a5e9abd3ed147a528689e14f2c09, type: 3}
-    associatedState: 
+    clip: {fileID: 8300000, guid: 2d6b4a992becb9d4f91142c93de2b67e, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -839,8 +865,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: NightPhaseMusic
-    clip: {fileID: 8300000, guid: cfb8747b5d2341d40bce7ac0124de245, type: 3}
-    associatedState: 
+    clip: {fileID: 8300000, guid: 531e952f9d0026d4b921da24dd2bf745, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -849,8 +874,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: MainMenuMusic
-    clip: {fileID: 8300000, guid: 64264abcc370b5d47a30e78f67bfd74b, type: 3}
-    associatedState: 
+    clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -859,8 +883,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: NightPauseMusic
-    clip: {fileID: 8300000, guid: 372877946165d08478954bb5ad957ef3, type: 3}
-    associatedState: 
+    clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -869,7 +892,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   sfxSounds:
-  - name: PlayerAttackSFX
+  - name: PlayerAttack
     clip: {fileID: 8300000, guid: b135b7c77835b6c458756673e72a90b7, type: 3}
     volume: 1
     volumeVariance: 0
@@ -878,7 +901,7 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: VillagerAttackSFX
+  - name: VillagerAttack
     clip: {fileID: 8300000, guid: 2545b167158beb34dbfa38c9cb2c28a1, type: 3}
     volume: 1
     volumeVariance: 0
@@ -887,8 +910,8 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: VillagerDeathDaySFX
-    clip: {fileID: 8300000, guid: 3bc652e0cbc057e4f94b23eb65e14c58, type: 3}
+  - name: VillagerDeathDay
+    clip: {fileID: 8300000, guid: 49a9515911d8a6846be7ac7396b348ea, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -896,8 +919,8 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: VillagerDeathNightSFX
-    clip: {fileID: 8300000, guid: e026e34163b91d341adb7e63ccbe33dd, type: 3}
+  - name: VillagerDeathNight
+    clip: {fileID: 8300000, guid: 28a570abc596adf40b8c32cf3a706862, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -905,8 +928,17 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: GuardAlertSFX
+  - name: GuardAlert
     clip: {fileID: 8300000, guid: 169e5120f1d73dd4e8fa323ee02f3b9d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: LoadingScreen
+    clip: {fileID: 8300000, guid: 85766b5b9340c564bb859e2b9aa6cefe, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -955,6 +987,9 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  villagerFootstepsSounds: []
+  guardFootstepsSounds: []
+  ghoulFootstepsSounds: []
 --- !u!1 &1310713147
 GameObject:
   m_ObjectHideFlags: 0

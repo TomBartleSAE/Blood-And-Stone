@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 3240955513614846527}
   - component: {fileID: -4480982740973044769}
   - component: {fileID: 6941164730171697040}
+  - component: {fileID: 576528831969567686}
   m_Layer: 7
   m_Name: Tower Base
   m_TagString: Untagged
@@ -367,6 +368,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   tooltip: {fileID: 7390939404393835014}
+--- !u!114 &576528831969567686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271138710105583862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
+          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
+          m_MethodName: PlayClickHUD
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5271138710127269070
 GameObject:
   m_ObjectHideFlags: 0
