@@ -464,7 +464,6 @@ MonoBehaviour:
   meshes:
   - {fileID: 2888240702209591209}
   - {fileID: 5756707820787728052}
-  castleLevelText: {fileID: 0}
 --- !u!65 &5087221706454770323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -644,6 +643,7 @@ GameObject:
   - component: {fileID: 6249593539377614539}
   - component: {fileID: 5098093335210439084}
   - component: {fileID: 4314351578681379631}
+  - component: {fileID: 2993756136152824512}
   m_Layer: 0
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -754,6 +754,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
+        m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
+        m_MethodName: PlayClickMain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5087221706454770324}
         m_TargetAssemblyTypeName: Castle, Assembly-CSharp
         m_MethodName: Upgrade
@@ -778,6 +790,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2993756136152824512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158376432320037235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
+          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
+          m_MethodName: PlayHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8307473132677751548
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +986,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d3b87bee505d084380d01d1afd24029, type: 3}
   m_PrefabInstance: {fileID: 2653884946871630584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4864700538254524695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888240702209591209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
+          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
+          m_MethodName: PlayClickHUD
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &4837576915026887653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1032,3 +1102,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37a5cf184fe563e4189680f3a5681974, type: 3}
   m_PrefabInstance: {fileID: 4837576915026887653}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5113393795991120546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756707820787728052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
+          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
+          m_MethodName: PlayClickHUD
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
