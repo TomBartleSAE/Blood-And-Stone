@@ -61,14 +61,18 @@ public class ClickMovement : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(args.mousePosition);
             RaycastHit hit;
 
-            PointerEventData data = new PointerEventData(EventSystem.current);
-            data.position = args.mousePosition;
-            List<RaycastResult> results = new List<RaycastResult>();
-            graphicRaycaster.Raycast(data, results);
-
-            if (results.Count > 0)
+            // Prevents movement when clicking on assigned UI canvas
+            if (graphicRaycaster != null)
             {
-                return;
+                PointerEventData data = new PointerEventData(EventSystem.current);
+                data.position = args.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                graphicRaycaster.Raycast(data, results);
+
+                if (results.Count > 0)
+                {
+                    return;
+                }
             }
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayer))

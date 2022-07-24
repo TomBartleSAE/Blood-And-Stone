@@ -32,7 +32,7 @@ public class FollowPath : MonoBehaviour
             {
                 rb.AddForce((targetNode.coordinates - transform.position).normalized * moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
                 
-                if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.5f)
+                if (Vector3.Distance(targetNode.coordinates, transform.position) < 0.25f)
                 {
                     index++;
                     if (index < agent.path.Count)
@@ -41,22 +41,22 @@ public class FollowPath : MonoBehaviour
                         target = targetNode.coordinates;
                     }
                 }
+                
+                //TURN TOWARDS
+                targetLocalPosition = transform.InverseTransformPoint(target);
+                float turnDirection = targetLocalPosition.x;
+            
+                // Prevents object going straight when facing the exact opposite direction
+                // by checking if the target is directly behind it in the local Z axis
+                if (turnDirection < 0.01f && turnDirection > -0.01f && targetLocalPosition.z < 0)
+                {
+                    turnDirection = 1f;
+                }
+
+                rb.AddTorque(Vector3.up * turnDirection * turnSpeed * Time.fixedDeltaTime,
+                    ForceMode.VelocityChange);
             }
         }
-        
-        //TURN TOWARDS
-        targetLocalPosition = transform.InverseTransformPoint(target);
-        float turnDirection = targetLocalPosition.x;
-            
-        // Prevents object going straight when facing the exact opposite direction
-        // by checking if the target is directly behind it in the local Z axis
-        if (turnDirection < 0.01f && turnDirection > -0.01f && targetLocalPosition.z < 0)
-        {
-            turnDirection = 1f;
-        }
-
-        rb.AddTorque(Vector3.up * turnDirection * turnSpeed * Time.fixedDeltaTime,
-            ForceMode.VelocityChange);
     }
     
 
