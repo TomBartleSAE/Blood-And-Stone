@@ -2026,6 +2026,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2344111644836524095, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2344111644873129314, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
       propertyPath: m_Name
       value: HUD Night
@@ -2112,6 +2116,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344111644873129326, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674883095656555089, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
