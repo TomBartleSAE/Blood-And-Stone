@@ -22,6 +22,8 @@ public class TutorialManager : ManagerBase<TutorialManager>
 
     public void Start()
     {
+        textBox.SetActive(false);
+        
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
 
         elements = new TutorialElementBase[transform.childCount];
@@ -44,6 +46,9 @@ public class TutorialManager : ManagerBase<TutorialManager>
             return;
         }
         
+        textBox.SetActive(false);
+        
+        // Consider turning this into a switch statement with enum
         if (activeClickArea != null)
         {
             Vector2 mousePosition = InputManager.Instance.GetMousePosition();
@@ -55,7 +60,7 @@ public class TutorialManager : ManagerBase<TutorialManager>
                 Progress();
             }
         }
-        else
+        else if (elements[index].GetComponent<TutorialDialogue>())
         {
             Progress();
         }
@@ -95,12 +100,18 @@ public class TutorialManager : ManagerBase<TutorialManager>
         isTextTyping = true;
         currentText = text;
         
-        for (int i = 0; i < text.Length + 1; i++)
+        for (int i = 0; i <= text.Length; i++)
         {
             tutorialText.text = text.Substring(0, i);
             yield return new WaitForSeconds(typingDelay);
         }
 
         isTextTyping = false;
+    }
+
+    public IEnumerator ProgressAfterTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Progress();
     }
 }

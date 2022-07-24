@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class GameManager : ManagerBase<GameManager>
 {
     public int currentDay;
-    public StateBase dayPhaseState, nightPhaseState;
+    public StateBase dayPhaseState, nightPhaseState, tutorialState;
     public StateManager stateManager;
     public Image loadingImage;
     

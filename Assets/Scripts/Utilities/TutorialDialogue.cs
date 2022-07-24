@@ -8,7 +8,7 @@ public class TutorialDialogue : TutorialElementBase
     public string dialogue;
 
     public Sprite portrait;
-    public float typingDelay = 0.1f;
+    public float typingDelay = 0.05f;
 
     public override void Activate()
     {
