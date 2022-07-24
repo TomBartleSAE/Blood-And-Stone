@@ -113,7 +113,7 @@ Rigidbody:
   m_GameObject: {fileID: 3689531663806443243}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 5
   m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3689531663806443246}
   rb: {fileID: 3689531663806443232}
-  moveSpeed: 1.5
+  moveSpeed: 8
   target: {x: 0, y: 0, z: 0}
   turnSpeed: 50
 --- !u!114 &3689531663806443235

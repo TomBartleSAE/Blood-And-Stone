@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152092510813912220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5141134, y: 0, z: 2.448}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64,7 +64,7 @@ Rigidbody:
   m_GameObject: {fileID: 1152092510813912220}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 5
   m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 620010471}
   rb: {fileID: 1152092510813912214}
-  moveSpeed: 1.56
+  moveSpeed: 5
   target: {x: 0, y: 0, z: 0}
   turnSpeed: 5
 --- !u!114 &3959367295464404555
