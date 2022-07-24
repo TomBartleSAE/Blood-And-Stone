@@ -11,6 +11,5 @@ public class WalkAnimation : MonoBehaviour
     public void Update()
     {
         anim.SetFloat("Velocity", rb.velocity.magnitude);
-        print(rb.velocity.magnitude);
     }
 }
