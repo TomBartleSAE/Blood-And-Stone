@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : ManagerBase<AudioManager>
 {
 
 	public static AudioManager instance;
@@ -165,6 +165,38 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
 
 	}
+
+    public void PlayHover()
+    {
+        audioManager.PlayUI("ButtonHover");
+
+    }
+
+    public void PlayClickMain()
+    {
+        audioManager.PlayUI("ButtonClickMain");
+
+    }
+
+    public void PlayClickBack()
+    {
+        audioManager.PlayUI("ButtonClickBack");
+
+    }
+
+    public void PlayClickHUD()
+    {
+        audioManager.PlayUI("ButtonClickHUD");
+
+    }
+
+    public void PlayEnter()
+    {
+        audioManager.PlayUI("ButtonEnter");
+
+    }
+
+
 
 	//Footsteps System Below
 
