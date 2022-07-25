@@ -15,6 +15,9 @@ public class PatrollingState : AntAIState
     public Vector3 pointA;
     public Vector3 pointB;
 
+    public Vision vision;
+    public Transform vampire;
+
     public enum PatrolType
     {
         goingTo,
@@ -33,13 +36,15 @@ public class PatrollingState : AntAIState
     public override void Enter()
     {
         base.Enter();
-        pathfinding = owner.GetComponent<PathfindingAgent>();
-        //pathfinding.PathCompletedEvent += ChangeDirection;
-        //seems like a redundant reference but makes life easier
         guard = owner.GetComponent<GuardModel>();
+        pathfinding = owner.GetComponent<PathfindingAgent>();
+        vision = guard.vision;
+        vampire = guard.vampire;
+        //seems like a redundant reference but makes life easier
         waypoints = guard.waypoints;
         guard.vision.angle = 25;
         guard.vision.distance = 2.5f;
+        guard.GetComponent<FollowPath>().moveSpeed = 2.5f;
 
         //gets random waypoint from array of possible waypoints
         GetPatrolPoints();
@@ -68,6 +73,12 @@ public class PatrollingState : AntAIState
             
                 PatrolRoute();
             }
+        }
+        
+        if (vision.CanSeeObject(vampire))
+        {
+            guard.hasTarget = true;
+            guard.isAlert = true;
         }
     }
 

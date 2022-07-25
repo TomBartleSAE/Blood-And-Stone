@@ -8,6 +8,9 @@ public class InvestigatingState : AntAIState
     public GameObject owner;
     private PathfindingAgent pathfinding;
     private GuardModel guard;
+
+    private Vision vision;
+    private Transform vampire;
     
     private bool investigating;
 
@@ -22,12 +25,12 @@ public class InvestigatingState : AntAIState
         base.Enter();
         pathfinding = owner.GetComponent<PathfindingAgent>();
         guard = owner.GetComponent<GuardModel>();
+        vision = guard.vision;
+        vampire = guard.vampire;
         guard.isPatrolling = false;
         guard.IsAlerted();
+        guard.GetComponent<FollowPath>().moveSpeed = 5;
         
-        //values for vision cone - heightened awareness = higher values
-
-
         //Run FindPath to get to event site
         pathfinding.FindPath(transform.position, guard.investigateTarget.transform.position);
         investigating = false;
@@ -39,6 +42,12 @@ public class InvestigatingState : AntAIState
 
         guard.vision.angle = 45;
         guard.vision.distance = 5f;
+        
+        if (vision.CanSeeObject(vampire))
+        {
+            guard.hasTarget = true;
+            guard.isAlert = true;
+        }
         
         CheckInvestigationPosition();
     }

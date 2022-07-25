@@ -7,15 +7,15 @@ using UnityEngine;
 
 public class GuardDeadState : AntAIState
 {
-    private GameObject owner;
-    private GuardModel guardModel;
+    public GameObject owner;
+    public GuardModel guardModel;
 
-    private GameObject guardView;
-    private GameObject ghoulView;
-    private GameObject lightConeObject;
+    public GameObject guardView;
+    public GameObject ghoulView;
+    public GameObject lightConeObject;
 
-    private Vector3 destinationPos;
-    private Transform destination;
+    public Vector3 destinationPos;
+    public Transform destination;
 
     private float pathTimer = 0.5f;
 

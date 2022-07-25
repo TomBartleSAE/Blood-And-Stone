@@ -66,11 +66,11 @@ public class GuardModel : MonoBehaviour
     public void Update()
     {
         //if they see the vampire, will straight away enter chase state
-        if (vision.CanSeeObject(vampire))
+        /*if (vision.CanSeeObject(vampire))
         {
             hasTarget = true;
             isAlert = true;
-        }
+        }*/
     }
 
     #region Investigation
