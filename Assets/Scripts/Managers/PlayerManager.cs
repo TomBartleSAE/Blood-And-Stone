@@ -49,7 +49,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
             }
             
             currentGhouls = value;
-            CurrentGhoulsChangedEvent?.Invoke();
+            CurrentGhoulsChangedEvent?.Invoke(value);
         }
     }
 
@@ -63,7 +63,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
         set
         {
             ghoulPopcap = value;
-            MaxGhoulsChangedEvent?.Invoke();
+            MaxGhoulsChangedEvent?.Invoke(value);
         }
     }
     
@@ -79,8 +79,8 @@ public class PlayerManager : ManagerBase<PlayerManager>
     /// </summary>
     public event Action<int> MaxBloodChangedEvent;
 
-    public event Action CurrentGhoulsChangedEvent;
-    public event Action MaxGhoulsChangedEvent;
+    public event Action<int> CurrentGhoulsChangedEvent;
+    public event Action<int> MaxGhoulsChangedEvent;
     public event Action CastleLevelChangedEvent;
 
     private void Start()

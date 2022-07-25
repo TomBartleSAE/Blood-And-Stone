@@ -20,7 +20,7 @@ public class GhoulIconUI : MonoBehaviour
     {
         PlayerManager.Instance.CurrentGhoulsChangedEvent += UpdateGhoulCount;
         PlayerManager.Instance.MaxGhoulsChangedEvent += UpdateGhoulCount;
-        UpdateGhoulCount();
+        UpdateGhoulCount(0);
         if (isDayPhase)
         {
             boxSelection.GhoulSelectedEvent += SetEyes;
@@ -35,7 +35,7 @@ public class GhoulIconUI : MonoBehaviour
         eyesClosed.SetActive(!value);
     }
     
-    private void UpdateGhoulCount()
+    private void UpdateGhoulCount(int value)
     {
         popcapText.text = PlayerManager.Instance.CurrentGhouls + "/" + PlayerManager.Instance.GhoulPopcap;
     }

@@ -13,11 +13,14 @@ public class ReturnToCastleTrigger : MonoBehaviour
     {
         SetTrigger(false);
         PlayerManager.Instance.BloodChangedEvent += EnableTrigger;
+        PlayerManager.Instance.CurrentGhoulsChangedEvent += EnableTrigger;
     }
 
     private void OnDestroy()
     {
         PlayerManager.Instance.BloodChangedEvent -= EnableTrigger;
+        PlayerManager.Instance.CurrentGhoulsChangedEvent -= EnableTrigger;
+
     }
 
     private void OnTriggerEnter(Collider other)

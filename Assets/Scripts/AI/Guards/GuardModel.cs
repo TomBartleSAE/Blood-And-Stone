@@ -9,24 +9,28 @@ using Random = UnityEngine.Random;
 
 public class GuardModel : MonoBehaviour
 {
+    [Header("Object References")]
     public Health health;
     public PathfindingAgent pathfindingAgent;
     public Vision vision;
     public Rigidbody rb;
+    public Transform mapExit;
+    public GameObject lightConeObject;
 
+    [Header("Investigation")]
     public Transform investigateTarget;
     public Transform vampire;
-
+    
+    [Header("View Objects")]
     public GameObject guardView;
     public GameObject ghoulView;
     public VisionLightCone lightCone;
-    public GameObject mapExit;
-    public GameObject lightConeObject;
     
     public event Action GetPatrolPointsEvent;
     public event Action AlertedEvent;
     public event Action NotAlertedEvent;
 
+    [Header("State Bools")]
     public bool hasTarget = false;
     public bool isAlert;
     public bool inRange;
@@ -34,12 +38,14 @@ public class GuardModel : MonoBehaviour
     public bool isPatrolling;
     public bool isDead = false;
 
+    [Header("Various Floats")]
     public float guardRange;
     public float captureTime;
     public float searchCooldown;
     public float investigationTime;
     public float hearingRange;
 
+    [Header("Patrol Waypoints")]
     public GameObject[] waypoints;
     
     // Start is called before the first frame update
@@ -48,10 +54,6 @@ public class GuardModel : MonoBehaviour
         lightCone = GetComponentInChildren<VisionLightCone>();
         lightConeObject = GetComponentInChildren<VisionLightCone>().gameObject;
 
-        //TODO assign variable in guard Spawner and get from there in place of FindObject
-        mapExit = GameObject.Find("Return to Castle Trigger");
-        vampire = FindObjectOfType<VampireModel>().transform;
-        
         isPatrolling = true;
         
         //reaction to villager dying
@@ -59,8 +61,6 @@ public class GuardModel : MonoBehaviour
         
         //reaction to own death event
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
-        
-        //TODO get reference to own Guard and Ghoul objects
     }
 
     public void Update()
@@ -121,6 +121,7 @@ public class GuardModel : MonoBehaviour
         //adds to list; unsubs from death event to prevent reacting while dead
         NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
+        //Destroy(gameObject.GetComponent<GuardModel>());
     }
 
     #endregion
