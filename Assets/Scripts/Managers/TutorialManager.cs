@@ -20,11 +20,20 @@ public class TutorialManager : ManagerBase<TutorialManager>
     private Coroutine textTyping;
     private string currentText;
 
+    public enum MouseButton
+    {
+        LeftClick,
+        RightClick
+    }
+
+    public MouseButton mouseButton;
+
     public void Start()
     {
         textBox.SetActive(false);
         
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
+        InputManager.Instance.OnRightClickEvent += PerformRightClick;
 
         elements = new TutorialElementBase[transform.childCount];
 
@@ -34,6 +43,12 @@ public class TutorialManager : ManagerBase<TutorialManager>
         }
         
         elements[index].Activate();
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.OnLeftClickEvent -= PerformLeftClick;
+        InputManager.Instance.OnRightClickEvent -= PerformRightClick;
     }
 
     private void PerformLeftClick(ClickEventArgs obj)
@@ -48,8 +63,7 @@ public class TutorialManager : ManagerBase<TutorialManager>
         
         textBox.SetActive(false);
         
-        // Consider turning this into a switch statement with enum
-        if (activeClickArea != null)
+        if (activeClickArea != null && mouseButton == MouseButton.LeftClick)
         {
             Vector2 mousePosition = InputManager.Instance.GetMousePosition();
 
@@ -63,6 +77,27 @@ public class TutorialManager : ManagerBase<TutorialManager>
         else if (elements[index].GetComponent<TutorialDialogue>())
         {
             Progress();
+        }
+    }
+
+    
+    private void PerformRightClick(ClickEventArgs args)
+    {
+        // HACK copy-pasted from above
+        if (activeClickArea != null && mouseButton == MouseButton.RightClick)
+        {
+            Vector2 mousePosition = InputManager.Instance.GetMousePosition();
+
+            if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
+            {
+                activeClickArea = null;
+                GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
+                if (visual != null)
+                {
+                    visual.SetActive(false);
+                }
+                Progress();
+            }
         }
     }
 
