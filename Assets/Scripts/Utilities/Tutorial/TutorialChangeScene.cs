@@ -11,7 +11,7 @@ public class TutorialChangeScene : TutorialElementBase
     {
         base.Activate();
 
-        StartCoroutine(GameManager.Instance.ChangePhase(nextScene, SceneManager.GetActiveScene().name,
-            GameManager.Instance.tutorialState));
+        GameManager.Instance.CallPhaseChange(nextScene, SceneManager.GetActiveScene().name,
+            GameManager.Instance.tutorialState);
     }
 }

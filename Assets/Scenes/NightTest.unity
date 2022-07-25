@@ -1192,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 2316090438006632619}
     - target: {fileID: 4907544181141665960, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: amountToSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4907544181141665960, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: waypoints.Array.size
@@ -3758,7 +3758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3361258868535480606, guid: 2b40b2c6e8f3313409aa8a31565154d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3361258868535480607, guid: 2b40b2c6e8f3313409aa8a31565154d3, type: 3}
       propertyPath: grid

@@ -41,9 +41,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.LoadScene("NightTest", LoadSceneMode.Additive);
-        GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
+        GameManager.Instance.CallPhaseChange("Tutorial_Act1-1", "MainMenu", GameManager.Instance.tutorialState);
     }
 
     public void Load()
