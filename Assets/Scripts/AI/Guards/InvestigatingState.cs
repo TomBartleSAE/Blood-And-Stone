@@ -43,6 +43,7 @@ public class InvestigatingState : AntAIState
         guard.vision.angle = 45;
         guard.vision.distance = 5f;
         
+        //looking for vampire
         if (vision.CanSeeObject(vampire))
         {
             guard.hasTarget = true;

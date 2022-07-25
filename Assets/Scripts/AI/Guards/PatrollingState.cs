@@ -75,6 +75,7 @@ public class PatrollingState : AntAIState
             }
         }
         
+        //looking for vampire
         if (vision.CanSeeObject(vampire))
         {
             guard.hasTarget = true;
