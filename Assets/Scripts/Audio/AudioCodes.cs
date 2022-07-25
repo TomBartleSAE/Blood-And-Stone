@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class AudioCodes : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+// this script is just temporary to store the coding required in other scripts. IE, the code to run the play functionality from other scripts.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+//
+
+
+
+
 }
