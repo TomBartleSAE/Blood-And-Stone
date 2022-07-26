@@ -12,8 +12,8 @@ public class PathfindingGrid : MonoBehaviour
 
     public Node[,] nodes;
 
-    public LayerMask buildingLayer; // Determines which layers block pathfinding agents
-    public LayerMask blockedLayer; // Determines which layers prevent building during the Day phase
+    public LayerMask blockedLayer; // Determines which layers block pathfinding agents
+    public LayerMask buildingLayer; // Determines which layers prevent building during the Day phase
 
     public event Action GridGeneratedEvent;
 
@@ -35,12 +35,12 @@ public class PathfindingGrid : MonoBehaviour
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
                 {
                     nodes[x, y].isBlocked = true;
                 }
                 
-                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
+                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
                 {
                     nodes[x, y].canBuild = true;
                 }
