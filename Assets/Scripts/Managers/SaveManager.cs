@@ -7,16 +7,23 @@ using UnityEngine;
 
 public class SaveManager : ManagerBase<SaveManager>
 {
-    private string filePath;
+    public string saveFilePath;
+    public string newGameDataPath;
     
     public override void Awake()
     {
         base.Awake();
 
-        filePath = Application.persistentDataPath + "/blood&stone.save";
+        saveFilePath = Application.persistentDataPath + "/blood&stone.save";
+        newGameDataPath = Application.persistentDataPath + "default.save";
     }
 
-    public void SaveGame(SaveData saveData)
+    private void Start()
+    {
+        StoreNewGameData();
+    }
+
+    public void SaveGame(SaveData saveData, string filePath)
     {
         FileStream fileStream = new FileStream(filePath, FileMode.Create);
         BinaryFormatter formatter = new BinaryFormatter();
@@ -24,9 +31,9 @@ public class SaveManager : ManagerBase<SaveManager>
         fileStream.Close();
     }
 
-    public SaveData LoadGame()
+    public SaveData LoadGame(string filePath)
     {
-        if (SaveFileExists()) // If a file exists at this path (i.e. is there a save game file)
+        if (SaveFileExists(filePath)) // If a file exists at this path (i.e. is there a save game file)
         {
             FileStream fileStream = new FileStream(filePath, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
@@ -41,20 +48,14 @@ public class SaveManager : ManagerBase<SaveManager>
         }
     }
 
-    public bool SaveFileExists()
+    public bool SaveFileExists(string filePath)
     {
         return File.Exists(filePath);
     }
 
-#if UNITY_EDITOR
-    private void Update()
+    public void StoreNewGameData()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            PlayerManager.Instance.SetSaveData();
-            SaveGame(PlayerManager.Instance.saveData);
-        }
+        PlayerManager.Instance.SetSaveData();
+        SaveGame(PlayerManager.Instance.saveData, newGameDataPath);
     }
-#endif
-
 }

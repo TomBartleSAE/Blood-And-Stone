@@ -34,9 +34,9 @@ public class PauseMenuUI : MonoBehaviour
     
     public void Load()
     {
-        if (SaveManager.Instance.SaveFileExists())
+        if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
         {
-            PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame());
+            PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.saveFilePath));
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
             GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);

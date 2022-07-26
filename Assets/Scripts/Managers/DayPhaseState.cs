@@ -16,7 +16,7 @@ public class DayPhaseState : StateBase
         MessageManager.Instance.ShowMessage("Day " + GameManager.Instance.currentDay, 3f);
         
         PlayerManager.Instance.SetSaveData();
-        SaveManager.Instance.SaveGame(PlayerManager.Instance.saveData);
+        SaveManager.Instance.SaveGame(PlayerManager.Instance.saveData, SaveManager.Instance.saveFilePath);
 
         _soldierSpawner = SoldierSpawner.Instance;
         _soldierSpawner.FinishedSpawningEvent += FinishedSpawning;
