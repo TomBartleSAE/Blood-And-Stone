@@ -10,12 +10,12 @@ public class SelectionIndicator : MonoBehaviour
     public void EnableIndicator()
     {
         enabled = true;
-        GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+        //GetComponentInChildren<MeshRenderer>().material.color = Color.red;
     }
 
     public void DisableIndicator()
     {
         enabled = false;
-        GetComponentInChildren<MeshRenderer>().material = ghoulMaterial;
+        //GetComponentInChildren<MeshRenderer>().material = ghoulMaterial;
     }
 }
