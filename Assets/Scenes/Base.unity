@@ -508,7 +508,7 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 0
+  currentBlood: 50
   maxBlood: 50
   castleLevel: 1
   castleHealth: 0

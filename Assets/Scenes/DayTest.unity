@@ -2876,7 +2876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149927705}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -3.34, y: 5.18, z: -4.08}
+  m_LocalPosition: {x: -3.34, y: 5.64, z: -4.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3289,12 +3289,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 11, y: 11}
   tileSize: 1
-  buildingLayer:
-    serializedVersion: 2
-    m_Bits: 128
   blockedLayer:
     serializedVersion: 2
     m_Bits: 1024
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &198065179
 GameObject:
   m_ObjectHideFlags: 0
@@ -10780,7 +10780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &696487971
 Transform:
   m_ObjectHideFlags: 0
@@ -22498,7 +22498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1415813126
 Transform:
   m_ObjectHideFlags: 0
@@ -31929,6 +31929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD Day
       objectReference: {fileID: 0}
+    - target: {fileID: 5280128434997577852, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5280128435305797026, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -32897,6 +32901,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1590581735178128860, guid: 664a48d0daf5196498550b0b36b1544a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590581735178128860, guid: 664a48d0daf5196498550b0b36b1544a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.83
+      objectReference: {fileID: 0}
     - target: {fileID: 5079446817884302212, guid: 664a48d0daf5196498550b0b36b1544a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -33029,6 +33041,10 @@ PrefabInstance:
     - target: {fileID: 5087221706708482425, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7143440127109827612, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8764580139910373241, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: m_AnchorMax.x
