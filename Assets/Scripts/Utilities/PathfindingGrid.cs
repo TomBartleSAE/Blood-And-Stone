@@ -35,12 +35,12 @@ public class PathfindingGrid : MonoBehaviour
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer, QueryTriggerInteraction.Ignore))
                 {
                     nodes[x, y].isBlocked = true;
                 }
                 
-                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
+                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer, QueryTriggerInteraction.Ignore))
                 {
                     nodes[x, y].canBuild = true;
                 }
