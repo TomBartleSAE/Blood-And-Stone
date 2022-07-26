@@ -22,7 +22,7 @@ public class MainMenuManager : MonoBehaviour
     
     private void Start()
     {
-        if (SaveManager.Instance.SaveFileExists())
+        if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
         {
             continueText.color = Color.black;
         }
@@ -41,18 +41,18 @@ public class MainMenuManager : MonoBehaviour
 
     public void Play()
     {
+        PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.newGameDataPath));
         GameManager.Instance.CallPhaseChange("Tutorial_Act1-1", "MainMenu", GameManager.Instance.tutorialState);
     }
 
     public void Load()
     {
-        if (SaveManager.Instance.SaveFileExists())
+        if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
         {
-            PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame());
+            PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.saveFilePath));
             SceneManager.UnloadSceneAsync("MainMenu");
             SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
-            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.dayPhaseState);
-        }
+            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.dayPhaseState);         }
     }
 
     public void RestoreDefaultSettings()
