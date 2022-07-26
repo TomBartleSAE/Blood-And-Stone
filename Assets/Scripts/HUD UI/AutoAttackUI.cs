@@ -25,7 +25,7 @@ public class AutoAttackUI : MonoBehaviour
             ghoulModel = unit.GetComponent<GhoulModel>();
         }
         autoAttackPanel.SetActive(value);
-        autoAttackPanel.GetComponentInChildren<Toggle>().isOn = ghoulModel.LocalAutoAttack;
+        //autoAttackPanel.GetComponentInChildren<Toggle>().isOn = ghoulModel.LocalAutoAttack;
     }
 
     public void ChangeAutoAttackBool(bool value)

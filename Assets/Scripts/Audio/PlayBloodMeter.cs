@@ -27,7 +27,7 @@ public class PlayBloodMeter : MonoBehaviour
 
     public void UpdateValue()
     {
-        newValue = bloodMeter.slider.value;
+        //newValue = bloodMeter.slider.value;
     }
 
     public void PlaySound()
