@@ -20,16 +20,19 @@ public class AutoAttackUI : MonoBehaviour
 
     public void SetAutoAttackPanel(bool value)
     {
-        if (DayNPCManager.Instance.Ghouls.Count > 0)
+        foreach (var unit in boxSelection.units)
         {
-            foreach (var unit in boxSelection.units)
-            {
-                ghoulModel = unit.GetComponent<GhoulModel>();
-            }
-            autoAttackPanel.SetActive(value);
+            ghoulModel = unit.GetComponent<GhoulModel>();
+        }
+        
+        if (ghoulModel != null)
+        {
             autoAttackPanel.GetComponentInChildren<Toggle>().isOn = ghoulModel.LocalAutoAttack;
+    
+            autoAttackPanel.SetActive(value);
         }
     }
+
 
     public void ChangeAutoAttackBool(bool value)
     {
