@@ -52,7 +52,7 @@ public class SoldierModel : EnemyBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<GhoulModel>()) ;
+        if (other.GetComponent<GhoulModel>())
         {
             TargetsInRange.Add(other.transform);
             target = other.transform;
