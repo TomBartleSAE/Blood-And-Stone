@@ -28,7 +28,7 @@ public class TowerGhost : MonoBehaviour
     {
         ghost.GetComponentInChildren<MeshFilter>().mesh = building.GetComponentInChildren<MeshFilter>().sharedMesh;
 
-        if (!node.canBuild)
+        if (!node.canBuild || node.isBlocked)
         {
             ghost.GetComponentInChildren<MeshRenderer>().material = blockedMaterial;
         }

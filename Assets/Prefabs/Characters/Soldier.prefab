@@ -177,7 +177,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2645878115345322764}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5
@@ -226,14 +226,15 @@ MonoBehaviour:
   health: {fileID: 2645878115345322754}
   target: {fileID: 0}
   castle: {fileID: 0}
-  TargetsInRange: []
+  GhoulsInRange: []
   hasTarget: 0
   attackedByGhoul: 0
   attackedByTower: 0
   castleStanding: 1
   inRange: 0
   targetAlive: 0
-  attackCooldown: 0
+  attackCooldown: 3
+  range: 1
   buildingLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 15
+  maxHealth: 10
   healthMultiplier: 1
 --- !u!1 &2645878115819848673
 GameObject:

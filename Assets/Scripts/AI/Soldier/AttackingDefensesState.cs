@@ -8,18 +8,13 @@ using UnityEngine;
 public class AttackingDefensesState : AntAIState
 {
     public SoldierModel soldier;
-    //public PathfindingAgent pathfinding;
-    public Rigidbody rb;
-    public FollowPath followPath;
 
     public GameObject owner;
     public Transform target;
 
-    public bool inRange = false;
     public bool canAttack = true;
-
-    public float pathTimer = 0.5f;
-    public float attackTimer;
+    
+    private float attackTimer;
     public float damage;
 
     public override void Create(GameObject aGameobject)
@@ -27,7 +22,6 @@ public class AttackingDefensesState : AntAIState
         base.Create(aGameobject);
 
         owner = aGameobject;
-        followPath = owner.GetComponent<FollowPath>();
     }
     
     public override void Enter()
@@ -36,10 +30,7 @@ public class AttackingDefensesState : AntAIState
 
         soldier = owner.GetComponent<SoldierModel>();
         target = soldier.target;
-        rb = owner.GetComponent<Rigidbody>();
 
-        soldier.pathfinding.FindPath(transform.position, target.position);
-        attackTimer = soldier.attackCooldown;
         canAttack = true;
 
         target.GetComponent<Tom.Health>().DeathEvent += LeaveState;
@@ -49,22 +40,14 @@ public class AttackingDefensesState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        pathTimer -= Time.deltaTime;
-        if (pathTimer <= 0)
-        {
-            if (!inRange)
-            {
-                soldier.pathfinding.FindPath(transform.position, target.position);
-                pathTimer = 0.5f;
-            }
-        }
-
+        // Tom: NOTE removed all pathfinding code here, should all be handled by MoveToTarget state
+        
         CheckRange();
 
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            if (inRange && canAttack)
+            if (canAttack)
             {
                 canAttack = false;
                 Attack();
@@ -80,13 +63,12 @@ public class AttackingDefensesState : AntAIState
 
     public void CheckRange()
     {
-        float range;
-        
-        range = Vector3.Distance(owner.transform.position, target.transform.position);
+        float distance = Vector3.Distance(owner.transform.position, target.transform.position);
 
-        if (range <= 0.5)
+        // Tom: Changed this to force soldier to switch to MoveToTarget state when out of range
+        if (distance > soldier.range)
         {
-            inRange = true;
+            soldier.inRange = false;
         }
     }
 
@@ -98,7 +80,12 @@ public class AttackingDefensesState : AntAIState
 
     public void LeaveState(GameObject go)
     {
+        // Tom: Added some extra bool changes here
+        target.GetComponent<Tom.Health>().DeathEvent -= LeaveState;
+        soldier.target = null;
         soldier.attackedByTower = false;
+        soldier.hasTarget = false;
+        soldier.inRange = false;
         Finish();
     }
 }

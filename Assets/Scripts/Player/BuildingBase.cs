@@ -19,7 +19,8 @@ public class BuildingBase : MonoBehaviour
 
     public void GetDestroyed(GameObject building)
     {
-        grid.GetNodeFromPosition(transform.position).isBlocked = false;
+        //grid.GetNodeFromPosition(transform.position).canBuild = true;
         gameObject.SetActive(false);
+        grid.Generate();
     }
 }

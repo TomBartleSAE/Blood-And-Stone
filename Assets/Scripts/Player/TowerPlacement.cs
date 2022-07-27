@@ -85,7 +85,7 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
         
-        if (!selectedNode.canBuild)
+        if (!selectedNode.canBuild || selectedNode.isBlocked)
         {
             return;
         }

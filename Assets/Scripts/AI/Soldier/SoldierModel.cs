@@ -26,7 +26,7 @@ public class SoldierModel : EnemyBase
     public bool targetAlive = false;
 
     public float attackCooldown;
-    public float range = 0.5f;
+    public float range = 1f;
 
     public LayerMask buildingLayer;
 
@@ -106,20 +106,25 @@ public class SoldierModel : EnemyBase
     
     public void BreakThroughWall()
     {
-
         Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
-
+        
+        // Tom: This needed to be outside of foreach loop, otherwise it kept resetting to 100,000
+        float shortestDistance = 100000;
         foreach (var building in towers)
         {
-            float shortestDistance = 100000;
-            float distance = Vector3.Distance(transform.position, building.transform.position);
-            if (distance < shortestDistance)
+            if (building.GetComponent<BuildingBase>()) // Filters out tile blockers
             {
-                shortestDistance = distance;
-                target = building.transform;
+                float distance = Vector3.Distance(transform.position, building.transform.position);
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    target = building.transform;
+                }
             }
         }
         
+        // Tom: Flagged soldier as having target when it finds a tower
+        hasTarget = true;
         //will change to AttackingDefensesState
         attackedByTower = true;
     }

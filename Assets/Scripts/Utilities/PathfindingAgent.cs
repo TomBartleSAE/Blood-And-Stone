@@ -160,7 +160,7 @@ public class PathfindingAgent : MonoBehaviour
 
     private void RefindPath()
     {
-        if (path != null)
+        if (path != null && path.Count > 1)
         {
             FindPath(transform.position, path[path.Count - 1].coordinates);
         }

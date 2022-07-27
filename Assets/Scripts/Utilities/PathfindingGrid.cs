@@ -35,7 +35,7 @@ public class PathfindingGrid : MonoBehaviour
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer, QueryTriggerInteraction.Ignore))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
                 {
                     nodes[x, y].isBlocked = true;
                 }
@@ -43,6 +43,11 @@ public class PathfindingGrid : MonoBehaviour
                 if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
                 {
                     nodes[x, y].canBuild = true;
+                }
+                // Need this to ignore tile blockers but still make towers block off paths
+                else if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer, QueryTriggerInteraction.Ignore))
+                {
+                    nodes[x, y].isBlocked = true;
                 }
             }
         }
