@@ -76,6 +76,7 @@ public class AttackingDefensesState : AntAIState
     {
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, owner);
         canAttack = true;
+        soldier.anim.SetTrigger("Attack");
     }
 
     public void LeaveState(GameObject go)

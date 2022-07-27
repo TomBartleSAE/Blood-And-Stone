@@ -69,5 +69,6 @@ public class AttackingGhoulState : AntAIState
     {
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, gameObject);
         canAttack = true;
+        soldier.anim.SetTrigger("Attack");
     }
 }

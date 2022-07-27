@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class SoldierModel : EnemyBase
 {
+    public Animator anim;
     public Rigidbody rb;
     public PathfindingAgent pathfinding;
     public Health health;

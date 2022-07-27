@@ -60,7 +60,8 @@ public class AttackingKeepState : AntAIState
         print("attack castle");
         canAttack = false;
         castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
-        
+        soldier.anim.SetTrigger("Attack");
+
         for (int i = 0; i < attackTime; i++)
         {
             yield return new WaitForSeconds(1);
