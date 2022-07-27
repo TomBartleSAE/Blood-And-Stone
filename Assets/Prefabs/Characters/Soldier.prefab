@@ -233,8 +233,8 @@ MonoBehaviour:
   castleStanding: 1
   inRange: 0
   targetAlive: 0
-  attackCooldown: 3
-  range: 1
+  attackCooldown: 0
+  range: 0.5
   buildingLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 15
   healthMultiplier: 1
 --- !u!1 &2645878115819848673
 GameObject:
