@@ -508,7 +508,7 @@ MonoBehaviour:
   soldiersKilled: 0
   villagersDrained: 0
   ghoulsCreated: 0
-  currentBlood: 50
+  currentBlood: 20
   maxBlood: 50
   castleLevel: 1
   castleHealth: 0
@@ -1158,6 +1158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84922e6d6da4f674991f9ab8c7908d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveFilePath: 
+  newGameDataPath: 
 --- !u!4 &2138969278
 Transform:
   m_ObjectHideFlags: 0
