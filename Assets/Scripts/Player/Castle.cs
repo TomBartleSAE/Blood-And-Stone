@@ -17,6 +17,8 @@ public class Castle : MonoBehaviour
     public int[] ghoulPopcaps = new int[4];
     public GameObject[] meshes = new GameObject[4];
 
+    private bool destroyed;
+
     //public TextMeshProUGUI castleLevelText;
 
     private void OnEnable()
@@ -40,8 +42,12 @@ public class Castle : MonoBehaviour
 
     public void DestroyCastle(GameObject castle)
     {
-        DayPhaseState dayPhase = GameManager.Instance.dayPhaseState as DayPhaseState;
-        dayPhase.CallCastleDestroyed();
+        if (!destroyed)
+        {
+            DayPhaseState dayPhase = GameManager.Instance.dayPhaseState as DayPhaseState;
+            dayPhase.CallCastleDestroyed();
+            destroyed = true;
+        }
     }
 
     public void UpdateCastleHealth(GameObject a)

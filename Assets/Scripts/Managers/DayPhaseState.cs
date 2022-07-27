@@ -61,7 +61,7 @@ public class DayPhaseState : StateBase
     {
         MessageManager.Instance.ShowMessage("The villagers destroyed your castle!", 3f);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.CallPhaseChange("MainMenu", "DayTest", GameManager.Instance.mainMenuState);
     }
 
     public void CheckDayEnd()

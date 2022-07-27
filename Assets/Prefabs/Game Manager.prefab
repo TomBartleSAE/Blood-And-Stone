@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f6a2c1e3479634f8083cdc8d7d3e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDay: 1
+  currentDay: 0
+  mainMenuState: {fileID: 161310572739707197}
   dayPhaseState: {fileID: 1659434419030389965}
   nightPhaseState: {fileID: 1659434419025153087}
   tutorialState: {fileID: 1945999870306932424}
