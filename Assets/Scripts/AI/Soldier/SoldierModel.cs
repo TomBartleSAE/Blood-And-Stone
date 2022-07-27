@@ -16,7 +16,7 @@ public class SoldierModel : EnemyBase
     public Transform target;
     public Transform castle;
 
-    public List<Transform> TargetsInRange = new List<Transform>();
+    public List<Transform> GhoulsInRange = new List<Transform>();
 
     public bool hasTarget = false;
     public bool attackedByGhoul = false;
@@ -26,6 +26,7 @@ public class SoldierModel : EnemyBase
     public bool targetAlive = false;
 
     public float attackCooldown;
+    public float range = 0.5f;
 
     public LayerMask buildingLayer;
 
@@ -50,11 +51,22 @@ public class SoldierModel : EnemyBase
         health = GetComponent<Health>();
     }
 
+    private void Update()
+    {
+        if (!inRange)
+        {
+            if (Vector3.Distance(transform.position, target.position) < range)
+            {
+                inRange = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<GhoulModel>())
         {
-            TargetsInRange.Add(other.transform);
+            GhoulsInRange.Add(other.transform);
             target = other.transform;
             attackedByGhoul = true;
         }
@@ -64,7 +76,7 @@ public class SoldierModel : EnemyBase
     {
         if (other.GetComponent<GhoulModel>())
         {
-            TargetsInRange.Remove(other.transform);
+            GhoulsInRange.Remove(other.transform);
         }
         
         if (other.gameObject == target.gameObject)
@@ -75,9 +87,9 @@ public class SoldierModel : EnemyBase
 
     public void ChangeTarget()
     {
-        if (TargetsInRange.Count > 0)
+        if (GhoulsInRange.Count > 0)
         {
-            target = TargetsInRange[Random.Range(0, TargetsInRange.Count - 1)];
+            target = GhoulsInRange[Random.Range(0, GhoulsInRange.Count - 1)];
         }
 
         else

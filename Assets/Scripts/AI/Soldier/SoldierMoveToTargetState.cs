@@ -9,8 +9,6 @@ public class SoldierMoveToTargetState : AntAIState
     public FollowPath followPath;
     public SoldierModel soldier;
     
-    public Transform targetDestination;
-    
     public override void Enter()
     {
         base.Enter();
@@ -18,10 +16,8 @@ public class SoldierMoveToTargetState : AntAIState
         pathfinding = GetComponentInParent<PathfindingAgent>();
         followPath = GetComponentInParent<FollowPath>();
         soldier = GetComponentInParent<SoldierModel>();
-
-        targetDestination = soldier.target.transform;
         
-        pathfinding.FindPath(this.transform.position, targetDestination.position);
+        pathfinding.FindPath(this.transform.position, soldier.target.position);
 
         Debug.Log("Entering Moving to Keep State");
     }

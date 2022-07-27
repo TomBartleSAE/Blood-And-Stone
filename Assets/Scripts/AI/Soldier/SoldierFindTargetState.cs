@@ -23,6 +23,7 @@ public class SoldierFindTargetState : AntAIState
         pathfinding = owner.GetComponent<PathfindingAgent>();
         soldierModel = owner.GetComponent<SoldierModel>();
         pathfinding.PathFailedEvent += BreakThroughWall;
+        pathfinding.NewPathEvent += TargetCastle;
     }
 
     public override void Enter()
@@ -30,6 +31,8 @@ public class SoldierFindTargetState : AntAIState
         base.Enter();
         
         castle = soldierModel.castle;
+        pathfinding.FindPath(transform.position, castle.position);
+        TargetCastle();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -44,9 +47,10 @@ public class SoldierFindTargetState : AntAIState
         base.Exit();
     }
 
-    public void FindCastle()
+    private void TargetCastle()
     {
-        pathfinding.FindPath(transform.position, castle.position);
+        soldierModel.target = castle;
+        soldierModel.hasTarget = true;
     }
 
     public void BreakThroughWall()
