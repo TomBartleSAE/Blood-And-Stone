@@ -28,6 +28,7 @@ public class SoldierModel : EnemyBase
 
     public float attackCooldown;
     public float range = 1f;
+    public float damage;
 
     public LayerMask buildingLayer;
 

@@ -32,8 +32,6 @@ public class AttackingKeepState : AntAIState
         castle = soldier.castle;
         
         pathfinding.FindPath(owner.transform.position, castle.position);
-        
-        Debug.Log("Entering Attacking Keep State");
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -44,20 +42,15 @@ public class AttackingKeepState : AntAIState
         {
             StartCoroutine(AttackCastle());
         }
-        
-        Debug.Log("Executing Attacking Keep State");
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Debug.Log("Exiting Attacking Keep State");
     }
 
     public IEnumerator AttackCastle()
     {
-        print("attack castle");
         canAttack = false;
         castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
         soldier.anim.SetTrigger("Attack");

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tom;
 using UnityEngine;
 
 public class VillagerSpawner : SpawnerBase
@@ -14,6 +15,13 @@ public class VillagerSpawner : SpawnerBase
         {
             villager.GetComponent<PathfindingAgent>().grid = thisGrid;
             NightNPCManager.Instance.AddToVillagerList(villager);
+            villager.GetComponent<Health>().DeathEvent += SpawnVillager;
         }
+        
+    }
+
+    public void SpawnVillager(GameObject thing)
+    {
+        SpawnCharacter(thingToSpawn);
     }
 }

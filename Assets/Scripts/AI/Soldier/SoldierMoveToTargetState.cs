@@ -18,21 +18,15 @@ public class SoldierMoveToTargetState : AntAIState
         soldier = GetComponentInParent<SoldierModel>();
         
         pathfinding.FindPath(this.transform.position, soldier.target.position);
-
-        Debug.Log("Entering Moving to Keep State");
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
-        
-        Debug.Log("Executing Moving to Keep State");
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Debug.Log("Exiting Moving to Keep State");
     }
 }

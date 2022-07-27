@@ -10,7 +10,6 @@ public class AttackingState : AntAIState
 {
     public GhoulModel ghoulModel;
     public Transform target;
-    public GameObject me;
 
     public bool canAttack;
 
@@ -28,15 +27,17 @@ public class AttackingState : AntAIState
         base.Enter();
 
         target = ghoulModel.clickMovement.target;
+        
+        //cooldown situation
         canAttack = true;
+        
         target.GetComponent<Health>().DeathEvent += TargetDead;
+        
         if (target.GetComponent<Health>().currentHealth > 0)
         {
             ghoulModel.targetAlive = true;
         }
 
-        me = ghoulModel.gameObject;
-        
         Attack();
     }
 
@@ -72,7 +73,7 @@ public class AttackingState : AntAIState
 
         if (canAttack && ghoulModel.targetAlive)
         {
-            target.GetComponent<Health>().ChangeHealth(-damage, me); // Changing health by negative damage means damage values can be positive which makes more sense
+            target.GetComponent<Health>().ChangeHealth(-damage, gameObject); // Changing health by negative damage means damage values can be positive which makes more sense
             canAttack = false;
             timer = ghoulModel.attackCooldown;
         }

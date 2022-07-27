@@ -18,7 +18,7 @@ public class ReturnToKeepState : AntAIState
     {
         base.Enter();
         
-        pathfinding.FindPath(transform.position, keepLocation.position);
+        //pathfinding.FindPath(transform.position, keepLocation.position);
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
