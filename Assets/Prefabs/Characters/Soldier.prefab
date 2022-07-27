@@ -233,8 +233,8 @@ MonoBehaviour:
   castleStanding: 1
   inRange: 0
   targetAlive: 0
-  attackCooldown: 0
-  range: 0.5
+  attackCooldown: 3
+  range: 1
   buildingLayer:
     serializedVersion: 2
     m_Bits: 128
