@@ -989,6 +989,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4326569951395358615, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+      propertyPath: muteToggle
+      value: 
+      objectReference: {fileID: 2072599742}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
 --- !u!1 &1385153621
@@ -1606,6 +1610,17 @@ Transform:
   m_Father: {fileID: 2119784703}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2072599742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3612065658471861085, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+  m_PrefabInstance: {fileID: 1222121811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2119784702
 GameObject:
   m_ObjectHideFlags: 0
