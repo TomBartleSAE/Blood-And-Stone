@@ -27,17 +27,9 @@ public class AudioManager : ManagerBase<AudioManager>
 
 
 
-	public void Awake()
+	public override void Awake()
 	{
-		if (instance != null)
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-		}
+		base.Awake();
 
 		foreach (AmbienceSound s in ambienceSounds)
 		{
@@ -168,31 +160,31 @@ public class AudioManager : ManagerBase<AudioManager>
 
     public void PlayHover()
     {
-    //    audioManager.PlayUI("ButtonHover");
+		PlayUI("ButtonHover");
 
     }
 
     public void PlayClickMain()
     {
-     //   audioManager.PlayUI("ButtonClickMain");
+		PlayUI("ButtonClickMain");
 
     }
 
     public void PlayClickBack()
     {
-    //    audioManager.PlayUI("ButtonClickBack");
+		PlayUI("ButtonClickBack");
 
     }
 
     public void PlayClickHUD()
     {
-    //    audioManager.PlayUI("ButtonClickHUD");
+		PlayUI("ButtonClickHUD");
 
     }
 
     public void PlayEnter()
     {
-    //    audioManager.PlayUI("ButtonEnter");
+		PlayUI("ButtonEnter");
 
     }
 
