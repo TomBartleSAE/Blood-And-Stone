@@ -30,11 +30,11 @@ public class PlayBloodMeter : MonoBehaviour
         //newValue = bloodMeter.slider.value;
     }
 
-    public void PlaySound()
-    {
-        if(newValue > oldValue)
+    //public void PlaySound()
+    //{
+    //    if(newValue > oldValue)
     
-        audioManager.PlayUI("BloodMeter");
-    }
+    //    audioManager.PlayUI("BloodMeter");
+    //}
 
 }

@@ -753,243 +753,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1262527776
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1262527778}
-  - component: {fileID: 1262527779}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1262527778
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262527776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 378.2907, y: 111.0036, z: -340.7876}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1262527779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262527776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
-  ambienceSounds: []
-  menuSounds:
-  - name: ButtonEnter
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonHover
-    clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonClickMain
-    clip: {fileID: 8300000, guid: 82228cd977bf4664c9e4a8c8ef090f6f, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonClickBack
-    clip: {fileID: 8300000, guid: 25633f33406028340b1b5b990d43dcec, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: ButtonClickHUD
-    clip: {fileID: 8300000, guid: 3fcad4c4d2ec8654aa13cf22c93195d6, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: BloodMeter
-    clip: {fileID: 8300000, guid: caf1e0435de6c2f4a903b898b9d60cc9, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  musicSounds:
-  - name: DayPhaseMusic
-    clip: {fileID: 8300000, guid: 2d6b4a992becb9d4f91142c93de2b67e, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: NightPhaseMusic
-    clip: {fileID: 8300000, guid: 531e952f9d0026d4b921da24dd2bf745, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: MainMenuMusic
-    clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: NightPauseMusic
-    clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  sfxSounds:
-  - name: PlayerAttack
-    clip: {fileID: 8300000, guid: b135b7c77835b6c458756673e72a90b7, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: VillagerAttack
-    clip: {fileID: 8300000, guid: 2545b167158beb34dbfa38c9cb2c28a1, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: VillagerDeathDay
-    clip: {fileID: 8300000, guid: 49a9515911d8a6846be7ac7396b348ea, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: VillagerDeathNight
-    clip: {fileID: 8300000, guid: 28a570abc596adf40b8c32cf3a706862, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: GuardAlert
-    clip: {fileID: 8300000, guid: 169e5120f1d73dd4e8fa323ee02f3b9d, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: LoadingScreen
-    clip: {fileID: 8300000, guid: 85766b5b9340c564bb859e2b9aa6cefe, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  playerFootstepsSounds:
-  - name: teststep1
-    indexNumber: 1
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 0
-    volumeVariance: 0
-    pitch: 0
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: teststep2
-    indexNumber: 1
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 0
-    volumeVariance: 0
-    pitch: 0
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: teststep3
-    indexNumber: 1
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 0
-    volumeVariance: 0
-    pitch: 0
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: teststep4
-    indexNumber: 1
-    clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
-    volume: 0
-    volumeVariance: 0
-    pitch: 0
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  villagerFootstepsSounds: []
-  guardFootstepsSounds: []
-  ghoulFootstepsSounds: []
 --- !u!1 &1310713147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,3 +938,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3526252611592162405
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3526252612519078213, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 378.2907
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 111.0036
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -340.7876
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526252612519078215, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 890c6b935bf00b64da8472aa6777690f, type: 3}
