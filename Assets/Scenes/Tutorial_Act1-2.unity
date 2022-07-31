@@ -5482,6 +5482,27 @@ MonoBehaviour:
     Azrene can command them during the Day Phase.
   portrait: {fileID: 0}
   typingDelay: 0
+--- !u!1 &362119432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2344111644836524082, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+  m_PrefabInstance: {fileID: 1534636497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &362119434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362119432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efe8ee1374a26241bea44681b67401d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPulsing: 0
+  scaleMagnitude: 0.2
+  offset: 1.2
+  speed: 5
 --- !u!1 &378369635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5809,6 +5830,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7924d889e45f5204b89c7f23f2f938be, type: 3}
+--- !u!1 &420585958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8020244286861461048, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+  m_PrefabInstance: {fileID: 1534636497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420585964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420585958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efe8ee1374a26241bea44681b67401d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPulsing: 0
+  scaleMagnitude: 0.25
+  offset: 1.25
+  speed: 5
 --- !u!1 &521614496
 GameObject:
   m_ObjectHideFlags: 0
@@ -12449,7 +12491,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 420585964}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   dialogue: You can pause the game at any time by clicking the menu button on the
     HUD. From there you will also be able to access game options, load a saved game,
     and quit back to the main menu.
@@ -13032,6 +13086,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344111644568627243, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344111644724652360, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2344111644836524095, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
@@ -28449,7 +28507,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 420585964}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dialogue: For now, guide Azrene back to the village gates.
   portrait: {fileID: 0}
   typingDelay: 0
@@ -28482,7 +28552,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 362119434}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dialogue: "To have Azrene feed, click on the nearby villager. Azrene will walk
     over to them and feed. Be careful though, don\u2019t get seen!"
   portrait: {fileID: 0}
@@ -28634,7 +28716,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 362119434}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   dialogue: "Azrene\u2019s new powers require Blood, which means they must satiate
     their hunger with the blood of villagers. The Blood Meter shows Azrene's current
     supply, and hovering over it will display Azrene's current limit."

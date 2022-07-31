@@ -70,7 +70,11 @@ public class TutorialManager : ManagerBase<TutorialManager>
             if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
             {
                 activeClickArea = null;
-                elements[index].GetComponent<TutorialAction>().clickVisual?.SetActive(false); // Yucky
+                GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
+                if (visual != null)
+                {
+                    visual.SetActive(false);
+                }
                 Progress();
             }
         }

@@ -63,6 +63,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
+    // Need this function to pass BuildingBase for tower layout setup (rather than using selectedBuilding)
     public void Build(BuildingBase building, Vector3 position)
     {
         BuildingBase newBuilding = Instantiate(building, position, Quaternion.identity); 
@@ -75,6 +76,13 @@ public class TowerPlacement : MonoBehaviour
         PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
             
         grid.Generate();
+    }
+
+    // Used in tutorial as a Unity event
+    // Unity events only allow object references (like Transform), not Vector3
+    public void Build(Transform location)
+    {
+        Build(selectedBuilding, location.position);
     }
 
     public void PerformLeftClick(ClickEventArgs args)
