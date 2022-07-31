@@ -9,7 +9,8 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
     public List<GameObject> Guards = new List<GameObject>();
     public event Action<GameObject> VillagerDeathEvent;
     public event Action<bool> GuardAlertEvent;
-
+    public event Action GameOverEvent;
+    
     public void AddToVillagerList(GameObject newVillager)
     {
         Villagers.Add(newVillager);
@@ -45,5 +46,10 @@ public class NightNPCManager : ManagerBase<NightNPCManager>
         }
         
         GuardAlertEvent?.Invoke(false);
+    }
+
+    public void GameOverEventFired()
+    {
+        GameOverEvent?.Invoke();
     }
 }

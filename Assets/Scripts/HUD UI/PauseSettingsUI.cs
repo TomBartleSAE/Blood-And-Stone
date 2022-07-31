@@ -33,7 +33,7 @@ public class PauseSettingsUI : MonoBehaviour
     {
         AudioListener.volume = defaultVolume;
         MuteAudio(defaultMute);
-        //TODO restore to default resolution
+        Screen.SetResolution(1920, 1080, false);
     }
 
     public void MuteAudio(bool value)

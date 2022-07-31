@@ -128,7 +128,7 @@ public class GuardModel : MonoBehaviour
     
     public void CapturedVampire()
     {
-        GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOverCapture();
+        //GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOver();
     }
 
     //Alert events for UI interaction

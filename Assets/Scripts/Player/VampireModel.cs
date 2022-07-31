@@ -7,10 +7,22 @@ using UnityEngine;
 public class VampireModel : MonoBehaviour
 {
     public ClickMovement movement;
+    
+    public ParticleSystem burnParticle;
 
     public float feedRange = 0.6f; // Slightly larger than distance when touching to ensure feeding is triggered
     public int bloodGain = 10;
-    
+
+    private void Start()
+    {
+        LevelTimer.Instance.TimerFinishedEvent += BurnVampire;
+    }
+
+    private void OnDestroy()
+    {
+        LevelTimer.Instance.TimerFinishedEvent -= BurnVampire;
+    }
+
     private void Update()
     {
         if (movement.target != null)
@@ -51,5 +63,12 @@ public class VampireModel : MonoBehaviour
     {
         movement.target = null;
         victim.GetComponent<Health>().ChangeHealth(-1f, gameObject);
+    }
+
+    public void BurnVampire()
+    {
+        ParticleSystem newParticle = Instantiate(burnParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        newParticle.Play();
+        Destroy(gameObject);
     }
 }

@@ -42,4 +42,9 @@ public class GameManager : ManagerBase<GameManager>
         // Need to start coroutine here so it doesn't get interrupted by objects being destroyed
         StartCoroutine(ChangePhase(newSceneName, oldSceneName, newState));
     }
+
+    public void GameOverMessage(string message)
+    {
+        
+    }
 }

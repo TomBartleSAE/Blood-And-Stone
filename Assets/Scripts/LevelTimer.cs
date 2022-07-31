@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelTimer : MonoBehaviour
+public class LevelTimer : ManagerBase<LevelTimer>
 {
     public bool timerActive = false;
     public float totalTime;
