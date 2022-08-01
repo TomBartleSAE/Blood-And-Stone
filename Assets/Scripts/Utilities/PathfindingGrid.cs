@@ -55,6 +55,7 @@ public class PathfindingGrid : MonoBehaviour
             }
         }
 
+        // Prevents building on designated positions, caused too many issues when trying to do this with colliders
         foreach (Transform blocker in tileBlockers)
         {
             GetNodeFromPosition(blocker.position).canBuild = false;
