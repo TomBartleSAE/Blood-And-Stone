@@ -11,6 +11,7 @@ public class TowerPlacement : MonoBehaviour
     public BuildingBase[] towerPrefabs;
 
     public BuildingBase selectedBuilding;
+    
     private Node selectedNode;
 
     public Camera cam;
@@ -74,11 +75,24 @@ public class TowerPlacement : MonoBehaviour
         node.canBuild = false;
 
         PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
-        
-        //TODO to clear save file of that node
-        //PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = 0;
             
         grid.Generate();
+    }
+
+    public void RemoveStructure()
+    {
+        //nmeed to be able to pass through reference to selected (existing) building
+        BuildingBase buildingToClear = gameObject.GetComponent<BuildingBase>();
+        buildingToClear.grid = grid;
+
+        Node node = grid.GetNodeFromPosition(buildingToClear.transform.position);
+        node.isBlocked = false;
+        node.canBuild = true;
+        
+        PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = 0;
+        
+        grid.Generate();
+        Destroy(gameObject);
     }
 
     // Used in tutorial as a Unity event

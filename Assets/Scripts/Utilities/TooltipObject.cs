@@ -12,7 +12,7 @@ public class TooltipObject : MonoBehaviour
 
     public LayerMask objectLayer;
     public GameObject tooltip;
-    
+
     private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
