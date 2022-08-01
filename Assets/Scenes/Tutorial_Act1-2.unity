@@ -5357,7 +5357,7 @@ MonoBehaviour:
   movements:
   - agent: {fileID: 266934578}
     destination: {fileID: 1161362394}
-  movementTime: 5
+  movementTime: 6
 --- !u!1 &330052283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6773,7 +6773,7 @@ MonoBehaviour:
     destination: {fileID: 830473205}
   - agent: {fileID: 331379086}
     destination: {fileID: 264926861}
-  movementTime: 3
+  movementTime: 4
 --- !u!1 &846197162
 GameObject:
   m_ObjectHideFlags: 0
