@@ -456,6 +456,11 @@ MonoBehaviour:
   buildingLayer:
     serializedVersion: 2
     m_Bits: 128
+  tileBlockers:
+  - {fileID: 927224491}
+  - {fileID: 805048227}
+  - {fileID: 1232535616}
+  - {fileID: 915568153}
 --- !u!1001 &353719308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -696,6 +701,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7523624221735868070, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
   m_PrefabInstance: {fileID: 5087221705293015487}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &805048227 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252319328224991634, guid: e30558a065e9145499562aa3375ef414, type: 3}
+  m_PrefabInstance: {fileID: 771295976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &915568153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252319328224991634, guid: e30558a065e9145499562aa3375ef414, type: 3}
+  m_PrefabInstance: {fileID: 353719308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &927224491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252319328224991634, guid: e30558a065e9145499562aa3375ef414, type: 3}
+  m_PrefabInstance: {fileID: 1252319328833964874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1203442675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +781,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30558a065e9145499562aa3375ef414, type: 3}
+--- !u!4 &1232535616 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252319328224991634, guid: e30558a065e9145499562aa3375ef414, type: 3}
+  m_PrefabInstance: {fileID: 1203442675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585536916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8064410166968708312, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
