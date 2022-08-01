@@ -15,9 +15,8 @@ public class VillagerSpawner : SpawnerBase
         {
             villager.GetComponent<PathfindingAgent>().grid = thisGrid;
             NightNPCManager.Instance.AddToVillagerList(villager);
-            villager.GetComponent<Health>().DeathEvent += SpawnVillager;
+            //villager.GetComponent<Health>().DeathEvent += SpawnVillager;
         }
-        
     }
 
     public void SpawnVillager(GameObject thing)

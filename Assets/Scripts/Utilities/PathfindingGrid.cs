@@ -15,6 +15,8 @@ public class PathfindingGrid : MonoBehaviour
     public LayerMask blockedLayer; // Determines which layers block pathfinding agents
     public LayerMask buildingLayer; // Determines which layers prevent building during the Day phase
 
+    public Transform[] tileBlockers;
+
     public event Action GridGeneratedEvent;
 
     public void Awake()
@@ -35,21 +37,28 @@ public class PathfindingGrid : MonoBehaviour
                 nodes[x, y].coordinates = currentPosition;
                 nodes[x, y].index = new Vector2Int(x, y);
 
-                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, blockedLayer))
+                if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 2.1f, Quaternion.identity, blockedLayer))
                 {
                     nodes[x, y].isBlocked = true;
                 }
                 
-                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer))
+                // Needs to ignore triggers to stop range sphere from preventing building
+                if (!Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 2.1f, Quaternion.identity, buildingLayer, QueryTriggerInteraction.Ignore))
                 {
                     nodes[x, y].canBuild = true;
                 }
                 // Need this to ignore tile blockers but still make towers block off paths
-                else if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 3f, Quaternion.identity, buildingLayer, QueryTriggerInteraction.Ignore))
+                else if (Physics.CheckBox(currentPosition, (Vector3.one * tileSize) / 2.1f, Quaternion.identity, buildingLayer, QueryTriggerInteraction.Ignore))
                 {
                     nodes[x, y].isBlocked = true;
                 }
             }
+        }
+
+        // Prevents building on designated positions, caused too many issues when trying to do this with colliders
+        foreach (Transform blocker in tileBlockers)
+        {
+            GetNodeFromPosition(blocker.position).canBuild = false;
         }
         
         GridGeneratedEvent?.Invoke();

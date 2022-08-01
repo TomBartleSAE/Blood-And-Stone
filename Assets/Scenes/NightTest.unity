@@ -993,6 +993,10 @@ PrefabInstance:
       propertyPath: muteToggle
       value: 
       objectReference: {fileID: 2072599742}
+    - target: {fileID: 6674654529687140765, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
 --- !u!1 &1385153621
