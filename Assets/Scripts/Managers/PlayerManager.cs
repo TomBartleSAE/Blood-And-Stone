@@ -87,6 +87,7 @@ public class PlayerManager : ManagerBase<PlayerManager>
     {
         DayNPCManager.Instance.SoldierDeathEvent += AddSoldierKilled;
         NightNPCManager.Instance.VillagerDeathEvent += AddVillagerDrained;
+        NightNPCManager.Instance.GuardDeathEvent += AddGhoulCreated;
     }
 
     public void ChangeBlood(int amount)
@@ -118,6 +119,11 @@ public class PlayerManager : ManagerBase<PlayerManager>
     public void AddVillagerDrained(GameObject a)
     {
         villagersDrained++;
+    }
+
+    public void AddGhoulCreated(GameObject g)
+    {
+        ghoulsCreated++;
     }
 
     public void ResetStats()

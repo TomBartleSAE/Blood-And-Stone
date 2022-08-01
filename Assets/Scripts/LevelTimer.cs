@@ -17,10 +17,10 @@ public class LevelTimer : ManagerBase<LevelTimer>
         {
             timer -= Time.deltaTime;
 
-            if (timer <= 0)
+            if (timer <= 0 && timerActive)
             {
-                TimerFinishedEvent?.Invoke();
                 timerActive = false;
+                TimerFinishedEvent?.Invoke();
             }
         }
     }

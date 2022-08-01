@@ -858,6 +858,10 @@ PrefabInstance:
       propertyPath: boxSelection
       value: 
       objectReference: {fileID: 2136176033}
+    - target: {fileID: 2623593342029820508, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
+      propertyPath: boxSelection
+      value: 
+      objectReference: {fileID: 2136176033}
     - target: {fileID: 5280128434765438261, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

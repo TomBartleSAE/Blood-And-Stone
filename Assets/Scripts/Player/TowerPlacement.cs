@@ -74,6 +74,9 @@ public class TowerPlacement : MonoBehaviour
         node.canBuild = false;
 
         PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
+        
+        //TODO to clear save file of that node
+        //PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = 0;
             
         grid.Generate();
     }

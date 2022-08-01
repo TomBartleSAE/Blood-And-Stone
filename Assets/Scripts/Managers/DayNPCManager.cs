@@ -12,6 +12,7 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
 
     public event Action GhoulDeathEvent;
     public event Action SoldierDeathEvent;
+    public event Action GameOverDayEvent;
 
     public int[] ghoulDamageLevels = new int[4];
     public float[] ghoulHealthLevels = new float[4];
@@ -46,5 +47,10 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     public void GhoulDeath()
     {
         GhoulDeathEvent?.Invoke();
+    }
+
+    public void GameOverDayEventFired()
+    {
+        GameOverDayEvent?.Invoke();
     }
 }

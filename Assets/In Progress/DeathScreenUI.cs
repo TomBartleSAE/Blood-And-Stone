@@ -5,18 +5,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathScreenUI : MonoBehaviour
+public class DeathScreenUI : ManagerBase<DeathScreenUI>
 {
     public GameObject deathScreen;
-    public TMP_Text GameOverMessage;
-    
+
     private void Start()
     {
-        NightNPCManager.Instance.GameOverEvent += ShowScreen;
+        NightNPCManager.Instance.GameOverNightEvent += ShowScreen;
+        DayNPCManager.Instance.GameOverDayEvent += ShowScreen;
     }
+    
     private void OnDisable()
     {
-        NightNPCManager.Instance.GameOverEvent -= ShowScreen;
+        NightNPCManager.Instance.GameOverNightEvent -= ShowScreen;
+        DayNPCManager.Instance.GameOverDayEvent -= ShowScreen;
     }
 
     public void ReturnToMainMenu()
@@ -28,10 +30,5 @@ public class DeathScreenUI : MonoBehaviour
     public void ShowScreen()
     {
         deathScreen.SetActive(true);
-    }
-
-    public void ShowMessage(string message)
-    {
-        GameOverMessage.text = message;
     }
 }

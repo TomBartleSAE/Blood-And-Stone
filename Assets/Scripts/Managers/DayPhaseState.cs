@@ -51,17 +51,11 @@ public class DayPhaseState : StateBase
         yield return new WaitForSeconds(5f);
         GameManager.Instance.CallPhaseChange("NightTest", "DayTest", GameManager.Instance.nightPhaseState);
     }
-
-    public void CallCastleDestroyed()
+    
+    public void CastleDestroyed()
     {
-        StartCoroutine(CastleDestroyed());
-    }
-
-    public IEnumerator CastleDestroyed()
-    {
-        MessageManager.Instance.ShowMessage("The villagers destroyed your castle!", 3f);
-        yield return new WaitForSeconds(3f);
-        GameManager.Instance.CallPhaseChange("MainMenu", "DayTest", GameManager.Instance.mainMenuState);
+        DayNPCManager.Instance.GameOverDayEventFired();
+        GameManager.Instance.GameOverMessage("The villagers destroyed your castle!");
     }
 
     public void CheckDayEnd()

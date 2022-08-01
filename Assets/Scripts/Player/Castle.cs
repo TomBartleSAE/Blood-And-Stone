@@ -45,7 +45,7 @@ public class Castle : MonoBehaviour
         if (!destroyed)
         {
             DayPhaseState dayPhase = GameManager.Instance.dayPhaseState as DayPhaseState;
-            dayPhase.CallCastleDestroyed();
+            dayPhase.CastleDestroyed();
             destroyed = true;
         }
     }

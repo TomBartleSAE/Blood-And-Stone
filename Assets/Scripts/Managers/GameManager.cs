@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class GameManager : ManagerBase<GameManager>
     public StateBase mainMenuState, dayPhaseState, nightPhaseState, tutorialState;
     public StateManager stateManager;
     public Image loadingImage;
+
+    public TMP_Text gameoverText;
     
     public LevelTimer levelTimer;
     
@@ -45,6 +48,19 @@ public class GameManager : ManagerBase<GameManager>
 
     public void GameOverMessage(string message)
     {
-        
+        gameoverText.text = message +
+                             "<br>" +
+                             "<br>" +                             
+                             "<br>" + 
+                             "STATS" +
+                             "<br>" + 
+                             "<br>" + 
+                            "Villagers Drained = " + PlayerManager.Instance.villagersDrained +
+                             "<br>" +                             
+                             "<br>" +
+                             "Ghouls Created = " + PlayerManager.Instance.ghoulsCreated +
+                            "<br>" +                            
+                             "<br>" +
+                            "Soldiers Killed = " + PlayerManager.Instance.soldiersKilled;
     }
 }

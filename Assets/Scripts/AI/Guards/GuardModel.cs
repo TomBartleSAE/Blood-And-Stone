@@ -63,16 +63,6 @@ public class GuardModel : MonoBehaviour
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
     }
 
-    public void Update()
-    {
-        //if they see the vampire, will straight away enter chase state
-        /*if (vision.CanSeeObject(vampire))
-        {
-            hasTarget = true;
-            isAlert = true;
-        }*/
-    }
-
     #region Investigation
     
     //reacting to villager/guard death; will go to investigate
@@ -129,6 +119,8 @@ public class GuardModel : MonoBehaviour
     public void CapturedVampire()
     {
         //GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOver();
+        NightNPCManager.Instance.GameOverEventFired();
+        GameManager.Instance.GameOverMessage("You were captured by the town guard...");
     }
 
     //Alert events for UI interaction
