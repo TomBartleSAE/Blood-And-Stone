@@ -189,6 +189,11 @@ public class AudioManager : ManagerBase<AudioManager>
 		s.source.Play();
 	}
 
+	public void PlayMusic()
+	{
+		//empty separate function in audio manager that plays the music, it looks for anything currently playing, fades it out, then fades in the new music
+
+	}
 
 
 
@@ -232,35 +237,35 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	//}
 
- //   public void PlayHover()
- //   {
+	//   public void PlayHover()
+	//   {
 	//	PlayUI("ButtonHover");
 
- //   }
+	//   }
 
- //   public void PlayClickMain()
- //   {
+	//   public void PlayClickMain()
+	//   {
 	//	PlayUI("ButtonClickMain");
 
- //   }
+	//   }
 
- //   public void PlayClickBack()
- //   {
+	//   public void PlayClickBack()
+	//   {
 	//	PlayUI("ButtonClickBack");
 
- //   }
+	//   }
 
- //   public void PlayClickHUD()
- //   {
+	//   public void PlayClickHUD()
+	//   {
 	//	PlayUI("ButtonClickHUD");
 
- //   }
+	//   }
 
- //   public void PlayEnter()
- //   {
+	//   public void PlayEnter()
+	//   {
 	//	PlayUI("ButtonEnter");
 
- //   }
+	//   }
 
 
 
@@ -268,7 +273,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	//public void StepPlayer()
 	//{
-		
+
 	//	int index = UnityEngine.Random.Range(1, playerFootstepsSounds.Length + 1);
 
 	//	PlayerFootstepsSound s = Array.Find(playerFootstepsSounds, item => item.indexNumber == index);
