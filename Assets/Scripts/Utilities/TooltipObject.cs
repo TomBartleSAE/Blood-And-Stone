@@ -13,6 +13,8 @@ public class TooltipObject : MonoBehaviour
     public LayerMask objectLayer;
     public GameObject tooltip;
 
+    public event Action SelectedObjectEvent;
+
     private void Start()
     {
         InputManager.Instance.OnLeftClickEvent += PerformLeftClick;
@@ -43,7 +45,11 @@ public class TooltipObject : MonoBehaviour
         {
             if (hit.transform.root == transform)
             {
-                ShowTooltip(true);
+                if (!tooltip.activeInHierarchy)
+                {
+                    ShowTooltip(true);
+                    SelectedObjectEvent?.Invoke();
+                }
             }
         }
         else if (results.Count == 0)
