@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 6796684187936171949}
   - component: {fileID: 4334583654890043132}
   - component: {fileID: 8872712022707408935}
+  - component: {fileID: 932931753837660679}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -307,16 +308,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
-        m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
-        m_MethodName: PlayClickMain
-        m_Mode: 1
+      - m_Target: {fileID: 932931753837660679}
+        m_TargetAssemblyTypeName: PlaySoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ButtonBack
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8254348280755130736}
@@ -348,18 +349,31 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
-          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
-          m_MethodName: PlayHover
-          m_Mode: 1
+        - m_Target: {fileID: 932931753837660679}
+          m_TargetAssemblyTypeName: PlaySoundManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: ButtonHover
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &932931753837660679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692897265088827290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a403f1092b4f458debcc7e93d5685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 1
 --- !u!1 &8254348280755130736
 GameObject:
   m_ObjectHideFlags: 0

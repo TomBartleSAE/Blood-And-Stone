@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 1659434417592835435, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 1133647684}
+      objectReference: {fileID: 512085651}
     - target: {fileID: 1659434419025153087, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
       propertyPath: timer
       value: 
@@ -454,6 +454,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 277944163}
+--- !u!114 &512085651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 161310572739707197, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
+  m_PrefabInstance: {fileID: 233490601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80667f7b1061f594b8671086ecaa4b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &779145829
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,17 +642,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122821120}
   m_CullTransparentMesh: 1
---- !u!114 &1133647684 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1659434419030389965, guid: aad39cb1e7e023a4f9268f285c008990, type: 3}
-  m_PrefabInstance: {fileID: 233490601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81640ab620692f14f8e0ddf1866e7558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1165641291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -649,11 +649,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8478107471432289, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
+      propertyPath: m_Name
+      value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478107471432289, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5534369490964409855, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
       propertyPath: m_Name
       value: Death Screen
       objectReference: {fileID: 0}
-    - target: {fileID: 7669649917495547655, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
+    - target: {fileID: 5534369490964409855, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
