@@ -16,7 +16,7 @@ public class ObjectSwap : MonoBehaviour
             GameObject copy = newObject;
             Instantiate(newObject, newTransform.position, newTransform.rotation);
             Destroy(thing);
-            ThingsToSwap.Clear();
         }
+        ThingsToSwap.Clear();
     }
 }

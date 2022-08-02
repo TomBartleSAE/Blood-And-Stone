@@ -118,7 +118,6 @@ public class GuardModel : MonoBehaviour
     
     public void CapturedVampire()
     {
-        //GameManager.Instance.GetComponentInChildren<NightPhaseState>().GameOver();
         NightNPCManager.Instance.GameOverEventFired();
         GameManager.Instance.GameOverMessage("You were captured by the town guard...");
     }
