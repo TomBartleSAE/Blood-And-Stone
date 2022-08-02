@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 5098093335210439084}
   - component: {fileID: 4314351578681379631}
   - component: {fileID: 2993756136152824512}
+  - component: {fileID: 3558810265463378024}
   m_Layer: 0
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -758,16 +759,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
-        m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
-        m_MethodName: PlayClickMain
-        m_Mode: 1
+      - m_Target: {fileID: 3558810265463378024}
+        m_TargetAssemblyTypeName: PlaySoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ButtonHUD
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5087221706454770324}
@@ -811,18 +812,31 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4380442422157554709, guid: 781affea120194a4599a91376e2fc0d4, type: 3}
-          m_TargetAssemblyTypeName: PlayMenuSound, Assembly-CSharp
-          m_MethodName: PlayHover
-          m_Mode: 1
+        - m_Target: {fileID: 3558810265463378024}
+          m_TargetAssemblyTypeName: PlaySoundManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: ButtonHover
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &3558810265463378024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158376432320037235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a403f1092b4f458debcc7e93d5685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 1
 --- !u!1 &8307473132677751548
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.49019608, g: 0, b: 0.02745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

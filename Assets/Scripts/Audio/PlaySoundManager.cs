@@ -14,9 +14,11 @@ public class PlaySoundManager : MonoBehaviour
         AudioManager.Instance.Play(clipName, arrayName);
     }
 
+ //   the following code is what needs to be placed within other scripts to call the play function in the audio manager
+ //
  //   public void TestSound()
  //   {
- //       FindObjectOfType<AudioManager>().Play("BloodMeter", AudioManager.ArrayName.ui);
+ //       FindObjectOfType<AudioManager>().Play("Insert clip name in inspector with quote marks", AudioManager.ArrayName."insert arrayname without quote marks");
  //   }
 
 }

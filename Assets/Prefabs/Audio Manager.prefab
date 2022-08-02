@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
   ambienceSounds: []
   menuSounds:
   - soundName: ButtonEnter
@@ -54,16 +54,18 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: ButtonHover
-    clip: {fileID: 8300000, guid: c124a6ceec0a60242a4787a8d6d58d73, type: 3}
+    clip: {fileID: 8300000, guid: 4ac3be9da5f537d418dd9ba407936d46, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: ButtonClick
     clip: {fileID: 8300000, guid: 82228cd977bf4664c9e4a8c8ef090f6f, type: 3}
@@ -72,7 +74,8 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: ButtonBack
     clip: {fileID: 8300000, guid: 25633f33406028340b1b5b990d43dcec, type: 3}
@@ -81,7 +84,8 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: ButtonHUD
     clip: {fileID: 8300000, guid: 3fcad4c4d2ec8654aa13cf22c93195d6, type: 3}
@@ -90,7 +94,8 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: BloodMeter
     clip: {fileID: 8300000, guid: caf1e0435de6c2f4a903b898b9d60cc9, type: 3}
@@ -99,7 +104,8 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
     source: {fileID: 0}
   musicSounds:
   - soundName: 
@@ -110,6 +116,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 531e952f9d0026d4b921da24dd2bf745, type: 3}
@@ -119,6 +126,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
@@ -128,6 +136,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
@@ -137,6 +146,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   sfxSounds:
   - soundName: 
@@ -147,6 +157,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 2545b167158beb34dbfa38c9cb2c28a1, type: 3}
@@ -156,6 +167,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 49a9515911d8a6846be7ac7396b348ea, type: 3}
@@ -165,6 +177,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 28a570abc596adf40b8c32cf3a706862, type: 3}
@@ -174,6 +187,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 169e5120f1d73dd4e8fa323ee02f3b9d, type: 3}
@@ -183,6 +197,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 85766b5b9340c564bb859e2b9aa6cefe, type: 3}
@@ -192,6 +207,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   playerFootstepsSounds:
   - soundName: 
@@ -202,6 +218,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
@@ -211,6 +228,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
@@ -220,6 +238,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   - soundName: 
     clip: {fileID: 8300000, guid: 43df8e7217cfd6c4eae8bf16fad32375, type: 3}
@@ -229,6 +248,7 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
+    playWhenPaused: 0
     source: {fileID: 0}
   villagerFootstepsSounds: []
   guardFootstepsSounds: []

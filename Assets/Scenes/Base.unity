@@ -655,11 +655,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8478107471432289, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5534369490964409855, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
       propertyPath: m_Name
       value: Death Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5534369490964409855, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7869688254905575886, guid: 81575d28355ccb24c96513cbe8835c7f, type: 3}
       propertyPath: m_RootOrder
@@ -725,7 +729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 0}
-  GameOverMessage: {fileID: 0}
 --- !u!1 &1258946928
 GameObject:
   m_ObjectHideFlags: 0
