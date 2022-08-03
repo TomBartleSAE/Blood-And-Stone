@@ -13,10 +13,15 @@ public class ObjectSwap : MonoBehaviour
         foreach (var thing in ThingsToSwap)
         {
             newTransform = thing.GetComponent<Transform>();
-            GameObject copy = newObject;
+            //GameObject copy = newObject;
             Instantiate(newObject, newTransform.position, newTransform.rotation);
-            Destroy(thing);
+            thing.SetActive(false);
         }
+        ThingsToSwap.Clear();
+    }
+
+    public void ClearList()
+    {
         ThingsToSwap.Clear();
     }
 }

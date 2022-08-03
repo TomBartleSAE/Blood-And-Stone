@@ -15,5 +15,10 @@ public class ObjectSwapEditor :Editor
         {
             objectSwap.SwapObject();
         }
+
+        if (GUILayout.Button("Clear List"))
+        {
+            objectSwap.ClearList();
+        }
     }
 }
