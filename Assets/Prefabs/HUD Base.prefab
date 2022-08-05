@@ -5772,7 +5772,6 @@ GameObject:
   - component: {fileID: 1611003278951466020}
   - component: {fileID: 512099317703432922}
   - component: {fileID: 1522006775}
-  - component: {fileID: 1683514079}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -5894,7 +5893,7 @@ MonoBehaviour:
           m_StringArgument: ButtonHUD
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1683514079}
+      - m_Target: {fileID: 1522006775}
         m_TargetAssemblyTypeName: PlayButtonUI, Assembly-CSharp
         m_MethodName: StartWaves
         m_Mode: 1
@@ -5949,19 +5948,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrayName: 1
 --- !u!114 &1522006775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8831457905408894623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c44929d684317940a4c62bfe0b80012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayPhase: {fileID: 0}
---- !u!114 &1683514079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
