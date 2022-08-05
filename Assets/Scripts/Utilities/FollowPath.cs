@@ -18,6 +18,9 @@ public class FollowPath : MonoBehaviour
     private Vector3 targetLocalPosition;
     public Vector3 target;
     public float turnSpeed = 5f;
+
+    public float distance;
+    public LayerMask obstacleLayer;
     
     private void OnEnable()
     {
@@ -26,6 +29,7 @@ public class FollowPath : MonoBehaviour
 
     public void FixedUpdate()
     {
+        
         if (agent.path != null && targetNode != null)
         {
             if (index < agent.path.Count)
@@ -53,10 +57,36 @@ public class FollowPath : MonoBehaviour
                     turnDirection = 1f;
                 }
 
-                rb.AddTorque(Vector3.up * turnDirection * turnSpeed * Time.fixedDeltaTime,
+                rb.AddTorque(Vector3.up * turnDirection  * turnSpeed * Time.fixedDeltaTime,
                     ForceMode.VelocityChange);
             }
         }
+        
+        /*//total angle of arc, divide arcAngle by 2 to get relative angle from forward
+        float arcAngle = 90f;
+        //number of rays to be dispersed
+        int numLines = 90;
+
+        float turnOffset;
+        
+        for (int l=0;l<numLines;l++) 
+        {
+            //establishes ray arc
+            //(Line taken from website - AM)
+            Vector3 shootVec = transform.rotation * Quaternion.AngleAxis(-1*arcAngle/2+(l*arcAngle/numLines), Vector3.up) * Vector3.forward;
+            
+            RaycastHit hit;
+            
+            if (Physics.Raycast(transform.position, shootVec, out hit, distance, obstacleLayer))
+            {
+                if (l == 0 || l == 44 || l == 89)
+                {
+                    Debug.DrawLine(transform.position, hit.point, Color.green);
+                    Vector3 hitLocalPos = transform.InverseTransformPoint(hit.point);
+                    turnOffset = hit.point.x;
+                }
+            }
+        }*/
     }
     
 
