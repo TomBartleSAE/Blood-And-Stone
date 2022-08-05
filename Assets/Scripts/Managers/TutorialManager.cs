@@ -23,7 +23,8 @@ public class TutorialManager : ManagerBase<TutorialManager>
     public enum MouseButton
     {
         LeftClick,
-        RightClick
+        RightClick,
+        Either
     }
 
     public MouseButton mouseButton;
@@ -63,19 +64,22 @@ public class TutorialManager : ManagerBase<TutorialManager>
         
         textBox.SetActive(false);
         
-        if (activeClickArea != null && mouseButton == MouseButton.LeftClick)
+        if (activeClickArea != null)
         {
-            Vector2 mousePosition = InputManager.Instance.GetMousePosition();
-
-            if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
+            if (mouseButton == MouseButton.LeftClick || mouseButton == MouseButton.Either)
             {
-                activeClickArea = null;
-                GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
-                if (visual != null)
+                Vector2 mousePosition = InputManager.Instance.GetMousePosition();
+
+                if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
                 {
-                    visual.SetActive(false);
+                    activeClickArea = null;
+                    GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
+                    if (visual != null)
+                    {
+                        visual.SetActive(false);
+                    }
+                    Progress();
                 }
-                Progress();
             }
         }
         else if (elements[index].GetComponent<TutorialDialogue>())
@@ -88,19 +92,22 @@ public class TutorialManager : ManagerBase<TutorialManager>
     private void PerformRightClick(ClickEventArgs args)
     {
         // HACK copy-pasted from above
-        if (activeClickArea != null && mouseButton == MouseButton.RightClick)
+        if (activeClickArea != null)
         {
-            Vector2 mousePosition = InputManager.Instance.GetMousePosition();
-
-            if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
+            if (mouseButton == MouseButton.RightClick || mouseButton == MouseButton.Either)
             {
-                activeClickArea = null;
-                GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
-                if (visual != null)
+                Vector2 mousePosition = InputManager.Instance.GetMousePosition();
+
+                if(RectTransformUtility.RectangleContainsScreenPoint(activeClickArea, mousePosition))
                 {
-                    visual.SetActive(false);
+                    activeClickArea = null;
+                    GameObject visual = elements[index].GetComponent<TutorialAction>().clickVisual;
+                    if (visual != null)
+                    {
+                        visual.SetActive(false);
+                    }
+                    Progress();
                 }
-                Progress();
             }
         }
     }

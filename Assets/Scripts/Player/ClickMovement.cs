@@ -28,6 +28,7 @@ public class ClickMovement : MonoBehaviour
 
     private void Start()
     {
+        InputManager.Instance.OnLeftClickEvent += PerformClick;
         InputManager.Instance.OnRightClickEvent += PerformClick;
         if (cam == null)
         {
@@ -37,6 +38,7 @@ public class ClickMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        InputManager.Instance.OnLeftClickEvent -= PerformClick;
         InputManager.Instance.OnRightClickEvent -= PerformClick;
     }
 
