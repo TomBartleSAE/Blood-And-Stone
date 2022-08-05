@@ -121,6 +121,6 @@ public class PatrollingState : AntAIState
     //Finds the path
     void FindPatrolPath(Vector3 startingPoint, Vector3 destinationCoords)
     {
-        owner.GetComponent<PathfindingAgent>().FindPath(pointA, pointB);
+        owner.GetComponent<PathfindingAgent>().FindPath(startingPoint, destinationCoords);
     }
 }
