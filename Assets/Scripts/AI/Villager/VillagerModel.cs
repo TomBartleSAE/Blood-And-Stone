@@ -22,6 +22,8 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public float fleeSpeed;
     public float stunTime;
 
+    public Animator anim;
+
     private void Start()
     {
         GetComponent<Health>().DeathEvent += Die;
@@ -37,7 +39,13 @@ public class VillagerModel : MonoBehaviour, IStunnable
     void Die(GameObject me)
     {
         NightNPCManager.Instance.RemoveFromVillagerList(me);
-        gameObject.SetActive(false);
+        // Tom: Trying to get villager to play animation when dying
+        GetComponent<Collider>().enabled = false;
+        GetComponent<PathfindingAgent>().enabled = false;
+        GetComponent<FollowPath>().enabled = false;
+        anim.SetTrigger("Death");
+        this.enabled = false;
+        //gameObject.SetActive(false);
     }
 
     //Reacting to other thing's death

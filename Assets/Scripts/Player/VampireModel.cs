@@ -13,6 +13,8 @@ public class VampireModel : MonoBehaviour
     public float feedRange = 0.6f; // Slightly larger than distance when touching to ensure feeding is triggered
     public int bloodGain = 10;
 
+    public Animator anim;
+
     private void Start()
     {
         LevelTimer.Instance.TimerFinishedEvent += BurnVampire;
@@ -53,9 +55,12 @@ public class VampireModel : MonoBehaviour
     {
         // Play animations on vampire and victim
         movement.target = null;
+        //victim.transform.position = transform.position;
         victim.GetComponent<Health>().ChangeHealth(-1f, gameObject); // Kills the victim
         //following line moved to bottom of function; wouldn't work otherwise - AM
         PlayerManager.Instance.ChangeBlood(bloodGain);
+        anim.SetTrigger("Attack");
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     //Guard Conversion Interaction - AM

@@ -119,6 +119,7 @@ MonoBehaviour:
   fleeTime: 5
   fleeSpeed: 5
   stunTime: 3
+  anim: {fileID: 4744058767380632858}
 --- !u!114 &297143199648334005
 MonoBehaviour:
   m_ObjectHideFlags: 0
