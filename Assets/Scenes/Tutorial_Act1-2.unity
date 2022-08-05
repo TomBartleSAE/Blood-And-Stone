@@ -258,7 +258,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  mouseButton: 1
+  mouseButton: 2
   clickArea: {fileID: 378369636}
   clickVisual: {fileID: 2112510081}
 --- !u!1 &80756269
@@ -6611,7 +6611,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  mouseButton: 1
+  mouseButton: 2
   clickArea: {fileID: 1944997323}
   clickVisual: {fileID: 1575515154}
 --- !u!1 &855998007 stripped
@@ -12253,7 +12253,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  mouseButton: 1
+  mouseButton: 2
   clickArea: {fileID: 1029698541}
   clickVisual: {fileID: 2117338303}
 --- !u!1001 &1395111131
@@ -18233,7 +18233,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  mouseButton: 1
+  mouseButton: 2
   clickArea: {fileID: 650621336}
   clickVisual: {fileID: 1018888184}
 --- !u!1 &1775747403
@@ -28591,7 +28591,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  mouseButton: 1
+  mouseButton: 2
   clickArea: {fileID: 171035966}
   clickVisual: {fileID: 80756269}
 --- !u!1 &2727614150487949560
