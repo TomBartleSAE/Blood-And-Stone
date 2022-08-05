@@ -18,6 +18,8 @@ public class GameManager : ManagerBase<GameManager>
     
     public LevelTimer levelTimer;
 
+    private bool levelChanging = false;
+
     public event Action GameOverEvent;
     
     public override void Awake()
@@ -33,6 +35,7 @@ public class GameManager : ManagerBase<GameManager>
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
     {
+        levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive);
@@ -40,12 +43,16 @@ public class GameManager : ManagerBase<GameManager>
         yield return new WaitForSeconds(3);
         loadingImage.DOFade(0, 1);
         stateManager.ChangeState(newState);
+        levelChanging = false;
     }
 
     public void CallPhaseChange(string newSceneName, string oldSceneName, StateBase newState)
     {
-        // Need to start coroutine here so it doesn't get interrupted by objects being destroyed
-        StartCoroutine(ChangePhase(newSceneName, oldSceneName, newState));
+        if (!levelChanging)
+        {
+            // Need to start coroutine here so it doesn't get interrupted by objects being destroyed
+            StartCoroutine(ChangePhase(newSceneName, oldSceneName, newState));
+        }
     }
 
     public void GameOverMessage(string message)
