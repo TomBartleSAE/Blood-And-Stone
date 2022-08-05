@@ -634,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 4907544181141665960, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: villageExit
       value: 
-      objectReference: {fileID: 2316090438006632619}
+      objectReference: {fileID: 1618489234}
     - target: {fileID: 4907544181141665960, guid: 0e936f1ef53d0884eadb4d5774fee2c9, type: 3}
       propertyPath: amountToSpawn
       value: 3
@@ -1245,6 +1245,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1618489234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3841571662052430082, guid: 702ae1fd2bc7977418e527eb107ff299, type: 3}
+  m_PrefabInstance: {fileID: 1692900756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645065006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,11 +1844,6 @@ Transform:
   m_Father: {fileID: 1671310781}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2316090438006632619 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7297850484802494870, guid: 08439ba4a17ac5e42a1801317928a3d9, type: 3}
-  m_PrefabInstance: {fileID: 4999923174150820157}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3361258867075329292
 PrefabInstance:
   m_ObjectHideFlags: 0
