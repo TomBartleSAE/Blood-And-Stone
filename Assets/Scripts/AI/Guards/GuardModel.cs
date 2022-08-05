@@ -118,8 +118,7 @@ public class GuardModel : MonoBehaviour
     
     public void CapturedVampire()
     {
-        NightNPCManager.Instance.GameOverEventFired();
-        GameManager.Instance.GameOverMessage("You were captured by the town guard...");
+	    GameManager.Instance.GameOverMessage("You were captured by the town guard...");
     }
 
     //Alert events for UI interaction

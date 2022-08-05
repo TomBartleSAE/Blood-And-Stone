@@ -14,9 +14,11 @@ public class GameManager : ManagerBase<GameManager>
     public StateManager stateManager;
     public Image loadingImage;
 
-    public TMP_Text gameoverText;
+    public DeathScreenUI deathScreenUI;
     
     public LevelTimer levelTimer;
+
+    public event Action GameOverEvent;
     
     public override void Awake()
     {
@@ -48,19 +50,6 @@ public class GameManager : ManagerBase<GameManager>
 
     public void GameOverMessage(string message)
     {
-        gameoverText.text = message +
-                             "<br>" +
-                             "<br>" +                             
-                             "<br>" + 
-                             "STATS" +
-                             "<br>" + 
-                             "<br>" + 
-                            "Villagers Drained = " + PlayerManager.Instance.villagersDrained +
-                             "<br>" +                             
-                             "<br>" +
-                             "Ghouls Created = " + PlayerManager.Instance.ghoulsCreated +
-                            "<br>" +                            
-                             "<br>" +
-                            "Soldiers Killed = " + PlayerManager.Instance.soldiersKilled;
+		deathScreenUI.ShowScreen(message);
     }
 }

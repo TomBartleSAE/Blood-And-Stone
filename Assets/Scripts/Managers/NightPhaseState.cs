@@ -26,7 +26,6 @@ public class NightPhaseState : StateBase
     
      public void SunriseGameOver()
      {
-         NightNPCManager.Instance.GameOverEventFired();
-         GameManager.Instance.GameOverMessage("The sun has risen and you are burned to ashes...");
+	     GameManager.Instance.GameOverMessage("The sun has risen and you are burned to ashes...");
      }
 }

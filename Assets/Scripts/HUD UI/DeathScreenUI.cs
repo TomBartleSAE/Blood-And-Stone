@@ -5,21 +5,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathScreenUI : ManagerBase<DeathScreenUI>
+public class DeathScreenUI : MonoBehaviour
 {
     public GameObject deathScreen;
+    public TextMeshProUGUI gameOverMessage;
 
-    private void Start()
-    {
-        NightNPCManager.Instance.GameOverNightEvent += ShowScreen;
-        DayNPCManager.Instance.GameOverDayEvent += ShowScreen;
-    }
-    
-    private void OnDisable()
-    {
-        NightNPCManager.Instance.GameOverNightEvent -= ShowScreen;
-        DayNPCManager.Instance.GameOverDayEvent -= ShowScreen;
-    }
+    public TextMeshProUGUI villagersDrainedText;
+    public TextMeshProUGUI ghoulsCreatedText;
+    public TextMeshProUGUI soldiersKilledText;
 
     public void ReturnToMainMenu()
     {
@@ -27,8 +20,14 @@ public class DeathScreenUI : ManagerBase<DeathScreenUI>
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
     }
 
-    public void ShowScreen()
+    public void ShowScreen(string message)
     {
         deathScreen.SetActive(true);
+
+        gameOverMessage.text = message;
+
+        villagersDrainedText.text = PlayerManager.Instance.villagersDrained.ToString();
+        ghoulsCreatedText.text = PlayerManager.Instance.ghoulsCreated.ToString();
+        soldiersKilledText.text = PlayerManager.Instance.soldiersKilled.ToString();
     }
 }
