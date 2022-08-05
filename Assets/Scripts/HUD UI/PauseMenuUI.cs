@@ -37,11 +37,7 @@ public class PauseMenuUI : MonoBehaviour
         if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
         {
             PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.saveFilePath));
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
-            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.nightPhaseState);
+            GameManager.Instance.CallPhaseChange("DayTest", SceneManager.GetActiveScene().name, GameManager.Instance.dayPhaseState);
         }
-        
     }
-    
 }

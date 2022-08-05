@@ -43,9 +43,8 @@ public class MainMenuManager : MonoBehaviour
         if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
         {
             PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.saveFilePath));
-            SceneManager.UnloadSceneAsync("MainMenu");
-            SceneManager.LoadScene("DayTest", LoadSceneMode.Additive);
-            GameManager.Instance.GetComponent<StateManager>().ChangeState(GameManager.Instance.dayPhaseState);         }
+            GameManager.Instance.CallPhaseChange("DayTest", SceneManager.GetActiveScene().name, GameManager.Instance.dayPhaseState);
+        }
     }
 
     public void RestoreDefaultSettings()

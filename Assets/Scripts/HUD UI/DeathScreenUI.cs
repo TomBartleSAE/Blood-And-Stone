@@ -16,8 +16,7 @@ public class DeathScreenUI : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        GameManager.Instance.CallPhaseChange("MainMenu", SceneManager.GetActiveScene().name, GameManager.Instance.mainMenuState);
     }
 
     public void ShowScreen(string message)
