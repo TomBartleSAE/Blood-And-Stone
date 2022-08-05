@@ -46,14 +46,6 @@ public class GuardDeadState : AntAIState
         guardModel.isPatrolling = false;
         
         base.Execute(aDeltaTime, aTimeScale);
-
-        //finds path to map exit every 0.5 seconds
-        pathTimer -= Time.deltaTime;
-        if (pathTimer <= 0)
-        {
-            guardModel.pathfindingAgent.FindPath(transform.position, destination.position);
-            pathTimer = 0.5f;
-        }
     }
 
     public override void Exit()
@@ -69,6 +61,8 @@ public class GuardDeadState : AntAIState
 
         guardView.SetActive(false);
         ghoulView.SetActive(true);
+        guardModel.GetComponent<WalkAnimation>().anim = ghoulView.GetComponent<Animator>();
         lightConeObject.SetActive(false);
+        guardModel.pathfindingAgent.FindPath(transform.position, destination.position);
     }
 }
