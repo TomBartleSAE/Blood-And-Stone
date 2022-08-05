@@ -23,17 +23,16 @@ public class PauseSettingsUI : MonoBehaviour
         PopulateResolutionList();
     }
 
-    private void FixedUpdate()
-    {
-        //changes volume according to slider
-        AudioListener.volume = volumeSlider.value;
-    }
-    
     public void RestoreDefaultSettings()
     {
         AudioListener.volume = defaultVolume;
         MuteAudio(defaultMute);
         Screen.SetResolution(1920, 1080, false);
+    }
+
+    public void ChangeVolume(float newVolume)
+    {
+	    AudioListener.volume = newVolume;
     }
 
     public void MuteAudio(bool value)

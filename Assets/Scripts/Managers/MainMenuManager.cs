@@ -32,13 +32,6 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    //should this be in here, or a property?
-    private void FixedUpdate()
-    {
-        //changes volume according to slider
-        AudioListener.volume = volumeSlider.value;
-    }
-
     public void Play()
     {
         PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.newGameDataPath));
