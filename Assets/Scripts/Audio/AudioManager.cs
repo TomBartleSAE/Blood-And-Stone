@@ -183,7 +183,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));  //I believe this is randomising the volume/pitch by allocating a random number from the volume variance number -/+ 2
+		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));  //This is randomising the volume/pitch by allocating a random number from the volume variance number -/+ 2
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.Play();
@@ -196,9 +196,40 @@ public class AudioManager : ManagerBase<AudioManager>
 	}
 
 
+	//the following function runs the footsteps 
 
+	public void PlayFootstep(string character)
+	{
+		SoundData s = new SoundData();
+		switch (character)
+		{
+			case Player:
+				int index = UnityEngine.Random.Range(1, playerFootstepsSounds.Length);
+				s = Array.Find(playerFootstepsSounds, item => item.indexNumber == index);
+				break;
+			case Villager:
+				int index = UnityEngine.Random.Range(1, villagerFootstepsSounds.Length);
+				s = Array.Find(villagerFootstepsSounds, item => item.indexNumber == index);
+				break;
+			case Ghoul:
+				int index = UnityEngine.Random.Range(1, ghoulFootstepsSounds.Length);
+				s = Array.Find(ghoulFootstepsSounds, item => item.indexNumber == index);
+				break;
+			case Guard:
+				int index = UnityEngine.Random.Range(1, guardFootstepsSounds.Length);
+				s = Array.Find(guardFootstepsSounds, item => item.indexNumber == index);
+				break;
+		}
+		if (s == null)
+		{
+			Debug.LogWarning("Sound: " + name + " not found!");
+			return;
+		}
+		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f)); 
+		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-
+		s.source.Play();
+	}
 
 
 	//Music System below

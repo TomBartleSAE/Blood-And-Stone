@@ -66,29 +66,29 @@ ModelImporter:
       curves: []
       events:
       - time: 0.079872206
-        functionName: StepGhoul
-        data: 
+        functionName: PlayFootstep
+        data: Ghoul
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.30990416
-        functionName: StepGhoul
-        data: 
+        functionName: PlayFootstep
+        data: Ghoul
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.58146966
-        functionName: StepGhoul
-        data: 
+        functionName: PlayFootstep
+        data: Ghoul
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.93290734
-        functionName: StepGhoul
-        data: 
+        functionName: PlayFootstep
+        data: Ghoul
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

@@ -61,22 +61,22 @@ ModelImporter:
       curves: []
       events:
       - time: 0.37380192
-        functionName: StepVillager
-        data: 
+        functionName: PlayFootstep
+        data: Villager
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.62506026
-        functionName: StepVillager
-        data: 
+        functionName: PlayFootstep
+        data: Villager
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.884984
-        functionName: StepVillager
-        data: 
+        functionName: PlayFootstep
+        data: Villager
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
