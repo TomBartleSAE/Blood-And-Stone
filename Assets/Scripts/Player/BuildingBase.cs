@@ -21,7 +21,8 @@ public class BuildingBase : MonoBehaviour
 
     public void GetDestroyed(GameObject building)
     {
-        //grid.GetNodeFromPosition(transform.position).canBuild = true;
+        Node node = grid.GetNodeFromPosition(transform.position);
+        PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = 0;
         gameObject.SetActive(false);
         grid.Generate();
         BuildingDestroyedEvent?.Invoke();

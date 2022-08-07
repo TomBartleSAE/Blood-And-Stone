@@ -83,22 +83,6 @@ public class TowerPlacement : MonoBehaviour
         BuildingCreatedEvent?.Invoke();
     }
 
-    public void RemoveStructure()
-    {
-        //nmeed to be able to pass through reference to selected (existing) building
-        BuildingBase buildingToClear = gameObject.GetComponent<BuildingBase>();
-        buildingToClear.grid = grid;
-
-        Node node = grid.GetNodeFromPosition(buildingToClear.transform.position);
-        node.isBlocked = false;
-        node.canBuild = true;
-        
-        PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = 0;
-        
-        grid.Generate();
-        Destroy(gameObject);
-    }
-
     // Used in tutorial as a Unity event
     // Unity events only allow object references (like Transform), not Vector3
     public void Build(Transform location)
