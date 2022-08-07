@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class DayPhaseState : StateBase
 {
     private SoldierSpawner _soldierSpawner;
     public float timeBeforeVillagersSpawn = 15f;
+
+    public event Action WaveStartedEvent;
+    public event Action WaveEndedEvent;
 
     public override void Enter()
     {
@@ -43,10 +47,13 @@ public class DayPhaseState : StateBase
         MessageManager.Instance.ShowMessage("The villagers are here!", 3f);
         
         StartCoroutine(_soldierSpawner.SpawnWaves(GameManager.Instance.currentDay - 1)); // Adjust by 1 to account for array index starting at 0
+        
+        WaveStartedEvent?.Invoke();
     }
     
     public IEnumerator EndDay()
     {
+        WaveEndedEvent?.Invoke();
         MessageManager.Instance.ShowMessage("The villagers are all dead, for now...", 5f);
         yield return new WaitForSeconds(5f);
         GameManager.Instance.CallPhaseChange("NightTest", "DayTest", GameManager.Instance.nightPhaseState);

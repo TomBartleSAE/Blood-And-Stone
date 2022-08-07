@@ -8,8 +8,11 @@ public class LevelTimer : ManagerBase<LevelTimer>
     public bool timerActive = false;
     public float totalTime;
     public float timer;
+    public float nearlyOverEventTime = 10f;
+    private bool nearlyOverEventTriggered = false;
 
     public event Action TimerFinishedEvent;
+    public event Action TimerNearlyOverEvent;
 
     private void Update()
     {
@@ -17,7 +20,13 @@ public class LevelTimer : ManagerBase<LevelTimer>
         {
             timer -= Time.deltaTime;
 
-            if (timer <= 0 && timerActive)
+            if (timer <= nearlyOverEventTime && !nearlyOverEventTriggered)
+            {
+                TimerNearlyOverEvent?.Invoke();
+                nearlyOverEventTriggered = true;
+            }
+            
+            if (timer <= 0)
             {
                 timerActive = false;
                 TimerFinishedEvent?.Invoke();

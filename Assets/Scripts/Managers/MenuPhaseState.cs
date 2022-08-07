@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class MenuPhaseState : StateBase
 {
-
+    public override void Enter()
+    {
+        base.Enter();
+        
+        
+    }
 }

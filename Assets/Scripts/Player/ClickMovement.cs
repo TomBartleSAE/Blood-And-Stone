@@ -25,6 +25,7 @@ public class ClickMovement : MonoBehaviour
     public float repathTime = 1f;
 
     public event Action<bool> HasTargetEvent;
+    public event Action StartedMoveEvent;
 
     private void Start()
     {
@@ -97,6 +98,7 @@ public class ClickMovement : MonoBehaviour
                 if (!hitNode.isBlocked)
                 {
                     MoveToPoint(hitNode.coordinates);
+                    StartedMoveEvent?.Invoke();
                 }
             }
         }

@@ -15,6 +15,8 @@ public class VampireModel : MonoBehaviour
 
     public Animator anim;
 
+    public event Action VampireFeedingEvent;
+
     private void Start()
     {
         LevelTimer.Instance.TimerFinishedEvent += BurnVampire;
@@ -53,6 +55,8 @@ public class VampireModel : MonoBehaviour
 
     public void Feed(GameObject victim)
     {
+        // TODO: Move any view code here to a separate script
+        
         // Play animations on vampire and victim
         movement.target = null;
         //victim.transform.position = transform.position;
@@ -60,7 +64,7 @@ public class VampireModel : MonoBehaviour
         //following line moved to bottom of function; wouldn't work otherwise - AM
         PlayerManager.Instance.ChangeBlood(bloodGain);
         anim.SetTrigger("Attack");
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        VampireFeedingEvent?.Invoke();
     }
 
     //Guard Conversion Interaction - AM

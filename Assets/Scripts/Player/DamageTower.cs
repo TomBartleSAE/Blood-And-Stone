@@ -14,6 +14,8 @@ public class DamageTower : TowerBase
 
     public GameObject projectilePrefab;
     public Transform projectileSpawn;
+
+    public event Action TowerAttackedEvent;
     
     private void Update()
     {
@@ -34,5 +36,7 @@ public class DamageTower : TowerBase
         newProjectile.GetComponent<Rigidbody>().AddForce((target.transform.position - projectileSpawn.position) * 100f);
 
         attackTimer = delay;
+        
+        TowerAttackedEvent?.Invoke();
     }
 }

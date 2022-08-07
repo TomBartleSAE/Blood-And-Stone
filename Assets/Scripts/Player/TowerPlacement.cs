@@ -20,6 +20,8 @@ public class TowerPlacement : MonoBehaviour
 
     public event Action<BuildingBase, Node> MouseOverNodeEvent;
     public event Action MouseOffGridEvent;
+
+    public event Action BuildingCreatedEvent;
     
     private void Start()
     {
@@ -77,6 +79,8 @@ public class TowerPlacement : MonoBehaviour
         PlayerManager.Instance.towerLayout[node.index.x, node.index.y] = Array.IndexOf(towerPrefabs, building) + 1;
             
         grid.Generate();
+        
+        BuildingCreatedEvent?.Invoke();
     }
 
     public void RemoveStructure()

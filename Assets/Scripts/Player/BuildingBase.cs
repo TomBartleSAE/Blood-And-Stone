@@ -12,6 +12,8 @@ public class BuildingBase : MonoBehaviour
 
     public PathfindingGrid grid;
 
+    public event Action BuildingDestroyedEvent;
+
     public virtual void Awake()
     {
         health.DeathEvent += GetDestroyed;
@@ -22,5 +24,6 @@ public class BuildingBase : MonoBehaviour
         //grid.GetNodeFromPosition(transform.position).canBuild = true;
         gameObject.SetActive(false);
         grid.Generate();
+        BuildingDestroyedEvent?.Invoke();
     }
 }

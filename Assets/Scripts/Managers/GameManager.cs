@@ -21,6 +21,9 @@ public class GameManager : ManagerBase<GameManager>
     private bool levelChanging = false;
 
     public event Action GameOverEvent;
+
+    public event Action LoadingStartedEvent;
+    public event Action<string> LoadingFinishedEvent;
     
     public override void Awake()
     {
@@ -35,6 +38,7 @@ public class GameManager : ManagerBase<GameManager>
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
     {
+        LoadingStartedEvent?.Invoke();
         levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
@@ -44,6 +48,7 @@ public class GameManager : ManagerBase<GameManager>
         loadingImage.DOFade(0, 1);
         stateManager.ChangeState(newState);
         levelChanging = false;
+        LoadingFinishedEvent?.Invoke(newSceneName);
     }
 
     public void CallPhaseChange(string newSceneName, string oldSceneName, StateBase newState)
@@ -58,5 +63,6 @@ public class GameManager : ManagerBase<GameManager>
     public void GameOverMessage(string message)
     {
 		deathScreenUI.ShowScreen(message);
+        GameOverEvent?.Invoke();
     }
 }

@@ -19,6 +19,8 @@ public class Castle : MonoBehaviour
 
     private bool destroyed;
 
+    public event Action CastleUpgradedEvent;
+
     //public TextMeshProUGUI castleLevelText;
 
     private void OnEnable()
@@ -77,6 +79,8 @@ public class Castle : MonoBehaviour
                 }
                 
                 SetupCastle();
+                
+                CastleUpgradedEvent?.Invoke();
             }
         }
     }

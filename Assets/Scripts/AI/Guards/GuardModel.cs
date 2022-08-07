@@ -29,6 +29,8 @@ public class GuardModel : MonoBehaviour
     public event Action GetPatrolPointsEvent;
     public event Action AlertedEvent;
     public event Action NotAlertedEvent;
+    public event Action CapturedVampireEvent;
+    public event Action GhoulConversionEvent;
 
     [Header("State Bools")]
     public bool hasTarget = false;
@@ -112,6 +114,7 @@ public class GuardModel : MonoBehaviour
         NightNPCManager.Instance.RemoveFromGuardList(gameObject);
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
         //Destroy(gameObject.GetComponent<GuardModel>());
+        GhoulConversionEvent?.Invoke();
     }
 
     #endregion
@@ -119,16 +122,19 @@ public class GuardModel : MonoBehaviour
     public void CapturedVampire()
     {
 	    GameManager.Instance.GameOverMessage("You were captured by the town guard...");
+        CapturedVampireEvent?.Invoke();
     }
 
     //Alert events for UI interaction
     public void IsAlerted()
     {
         NightNPCManager.Instance.GuardAlert(true);
+        AlertedEvent?.Invoke();
     }
     
     public void NotAlertedAnymore()
     {
         NightNPCManager.Instance.GuardAlert(false);
+        NotAlertedEvent?.Invoke();
     }
 }
