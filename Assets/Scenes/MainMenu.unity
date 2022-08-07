@@ -2419,6 +2419,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings Screen 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6749542207648123768, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1385774638}
+    - target: {fileID: 6749542207648123768, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
 --- !u!1 &1950675007
