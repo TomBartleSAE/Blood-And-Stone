@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 620010471}
   - component: {fileID: 620010481}
   - component: {fileID: 3959367295464404555}
+  - component: {fileID: 6641755358899838118}
   m_Layer: 9
   m_Name: Villager
   m_TagString: Townsfolk
@@ -186,6 +187,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1152092510813912214}
   anim: {fileID: 4744058767380632858}
+--- !u!114 &6641755358899838118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152092510813912220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f83739fcad8341a6913267de7d24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 0
+  clipName: 
 --- !u!1 &1152092511017340208
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,21 +42,39 @@ public class AnimationAudioEvent : MonoBehaviour
 
 	}
 
-
-	// so, we need a switch function for scream, death start and end (grunt, body drop) pc bite, pc captured, pc death, guard death, guard capture pc, guard conversion 1+2, ghoul death
-
-
-
-
-	//20 - 22 = npc attack sounds
-
-	public void PlayAttack()
+	public void PlaySFX(string sound)
 	{
-		int index = UnityEngine.Random.Range(20, 22);
+		int index = 0;
 		arrayName = AudioManager.ArrayName.sfx;
-		clipName = AudioManager.Instance.playerFootstepsSounds[index].soundName;
+		switch (sound)
+		{
+			case "BodyImpact":
+				clipName = sound;
+				break;
+			case "Attack":
+				index = UnityEngine.Random.Range(1, 3);
+				clipName = "NPCAttack" + index;
+				break;
+			case "PCAttack":
+				clipName = sound;
+				break;
+			case "VDeath":
+				//	if day,
+				// 	clipName = "VDeathDay";
+				//	else night
+				clipName = "VDeathNight";
+				break;
+			case "VScream":
+				index = UnityEngine.Random.Range(1, 3);
+				clipName = sound + index;
+				break;
+		}
 
 		AudioManager.Instance.Play(clipName, arrayName);
 
 	}
+
+
+	//20 - 22 = npc attack sounds
+
 }

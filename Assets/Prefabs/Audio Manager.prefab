@@ -108,17 +108,17 @@ MonoBehaviour:
     playWhenPaused: 0
     source: {fileID: 0}
   musicSounds:
-  - soundName: 
-    clip: {fileID: 8300000, guid: 2d6b4a992becb9d4f91142c93de2b67e, type: 3}
+  - soundName: MainMenuMusic
+    clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
-    playWhenPaused: 0
+    playWhenPaused: 1
     source: {fileID: 0}
-  - soundName: 
+  - soundName: NightPhaseLoop
     clip: {fileID: 8300000, guid: 531e952f9d0026d4b921da24dd2bf745, type: 3}
     volume: 1
     volumeVariance: 0
@@ -128,8 +128,18 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     playWhenPaused: 0
     source: {fileID: 0}
-  - soundName: 
-    clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
+  - soundName: NightPhasePause
+    clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 1
+    source: {fileID: 0}
+  - soundName: DayPhaseStart
+    clip: {fileID: 8300000, guid: 18a5e5a66e26cca4cbddefd37dcfb7c7, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -138,8 +148,8 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     playWhenPaused: 0
     source: {fileID: 0}
-  - soundName: 
-    clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
+  - soundName: DayPhaseWave
+    clip: {fileID: 8300000, guid: 191ffe9ca65cdeb4ebef71ba42272f55, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -147,6 +157,46 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     playWhenPaused: 0
+    source: {fileID: 0}
+  - soundName: DayPhaseEnd
+    clip: {fileID: 8300000, guid: 70109eb9bb53ac04b9eb06c0cca86681, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 0
+    source: {fileID: 0}
+  - soundName: DayPhasePause
+    clip: {fileID: 8300000, guid: 9fa6f071b509dae4b9baf6505b54a8f8, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 1
+    source: {fileID: 0}
+  - soundName: GameOverStart
+    clip: {fileID: 8300000, guid: 66b00196238ba18408104387427b2b89, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 1
+    source: {fileID: 0}
+  - soundName: GameOverLoop
+    clip: {fileID: 8300000, guid: e8a586ea4e7849d4caad16c5d6b678a8, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 1
     source: {fileID: 0}
   sfxSounds:
   - soundName: BodyImpact
@@ -262,9 +312,9 @@ MonoBehaviour:
   - soundName: VDeathDay
     clip: {fileID: 8300000, guid: 49a9515911d8a6846be7ac7396b348ea, type: 3}
     volume: 1
-    volumeVariance: 0.1
+    volumeVariance: 0.2
     pitch: 1
-    pitchVariance: 0.1
+    pitchVariance: 0.2
     loop: 0
     mixerGroup: {fileID: 0}
     playWhenPaused: 0
@@ -371,6 +421,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: NPCAttack3
     clip: {fileID: 8300000, guid: de03a729a013a3a40b01ca6c9c13432b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    playWhenPaused: 0
+    source: {fileID: 0}
+  - soundName: PCAttack
+    clip: {fileID: 8300000, guid: 759e308a3b418644fa9e9911d0c2dc13, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1

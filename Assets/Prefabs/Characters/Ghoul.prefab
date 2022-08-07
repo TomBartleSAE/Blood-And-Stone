@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3715843146105334905}
   - component: {fileID: 7957953460022438710}
   - component: {fileID: 8884147366491106865}
+  - component: {fileID: -8727301165204871998}
   m_Layer: 12
   m_Name: Ghoul
   m_TagString: Untagged
@@ -173,6 +174,10 @@ MonoBehaviour:
   moveSpeed: 10
   target: {x: 0, y: 0, z: 0}
   turnSpeed: 5
+  distance: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3715843146105334905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +229,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 833944671312180783}
   anim: {fileID: 229281232505937602}
+--- !u!114 &-8727301165204871998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833944671312180753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f83739fcad8341a6913267de7d24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 0
+  clipName: 
 --- !u!1 &833944672601593751
 GameObject:
   m_ObjectHideFlags: 0

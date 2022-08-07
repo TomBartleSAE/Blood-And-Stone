@@ -7,7 +7,6 @@ public class MenuPhaseState : StateBase
     public override void Enter()
     {
         base.Enter();
-        
-        
+        FindObjectOfType<AudioManager>().Play("MainMenuMusic", AudioManager.ArrayName.music);
     }
 }
