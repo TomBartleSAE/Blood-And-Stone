@@ -152,24 +152,21 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	void OnEnable()
 	{
-
 		GameManager.Instance.LoadingStartedEvent += PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
-		GameManager.Instance.dayPhaseState.WaveEndedEvent += PlayMusic;
-		GameManager.Instance.dayPhaseState.WaveStartedEvent += PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayMusic;
 		GameManager.Instance.GameOverEvent += PlayMusic;
 		LevelTimer.Instance.TimerNearlyOverEvent += PlayAmbience;
-
 	}
 
 
-	void Disable()
+	void OnDisable()
 	{
-
 		GameManager.Instance.LoadingStartedEvent -= PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent -= PlayPhaseMusic;
-		GameManager.Instance.dayPhaseState.WaveEndedEvent -= PlayMusic;
-		GameManager.Instance.dayPhaseState.WaveStartedEvent -= PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent -= PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent -= PlayMusic;
 		GameManager.Instance.GameOverEvent -= PlayMusic;
 		LevelTimer.Instance.TimerNearlyOverEvent -= PlayAmbience;
 	}
@@ -332,9 +329,48 @@ public class AudioManager : ManagerBase<AudioManager>
 	public void PlayPhaseMusic(string phaseName)
 	{
 		currentPhase = phaseName;
+		string clipName = "LoadIn";
+		ArrayName arrayName = ArrayName.music;
 
-
+		Play(clipName, arrayName);
+		//find a way to cycle through an if statement or wait until the end of 
+		SoundData s = new SoundData();
+		s = Array.Find(musicSounds, item => item.soundName == clipName);
+		//while (s.source.isPlaying)
+		//{
+		//	Debug.Log(clipName);
+		//}
+		//delay
+		switch (phaseName)
+		{
+			case "NightTest":
+				clipName = "NightPhaseLoop";
+				break;
+			case "DayTest":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act1-1":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act1-2":
+				clipName = "NightPhaseLoop";
+				break;
+			case "Tutorial_Act2-1":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act2-2":
+				clipName = "DayPhaseStart";
+				break;
+			case "Credits":
+				clipName = "NightPhasePause";
+				break;
+		}
+		
+		Play(clipName, arrayName);
 	}
+
+	// tutorial sections are there loading screens between them?
+	// DayTest, NightTest, Tutorial_Act1-1 1-2 2-1 2-2
 
 	public void PlayAmbience()
 	{

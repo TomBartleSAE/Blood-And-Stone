@@ -115,7 +115,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
   - soundName: NightPhaseLoop
@@ -125,7 +125,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: NightPhasePause
@@ -135,7 +135,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
   - soundName: DayPhaseStart
@@ -145,7 +145,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: DayPhaseWave
@@ -155,7 +155,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: DayPhaseEnd
@@ -165,7 +165,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: DayPhasePause
@@ -175,7 +175,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
   - soundName: GameOverStart
@@ -185,7 +185,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
   - soundName: GameOverLoop
@@ -195,7 +195,17 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 1
+    source: {fileID: 0}
+  - soundName: LoadIn
+    clip: {fileID: 8300000, guid: 85766b5b9340c564bb859e2b9aa6cefe, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
   sfxSounds:
@@ -206,7 +216,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerPlacement
@@ -216,7 +226,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerDestroyed
@@ -226,7 +236,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerCrossbow
@@ -236,7 +246,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerCatapult
@@ -246,7 +256,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerBats1
@@ -256,7 +266,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerBats2
@@ -266,7 +276,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TowerBats3
@@ -276,7 +286,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: CastleUpgrade
@@ -286,7 +296,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: BattleCry
@@ -296,7 +306,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VDeathNight
@@ -306,7 +316,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VDeathDay
@@ -316,7 +326,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VScream1
@@ -326,7 +336,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VScream2
@@ -336,7 +346,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VScream3
@@ -346,7 +356,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: TownCrier
@@ -356,7 +366,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulAcknowledge1
@@ -366,7 +376,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulAcknowledge2
@@ -376,7 +386,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulAcknowledge3
@@ -386,7 +396,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulAcknowledge4
@@ -396,7 +406,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: NPCAttack1
@@ -406,7 +416,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: NPCAttack2
@@ -416,7 +426,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: NPCAttack3
@@ -426,7 +436,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCAttack
@@ -436,7 +446,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   playerFootstepsSounds:
@@ -447,7 +457,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCFootstep2
@@ -457,7 +467,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCFootstep3
@@ -467,7 +477,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCFootstep4
@@ -477,7 +487,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCFootstep5
@@ -487,7 +497,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: PCFootstep6
@@ -497,7 +507,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   villagerFootstepsSounds:
@@ -508,7 +518,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep2
@@ -723,3 +733,4 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     playWhenPaused: 0
     source: {fileID: 0}
+  currentPhase: 

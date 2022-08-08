@@ -5,7 +5,9 @@ using UnityEngine;
 public class PauseMusicAudioEvent : MonoBehaviour
 {
     public PauseSystem pauseSystem;
+    [HideInInspector]
     public string clipName;
+    [HideInInspector]
     public AudioManager.ArrayName arrayName;
 
     public void Start()
@@ -23,27 +25,57 @@ public class PauseMusicAudioEvent : MonoBehaviour
     public void PlayPauseAudio()
     {
         arrayName = AudioManager.ArrayName.music;
-        if (AudioManager.currentPhase = "dayPhase")
+        switch (AudioManager.Instance.currentPhase)
         {
-            clipName = "DayPhasePause";
+            case "DayTest":
+                clipName = "DayPhasePause";
+                break;
+            case "NightTest":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act1-1":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act1-2":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act2-1":
+                clipName = "DayPhasePause";
+                break;
+            case "Tutorial_Act2-2":
+                clipName = "DayPhasePause";
+                break;
         }
-        else if (AudioManager.currentPhase = "nightPhase")
-        {
-            clipName = "NightPhasePause";
-        }
+
         AudioManager.Instance.PausePlaying();
         AudioManager.Instance.Play(clipName, arrayName);
     }
 
+    // set up for the tutorial phases as well
+    // DayTest, NightTest, Tutorial_Act1-1 1-2 2-1 2-2
+
     public void StopPauseAudio()
     {
-        if (AudioManager.currentPhase = "dayPhase")
+        switch (AudioManager.Instance.currentPhase)
         {
-            clipName = "DayPhasePause";
-        }
-        else if (AudioManager.currentPhase = "nightPhase")
-        {
-            clipName = "NightPhasePause";
+            case "DayTest":
+                clipName = "DayPhasePause";
+                break;
+            case "NightTest":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act1-1":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act1-2":
+                clipName = "NightPhasePause";
+                break;
+            case "Tutorial_Act2-1":
+                clipName = "DayPhasePause";
+                break;
+            case "Tutorial_Act2-2":
+                clipName = "DayPhasePause";
+                break;
         }
         AudioManager.Instance.StopPlaying(clipName);
         AudioManager.Instance.ResumePlaying();
