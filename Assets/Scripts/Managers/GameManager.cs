@@ -22,7 +22,7 @@ public class GameManager : ManagerBase<GameManager>
 
     public event Action GameOverEvent;
 
-    public event Action LoadingStartedEvent;
+    public event Action<string> LoadingStartedEvent;
     public event Action<string> LoadingFinishedEvent;
     
     public override void Awake()
@@ -38,7 +38,7 @@ public class GameManager : ManagerBase<GameManager>
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
     {
-        LoadingStartedEvent?.Invoke();
+        LoadingStartedEvent?.Invoke("LoadingStarted");
         levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
