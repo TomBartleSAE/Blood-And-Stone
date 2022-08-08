@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DayNPCManager : ManagerBase<DayNPCManager>
 {
-    public List<GameObject> Ghouls = new List<GameObject>();
+	public List<GameObject> Ghouls = new List<GameObject>();
     public List<GameObject> Soldiers = new List<GameObject>();
 
     public event Action GhoulDeathEvent;
@@ -23,12 +23,25 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     {
         Soldiers.Add(newSoldier);
         newSoldier.GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
+        
+        foreach (var ghoul in Ghouls)
+        {
+	        ghoul.GetComponent<GhoulModel>().targetAlive = true;
+        }
     }
 
     public void RemoveFromSoldierList(GameObject soldier)
     {
         SoldierDeathEvent?.Invoke();
         Soldiers.Remove(soldier);
+        
+        if (Soldiers.Count == 0)
+        {
+	        foreach (var ghoul in Ghouls)
+	        {
+		        ghoul.GetComponent<GhoulModel>().targetAlive = false;
+	        }
+        }
     }
 
     public void AddToGhoulList(GameObject ghoul)

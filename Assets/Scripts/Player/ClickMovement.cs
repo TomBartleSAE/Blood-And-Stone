@@ -19,6 +19,7 @@ public class ClickMovement : MonoBehaviour
     private float timer;
 
     public bool isSelected;
+    public bool isLeftClickMove;
 
     public GraphicRaycaster graphicRaycaster;
 
@@ -29,8 +30,11 @@ public class ClickMovement : MonoBehaviour
 
     private void Start()
     {
-        InputManager.Instance.OnLeftClickEvent += PerformClick;
-        InputManager.Instance.OnRightClickEvent += PerformClick;
+	    if (isLeftClickMove)
+	    {
+		    InputManager.Instance.OnLeftClickEvent += PerformClick;
+	    }
+	    InputManager.Instance.OnRightClickEvent += PerformClick;
         if (cam == null)
         {
             cam = Camera.main;
@@ -39,8 +43,11 @@ public class ClickMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputManager.Instance.OnLeftClickEvent -= PerformClick;
-        InputManager.Instance.OnRightClickEvent -= PerformClick;
+	    if (isLeftClickMove)
+	    {
+		    InputManager.Instance.OnLeftClickEvent -= PerformClick;
+	    }
+	    InputManager.Instance.OnRightClickEvent -= PerformClick;
     }
 
     public void Update()

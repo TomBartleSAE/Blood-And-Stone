@@ -2459,6 +2459,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965196563}
     - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
+      propertyPath: isLeftClickMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
       propertyPath: graphicRaycaster
       value: 
       objectReference: {fileID: 1815146197}

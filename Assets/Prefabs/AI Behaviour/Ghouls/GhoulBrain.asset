@@ -31,44 +31,44 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 3880947780439780594, guid: 49d1ef3f06047cd4caba9c240e9efd22, type: 3}
     cost: 0
-    position: {x: 703, y: 254}
+    position: {x: 700, y: 244}
     pre:
     - id: 0
       value: 1
     - id: 3
       value: 1
     post:
+    - id: 3
+      value: 0
     - id: 0
       value: 0
-    - id: 3
+    - id: 1
       value: 0
   - name: MoveToTarget
     isDefault: 0
     state: {fileID: 3899031200594898589, guid: 904acdc3d8f5403489fa0faa507ed891, type: 3}
     cost: 0
-    position: {x: 485, y: 253}
+    position: {x: 481, y: 244}
     pre:
     - id: 0
       value: 1
     - id: 3
       value: 0
     post:
+    - id: 1
+      value: 1
     - id: 3
       value: 1
-    - id: 4
-      value: 0
+    - id: 0
+      value: 1
   - name: FindTargetState
-    isDefault: 0
+    isDefault: 1
     state: {fileID: 3413106721678154504, guid: 68c2d28af29325b49b46075d284bb27d, type: 3}
     cost: 0
     position: {x: 261.5605, y: 251}
     pre:
-    - id: 0
-      value: 0
     - id: 4
       value: 1
-    - id: 5
-      value: 0
     post:
     - id: 0
       value: 1
@@ -76,37 +76,33 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 7376677871898443837, guid: 64c584a03590787459e67e1196bd68a8, type: 3}
     cost: 10
-    position: {x: 914, y: 252}
-    pre:
-    - id: 2
-      value: 1
-    post:
-    - id: 4
-      value: 1
+    position: {x: 475, y: 33}
+    pre: []
+    post: []
   - name: GhoulIdleState
-    isDefault: 1
+    isDefault: 0
     state: {fileID: 4046583513381179416, guid: a8c79f95a7d4f2c40b5ce9bdb1415868, type: 3}
     cost: 0
-    position: {x: 263, y: 32}
-    pre:
-    - id: 2
-      value: 0
-    post:
-    - id: 1
-      value: 0
-    - id: 4
-      value: 0
+    position: {x: 264, y: 32}
+    pre: []
+    post: []
   goals:
   - name: DefendCastle
-    isDefault: 1
+    isDefault: 0
     position: {x: 1360.8247, y: 510.73932}
     conditions:
     - id: 1
       value: 0
     - id: 4
       value: 1
+  - name: VillagersDead
+    isDefault: 1
+    position: {x: 923, y: 245}
+    conditions:
+    - id: 1
+      value: 0
   worldStates:
-  - position: {x: 255, y: 504}
+  - position: {x: 263, y: 516}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -116,6 +112,8 @@ MonoBehaviour:
     - id: 3
       value: 0
     - id: 4
-      value: 0
+      value: 1
     - id: 5
       value: 0
+    - id: 1
+      value: 1
