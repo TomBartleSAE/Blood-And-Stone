@@ -30,7 +30,7 @@ public class SoldierFindTargetState : AntAIState
     {
         base.Enter();
         
-        castle = soldierModel.castle;
+        castle = soldierModel.target;
         pathfinding.FindPath(transform.position, castle.position);
         TargetCastle();
     }

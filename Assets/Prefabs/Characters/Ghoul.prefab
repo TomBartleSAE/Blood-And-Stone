@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  canMoveDiagonally: 1
+  canMoveDiagonally: 0
   destination: {fileID: 0}
   pathOnStart: 0
 --- !u!114 &267632786
@@ -212,6 +212,7 @@ MonoBehaviour:
     m_Bits: 256
   target: {fileID: 0}
   isSelected: 0
+  isLeftClickMove: 0
   graphicRaycaster: {fileID: 0}
   repathTime: 1
 --- !u!114 &8884147366491106865
