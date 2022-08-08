@@ -528,7 +528,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep3
@@ -538,7 +538,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep4
@@ -548,7 +548,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep5
@@ -558,7 +558,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep6
@@ -568,7 +568,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep7
@@ -578,7 +578,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: VFootstep8
@@ -588,7 +588,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   guardFootstepsSounds:
@@ -599,7 +599,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep2
@@ -609,7 +609,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep3
@@ -619,7 +619,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep4
@@ -629,7 +629,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep5
@@ -639,7 +639,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep6
@@ -649,7 +649,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep7
@@ -659,7 +659,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GuardFootstep8
@@ -669,7 +669,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   ghoulFootstepsSounds:
@@ -680,7 +680,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulFootstep2
@@ -690,7 +690,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulFootstep3
@@ -700,7 +700,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulFootstep4
@@ -710,7 +710,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulFootstep5
@@ -720,7 +720,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   - soundName: GhoulFootstep5
@@ -730,7 +730,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0.1
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
   currentPhase: 

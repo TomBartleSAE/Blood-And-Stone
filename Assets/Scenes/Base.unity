@@ -743,6 +743,7 @@ MonoBehaviour:
   timerActive: 0
   totalTime: 30
   timer: 30
+  nearlyOverEventTime: 10
 --- !u!4 &1258946930
 Transform:
   m_ObjectHideFlags: 0

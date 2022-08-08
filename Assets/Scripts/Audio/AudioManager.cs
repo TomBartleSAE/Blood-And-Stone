@@ -47,6 +47,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)						// this is going to make sure a sound can play when the game is paused :)
@@ -60,6 +61,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -73,6 +75,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -86,6 +89,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -99,6 +103,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -112,6 +117,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -125,6 +131,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -138,6 +145,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -150,7 +158,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	// subscribing to event triggers found sounds
 
-	void OnEnable()
+	void Start()
 	{
 		GameManager.Instance.LoadingStartedEvent += PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
@@ -161,7 +169,7 @@ public class AudioManager : ManagerBase<AudioManager>
 	}
 
 
-	void OnDisable()
+	void OnDestroy()
 	{
 		GameManager.Instance.LoadingStartedEvent -= PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent -= PlayPhaseMusic;
