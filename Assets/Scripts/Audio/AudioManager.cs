@@ -22,6 +22,9 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	public SoundData[] ghoulFootstepsSounds;
 
+	[HideInInspector]
+	public string currentPhase;
+
 	public enum ArrayName {
 	
 	ambience, 
@@ -35,7 +38,6 @@ public class AudioManager : ManagerBase<AudioManager>
 	}
 
 
-
 	public override void Awake()
 	{
 		base.Awake();
@@ -45,6 +47,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)						// this is going to make sure a sound can play when the game is paused :)
@@ -58,6 +61,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -71,6 +75,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -84,6 +89,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -97,6 +103,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -110,6 +117,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -123,6 +131,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -136,6 +145,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 			if (s.playWhenPaused == true)
@@ -146,7 +156,34 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	}
 
-	//Playing SFX on call
+	// subscribing to event triggers found sounds
+
+	void Start()
+	{
+		GameManager.Instance.LoadingStartedEvent += PlayMusic;
+		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayMusic;
+		GameManager.Instance.GameOverEvent += PlayMusic;
+		LevelTimer.Instance.TimerNearlyOverEvent += PlayAmbience;
+	}
+
+
+	void OnDestroy()
+	{
+		GameManager.Instance.LoadingStartedEvent -= PlayMusic;
+		GameManager.Instance.LoadingFinishedEvent -= PlayPhaseMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent -= PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent -= PlayMusic;
+		GameManager.Instance.GameOverEvent -= PlayMusic;
+		LevelTimer.Instance.TimerNearlyOverEvent -= PlayAmbience;
+	}
+
+
+	// night phase almost ending: LevelTimer.Instance.TimerNearlyOverEvent (default to 10 seconds before end, can change this in Base scene > Level Timer object > nearlyOverEventTime)
+
+
+	//Playing any sound on call
 
 	public void Play(string sound, ArrayName arrayName)
 	{
@@ -189,193 +226,197 @@ public class AudioManager : ManagerBase<AudioManager>
 		s.source.Play();
 	}
 
-	public void PlayMusic()
-	{
-		//empty separate function in audio manager that plays the music, it looks for anything currently playing, fades it out, then fades in the new music
 
-	}
-
-
-	//the following function runs the footsteps 
-
-	public void PlayFootstep(string character)
+	public void StopPlaying(string soundToStop) // this is ONLY stopping the pause music when it is currently playing and the game is resuming
 	{
 		SoundData s = new SoundData();
-		switch (character)
+		s = Array.Find(musicSounds, item => item.soundName == soundToStop);
+		if (s.source.isPlaying)
 		{
-			case Player:
-				int index = UnityEngine.Random.Range(1, playerFootstepsSounds.Length);
-				s = Array.Find(playerFootstepsSounds, item => item.indexNumber == index);
-				break;
-			case Villager:
-				int index = UnityEngine.Random.Range(1, villagerFootstepsSounds.Length);
-				s = Array.Find(villagerFootstepsSounds, item => item.indexNumber == index);
-				break;
-			case Ghoul:
-				int index = UnityEngine.Random.Range(1, ghoulFootstepsSounds.Length);
-				s = Array.Find(ghoulFootstepsSounds, item => item.indexNumber == index);
-				break;
-			case Guard:
-				int index = UnityEngine.Random.Range(1, guardFootstepsSounds.Length);
-				s = Array.Find(guardFootstepsSounds, item => item.indexNumber == index);
-				break;
+			s.source.Stop();
 		}
-		if (s == null)
-		{
-			Debug.LogWarning("Sound: " + name + " not found!");
-			return;
-		}
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f)); 
-		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+	}
 
-		s.source.Play();
+	public void PausePlaying()  // so we need this to pause ALL currently playing sounds 
+	{
+		foreach (SoundData s in ambienceSounds)
+		{
+			if (s.source.isPlaying)
+            {
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in menuSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in musicSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in sfxSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in playerFootstepsSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in guardFootstepsSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in villagerFootstepsSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+		foreach (SoundData s in ghoulFootstepsSounds)
+		{
+			if (s.source.isPlaying)
+			{
+				s.source.Pause();
+			}
+		}
+	}
+
+	public void ResumePlaying()  // resumes any sound paused by the PausePlaying function
+	{
+		foreach (SoundData s in ambienceSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in menuSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in musicSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in sfxSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in playerFootstepsSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in guardFootstepsSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in villagerFootstepsSounds)
+		{
+			s.source.UnPause();
+		}
+		foreach (SoundData s in ghoulFootstepsSounds)
+		{
+				s.source.UnPause();
+		}
 	}
 
 
-	//Music System below
+	public void PlayPhaseMusic(string phaseName)
+	{
+		currentPhase = phaseName;
+		string clipName = "LoadIn";
+		ArrayName arrayName = ArrayName.music;
 
-	//public void PlayMusic(string sound)
-	//{
-	//	MusicSound s = Array.Find(musicSounds, item => item.name == sound);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
+		Play(clipName, arrayName);
+		//find a way to cycle through an if statement or wait until the end of 
+		SoundData s = new SoundData();
+		s = Array.Find(musicSounds, item => item.soundName == clipName);
+		//while (s.source.isPlaying)
+		//{
+		//	Debug.Log(clipName);
+		//}
+		//delay
+		switch (phaseName)
+		{
+			case "NightTest":
+				clipName = "NightPhaseLoop";
+				break;
+			case "DayTest":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act1-1":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act1-2":
+				clipName = "NightPhaseLoop";
+				break;
+			case "Tutorial_Act2-1":
+				clipName = "DayPhaseStart";
+				break;
+			case "Tutorial_Act2-2":
+				clipName = "DayPhaseStart";
+				break;
+			case "Credits":
+				clipName = "NightPhasePause";
+				break;
+		}
+		
+		Play(clipName, arrayName);
+	}
 
-	//	s.source.volume = s.volume;
-	//	s.source.pitch = s.pitch;
+	// tutorial sections are there loading screens between them?
+	// DayTest, NightTest, Tutorial_Act1-1 1-2 2-1 2-2
 
-	//	s.source.Play();
+	public void PlayAmbience()
+	{
+		//need to add functionality
 
-	//}
+	}
 
+	public void PlayMusic()
+	{
+		//need to add functionality
 
-	//// UI System below
-	//public void PlayUI(string sound)
-	//{
-	//	MenuSound s = Array.Find(menuSounds, item => item.name == sound);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
-
-	//	s.source.volume = s.volume;
-	//	s.source.pitch = s.pitch;
-
-	//	s.source.Play();
-
-	//}
-
-	//   public void PlayHover()
-	//   {
-	//	PlayUI("ButtonHover");
-
-	//   }
-
-	//   public void PlayClickMain()
-	//   {
-	//	PlayUI("ButtonClickMain");
-
-	//   }
-
-	//   public void PlayClickBack()
-	//   {
-	//	PlayUI("ButtonClickBack");
-
-	//   }
-
-	//   public void PlayClickHUD()
-	//   {
-	//	PlayUI("ButtonClickHUD");
-
-	//   }
-
-	//   public void PlayEnter()
-	//   {
-	//	PlayUI("ButtonEnter");
-
-	//   }
-
+	}
+	// GameManager.Instance.LoadingStartedEvent
+	// GameManager.Instance.LoadingFinishedEvent   if (myScene == passedStringVariable)
+	// GameManager.Instance.dayPhaseState.WaveEndedEvent
+	// GameManager.Instance.dayPhaseState.WaveStartedEvent
+	// night phase almost ending: LevelTimer.Instance.TimerNearlyOverEvent (default to 10 seconds before end, can change this in Base scene > Level Timer object > nearlyOverEventTime)
+	// GameManager.Instance.GameOverEvent
+	// Get reference to Pause System object in scene, subscribe to GamePausedEvent/GameResumedEvent
 
 
-	////Footsteps System Below
 
-	//public void StepPlayer()
-	//{
 
-	//	int index = UnityEngine.Random.Range(1, playerFootstepsSounds.Length + 1);
+	//look for anything currently playing, fade it out, then fade in the new music
 
-	//	PlayerFootstepsSound s = Array.Find(playerFootstepsSounds, item => item.indexNumber == index);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
 
-	//	s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-	//	s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-	//	s.source.Play();
-	//}
-
-	//public void StepGuard()
-	//{
-
-	//	int index = UnityEngine.Random.Range(1, guardFootstepsSounds.Length + 1);
-
-	//	GuardFootstepsSound s = Array.Find(guardFootstepsSounds, item => item.indexNumber == index);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
-
-	//	s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-	//	s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
-	//	s.source.Play();
-	//}
-
-	//public void StepVillager()
-	//{
-
-	//	int index = UnityEngine.Random.Range(1, villagerFootstepsSounds.Length + 1);
-
-	//	VillagerFootstepsSound s = Array.Find(villagerFootstepsSounds, item => item.indexNumber == index);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
-
-	//	s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-	//	s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
-	//	s.source.Play();
-	//}
-
-	//public void StepGhoul()
-	//{
-
-	//	int index = UnityEngine.Random.Range(1, ghoulFootstepsSounds.Length + 1);
-
-	//	GhoulFootstepsSound s = Array.Find(ghoulFootstepsSounds, item => item.indexNumber == index);
-	//	if (s == null)
-	//	{
-	//		Debug.LogWarning("Sound: " + name + " not found!");
-	//		return;
-	//	}
-
-	//	s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-	//	s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
-	//	s.source.Play();
-	//}
-
+	//   the following code is what needs to be placed within other scripts to call the play function in the audio manager
 	//
+	//   public void TestSound()
+	//   {
+	//       FindObjectOfType<AudioManager>().Play("Insert clip name in audio manager inspector", AudioManager.ArrayName.insert arrayname);
+	//   }
+
+
 
 
 	//        myAudioSource.PlayDelayed(Random.Range(minDelay, maxDelay)); <<<< This element will be good only for ambience, will need mindelay/maxdelay variables, maybe add those to array for ambience?
 }
+
+
