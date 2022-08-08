@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : ManagerBase<AudioManager>
 {
@@ -26,15 +27,15 @@ public class AudioManager : ManagerBase<AudioManager>
 	public string currentPhase;
 
 	public enum ArrayName {
-	
-	ambience, 
-	ui,
-	music,
-	sfx,
-	playerfootsteps,
-	villagerfootsteps,
-	guardfootsteps,
-	ghoulfootsteps
+
+		ambience,
+		ui,
+		music,
+		sfx,
+		playerfootsteps,
+		villagerfootsteps,
+		guardfootsteps,
+		ghoulfootsteps
 	}
 
 
@@ -50,7 +51,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.playOnAwake = s.playOnAwake;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
-			if (s.playWhenPaused == true)						// this is going to make sure a sound can play when the game is paused :)
+			if (s.playWhenPaused == true)                       // this is going to make sure a sound can play when the game is paused :)
 			{
 				s.source.ignoreListenerPause = true;
 			}
@@ -160,22 +161,22 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	void Start()
 	{
-		GameManager.Instance.LoadingStartedEvent += PlayMusic;
+		GameManager.Instance.LoadingStartedEvent += StopPlaying;
 		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
-		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayMusic;
-		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayMusic;
-		GameManager.Instance.GameOverEvent += PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayWaveMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayWaveOverMusic;
+		GameManager.Instance.GameOverEvent += PlayGOMusic;
 		LevelTimer.Instance.TimerNearlyOverEvent += PlayAmbience;
 	}
 
 
 	void OnDestroy()
 	{
-		GameManager.Instance.LoadingStartedEvent -= PlayMusic;
+		GameManager.Instance.LoadingStartedEvent -= StopPlaying;
 		GameManager.Instance.LoadingFinishedEvent -= PlayPhaseMusic;
-		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent -= PlayMusic;
-		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent -= PlayMusic;
-		GameManager.Instance.GameOverEvent -= PlayMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent -= PlayWaveMusic;
+		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent -= PlayWaveOverMusic;
+		GameManager.Instance.GameOverEvent -= PlayGOMusic;
 		LevelTimer.Instance.TimerNearlyOverEvent -= PlayAmbience;
 	}
 
@@ -187,7 +188,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	public void Play(string sound, ArrayName arrayName)
 	{
-		SoundData s=new SoundData();
+		SoundData s = new SoundData();
 		switch (arrayName)
 		{
 			case ArrayName.ambience:
@@ -230,11 +231,107 @@ public class AudioManager : ManagerBase<AudioManager>
 	public void StopPlaying(string soundToStop) // this is ONLY stopping the pause music when it is currently playing and the game is resuming
 	{
 		SoundData s = new SoundData();
-		s = Array.Find(musicSounds, item => item.soundName == soundToStop);
-		if (s.source.isPlaying)
+		switch (soundToStop)
 		{
-			s.source.Stop();
+			case "DayPhasePause":
+				s = Array.Find(musicSounds, item => item.soundName == soundToStop);
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
+			case "NightPhasePause":
+				s = Array.Find(musicSounds, item => item.soundName == soundToStop);
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
+			case "LoadingStarted":
+				s = Array.Find(musicSounds, item => item.soundName == "MainMenuMusic");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "NightPhaseLoop");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseStart");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseWave");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseEnd");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "GameOverStart");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "GameOverLoop");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "NightPhasePause");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhasePause");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
+			case "PlayWaveMusic":
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseStart");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
+			case "PlayWaveOverMusic":
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseWave");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
+			case "PlayGOMusic":
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseStart");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseWave");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "DayPhaseEnd");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				s = Array.Find(musicSounds, item => item.soundName == "NightPhaseLoop");
+				if (s.source.isPlaying)
+				{
+					s.source.Stop();
+				}
+				break;
 		}
+
 	}
 
 	public void PausePlaying()  // so we need this to pause ALL currently playing sounds 
@@ -242,7 +339,7 @@ public class AudioManager : ManagerBase<AudioManager>
 		foreach (SoundData s in ambienceSounds)
 		{
 			if (s.source.isPlaying)
-            {
+			{
 				s.source.Pause();
 			}
 		}
@@ -329,26 +426,30 @@ public class AudioManager : ManagerBase<AudioManager>
 		}
 		foreach (SoundData s in ghoulFootstepsSounds)
 		{
-				s.source.UnPause();
+			s.source.UnPause();
 		}
 	}
 
 
+	// while loading screen is up, stop all sound with the master mixer group getting ducked
+
 	public void PlayPhaseMusic(string phaseName)
+	{
+		StartCoroutine(PhaseMusicCoroutine(phaseName));
+	}
+
+	IEnumerator PhaseMusicCoroutine(string phaseName)
 	{
 		currentPhase = phaseName;
 		string clipName = "LoadIn";
 		ArrayName arrayName = ArrayName.music;
 
 		Play(clipName, arrayName);
-		//find a way to cycle through an if statement or wait until the end of 
+
 		SoundData s = new SoundData();
 		s = Array.Find(musicSounds, item => item.soundName == clipName);
-		//while (s.source.isPlaying)
-		//{
-		//	Debug.Log(clipName);
-		//}
-		//delay
+		yield return new WaitForSeconds(s.clip.length);
+
 		switch (phaseName)
 		{
 			case "NightTest":
@@ -373,8 +474,8 @@ public class AudioManager : ManagerBase<AudioManager>
 				clipName = "NightPhasePause";
 				break;
 		}
-		
 		Play(clipName, arrayName);
+		yield return null;
 	}
 
 	// tutorial sections are there loading screens between them?
@@ -386,10 +487,39 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	}
 
-	public void PlayMusic()
+	public void PlayWaveMusic()
 	{
-		//need to add functionality
+		string functionName = "PlayWaveMusic";
+		string clipName = "DayPhaseWave";
+		ArrayName arrayName = ArrayName.music;
 
+
+		StopPlaying(functionName);
+		Play(clipName, arrayName);
+
+	}
+	public void PlayWaveOverMusic()
+	{
+		string functionName = "PlayWaveOverMusic";
+		string clipName = "DayPhaseEnd";
+		ArrayName arrayName = ArrayName.music;
+
+
+		StopPlaying(functionName);
+		Play(clipName, arrayName);
+
+	}
+	public void PlayGOMusic()
+	{
+		string functionName = "PlayGOMusic";
+		string clipName = "GameOverStart";
+		string clipName2 = "GameOverLoop";
+		ArrayName arrayName = ArrayName.music;
+
+
+		StopPlaying(functionName);
+		Play(clipName, arrayName);
+		Play(clipName2, arrayName);
 	}
 	// GameManager.Instance.LoadingStartedEvent
 	// GameManager.Instance.LoadingFinishedEvent   if (myScene == passedStringVariable)
