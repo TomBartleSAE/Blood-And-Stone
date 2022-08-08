@@ -66,11 +66,8 @@ public class Castle : MonoBehaviour
         {
             if (PlayerManager.Instance.currentBlood >= upgradeCosts[level])
             {
-                PlayerManager.Instance.GhoulPopcap = ghoulPopcaps[level];
                 PlayerManager.Instance.ChangeBlood(-upgradeCosts[level]);
-                // Should probably make Max Blood a property and just set the value rather than use this function
-                PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);
-                health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
+                SetCastleLevel(level);
                 PlayerManager.Instance.CastleLevel++;
 
                 foreach (GameObject ghoul in DayNPCManager.Instance.Ghouls)
@@ -83,6 +80,14 @@ public class Castle : MonoBehaviour
                 CastleUpgradedEvent?.Invoke();
             }
         }
+    }
+
+    public void SetCastleLevel(int level)
+    {
+        PlayerManager.Instance.GhoulPopcap = ghoulPopcaps[level];
+        // Should probably make Max Blood a property and just set the value rather than use this function
+        PlayerManager.Instance.ChangeMaxBlood(maxBloods[level] - PlayerManager.Instance.maxBlood);
+        health.ChangeHealth(health.MaxHealth - health.currentHealth, gameObject);
     }
 
     public void SetupCastle()

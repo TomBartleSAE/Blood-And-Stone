@@ -122,6 +122,12 @@ public class TowerPlacement : MonoBehaviour
     {
         selectedBuilding = building;
     }
+
+    // HACK for the tutorial
+    public void DeselectBuilding()
+    {
+        selectedBuilding = null;
+    }
     
     public void SetupTowerLayout()
     {

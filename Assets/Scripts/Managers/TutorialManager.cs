@@ -149,7 +149,7 @@ public class TutorialManager : ManagerBase<TutorialManager>
         for (int i = 0; i <= text.Length; i++)
         {
             tutorialText.text = text.Substring(0, i);
-            yield return new WaitForSeconds(typingDelay);
+            yield return new WaitForSecondsRealtime(typingDelay);
         }
 
         isTextTyping = false;
@@ -159,5 +159,20 @@ public class TutorialManager : ManagerBase<TutorialManager>
     {
         yield return new WaitForSeconds(seconds);
         Progress();
+    }
+
+    public void GiveBlood(int amount)
+    {
+        PlayerManager.Instance.ChangeBlood(PlayerManager.Instance.currentBlood + amount);
+    }
+    
+    public void SetGhouls(int amount)
+    {
+        PlayerManager.Instance.CurrentGhouls = amount;
+    }
+
+    public void LoadNewGameData()
+    {
+        PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.newGameDataPath));
     }
 }
