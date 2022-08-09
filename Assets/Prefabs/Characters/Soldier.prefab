@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 2645878115345322755}
   - component: {fileID: 2645878115345322754}
   - component: {fileID: 2644285148407779229}
-  - component: {fileID: 3220112630070793675}
   m_Layer: 9
   m_Name: Soldier
   m_TagString: Untagged
@@ -210,20 +209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2645878115345322759}
   anim: {fileID: 1726296579549250377}
---- !u!114 &3220112630070793675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2645878115345322764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9f83739fcad8341a6913267de7d24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrayName: 0
-  clipName: 
 --- !u!1 &2645878115819848673
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,3 +584,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
   m_PrefabInstance: {fileID: 5088957895039647448}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5358991017201419145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
+  m_PrefabInstance: {fileID: 5088957895039647448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2904036729214278415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358991017201419145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f83739fcad8341a6913267de7d24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 0
+  clipName: 

@@ -160,7 +160,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	void Start()
 	{
-		GameManager.Instance.LoadingStartedEvent += PlayMusic;
+		//GameManager.Instance.LoadingStartedEvent += PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayMusic;
@@ -171,7 +171,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	void OnDestroy()
 	{
-		GameManager.Instance.LoadingStartedEvent -= PlayMusic;
+		//GameManager.Instance.LoadingStartedEvent -= PlayMusic;
 		GameManager.Instance.LoadingFinishedEvent -= PlayPhaseMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent -= PlayMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent -= PlayMusic;

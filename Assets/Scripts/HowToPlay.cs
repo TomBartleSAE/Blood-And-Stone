@@ -47,8 +47,10 @@ public class HowToPlay : MonoBehaviour
         }
         else 
         {
+
+            //this is not running 
             gameObject.SetActive(false);
-            gameObject.SetActive(true);
+            buttons.SetActive(true);
         }
 
 
