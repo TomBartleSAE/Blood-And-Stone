@@ -10,14 +10,14 @@ public class DamageTower : TowerBase
     public float damage = 1f;
     [Tooltip("Numbers of seconds between firing")]
     public float delay = 1f;
-    private float attackTimer;
+    protected float attackTimer;
     public event Action TowerAttackedEvent;
 
     public Animator anim;
     public Transform weaponModel;
 
     
-    private void Update()
+    public virtual void Update()
     {
         if (target != null)
         {

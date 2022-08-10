@@ -155,10 +155,8 @@ MonoBehaviour:
   range: 2
   target: {fileID: 0}
   targets: []
-  damage: 10
+  damage: 5
   delay: 5
-  projectilePrefab: {fileID: 0}
-  projectileSpawn: {fileID: 0}
   anim: {fileID: 7093292879952836522}
   weaponModel: {fileID: 1263615345147552615}
 --- !u!114 &6772698126864838754 stripped

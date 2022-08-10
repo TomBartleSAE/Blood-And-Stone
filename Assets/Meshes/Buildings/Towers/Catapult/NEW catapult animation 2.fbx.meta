@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6900badf7b8bf6b438bcc84f41f3aebb
+guid: b448eb1e0a5a8c34f9f075cdfab9ab4e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 1
+    second: Catapult_Fire
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 1
+      name: Catapult_Fire
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -88,7 +88,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
+    optimizeBones: 0
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
