@@ -14,7 +14,7 @@ public class PauseSettingsUI : MonoBehaviour
     List<string> resOptions = new List<string>() {"1920 x 1080", "1280 x 720", "1280 x 1040"};
 
     public float previousVolume;
-    
+
     private float defaultVolume = 1;
     private bool defaultMute = false;
 
@@ -25,9 +25,11 @@ public class PauseSettingsUI : MonoBehaviour
 
     public void RestoreDefaultSettings()
     {
-        AudioListener.volume = defaultVolume;
-        MuteAudio(defaultMute);
-        Screen.SetResolution(1920, 1080, false);
+	    MuteAudio(defaultMute);
+	    ChangeVolume(defaultVolume);
+	    volumeSlider.value = defaultVolume;
+        ResolutionChanged(0);
+        dropdown.value = 0;
     }
 
     public void ChangeVolume(float newVolume)
@@ -51,9 +53,7 @@ public class PauseSettingsUI : MonoBehaviour
 
     void PopulateResolutionList()
     {
-        
-        
-        dropdown.AddOptions(resOptions);
+	    dropdown.AddOptions(resOptions);
     }
 
     public void ResolutionChanged(int indexValue)
@@ -73,6 +73,7 @@ public class PauseSettingsUI : MonoBehaviour
         {
             Screen.SetResolution(1280, 1040, false);
         }
+        Debug.Log(Screen.currentResolution);
     }
 
 }
