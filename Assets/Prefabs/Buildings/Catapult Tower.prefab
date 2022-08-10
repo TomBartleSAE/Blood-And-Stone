@@ -178,9 +178,13 @@ MonoBehaviour:
   projectile: {fileID: 2006051095641724565}
   curveTime: 0
   targetArea: {x: 0, y: 0, z: 0}
-  airTime: 0.5
+  airTime: 1
   arcHeight: 5
   impactParticle: {fileID: 8322455895808538401}
+  areaOfEffect: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &6772698126864838754 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -4480982740973044769, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}

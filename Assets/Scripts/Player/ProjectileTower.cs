@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tom;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class ProjectileTower : DamageTower
     public float arcHeight = 5f;
     private Vector3 startingPosition;
     public ParticleSystem impactParticle;
+    public float areaOfEffect = 1f;
+    public LayerMask enemyLayer;
 
     private void Start()
     {
@@ -33,6 +36,8 @@ public class ProjectileTower : DamageTower
         point3 = targetArea;
         
         isLaunching = true;
+        
+        Invoke(nameof(SplashDamage), airTime);
     }
 
     public override void Update()
@@ -57,6 +62,16 @@ public class ProjectileTower : DamageTower
                 
                 Invoke(nameof(ResetProjectile), 3f);
             }
+        }
+    }
+
+    public void SplashDamage()
+    {
+        Collider[] enemies = Physics.OverlapSphere(targetArea, areaOfEffect, enemyLayer, QueryTriggerInteraction.Ignore);
+
+        foreach (Collider enemy in enemies)
+        {
+            enemy.GetComponent<Health>().ChangeHealth(-damage, gameObject);
         }
     }
 
