@@ -11,13 +11,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 169082289633761204, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570705338336154422, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581573383732910477, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2964088960905265038, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3434790312297806360, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781282166002308502, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4688634724013946335, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_IsActive
@@ -69,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911380945445397476, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -210,6 +226,10 @@ PrefabInstance:
     - target: {fileID: 8354392383760790736, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109911013187656819, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1683514079, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}

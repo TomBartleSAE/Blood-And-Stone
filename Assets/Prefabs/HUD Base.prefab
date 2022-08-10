@@ -415,7 +415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6151413810847263104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10027,12 +10027,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 633ec53549a58c34793a0879896ba7ed, type: 2}
     - target: {fileID: 7217461368251478228, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4636777008353979270, guid: 633ec53549a58c34793a0879896ba7ed, type: 2}
+    - target: {fileID: 7217461368251478228, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8272130059256742446, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046201995855025934, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 551160b9e6f162945bf5e38b7b9b5b3b, type: 3}
