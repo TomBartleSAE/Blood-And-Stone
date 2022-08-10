@@ -11,14 +11,22 @@ public class DamageTower : TowerBase
     [Tooltip("Numbers of seconds between firing")]
     public float delay = 1f;
     private float attackTimer;
-
-    public GameObject projectilePrefab;
-    public Transform projectileSpawn;
-
     public event Action TowerAttackedEvent;
+
+    public Animator anim;
+    public Transform weaponModel;
+
     
     private void Update()
     {
+        if (target != null)
+        {
+            Vector3 direction = target.transform.position;
+            direction.y = weaponModel.position.y;
+
+            weaponModel.LookAt(direction);
+        }
+        
         attackTimer -= Time.deltaTime;
 
         if (attackTimer <= 0f && targets.Count > 0)
@@ -27,16 +35,30 @@ public class DamageTower : TowerBase
         }
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
-        Collider target = targets[Random.Range(0, targets.Count)];
-        target.GetComponent<Health>().ChangeHealth(-damage, gameObject);
-
-        GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
-        newProjectile.GetComponent<Rigidbody>().AddForce((target.transform.position - projectileSpawn.position) * 100f);
-
         attackTimer = delay;
-        
+        anim.Play("Attack");
         TowerAttackedEvent?.Invoke();
+    }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        
+        if (other.GetComponent<EnemyBase>() && target == null)
+        {
+            target = other;
+        }
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+        
+        if (other.GetComponent<EnemyBase>() && target == other)
+        {
+            target = targets[Random.Range(0, targets.Count)];
+        }
     }
 }

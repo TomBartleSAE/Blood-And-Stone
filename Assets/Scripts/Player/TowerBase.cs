@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TowerBase : BuildingBase
 {
     public SphereCollider trigger;
     public float range = 2f;
     
+    public Collider target;
     public List<Collider> targets;
 
     public override void Awake()
@@ -31,6 +33,14 @@ public class TowerBase : BuildingBase
         {
             targets.Remove(other);
             other.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
+            if (targets.Count > 0)
+            {
+                target = targets[Random.Range(0, targets.Count)];
+            }
+            else
+            {
+                target = null;
+            }
         }
     }
 
