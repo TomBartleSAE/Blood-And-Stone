@@ -15,13 +15,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 551080718341014490, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2570705338336154422, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2581573383732910477, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2964088960905265038, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
@@ -85,12 +89,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911380945445397476, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6835360228033826243, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2427817680998189863}
     - target: {fileID: 7563689501484821733, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -239,6 +243,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2581573383732910477, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
   m_PrefabInstance: {fileID: 2427817679767777744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2427817680998189863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1522006775, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+  m_PrefabInstance: {fileID: 2427817679767777744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c44929d684317940a4c62bfe0b80012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3032080366231242253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 839158640049846237, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
