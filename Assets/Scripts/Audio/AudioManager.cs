@@ -185,7 +185,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	//Playing any sound on call
 
-	public void Play(string sound, ArrayName arrayName)
+	public void Play(string sound, ArrayName arrayName, float? playerDistance = null) // questionmark on float is allowing the playpoint to be null. making this optional avoids the need for an overload, but an overload is a bit more standard in coding
 	{
 		SoundData s=new SoundData();
 		switch (arrayName)
@@ -220,11 +220,23 @@ public class AudioManager : ManagerBase<AudioManager>
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
+
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));  //This is randomising the volume/pitch by allocating a random number from the volume variance number -/+ 2
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-		s.source.Play();
+		if (playerDistance != null)
+		{ 
+			// basic distance assumptions to fake attenuation 
+			// Set volume to a certain level depending on distance
+
+		}
+
+		s.source.Play(); 
+
+
 	}
+
+
 
 
 	public void StopPlaying(string soundToStop) // this is ONLY stopping the pause music when it is currently playing and the game is resuming
