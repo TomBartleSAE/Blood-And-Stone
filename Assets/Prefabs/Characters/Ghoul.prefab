@@ -170,13 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 267632787}
   rb: {fileID: 833944671312180783}
-  moveSpeed: 10
+  moveSpeed: 100
   target: {x: 0, y: 0, z: 0}
-  turnSpeed: 5
-  distance: 0
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  turnSpeed: 120
 --- !u!114 &3715843146105334905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,9 +207,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
+  repathTime: 2
   isSelected: 0
+  isLeftClickMove: 0
+  clickMovementActive: 0
   graphicRaycaster: {fileID: 0}
-  repathTime: 1
 --- !u!114 &8884147366491106865
 MonoBehaviour:
   m_ObjectHideFlags: 0

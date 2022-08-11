@@ -35,6 +35,7 @@ public class GhoulModel : MonoBehaviour
         {
             localAutoAttack = value;
             autoAttack = localAutoAttack;
+            clickMovement.clickMovementActive = !value;
         }
     }
 
@@ -47,7 +48,7 @@ public class GhoulModel : MonoBehaviour
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         health.DeathEvent += Die;
-        clickMovement.HasTargetEvent += HasTargetBoolChange;
+        //clickMovement.HasTargetEvent += HasTargetBoolChange;
     }
 
     private void OnDestroy()

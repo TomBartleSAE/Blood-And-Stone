@@ -19,9 +19,6 @@ public class FollowPath : MonoBehaviour
     public Vector3 target;
     public float turnSpeed = 5f;
 
-    public float distance;
-    public LayerMask obstacleLayer;
-    
     private void OnEnable()
     {
         agent.NewPathEvent += ResetPath;
@@ -61,32 +58,6 @@ public class FollowPath : MonoBehaviour
                     ForceMode.VelocityChange);
             }
         }
-        
-        /*//total angle of arc, divide arcAngle by 2 to get relative angle from forward
-        float arcAngle = 90f;
-        //number of rays to be dispersed
-        int numLines = 90;
-
-        float turnOffset;
-        
-        for (int l=0;l<numLines;l++) 
-        {
-            //establishes ray arc
-            //(Line taken from website - AM)
-            Vector3 shootVec = transform.rotation * Quaternion.AngleAxis(-1*arcAngle/2+(l*arcAngle/numLines), Vector3.up) * Vector3.forward;
-            
-            RaycastHit hit;
-            
-            if (Physics.Raycast(transform.position, shootVec, out hit, distance, obstacleLayer))
-            {
-                if (l == 0 || l == 44 || l == 89)
-                {
-                    Debug.DrawLine(transform.position, hit.point, Color.green);
-                    Vector3 hitLocalPos = transform.InverseTransformPoint(hit.point);
-                    turnOffset = hit.point.x;
-                }
-            }
-        }*/
     }
     
 
