@@ -17,13 +17,14 @@ public class ClickMovement : MonoBehaviour
     public Transform target;
 
     private float timer;
+    public float repathTime = 1f;
 
     public bool isSelected;
     public bool isLeftClickMove;
 
-    public GraphicRaycaster graphicRaycaster;
+    public bool clickMovementActive;
 
-    public float repathTime = 1f;
+    public GraphicRaycaster graphicRaycaster;
 
     public event Action<bool> HasTargetEvent;
     public event Action StartedMoveEvent;
@@ -115,7 +116,10 @@ public class ClickMovement : MonoBehaviour
     {
         if (isSelected)
         {
-            agent.FindPath(transform.position, destination);
+            if (clickMovementActive)
+            {
+                agent.FindPath(transform.position, destination);
+            }
         }
     }
 }

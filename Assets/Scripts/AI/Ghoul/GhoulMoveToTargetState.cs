@@ -12,6 +12,7 @@ public class GhoulMoveToTargetState : AntAIState
 {
     public GhoulModel ghoulModel;
     public PathfindingAgent pathfinding;
+    public ClickMovement clickMovement;
 
     public Transform targetDestination;
     private float timer;
@@ -29,6 +30,8 @@ public class GhoulMoveToTargetState : AntAIState
     {
         base.Enter();
 
+        clickMovement = ghoulModel.clickMovement;
+
         targetDestination = ghoulModel.clickMovement.target.transform;
     }
 
@@ -36,15 +39,21 @@ public class GhoulMoveToTargetState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        timer -= Time.deltaTime;
-
+        
         //will find path if in autoAttack; FindPath() is also in ClickMovement so will get called there if not in autoAttack
-        if (timer <= 0)
-        {
-            FindPath();
-            timer = 1f;
-        }
 
+        if (ghoulModel.autoAttack)
+        {
+            
+            timer -= Time.deltaTime;
+            
+            if (timer <= 0)
+            {
+                FindPath();
+                timer = 1f;
+            }
+        }
+        
         float distance = Vector3.Distance(ghoulModel.transform.position, targetDestination.position);
 
         if (distance <= ghoulModel.attackRange)
