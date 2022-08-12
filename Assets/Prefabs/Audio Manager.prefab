@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefbe1af78aff2341adeed87668363a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+  mixerGroupMaster: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+  audioMixer: {fileID: 24100000, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+  maxDistanceAttenuation: 5
   ambienceSounds: []
   menuSounds:
   - soundName: ButtonEnter
@@ -57,6 +59,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: ButtonHover
     clip: {fileID: 8300000, guid: 4ac3be9da5f537d418dd9ba407936d46, type: 3}
     volume: 1
@@ -67,6 +70,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: ButtonClick
     clip: {fileID: 8300000, guid: 82228cd977bf4664c9e4a8c8ef090f6f, type: 3}
     volume: 1
@@ -77,6 +81,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: ButtonBack
     clip: {fileID: 8300000, guid: 25633f33406028340b1b5b990d43dcec, type: 3}
     volume: 1
@@ -87,6 +92,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: ButtonHUD
     clip: {fileID: 8300000, guid: 3fcad4c4d2ec8654aa13cf22c93195d6, type: 3}
     volume: 1
@@ -97,6 +103,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: BloodMeter
     clip: {fileID: 8300000, guid: caf1e0435de6c2f4a903b898b9d60cc9, type: 3}
     volume: 1
@@ -107,6 +114,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   musicSounds:
   - soundName: MainMenuMusic
     clip: {fileID: 8300000, guid: 028c90e1294e4cb4892754e469cbc5fd, type: 3}
@@ -118,6 +126,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: NightPhaseLoop
     clip: {fileID: 8300000, guid: 531e952f9d0026d4b921da24dd2bf745, type: 3}
     volume: 1
@@ -128,6 +137,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: NightPhasePause
     clip: {fileID: 8300000, guid: fd441c44338a89e4ba4390d33d499cad, type: 3}
     volume: 1
@@ -138,6 +148,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: DayPhaseStart
     clip: {fileID: 8300000, guid: 18a5e5a66e26cca4cbddefd37dcfb7c7, type: 3}
     volume: 1
@@ -148,6 +159,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: DayPhaseWave
     clip: {fileID: 8300000, guid: 191ffe9ca65cdeb4ebef71ba42272f55, type: 3}
     volume: 1
@@ -158,6 +170,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: DayPhaseEnd
     clip: {fileID: 8300000, guid: 70109eb9bb53ac04b9eb06c0cca86681, type: 3}
     volume: 1
@@ -168,6 +181,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: DayPhasePause
     clip: {fileID: 8300000, guid: 9fa6f071b509dae4b9baf6505b54a8f8, type: 3}
     volume: 1
@@ -178,6 +192,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GameOverStart
     clip: {fileID: 8300000, guid: 66b00196238ba18408104387427b2b89, type: 3}
     volume: 1
@@ -188,6 +203,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GameOverLoop
     clip: {fileID: 8300000, guid: e8a586ea4e7849d4caad16c5d6b678a8, type: 3}
     volume: 1
@@ -198,8 +214,9 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: LoadIn
-    clip: {fileID: 8300000, guid: 85766b5b9340c564bb859e2b9aa6cefe, type: 3}
+    clip: {fileID: 8300000, guid: a039718877812034cac92c6729e1ee71, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -208,6 +225,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -242287522054518584, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
+    playOnAwake: 0
   sfxSounds:
   - soundName: BodyImpact
     clip: {fileID: 8300000, guid: 598f3a2e54789dd4e9014a08b3aedda6, type: 3}
@@ -219,6 +237,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerPlacement
     clip: {fileID: 8300000, guid: 007f0b8c480c7a645a16c501cd6e31fe, type: 3}
     volume: 1
@@ -229,6 +248,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerDestroyed
     clip: {fileID: 8300000, guid: 158c72b5560de6a43bb31051a144d35c, type: 3}
     volume: 1
@@ -239,6 +259,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerCrossbow
     clip: {fileID: 8300000, guid: 9c2bb0783c160bf4d9763ce9d6ce1995, type: 3}
     volume: 1
@@ -249,6 +270,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerCatapult
     clip: {fileID: 8300000, guid: ef5adde1def7ce34c8ddbebc9d21bd7c, type: 3}
     volume: 1
@@ -259,6 +281,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerBats1
     clip: {fileID: 8300000, guid: c149357cd1ee9cd45a0856dbc8de564d, type: 3}
     volume: 1
@@ -269,6 +292,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerBats2
     clip: {fileID: 8300000, guid: abf56fd3b2aed564fbe783fe8f839ccb, type: 3}
     volume: 1
@@ -279,6 +303,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TowerBats3
     clip: {fileID: 8300000, guid: e784817780862fe4ab6e09fde8e74b81, type: 3}
     volume: 1
@@ -289,6 +314,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: CastleUpgrade
     clip: {fileID: 8300000, guid: ea07132954362f64f969474ac7c5ccf7, type: 3}
     volume: 1
@@ -299,6 +325,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: BattleCry
     clip: {fileID: 8300000, guid: 212ddca6166d98c4b92c797f97a04697, type: 3}
     volume: 1
@@ -309,6 +336,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VDeathNight
     clip: {fileID: 8300000, guid: 28a570abc596adf40b8c32cf3a706862, type: 3}
     volume: 1
@@ -319,6 +347,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VDeathDay
     clip: {fileID: 8300000, guid: 49a9515911d8a6846be7ac7396b348ea, type: 3}
     volume: 1
@@ -329,6 +358,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 8330741392975619139, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VScream1
     clip: {fileID: 8300000, guid: 42a14a1de9a1f0f40a5c6eeb6578d8d5, type: 3}
     volume: 1
@@ -339,6 +369,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VScream2
     clip: {fileID: 8300000, guid: 65e71b67749bf7c45a7d98f89c99793c, type: 3}
     volume: 1
@@ -349,6 +380,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VScream3
     clip: {fileID: 8300000, guid: b71f2e9a174402040971adb41fc8dadb, type: 3}
     volume: 1
@@ -359,6 +391,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: TownCrier
     clip: {fileID: 8300000, guid: b1e8a243fe7b94b49babd8e79bac5b2a, type: 3}
     volume: 1
@@ -369,6 +402,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -3500815157643895901, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulAcknowledge1
     clip: {fileID: 8300000, guid: 803358a93d6a9be4ca794b4e2bf85edc, type: 3}
     volume: 1
@@ -379,6 +413,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulAcknowledge2
     clip: {fileID: 8300000, guid: b3023441ca9dda04a8d32689a4ef9017, type: 3}
     volume: 1
@@ -389,6 +424,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulAcknowledge3
     clip: {fileID: 8300000, guid: d53652c820664984fb5b054aa304046d, type: 3}
     volume: 1
@@ -399,6 +435,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulAcknowledge4
     clip: {fileID: 8300000, guid: 22e683a27b1962a4e8fe6af430985b95, type: 3}
     volume: 1
@@ -409,6 +446,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 3049529367123872143, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: NPCAttack1
     clip: {fileID: 8300000, guid: c478392a09a452641908d6de957d1ea1, type: 3}
     volume: 1
@@ -419,6 +457,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: NPCAttack2
     clip: {fileID: 8300000, guid: d72aca71e0c250b46a1360722f6dffe4, type: 3}
     volume: 1
@@ -429,6 +468,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: NPCAttack3
     clip: {fileID: 8300000, guid: de03a729a013a3a40b01ca6c9c13432b, type: 3}
     volume: 1
@@ -439,6 +479,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCAttack
     clip: {fileID: 8300000, guid: 759e308a3b418644fa9e9911d0c2dc13, type: 3}
     volume: 1
@@ -449,6 +490,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   playerFootstepsSounds:
   - soundName: PCFootstep1
     clip: {fileID: 8300000, guid: a26b640f9fa796746b61d020bce718d9, type: 3}
@@ -460,6 +502,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCFootstep2
     clip: {fileID: 8300000, guid: 65368ee6819bf074c9d510f45c3a1f09, type: 3}
     volume: 1
@@ -470,6 +513,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCFootstep3
     clip: {fileID: 8300000, guid: 39c0f0f3685aae4478870cb6f50835f1, type: 3}
     volume: 1
@@ -480,6 +524,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCFootstep4
     clip: {fileID: 8300000, guid: 9298156a8eb6df944bb7b206c67634c8, type: 3}
     volume: 1
@@ -490,6 +535,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCFootstep5
     clip: {fileID: 8300000, guid: c05142214ebe25a45bd3f1179cafa590, type: 3}
     volume: 1
@@ -500,6 +546,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: PCFootstep6
     clip: {fileID: 8300000, guid: 8cba6048c3121c24a8d5f74efdb85b5e, type: 3}
     volume: 1
@@ -510,6 +557,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   villagerFootstepsSounds:
   - soundName: VFootstep1
     clip: {fileID: 8300000, guid: 926966ceaca419743929c852df9e47af, type: 3}
@@ -521,6 +569,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep2
     clip: {fileID: 8300000, guid: 02de80799aabe2d43904b6cd01cf1d34, type: 3}
     volume: 1
@@ -531,6 +580,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep3
     clip: {fileID: 8300000, guid: 93daaca79805b464d97cf6eee5adfb90, type: 3}
     volume: 1
@@ -541,6 +591,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep4
     clip: {fileID: 8300000, guid: d46616715ab042a4793b7089477565db, type: 3}
     volume: 1
@@ -551,6 +602,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep5
     clip: {fileID: 8300000, guid: d6de271b2420e4f4ab3d7c9af32776e0, type: 3}
     volume: 1
@@ -561,6 +613,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep6
     clip: {fileID: 8300000, guid: e64f61a2d18025d4597fc5e676ad02d8, type: 3}
     volume: 1
@@ -571,6 +624,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep7
     clip: {fileID: 8300000, guid: 9b037d44780b73840b7400f51a21e168, type: 3}
     volume: 1
@@ -581,6 +635,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: VFootstep8
     clip: {fileID: 8300000, guid: 3eb5c980a5d8d73439b989731f2813c6, type: 3}
     volume: 1
@@ -591,6 +646,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   guardFootstepsSounds:
   - soundName: GuardFootstep1
     clip: {fileID: 8300000, guid: a2e050a85d019374ea778c5d87facb12, type: 3}
@@ -602,6 +658,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep2
     clip: {fileID: 8300000, guid: bcd4f6db226e57748bfb7be75fba9bb7, type: 3}
     volume: 1
@@ -612,6 +669,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep3
     clip: {fileID: 8300000, guid: 6b49bb022e48b2240a644eec0dd9a8bc, type: 3}
     volume: 1
@@ -622,6 +680,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep4
     clip: {fileID: 8300000, guid: 2994a78d6fa0a6a41ba52df0576d66fd, type: 3}
     volume: 1
@@ -632,6 +691,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep5
     clip: {fileID: 8300000, guid: 6058d5f7dfa921043897e614b5f0a1c2, type: 3}
     volume: 1
@@ -642,6 +702,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep6
     clip: {fileID: 8300000, guid: 70235a7d197148f4cb706da59c049fb1, type: 3}
     volume: 1
@@ -652,6 +713,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep7
     clip: {fileID: 8300000, guid: 4e76066ff59339142badd7362c42a3d6, type: 3}
     volume: 1
@@ -662,6 +724,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GuardFootstep8
     clip: {fileID: 8300000, guid: 0a2ef6ef90bfc6d49959d9ab8a04cea9, type: 3}
     volume: 1
@@ -672,6 +735,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   ghoulFootstepsSounds:
   - soundName: GhoulFootstep1
     clip: {fileID: 8300000, guid: 931f5436f26dfd14b84e1f950e92c96b, type: 3}
@@ -683,6 +747,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulFootstep2
     clip: {fileID: 8300000, guid: fffde421b215ae241ac705d1c0a3f8b1, type: 3}
     volume: 1
@@ -693,6 +758,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulFootstep3
     clip: {fileID: 8300000, guid: cfbc1eda546dbdb4194bdfea9b007b05, type: 3}
     volume: 1
@@ -703,6 +769,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulFootstep4
     clip: {fileID: 8300000, guid: 3f84727ad6cd6374494cc231e591dbd4, type: 3}
     volume: 1
@@ -713,6 +780,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulFootstep5
     clip: {fileID: 8300000, guid: b02907cb0fb6d2a45adebffa2f1506fc, type: 3}
     volume: 1
@@ -723,6 +791,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   - soundName: GhoulFootstep5
     clip: {fileID: 8300000, guid: 9cd693cb418607642a3742facab9dd65, type: 3}
     volume: 1
@@ -733,4 +802,5 @@ MonoBehaviour:
     mixerGroup: {fileID: 7783819209515488988, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 0
     source: {fileID: 0}
+    playOnAwake: 0
   currentPhase: 

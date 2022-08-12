@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 8739776163063105061}
   - component: {fileID: 8739776163063105062}
   - component: {fileID: 8739776163063105081}
+  - component: {fileID: 3428988930043804418}
   - component: {fileID: 8739776163063105082}
   - component: {fileID: 8739776163063105087}
   - component: {fileID: 8739776163063105083}
@@ -167,9 +168,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 0}
-  isSelected: 1
-  graphicRaycaster: {fileID: 0}
   repathTime: 0.5
+  isSelected: 1
+  isLeftClickMove: 0
+  clickMovementActive: 0
+  graphicRaycaster: {fileID: 0}
+--- !u!114 &3428988930043804418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739776163063105063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e856929583009f4ab9125057ecbdc2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TooltipObject: {fileID: 0}
+  clickMovement: {fileID: 8739776163063105081}
+  clipName: ButtonHUD
+  arrayName: 1
 --- !u!114 &8739776163063105082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,10 +206,6 @@ MonoBehaviour:
   moveSpeed: 10
   target: {x: 0, y: 0, z: 0}
   turnSpeed: 100
-  distance: 0
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8739776163063105087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,3 +641,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrayName: 0
   clipName: 
+  isPlayerCharacter: 1

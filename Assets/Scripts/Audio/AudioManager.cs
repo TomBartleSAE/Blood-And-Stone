@@ -5,7 +5,11 @@ using System.Collections;
 
 public class AudioManager : ManagerBase<AudioManager>
 {
-	public AudioMixerGroup mixerGroup;
+	public AudioMixerGroup mixerGroupMaster;
+	public AudioMixer audioMixer;
+	public AudioMixerSnapshot loadingAMSnapshot;
+
+	public float maxDistanceAttenuation = 4;
 
 	public SoundData[] ambienceSounds;
 
@@ -50,7 +54,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+			
 			if (s.playWhenPaused == true)						// this is going to make sure a sound can play when the game is paused :)
 			{
 				s.source.ignoreListenerPause = true;
@@ -64,7 +69,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -78,7 +84,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -92,7 +99,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -106,7 +114,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -120,7 +129,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -134,7 +144,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -148,7 +159,8 @@ public class AudioManager : ManagerBase<AudioManager>
 			s.source.loop = s.loop;
 			s.source.playOnAwake = s.playOnAwake;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = s.mixerGroup;
+
 			if (s.playWhenPaused == true)
 			{
 				s.source.ignoreListenerPause = true;
@@ -161,7 +173,7 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	void Start()
 	{
-		GameManager.Instance.LoadingStartedEvent += StopPlaying;
+		GameManager.Instance.LoadingStartedEvent += LoadingStart;
 		GameManager.Instance.LoadingFinishedEvent += PlayPhaseMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveStartedEvent += PlayWaveMusic;
 		GameManager.Instance.dayPhaseState.GetComponent<DayPhaseState>().WaveEndedEvent += PlayWaveOverMusic;
@@ -226,10 +238,11 @@ public class AudioManager : ManagerBase<AudioManager>
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		if (playerDistance != null)
-		{ 
+		{
 			// basic distance assumptions to fake attenuation 
-			// Set volume to a certain level depending on distance
-
+			// Set volume to a certain level depending on distance parsed in from sfx/animation
+			float playerDistanceToUse = playerDistance ?? 0; // this is because its upset at being okay for null above. the ?? is the overload, its saying if it's = null, then set it to 0, but it should never be null because of the if statement.
+			s.source.volume *= 1f - (playerDistanceToUse / maxDistanceAttenuation);
 		}
 
 		s.source.Play(); 
@@ -439,7 +452,12 @@ public class AudioManager : ManagerBase<AudioManager>
 		}
 	}
 
-	// while loading screen is up, stop all sound with the master mixer group getting ducked
+	
+
+	public void LoadingStart(string soundToStop) // while loading screen is up, stop all sound with the master mixer group getting ducked OR A SNAPSHOT
+	{ 
+	//	audioMixerSnapshot.TransitionTo notif: if !()
+	}
 
 	public void PlayPhaseMusic(string phaseName)
 	{
@@ -486,8 +504,11 @@ public class AudioManager : ManagerBase<AudioManager>
 		yield return null;
 	}
 
-	// tutorial sections are there loading screens between them?
-	// DayTest, NightTest, Tutorial_Act1-1 1-2 2-1 2-2
+
+	//Get reference to ClickMovement script on Vampire object, subscribe to StartedMoveEvent
+	//Get reference to ClickMovement script on Vampire object, subscribe to HasTargetEvent(function requires bool variable), check if bool variable is true
+	//If you need a different sound for villagers and guards, add “if (clickMovementReference.target.GetComponent<VillagerModel>()” for villagers or “…GetComponent<GuardModel>()” for guards
+	//Get reference to TooltipObject script in each Tower prefab, subscribe to SelectedObjectEvent
 
 	public void PlayAmbience()
 	{
