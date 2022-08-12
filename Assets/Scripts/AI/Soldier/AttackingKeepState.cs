@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
@@ -10,26 +11,30 @@ public class AttackingKeepState : AntAIState
 
     public Transform castle;
     public PathfindingAgent pathfinding;
-    public SoldierModel soldier;
-
-    public float attackTime;
+    public SoldierModel soldierModel;
+    
+    public LayerMask buildingLayer;
+    
     public float damage;
-
+    public float attackTimer;
+    
     public bool canAttack;
+    public bool inRangeOfCastle = false;
 
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
 
         owner = aGameObject;
-        soldier = owner.GetComponent<SoldierModel>();
+        soldierModel = owner.GetComponent<SoldierModel>();
         pathfinding = owner.GetComponent<PathfindingAgent>();
     }
     public override void Enter()
     {
         base.Enter();
 
-        castle = soldier.castle;
+        castle = soldierModel.castle;
+        pathfinding.PathFailedEvent += BreakThroughWall;
         
         pathfinding.FindPath(owner.transform.position, castle.position);
     }
@@ -38,9 +43,13 @@ public class AttackingKeepState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (Vector3.Distance(owner.transform.position, castle.position) <= 0.5f && canAttack)
+        attackTimer -= Time.deltaTime;
+        
+        if (inRangeOfCastle && canAttack && attackTimer <= 0)
         {
-            StartCoroutine(AttackCastle());
+	        canAttack = true;
+	        AttackCastle();
+	        attackTimer = soldierModel.attackCooldown;
         }
     }
 
@@ -49,18 +58,40 @@ public class AttackingKeepState : AntAIState
         base.Exit();
     }
 
-    public IEnumerator AttackCastle()
+    public void OnTriggerEnter(Collider other)
     {
-        canAttack = false;
-        castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
-        soldier.anim.SetTrigger("Attack");
-
-        for (int i = 0; i < attackTime; i++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
-        canAttack = true;
+	    if (other.GetComponent<Castle>())
+	    {
+		    inRangeOfCastle = true;
+	    }
     }
 
+    public void AttackCastle()
+    {
+	    if (canAttack)
+	    {
+		    canAttack = false;
+		    castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
+		    soldierModel.anim.SetTrigger("Attack");
+	    }
+    }
+    
+    public void BreakThroughWall()
+    {
+	    Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
+
+	    foreach (var building in towers)
+	    {
+		    float shortestDistance = 100000;
+		    float distance = Vector3.Distance(transform.position, building.transform.position);
+		    if (distance < shortestDistance)
+		    {
+			    shortestDistance = distance;
+			    soldierModel.target = building.transform;
+		    }
+	    }
+
+	    //will change to AttackingDefensesState
+	    soldierModel.attackedByTower = true;
+    }
 }

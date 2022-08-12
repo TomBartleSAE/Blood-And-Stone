@@ -35,15 +35,13 @@ public class SoldierModel : EnemyBase
     public void OnEnable()
     {
         health.DeathEvent += Die;
-        pathfinding.PathFailedEvent += BreakThroughWall;
-        health.DamageChangeEvent += AttackTower;
+        health.DamageChangeEvent += Retaliate;
     }
 
     public void OnDisable()
     {
         health.DeathEvent -= Die;
-        pathfinding.PathFailedEvent -= BreakThroughWall;
-        health.DamageChangeEvent += AttackTower;
+        health.DamageChangeEvent += Retaliate;
     }
 
     void Awake()
@@ -55,22 +53,24 @@ public class SoldierModel : EnemyBase
 
     private void Update()
     {
-        if (!inRange)
-        {
-            if (Vector3.Distance(transform.position, target.position) < range)
-            {
-                inRange = true;
-            }
-        }
+	    if (Vector3.Distance(transform.position, target.position) < range)
+	    {
+		    inRange = true;
+	    }
+	    else
+	    {
+		    inRange = false;
+	    }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<GhoulModel>())
+	    if (other.GetComponent<GhoulModel>() && !GhoulsInRange.Contains(other.transform))
         {
             GhoulsInRange.Add(other.transform);
             target = other.transform;
             attackedByGhoul = true;
+            hasTarget = true;
         }
     }
 
@@ -93,53 +93,26 @@ public class SoldierModel : EnemyBase
         {
             target = GhoulsInRange[Random.Range(0, GhoulsInRange.Count - 1)];
         }
-
         else
         {
-            attackedByGhoul = false;
+	        hasTarget = false;
+	        attackedByGhoul = false;
         }
     }
 
     void Die(GameObject deadGuy)
     {
-        DayNPCManager.Instance.RemoveFromSoldierList(gameObject);
+        DayNPCManager.Instance.RemoveFromSoldierList(deadGuy);
         gameObject.SetActive(false);
     }
-    
-    public void BreakThroughWall()
-    {
-        Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
-        
-        // Tom: This needed to be outside of foreach loop, otherwise it kept resetting to 100,000
-        float shortestDistance = 100000;
-        foreach (var building in towers)
-        {
-            if (building.GetComponent<BuildingBase>()) // Filters out tile blockers
-            {
-                float distance = Vector3.Distance(transform.position, building.transform.position);
-                if (distance < shortestDistance)
-                {
-                    shortestDistance = distance;
-                    target = building.transform;
-                }
-            }
-        }
-        
-        // Tom: Flagged soldier as having target when it finds a tower
-        hasTarget = true;
-        //will change to AttackingDefensesState
-        attackedByTower = true;
-    }
 
-    void AttackTower(GameObject newTarget)
+    void Retaliate(GameObject newTarget)
     {
-        if (newTarget.GetComponent<TowerBase>())
+        if (newTarget.GetComponent<GhoulModel>())
         {
-            if (!attackedByTower || !attackedByGhoul)
-            {
-                target = newTarget.transform;
-                attackedByTower = true;
-            }
+	        target = newTarget.transform;
+	        attackedByGhoul = true;
+	        hasTarget = true;
         }
     }
 }

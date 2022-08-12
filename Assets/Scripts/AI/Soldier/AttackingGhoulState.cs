@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class AttackingGhoulState : AntAIState
 {
-    public SoldierModel soldier;
+    public SoldierModel soldierModel;
     public PathfindingAgent pathfinding;
 
     public GameObject owner;
@@ -30,10 +30,9 @@ public class AttackingGhoulState : AntAIState
     {
         base.Enter();
 
-        soldier = owner.GetComponent<SoldierModel>();
-        pathfinding = owner.GetComponent<PathfindingAgent>();
-        target = soldier.target;
-        damage = soldier.damage;
+        soldierModel = owner.GetComponent<SoldierModel>();
+        target = soldierModel.target;
+        damage = soldierModel.damage;
         target.GetComponent<Health>().DeathEvent += TargetDead;
     }
 
@@ -48,39 +47,35 @@ public class AttackingGhoulState : AntAIState
             {
                 canAttack = false;
                 Attack();
-                attackTimer = soldier.attackCooldown;
+                attackTimer = soldierModel.attackCooldown;
             }
-        }
-
-        pathTimer -= Time.deltaTime;
-        if (pathTimer <= 0)
-        {
-            FindPath();
         }
     }
 
     public override void Exit()
     {
-        soldier.attackedByGhoul = false;
-        soldier.inRange = false;
-        soldier.target = soldier.castle;
-        base.Exit();
-    }
-
-    public void FindPath()
-    {
-        pathfinding.FindPath(transform.position, target.transform.position);
+	    base.Exit();
     }
 
     public void Attack()
     {
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, gameObject);
         canAttack = true;
-        soldier.anim.SetTrigger("Attack");
+        soldierModel.anim.SetTrigger("Attack");
     }
 
     void TargetDead(GameObject deadThing)
     {
-        Finish();
+	    /*if (soldierModel.GhoulsInRange.Count > 0)
+	    {
+		    soldierModel.ChangeTarget();
+	    }
+	    
+	    else
+	    {
+		    soldierModel.hasTarget = false;
+		    soldierModel.attackedByGhoul = false;
+	    }*/
+	    soldierModel.ChangeTarget();
     }
 }

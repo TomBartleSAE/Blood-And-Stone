@@ -13,7 +13,7 @@ public class SoldierFindTargetState : AntAIState
     public Transform castle;
     private GameObject owner;
 
-    public LayerMask buildingLayer;
+
 
     public override void Create(GameObject aGameObject)
     {
@@ -22,8 +22,7 @@ public class SoldierFindTargetState : AntAIState
         owner = aGameObject;
         pathfinding = owner.GetComponent<PathfindingAgent>();
         soldierModel = owner.GetComponent<SoldierModel>();
-        pathfinding.PathFailedEvent += BreakThroughWall;
-        pathfinding.NewPathEvent += TargetCastle;
+
     }
 
     public override void Enter()
@@ -31,15 +30,13 @@ public class SoldierFindTargetState : AntAIState
         base.Enter();
         
         castle = soldierModel.castle;
-        pathfinding.FindPath(transform.position, castle.position);
-        TargetCastle();
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
         
-        //FindTarget();
+        FindTarget();
     }
 
     public override void Exit()
@@ -47,28 +44,10 @@ public class SoldierFindTargetState : AntAIState
         base.Exit();
     }
 
-    private void TargetCastle()
+    public void FindTarget()
     {
-        soldierModel.target = castle;
-        soldierModel.hasTarget = true;
+	    
     }
 
-    public void BreakThroughWall()
-    {
-        Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
-
-        foreach (var building in towers)
-        {
-            float shortestDistance = 100000;
-            float distance = Vector3.Distance(transform.position, building.transform.position);
-            if (distance < shortestDistance)
-            {
-                shortestDistance = distance;
-                soldierModel.target = building.transform;
-            }
-        }
-        
-        //will change to AttackingDefensesState
-        soldierModel.attackedByTower = true;
-    }
+    
 }
