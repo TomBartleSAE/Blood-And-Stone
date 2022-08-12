@@ -434,6 +434,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
+      propertyPath: isLeftClickMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
+      propertyPath: graphicRaycaster
+      value: 
+      objectReference: {fileID: 1982572293}
+    - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
+      propertyPath: clickMovementActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8739776163063105082, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
       propertyPath: turnSpeed
       value: 200
