@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 1775487813938141665}
   - component: {fileID: 4559678617780596011}
   - component: {fileID: 5272210045819723735}
-  - component: {fileID: 1091534956205329880}
   m_Layer: 0
   m_Name: TM_Tower_1_MESH
   m_TagString: Untagged
@@ -306,21 +305,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9847809, y: 1.6339705, z: 1.0016162}
   m_Center: {x: 0, y: 0.000000029802322, z: 0}
---- !u!114 &1091534956205329880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2614277991046188286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e856929583009f4ab9125057ecbdc2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickMovement: {fileID: 0}
-  clipName: ButtonHUD
-  arrayName: 1
 --- !u!1 &4535539829185730404
 GameObject:
   m_ObjectHideFlags: 0
