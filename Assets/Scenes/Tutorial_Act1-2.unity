@@ -205,7 +205,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1752641647}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   dialogue: You can keep an eye on how much time you have left in each phase with
     the Day/Night dial on the HUD.
   portrait: {fileID: 0}
@@ -12871,7 +12883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344111644724652360, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2344111644836524095, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -18096,6 +18108,27 @@ MonoBehaviour:
   - agent: {fileID: 331379086}
     destination: {fileID: 10073157}
   movementTime: 4
+--- !u!1 &1752641642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2344111644724652360, guid: a9cda52ecfccd85498c982a5450565f1, type: 3}
+  m_PrefabInstance: {fileID: 1534636497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1752641647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752641642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efe8ee1374a26241bea44681b67401d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPulsing: 0
+  scaleMagnitude: 0.08
+  offset: 1.28
+  speed: 5
 --- !u!1 &1754093322
 GameObject:
   m_ObjectHideFlags: 0
