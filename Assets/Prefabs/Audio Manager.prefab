@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupMaster: {fileID: 24300002, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
   audioMixer: {fileID: 24100000, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+  loadingScreenSnapshot: {fileID: 8992060243318369086, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+  mainSnapshot: {fileID: 24500006, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
   maxDistanceAttenuation: 5
   ambienceSounds: []
   menuSounds:

@@ -7,7 +7,9 @@ public class AudioManager : ManagerBase<AudioManager>
 {
 	public AudioMixerGroup mixerGroupMaster;
 	public AudioMixer audioMixer;
-	public AudioMixerSnapshot loadingAMSnapshot;
+
+	public AudioMixerSnapshot loadingScreenSnapshot;
+	public AudioMixerSnapshot mainSnapshot;
 
 	public float maxDistanceAttenuation = 4;
 
@@ -28,7 +30,7 @@ public class AudioManager : ManagerBase<AudioManager>
 	public SoundData[] ghoulFootstepsSounds;
 
 	[HideInInspector]
-	public string currentPhase;
+	public string currentPhase = "MainMenu";
 
 	public enum ArrayName {
 	
@@ -166,6 +168,8 @@ public class AudioManager : ManagerBase<AudioManager>
 				s.source.ignoreListenerPause = true;
 			}
 		}
+
+		currentPhase = "MainMenu";
 
 	}
 
@@ -455,8 +459,31 @@ public class AudioManager : ManagerBase<AudioManager>
 	
 
 	public void LoadingStart(string soundToStop) // while loading screen is up, stop all sound with the master mixer group getting ducked OR A SNAPSHOT
-	{ 
-	//	audioMixerSnapshot.TransitionTo notif: if !()
+	{
+		StartCoroutine(LoadingCoroutine(soundToStop));
+	}
+	//	loadingAMSnapshot.TransitionTo(0);    // notif: if !()
+
+	IEnumerator LoadingCoroutine(string soundToStop) //this will stop audio playing during the loading screen by (if main menu) waiting for the button enter to finish, then transitioning snapshots, then (also if else) stopping music sounds  
+	{
+		SoundData s = new SoundData();
+
+        switch (currentPhase)
+		{
+			default:
+				loadingScreenSnapshot.TransitionTo(0);
+				break;
+			case "MainMenu":
+				s = Array.Find(menuSounds, item => item.soundName == "ButtonEnter");
+				yield return new WaitForSeconds(s.clip.length);
+				loadingScreenSnapshot.TransitionTo(2); //fades music in and out, currently uses only master mixer group volume. If time for further improvements to the game audio, make subgroups for sounds/etc
+				yield return new WaitForSeconds(2);
+				break;
+		}
+
+		StopPlaying(soundToStop);
+
+		yield return null;
 	}
 
 	public void PlayPhaseMusic(string phaseName)
@@ -466,7 +493,9 @@ public class AudioManager : ManagerBase<AudioManager>
 
 	IEnumerator PhaseMusicCoroutine(string phaseName)
 	{
+		mainSnapshot.TransitionTo(0);
 		currentPhase = phaseName;
+		// Debug.Log("Setting currentPhase to" + currentPhase.ToString());
 		string clipName = "LoadIn";
 		ArrayName arrayName = ArrayName.music;
 
