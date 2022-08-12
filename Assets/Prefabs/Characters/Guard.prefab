@@ -44,7 +44,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3689531663806443234}
   - component: {fileID: 3689531663806443233}
-  - component: {fileID: 3689531663806443237}
   - component: {fileID: 3689531663806443232}
   - component: {fileID: 3689531663806443247}
   - component: {fileID: 3689531663806443236}
@@ -91,19 +90,6 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}
---- !u!135 &3689531663806443237
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3689531663806443243}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3689531663806443232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,10 +201,6 @@ MonoBehaviour:
   moveSpeed: 8
   target: {x: 0, y: 0, z: 0}
   turnSpeed: 120
-  distance: 2.5
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 640
 --- !u!114 &3689531663806443235
 MonoBehaviour:
   m_ObjectHideFlags: 0
