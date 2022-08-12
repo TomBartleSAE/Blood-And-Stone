@@ -12176,6 +12176,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1752641647}
+        m_TargetAssemblyTypeName: PulseUI, Assembly-CSharp
+        m_MethodName: set_IsPulsing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dialogue: You can pause the game at any time by clicking the menu button on the
     HUD. From there you will also be able to access game options, load a saved game,
     and quit back to the main menu.
