@@ -846,6 +846,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 171910848988080221, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1339753702959408625, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -856,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 486343744}
     - target: {fileID: 2375957829131231836, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427817679745545782, guid: 130b66db9977bd54a8578d47ba25c0ce, type: 3}
       propertyPath: boxSelection
