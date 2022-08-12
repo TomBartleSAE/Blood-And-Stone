@@ -29,7 +29,7 @@ public class GhoulFindTargetState : AntAIState
         base.Execute(aDeltaTime, aTimeScale);
 
         timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (timer <= 0 && ghoulModel.target == null)
         {
             FindTarget();
             timer = 1;
@@ -60,6 +60,7 @@ public class GhoulFindTargetState : AntAIState
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;
+                        ghoulModel.target = soldier.transform;
                         ghoulModel.clickMovement.target = soldier.transform;
                         ghoulModel.hasTarget = true;
                     }

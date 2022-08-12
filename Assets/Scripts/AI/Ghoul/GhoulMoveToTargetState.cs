@@ -50,15 +50,8 @@ public class GhoulMoveToTargetState : AntAIState
             if (timer <= 0)
             {
                 FindPath();
-                timer = 1f;
+                timer = clickMovement.repathTime;
             }
-        }
-        
-        float distance = Vector3.Distance(ghoulModel.transform.position, targetDestination.position);
-
-        if (distance <= ghoulModel.attackRange)
-        {
-            ghoulModel.inRange = true;
         }
     }
 

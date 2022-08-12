@@ -14,6 +14,9 @@ public class GhoulModel : MonoBehaviour
     public ClickMovement clickMovement;
     public BoxSelection boxSelection;
 
+    public Transform target;
+    public event Action<Transform> newGhoulTargetEvent;
+
     public bool hasTarget;
     public bool targetAlive;
     public bool castleStanding = true;
@@ -48,7 +51,7 @@ public class GhoulModel : MonoBehaviour
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
         health.DeathEvent += Die;
-        //clickMovement.HasTargetEvent += HasTargetBoolChange;
+        clickMovement.HasTargetEvent += HasTargetBoolChange;
     }
 
     private void OnDestroy()
@@ -61,6 +64,23 @@ public class GhoulModel : MonoBehaviour
         if (autoAttack)
         {
             isIdle = false;
+        }
+
+        if (target != null)
+        {
+	        float distance = Vector3.Distance(transform.position, target.position);
+
+	        if (distance <= attackRange)
+	        {
+		        inRange = true;
+	        }
+	        else
+	        {
+		        inRange = false;
+	        }
+
+	        hasTarget = true;
+	        targetAlive = true;
         }
     }
 
@@ -90,5 +110,7 @@ public class GhoulModel : MonoBehaviour
     public void HasTargetBoolChange(bool value)
     {
         hasTarget = value;
+        target = clickMovement.target;
+        newGhoulTargetEvent?.Invoke(target);
     }
 }
