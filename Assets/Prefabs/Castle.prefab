@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 5087221706454770324}
   - component: {fileID: 5087221706454770323}
   - component: {fileID: 520551853}
+  - component: {fileID: 4191081011320983613}
   m_Layer: 11
   m_Name: Castle
   m_TagString: Untagged
@@ -499,6 +500,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   tooltip: {fileID: 1218579870839952403}
+--- !u!114 &4191081011320983613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087221706454770327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea35fd6205c36244ba0258cf3104ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TooltipObject: {fileID: 520551853}
+  clipName: ButtonHUD
+  arrayName: 1
 --- !u!1 &5087221706708482426
 GameObject:
   m_ObjectHideFlags: 0

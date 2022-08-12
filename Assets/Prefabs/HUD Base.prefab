@@ -7323,6 +7323,7 @@ GameObject:
   - component: {fileID: 7563689501752718591}
   - component: {fileID: 7563689501752718577}
   - component: {fileID: 7563689501752718590}
+  - component: {fileID: 803066308169481794}
   m_Layer: 5
   m_Name: Blood Meter
   m_TagString: Untagged
@@ -7416,6 +7417,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7563689501752718577}
+--- !u!114 &803066308169481794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563689501752718588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac9c933544a7c04bbb6d8c07f26f7fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: -5643648500748391389, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
 --- !u!1 &7563689501971693911
 GameObject:
   m_ObjectHideFlags: 0

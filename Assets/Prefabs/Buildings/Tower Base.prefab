@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e856929583009f4ab9125057ecbdc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipObject: {fileID: 6941164730171697040}
+  clickMovement: {fileID: 0}
   clipName: ButtonHUD
   arrayName: 1
 --- !u!1 &4535539829185730404
@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 3240955513614846527}
   - component: {fileID: -4480982740973044769}
   - component: {fileID: 6941164730171697040}
+  - component: {fileID: 4274575092126161407}
   m_Layer: 7
   m_Name: Tower Base
   m_TagString: Untagged
@@ -613,6 +614,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   tooltip: {fileID: 7390939404393835014}
+--- !u!114 &4274575092126161407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271138710105583862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea35fd6205c36244ba0258cf3104ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TooltipObject: {fileID: 6941164730171697040}
+  clipName: ButtonHUD
+  arrayName: 1
 --- !u!1 &7390939404393835014
 GameObject:
   m_ObjectHideFlags: 0

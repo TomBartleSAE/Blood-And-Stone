@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingClickAudioEvent : MonoBehaviour
+public class WorldClickAudioEvent : MonoBehaviour
 {
-    public TooltipObject TooltipObject;
+    public ClickMovement clickMovement;
     public string clipName;
     public AudioManager.ArrayName arrayName;
 
     public void Start()
     {
-        TooltipObject.SelectedObjectEvent += PlayClick;
+        clickMovement.StartedMoveEvent += PlayClick;
     }
 
     public void OnDestroy()
     {
-        TooltipObject.SelectedObjectEvent -= PlayClick;
+        clickMovement.StartedMoveEvent -= PlayClick;
     }
 
     public void PlayClick()
