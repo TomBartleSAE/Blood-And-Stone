@@ -2041,6 +2041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5381062123205482568, guid: 08439ba4a17ac5e42a1801317928a3d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7200612217558628235, guid: 08439ba4a17ac5e42a1801317928a3d9, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2568,6 +2572,10 @@ PrefabInstance:
       propertyPath: graphicRaycaster
       value: 
       objectReference: {fileID: 1815146197}
+    - target: {fileID: 8739776163063105081, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
+      propertyPath: clickMovementActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8739776163063105082, guid: 7e9709e5eef8d91449e67608ea78647a, type: 3}
       propertyPath: moveSpeed
       value: 10
