@@ -1234,6 +1234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267632786, guid: f78d34316376e584f81f2c834b1ea715, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 267632787, guid: f78d34316376e584f81f2c834b1ea715, type: 3}
       propertyPath: grid
       value: 
@@ -3258,7 +3262,7 @@ MonoBehaviour:
         m_MethodName: SelectBuilding
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3249869415638050215, guid: ccf2bc0de839cf1458569ef9f1d1eb58, type: 3}
+          m_ObjectArgument: {fileID: 5607188583715439690, guid: ccf2bc0de839cf1458569ef9f1d1eb58, type: 3}
           m_ObjectArgumentAssemblyTypeName: BuildingBase, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
