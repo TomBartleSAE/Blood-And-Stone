@@ -159,6 +159,29 @@ MonoBehaviour:
   delay: 5
   anim: {fileID: 7093292879952836522}
   weaponModel: {fileID: 1263615345147552615}
+--- !u!114 &7049926620438292785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128260388451072843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55589bafecdcd74887b6b57a68b64fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  health: {fileID: 6772698126864838754}
+  grid: {fileID: 0}
+  trigger: {fileID: 3519285200125493634}
+  range: 2
+  target: {fileID: 0}
+  targets: []
+  damage: 5
+  delay: 5
+  anim: {fileID: 7093292879952836522}
+  weaponModel: {fileID: 1263615345147552615}
 --- !u!114 &6772698126864838754 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -4480982740973044769, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
