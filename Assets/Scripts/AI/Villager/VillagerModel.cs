@@ -33,7 +33,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
     private void OnDisable()
     {
         GetComponent<Health>().DeathEvent -= Die;
-        NightNPCManager.Instance.VillagerDeathEvent += Reaction;
+        NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
     }
 
     void Die(GameObject me)
@@ -44,7 +44,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
         GetComponent<PathfindingAgent>().enabled = false;
         GetComponent<FollowPath>().enabled = false;
         anim.SetTrigger("Death");
-        this.enabled = false;
+        //this.enabled = false;
         //gameObject.SetActive(false);
     }
 

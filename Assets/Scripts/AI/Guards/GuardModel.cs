@@ -65,6 +65,12 @@ public class GuardModel : MonoBehaviour
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
     }
 
+    private void OnDisable()
+    {
+        NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
+        GetComponent<Health>().DeathEvent -= CheckGhoulCapacity;
+    }
+
     #region Investigation
     
     //reacting to villager/guard death; will go to investigate

@@ -20,6 +20,9 @@ public class NightPhaseState : StateBase
     public override void Exit()
     {
         base.Exit();
+
+        NightNPCManager.Instance.Guards = new List<GameObject>();
+        NightNPCManager.Instance.Villagers = new List<GameObject>();
         
         timer.TimerFinishedEvent -= SunriseGameOver;
     }
