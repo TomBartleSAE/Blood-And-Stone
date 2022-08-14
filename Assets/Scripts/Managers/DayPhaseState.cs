@@ -16,6 +16,8 @@ public class DayPhaseState : StateBase
     {
         base.Enter();
 
+        finishedSpawning = false;
+        
         GameManager.Instance.currentDay++;
         MessageManager.Instance.ShowMessage("Day " + GameManager.Instance.currentDay, 3f);
         

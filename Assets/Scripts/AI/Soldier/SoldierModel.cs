@@ -103,7 +103,13 @@ public class SoldierModel : EnemyBase
     void Die(GameObject deadGuy)
     {
         DayNPCManager.Instance.RemoveFromSoldierList(deadGuy);
-        gameObject.SetActive(false);
+        // Tom: Turning off all gameplay components instead of hiding object entirely
+        anim.SetTrigger("Death");
+        pathfinding.enabled = false;
+        GetComponent<FollowPath>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        this.enabled = false;
+        //gameObject.SetActive(false);
     }
 
     void Retaliate(GameObject newTarget)
