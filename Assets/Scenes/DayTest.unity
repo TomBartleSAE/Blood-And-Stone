@@ -614,6 +614,15 @@ MonoBehaviour:
   - {fileID: 1591265694}
   waves:
   - {fileID: 11400000, guid: 1aeb808b19e8d9c4eb82f11457c5bf36, type: 2}
+  - {fileID: 11400000, guid: e7f3033f4fa546542bc0bc19dc3a7708, type: 2}
+  - {fileID: 11400000, guid: 1dc09c27cc5ef6047bd861a496dcec60, type: 2}
+  - {fileID: 11400000, guid: f5ea515d47fdc464798c381bcd62ec06, type: 2}
+  - {fileID: 11400000, guid: 1020635a8c48e0643b8927ee377477d0, type: 2}
+  - {fileID: 11400000, guid: f3b07c2080c6cde49a478ebb34113b42, type: 2}
+  - {fileID: 11400000, guid: fd0bed2e76398e54db45f9a7e9f3b537, type: 2}
+  - {fileID: 11400000, guid: 53a973d5728348f4a86e7126f2652464, type: 2}
+  - {fileID: 11400000, guid: e30e0afee9f90c345b64ce382fd598ef, type: 2}
+  - {fileID: 11400000, guid: cf2b145d9993218428bfa462cb02fdf8, type: 2}
   castleTarget: {fileID: 1873170630}
   grid: {fileID: 186620991}
 --- !u!4 &512170655
