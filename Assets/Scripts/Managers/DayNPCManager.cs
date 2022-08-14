@@ -33,6 +33,8 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     
     public void RemoveFromSoldierList(GameObject soldier)
     {
+        soldier.GetComponent<Health>().DeathEvent -= RemoveFromSoldierList;
+
         SoldierDeathEvent?.Invoke();
         Soldiers.Remove(soldier);
         

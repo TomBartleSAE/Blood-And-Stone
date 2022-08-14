@@ -114,7 +114,6 @@ public class GuardModel : MonoBehaviour
         //bools change the state
         isPatrolling = false;
         isDead = true;
-        GetComponent<SphereCollider>().enabled = false;
         GetComponent<FollowPath>().moveSpeed = 3;
         //adds to list; unsubs from death event to prevent reacting while dead
         NightNPCManager.Instance.RemoveFromGuardList(gameObject);
