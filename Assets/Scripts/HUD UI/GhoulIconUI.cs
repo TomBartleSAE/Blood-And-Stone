@@ -27,7 +27,14 @@ public class GhoulIconUI : MonoBehaviour
         }
 
     }
-    
+
+    private void OnDisable()
+    {
+        PlayerManager.Instance.CurrentGhoulsChangedEvent -= UpdateGhoulCount;
+        PlayerManager.Instance.MaxGhoulsChangedEvent -= UpdateGhoulCount;
+        boxSelection.GhoulSelectedEvent -= SetEyes;
+    }
+
     //changes icon view
     public void SetEyes(bool value)
     {

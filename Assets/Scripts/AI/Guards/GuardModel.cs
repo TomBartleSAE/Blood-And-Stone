@@ -121,6 +121,7 @@ public class GuardModel : MonoBehaviour
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
         //Destroy(gameObject.GetComponent<GuardModel>());
         GhoulConversionEvent?.Invoke();
+        GetComponent<Health>().DeathEvent -= CheckGhoulCapacity;
     }
 
     #endregion

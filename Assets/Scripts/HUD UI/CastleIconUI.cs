@@ -17,6 +17,11 @@ public class CastleIconUI : MonoBehaviour
         PlayerManager.Instance.CastleLevelChangedEvent += UpdateCastleUI;
     }
 
+    private void OnDisable()
+    {
+        PlayerManager.Instance.CastleLevelChangedEvent -= UpdateCastleUI;
+    }
+
     void UpdateCastleUI()
     {
         castleText.text = castleLevel + " / " + 4;

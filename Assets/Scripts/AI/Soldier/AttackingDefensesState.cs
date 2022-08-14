@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,11 @@ public class AttackingDefensesState : AntAIState
         canAttack = true;
 
         target.GetComponent<Tom.Health>().DeathEvent += LeaveState;
+    }
+
+    private void OnDisable()
+    {
+        target.GetComponent<Tom.Health>().DeathEvent -= LeaveState;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)

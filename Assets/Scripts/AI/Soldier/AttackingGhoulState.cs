@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Anthill.AI;
@@ -36,6 +37,12 @@ public class AttackingGhoulState : AntAIState
         target.GetComponent<Health>().DeathEvent += TargetDead;
     }
 
+    private void OnDisable()
+    {
+        target.GetComponent<Health>().DeathEvent -= TargetDead;
+
+    }
+
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
@@ -66,16 +73,6 @@ public class AttackingGhoulState : AntAIState
 
     void TargetDead(GameObject deadThing)
     {
-	    /*if (soldierModel.GhoulsInRange.Count > 0)
-	    {
-		    soldierModel.ChangeTarget();
-	    }
-	    
-	    else
-	    {
-		    soldierModel.hasTarget = false;
-		    soldierModel.attackedByGhoul = false;
-	    }*/
-	    soldierModel.ChangeTarget();
+        soldierModel.ChangeTarget();
     }
 }

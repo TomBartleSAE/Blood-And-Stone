@@ -18,6 +18,11 @@ public class AutoAttackUI : MonoBehaviour
         boxSelection.GhoulSelectedEvent += SetAutoAttackPanel;
     }
 
+    private void OnDisable()
+    {
+        boxSelection.GhoulSelectedEvent -= SetAutoAttackPanel;
+    }
+
     public void SetAutoAttackPanel(bool value)
     {
         foreach (var unit in boxSelection.units)

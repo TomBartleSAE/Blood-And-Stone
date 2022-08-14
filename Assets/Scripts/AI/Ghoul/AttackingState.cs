@@ -45,6 +45,12 @@ public class AttackingState : AntAIState
         Attack();
     }
 
+    private void OnDisable()
+    {
+        ghoulModel.newGhoulTargetEvent -= NewTarget;
+        target.GetComponent<Health>().DeathEvent -= TargetDead;
+    }
+
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);

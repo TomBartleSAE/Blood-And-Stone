@@ -39,6 +39,11 @@ public class AttackingKeepState : AntAIState
         pathfinding.FindPath(owner.transform.position, castle.position);
     }
 
+    private void OnDisable()
+    {
+	    pathfinding.PathFailedEvent -= BreakThroughWall;
+    }
+
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
