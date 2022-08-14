@@ -49,8 +49,18 @@ public class AttackingKeepState : AntAIState
         base.Execute(aDeltaTime, aTimeScale);
 
         attackTimer -= Time.deltaTime;
-        
-        if (inRangeOfCastle && canAttack && attackTimer <= 0)
+
+        if (Vector3.Distance(transform.position, castle.position) < 0.5)
+        {
+	        inRangeOfCastle = true;
+        }
+
+        if (attackTimer <= 0)
+        {
+	        canAttack = true;
+        }
+
+        if (inRangeOfCastle && canAttack)
         {
 	        canAttack = true;
 	        AttackCastle();
@@ -67,6 +77,7 @@ public class AttackingKeepState : AntAIState
     {
 	    if (other.GetComponent<Castle>())
 	    {
+		    Debug.Log("Castle in Range");
 		    inRangeOfCastle = true;
 	    }
     }

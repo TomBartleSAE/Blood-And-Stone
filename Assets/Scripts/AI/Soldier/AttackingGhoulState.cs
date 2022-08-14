@@ -73,6 +73,7 @@ public class AttackingGhoulState : AntAIState
 
     void TargetDead(GameObject deadThing)
     {
+        soldierModel.GhoulsInRange.Remove(deadThing.transform);
         soldierModel.ChangeTarget();
     }
 }

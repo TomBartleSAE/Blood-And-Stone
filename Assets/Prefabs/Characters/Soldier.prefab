@@ -139,7 +139,7 @@ MonoBehaviour:
   targetAlive: 0
   attackCooldown: 3
   range: 1
-  damage: 0
+  damage: 3
   buildingLayer:
     serializedVersion: 2
     m_Bits: 128
