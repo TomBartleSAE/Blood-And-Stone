@@ -40,21 +40,23 @@ public class GameManager : ManagerBase<GameManager>
     
     public IEnumerator ChangePhase(string newSceneName, string oldSceneName, StateBase newState)
     {
-        LoadingStartedEvent?.Invoke("LoadingStarted");
         levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
         baseCamera.SetActive(true);
+        LoadingStartedEvent?.Invoke("LoadingStarted");
+
         AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneName);
         yield return unload;
         AsyncOperation load = SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
         yield return load;
+        
+        levelChanging = false;
         baseCamera.SetActive(false);
+        LoadingFinishedEvent?.Invoke(newSceneName);
         loadingImage.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         stateManager.ChangeState(newState);
-        levelChanging = false;
-        LoadingFinishedEvent?.Invoke(newSceneName);
     }
 
     public void CallPhaseChange(string newSceneName, string oldSceneName, StateBase newState)

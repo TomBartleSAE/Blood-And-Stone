@@ -1099,10 +1099,6 @@ PrefabInstance:
       propertyPath: currentBlood
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 2171269267512198674, guid: 9413cb58450d14544bd52ad40c471a7d, type: 3}
-      propertyPath: currentGhouls
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2171269267512198675, guid: 9413cb58450d14544bd52ad40c471a7d, type: 3}
       propertyPath: m_Name
       value: Player Manager
