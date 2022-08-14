@@ -48,7 +48,7 @@ public class DamageTower : TowerBase
         
         if (other.GetComponent<EnemyBase>() && target == null)
         {
-            target = other;
+            target = other.gameObject;
         }
     }
 

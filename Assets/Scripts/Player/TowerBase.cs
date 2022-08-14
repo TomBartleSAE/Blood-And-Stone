@@ -9,8 +9,8 @@ public class TowerBase : BuildingBase
     public SphereCollider trigger;
     public float range = 2f;
     
-    public Collider target;
-    public List<Collider> targets;
+    public GameObject target;
+    public List<GameObject> targets;
 
     public override void Awake()
     {
@@ -20,18 +20,18 @@ public class TowerBase : BuildingBase
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyBase>())
+        if (other.GetComponent<EnemyBase>() && !other.isTrigger)
         {
-            targets.Add(other);
+            targets.Add(other.gameObject);
             other.GetComponent<Tom.Health>().DeathEvent += RemoveTarget;
         }
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<EnemyBase>())
+        if (other.GetComponent<EnemyBase>() && !other.isTrigger)
         {
-            targets.Remove(other);
+            targets.Remove(other.gameObject);
             other.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
             if (targets.Count > 0)
             {
@@ -46,6 +46,7 @@ public class TowerBase : BuildingBase
 
     private void RemoveTarget(GameObject target)
     {
-        targets.Remove(target.GetComponent<Collider>());
+        targets.Remove(target);
+        target.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
     }
 }
