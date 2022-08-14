@@ -20,6 +20,8 @@ public class GameManager : ManagerBase<GameManager>
 
     private bool levelChanging = false;
 
+    public GameObject baseCamera;
+
     public event Action GameOverEvent;
 
     public event Action<string> LoadingStartedEvent;
@@ -42,11 +44,14 @@ public class GameManager : ManagerBase<GameManager>
         levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
+        baseCamera.SetActive(true);
         AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneName);
         yield return unload;
-        SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
-        yield return new WaitForSeconds(3);
+        AsyncOperation load = SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+        yield return load;
+        baseCamera.SetActive(false);
         loadingImage.DOFade(0, 1);
+        yield return new WaitForSeconds(1);
         stateManager.ChangeState(newState);
         levelChanging = false;
         LoadingFinishedEvent?.Invoke(newSceneName);
