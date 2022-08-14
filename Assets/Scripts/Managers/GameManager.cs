@@ -42,8 +42,9 @@ public class GameManager : ManagerBase<GameManager>
         levelChanging = true;
         loadingImage.DOFade(1, 1);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(oldSceneName);
+        AsyncOperation unload = SceneManager.UnloadSceneAsync(oldSceneName);
+        yield return unload;
+        SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
         yield return new WaitForSeconds(3);
         loadingImage.DOFade(0, 1);
         stateManager.ChangeState(newState);
