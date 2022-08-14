@@ -15,12 +15,13 @@ public class PauseSettingsUI : MonoBehaviour
 
     public float previousVolume;
 
-    private float defaultVolume = 1;
+    private float defaultVolume = 0.75f;
     private bool defaultMute = false;
 
     private void Start()
     {
         PopulateResolutionList();
+        volumeSlider.value = 0.75f;
     }
 
     public void RestoreDefaultSettings()
