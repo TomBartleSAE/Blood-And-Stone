@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -1750197354950549132, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5aba207e62399304ca74183aeffeedcb, type: 2}
     - target: {fileID: -1703473491307067327, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -571,8 +575,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrayName: 0
   clipName: 
+  isPlayerCharacter: 0
+--- !u!114 &4300670404288143145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052995090258941402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5f8dee461c2e340828624f9123a22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 8577898508790811135}
+  ignoreTriggers: 0
+  myLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &4744058767380632858 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
+  m_PrefabInstance: {fileID: 1206082864639928459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8577898508790811135 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1750197354950549132, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
   m_PrefabInstance: {fileID: 1206082864639928459}
   m_PrefabAsset: {fileID: 0}

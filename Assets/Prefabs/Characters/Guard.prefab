@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -3086478328068027308, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b574dd35e49474f46999bb5dd7aab0d1, type: 2}
     - target: {fileID: -3086436065929644917, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -559,6 +563,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 415287891258781815, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b574dd35e49474f46999bb5dd7aab0d1, type: 2}
+    - target: {fileID: 701420837181973649, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b574dd35e49474f46999bb5dd7aab0d1, type: 2}
     - target: {fileID: 919132149155446097, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
       propertyPath: m_Name
       value: SK_Guard
@@ -607,6 +619,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3099756089343826349, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b574dd35e49474f46999bb5dd7aab0d1, type: 2}
     - target: {fileID: 3135921509060577837, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -706,9 +722,24 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
   m_PrefabInstance: {fileID: 4886700156785309517}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1656106088738126617 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3086478328068027308, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+  m_PrefabInstance: {fileID: 4886700156785309517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4925726999063154854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+  m_PrefabInstance: {fileID: 4886700156785309517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5049218828853610298 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 415287891258781815, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+  m_PrefabInstance: {fileID: 4886700156785309517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5362372557838308316 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 701420837181973649, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
   m_PrefabInstance: {fileID: 4886700156785309517}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5697161518010173980 stripped
@@ -731,6 +762,32 @@ MonoBehaviour:
   arrayName: 0
   clipName: 
   isPlayerCharacter: 0
+--- !u!114 &4597717764125049197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697161518010173980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5f8dee461c2e340828624f9123a22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 7554085081178566368}
+  - {fileID: 5049218828853610298}
+  - {fileID: 1656106088738126617}
+  - {fileID: 5362372557838308316}
+  ignoreTriggers: 0
+  myLayer:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!137 &7554085081178566368 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3099756089343826349, guid: 98a3f951850d08c41b2202b78eb19477, type: 3}
+  m_PrefabInstance: {fileID: 4886700156785309517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8156159096703969396
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -392,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -1750197354950549132, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5aba207e62399304ca74183aeffeedcb, type: 2}
     - target: {fileID: -1703473491307067327, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -575,6 +579,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
   m_PrefabInstance: {fileID: 5088957895039647448}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &2389600478189707180 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1750197354950549132, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
+  m_PrefabInstance: {fileID: 5088957895039647448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4689695557818292531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f260852a9693de943ba5888f7f6e4bd1, type: 3}
@@ -600,3 +609,21 @@ MonoBehaviour:
   arrayName: 0
   clipName: 
   isPlayerCharacter: 0
+--- !u!114 &6228976791082982008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358991017201419145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5f8dee461c2e340828624f9123a22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 2389600478189707180}
+  ignoreTriggers: 1
+  myLayer:
+    serializedVersion: 2
+    m_Bits: 512
