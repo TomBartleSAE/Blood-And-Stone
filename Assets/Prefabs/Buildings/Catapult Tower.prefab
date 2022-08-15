@@ -75,6 +75,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetDestroyed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BuildingBase, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6128260388451072843}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4166157571608763184, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
