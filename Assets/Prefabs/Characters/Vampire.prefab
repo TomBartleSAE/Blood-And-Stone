@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e856929583009f4ab9125057ecbdc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipObject: {fileID: 0}
   clickMovement: {fileID: 8739776163063105081}
   clipName: ButtonHUD
   arrayName: 1
@@ -219,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 8739776163063105081}
-  burnParticle: {fileID: 0}
+  burnParticle: {fileID: 4087533388648067238, guid: 472a1a5fbe6214248ad236a7ad514810, type: 3}
   feedRange: 0.6
   bloodGain: 10
   anim: {fileID: 2708066162189988850}
