@@ -220,8 +220,7 @@ MonoBehaviour:
         m_CallState: 2
   dialogue: Each day the villagers' attacks on the crypt will come in a wave. As
     each day passes and word of Azrene's monstrosity spreads, the strength and numbers
-    of the attackers will increase, until eventually there are no more villagers
-    willing to take on the powerful Laird.
+    of the attackers will increase.
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &49165801
@@ -770,9 +769,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  dialogue: There are two types of structures Azrene can build to defend the crypt.
-    Towers are structures that will attack enemy villagers. Walls can be built to
-    blockade enemy villagers.
+  dialogue: There are two types of structures you can build to defend the crypt.
+    Towers will target angry villagers and walls will stop them in their tracks.
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &262602676 stripped
@@ -1219,7 +1217,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: '"They''re gone, but more will come. What will you do, Azrene?"'
+  dialogue: '"The villagers won''t stay away long. What will you do?"'
   portrait: {fileID: 21300000, guid: ecbe99e3a9c71044b9d5ef2b6de0a1a8, type: 3}
   typingDelay: 0.05
 --- !u!1 &398631607 stripped
@@ -1362,9 +1360,8 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: To command a ghoul, left click on the indicated ghoul. Once selected,
-    tell them to attack by right clicking on the indicated villager. The ghoul will
-    move to them and start attacking.
+  dialogue: 'To command a ghoul, left click on the indicated ghoul. Once selected,
+    tell them to attack by right clicking on the indicated villager. '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &412501897
@@ -1564,9 +1561,8 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: Each structure in the crypt yard has a fixed health limit. When it reaches
-    0, the structure will be destroyed. This includes the crypt! If the crypt is
-    destroyed, the villagers will capture Azrene and put them to death.
+  dialogue: 'If the villagers break through the doors to the crypt, they will kill
+    azrene in their coffin and the game will be over. '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &524586204
@@ -2198,9 +2194,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: '"These defenses will need repairing before we face any more attackers.
-    I could do this now, but my hunger is starting to intensify again. I''ll have
-    to feed soon..."'
+  dialogue: My hunger is starting to intensify again. I'll have to feed soon... "
   portrait: {fileID: 21300000, guid: b4a5a8f0d9e89c245a4126484e5e6682, type: 3}
   typingDelay: 0.05
 --- !u!1 &771747207
@@ -2377,9 +2371,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  dialogue: "Help Azrene build a tower by selecting a tower from the build menu.
-    Before construction, the tower's location is indicated by it's ghost. \r\n\r\nPlace
-    the tower in the indicated zone to continue."
+  dialogue: "Build a tower by selecting the tower icon and choosing a tower type
+    from the build menu. \r\n\nPlace a tower in the indicated zone to continue. "
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &892770986
@@ -3193,8 +3186,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: There are 4 stages of castle development, so you'll have to manage your
-    resources well to get a fully established castle and powerful army!
+  dialogue: Manage your resources well to get a fully established crypt  and powerful
+    army!
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1203937806
@@ -9056,10 +9049,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: When Azrene has enough resources, they can convert the old crypt into
-    a castle with more room to house ghouls. Upgrading the crypt/castle will make
-    Azrene's and ghouls stronger and more powerful, and allow them to store more
-    blood.
+  dialogue: 'Once you have enough resources, you can convert the old crypt into a
+    castle with more room to house ghouls.
+
+
+    Upgrading your crypt will also increase
+    the size of your blood meter, allowing you to place more towers and carry more
+    blood. '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1845172631
@@ -14203,8 +14199,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: Both types of structures have limited health and can be destroyed if
-    attacked by enemy villagers. Building a structure costs Azrene Blood.
+  dialogue: "Walls and Towers can be destroyed by enemy villagers and cost blood,
+    so choose your placements wisely. \r\n\r\n "
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1982572292

@@ -218,8 +218,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  dialogue: You can keep an eye on how much time you have left in each phase with
-    the Day/Night dial on the HUD.
+  dialogue: You can keep an eye on how much time you have left by looking at the
+    dial at the top of the screen.
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &54462696
@@ -5459,8 +5459,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: The newly made ghoul will leave the village and head to the crypt, where
-    Azrene can command them during the Day Phase.
+  dialogue: The newly made ghoul will leave the village and head back to the crypt.
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &362119432 stripped
@@ -6418,8 +6417,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dialogue: "You\u2019ve been caught! The guards that patrol the village are always
-    alert for suspicious activity, so Azrene must be careful when traversing the
-    village."
+    alert for suspicious activity, so you must be careful when traversing the village."
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &687863055
@@ -11843,8 +11841,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  dialogue: Azrene has reached the gates of Wattonia well before dawn. To conclude
-    the Night Phase tutorial, have Azrene walk through the village gates.
+  dialogue: "Quickly before the sun rises, return to your crypt by walking through
+    the village gates. \r"
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1081349321
@@ -11895,8 +11893,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dialogue: Guards have vision cones that will trigger an alert if you step within
-    one. While alerted, their vision cone will widen while they actively hunt for
-    Azrene. The Awareness icon on the HUD indicates if Azrene is being actively hunted.
+    one. While alerted,guards will actively hunt for you. The Awareness icon on the
+    HUD indicates if you are being actively hunted.
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1139921163
@@ -12188,9 +12186,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: You can pause the game at any time by clicking the menu button on the
-    HUD. From there you will also be able to access game options, load a saved game,
-    and quit back to the main menu.
+  dialogue: You can pause the game at any time by pressing the pause button at the
+    bottom of the screen
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1173609806
@@ -12519,8 +12516,8 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: This will only work on guards. If a target guard spots Azrene on their
-    approach, Azrene will have to change tactics and evade the now alert guard.
+  dialogue: "You will have to approach from behind. Converting guards will only work
+    if they have not been alerted to your presence. \r\n\r\nTry it now "
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1462240297
@@ -12601,9 +12598,9 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: "Azrene has the ability to convert guards into ghouls that will do their
-    bidding. To do so, click on a guard that isn\u2019t facing Azrene. Azrene will
-    move to them and attack, turning them into a ghoul."
+  dialogue: 'You have the ability to convert guards into ghouls that you can control.
+    They will also protect you and your crypt. To do so, right-click on an unsuspecting
+    guard, Azrene will use their vampiric powers and transform a guard into a ghoul. '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1001 &1514303529
@@ -18219,10 +18216,9 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: 'Guards and villagers will react differently to Azrene: villagers will
-    run away in fear, while guards will chase Azrene until they are close enough
-    to attack them, or until they lose sight of Azrene. If a villager or guard sees
-    the body of a villager, or catches Azrene feeding, they will also react.'
+  dialogue: 'Guards and villagers will react differently to  seeing you feed. Villagers
+    will run away whilst guards will chase until they can capture or lose sight of
+    you.  '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1774265672
@@ -18323,9 +18319,9 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: The passage of time is a constant that Azrene must keep aware of now
-    that they have been transformed. The touch of daylight will surely consume them,
-    so they must return to the crypt yard before the sun rises.
+  dialogue: 'The passage of time is a constant that Azrene must be aware of, now
+    that they have been transformed. Return to your crypt before the sun rises or
+    face an untimely death '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1808783384
@@ -18375,12 +18371,8 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: 'If a guard catches Azrene, they will be executed.
-
-
-
-    To have Azrene
-    escape the guard, click on the highlighted zone of the map.'
+  dialogue: "If you are is caught, you will be executed.  \n\n\nTo escape the guard,
+    click on the highlighted zone of the map."
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &1917111414
@@ -28504,8 +28496,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogue: "To have Azrene feed, click on the nearby villager. Azrene will walk
-    over to them and feed. Be careful though, don\u2019t get seen!"
+  dialogue: 'To Feed, click on the nearby villager and harvest their blood. But be
+    careful you don''t get seen! '
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &2727614149365710335
@@ -28669,8 +28661,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   dialogue: "Azrene\u2019s new powers require Blood, which means they must satiate
-    their hunger with the blood of villagers. The Blood Meter shows Azrene's current
-    supply, and hovering over it will display Azrene's current limit."
+    their hunger with the blood of villagers. The Blood Meter shows your  current
+    supply, and hovering over it will display the current limit."
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &2727614150190141591
@@ -28844,8 +28836,8 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: "When Azrene feeds, their Blood Meter will fill up, storing the Blood
-    for later. There is only so much Blood Azrene can store at one time.\r"
+  dialogue: "While Azrene feeds, the Blood Meter will fill up, storing the Blood
+    for later. There is only so much Blood you can store at one time.\r"
   portrait: {fileID: 0}
   typingDelay: 0
 --- !u!1 &2727614151341699758

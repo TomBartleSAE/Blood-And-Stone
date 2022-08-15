@@ -1040,8 +1040,11 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: '"Ah, It is true then. Well, it cannot be helped. Are you claiming this
-    place?"'
+  dialogue: '"Ah, It is true then, you have been transformed into a creature of the
+    night..."
+
+
+    "Are you claiming this place?"'
   portrait: {fileID: 21300000, guid: ecbe99e3a9c71044b9d5ef2b6de0a1a8, type: 3}
   typingDelay: 0.05
 --- !u!1 &991039328
@@ -1091,8 +1094,11 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: '"There is little elsewhere to go. The sun will soon rise; I must head
-    inside."'
+  dialogue: '"I will claim this place as my own."
+
+
+    "The sun will soon rise;
+    I must head inside."'
   portrait: {fileID: 21300000, guid: b4a5a8f0d9e89c245a4126484e5e6682, type: 3}
   typingDelay: 0.05
 --- !u!1 &1003953964
@@ -1142,7 +1148,7 @@ MonoBehaviour:
   tutorialEvent:
     m_PersistentCalls:
       m_Calls: []
-  dialogue: '"Go. I will do what I can to help."'
+  dialogue: '"Go. As your servant, I will do what I can to help."'
   portrait: {fileID: 21300000, guid: ecbe99e3a9c71044b9d5ef2b6de0a1a8, type: 3}
   typingDelay: 0.05
 --- !u!1 &1198631178
