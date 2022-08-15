@@ -600,7 +600,7 @@ MonoBehaviour:
   objectLayer:
     serializedVersion: 2
     m_Bits: 128
-  tooltip: {fileID: 0}
+  tooltip: {fileID: 1273120648139613718}
 --- !u!114 &4274575092126161407
 MonoBehaviour:
   m_ObjectHideFlags: 0

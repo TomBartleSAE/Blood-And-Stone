@@ -28,6 +28,10 @@ PrefabInstance:
       value: BuildingBase, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7921326127909735964}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
