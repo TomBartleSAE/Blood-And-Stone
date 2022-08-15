@@ -110,6 +110,13 @@ public class TowerPlacement : MonoBehaviour
         
         Build(selectedBuilding, selectedNode.coordinates);
         PlayerManager.Instance.ChangeBlood(-selectedBuilding.cost);
+        
+        // Deselects building and hides ghost if you don't have enough blood
+        if (PlayerManager.Instance.currentBlood < selectedBuilding.cost)
+        {
+            selectedBuilding = null;
+            MouseOffGridEvent?.Invoke();
+        }
     }
 
     public void PerformRightClick(ClickEventArgs args)
