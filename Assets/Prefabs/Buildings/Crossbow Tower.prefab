@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55589bafecdcd74887b6b57a68b64fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   health: {fileID: 6772698126864838754}
   grid: {fileID: 0}
   trigger: {fileID: 3519285200125493634}
