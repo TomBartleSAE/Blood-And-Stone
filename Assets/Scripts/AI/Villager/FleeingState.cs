@@ -8,6 +8,8 @@ public class FleeingState : AntAIState
 {
     public VillagerModel villager;
     public GameObject owner;
+    public AudioManager.ArrayName audioArrayName;
+    public string audioFleeingClipName;
 
     public override void Create(GameObject aGameObject)
     {
@@ -23,7 +25,8 @@ public class FleeingState : AntAIState
 
         //TODO path to flee along
         villager.GetComponent<FollowPath>().moveSpeed = villager.fleeSpeed;
-
+        int index = Random.Range(1, 3); //this is just picking a random number for the different scream clips
+        AudioManager.Instance.Play(audioFleeingClipName + index, audioArrayName); // here's the code for the audio event
         StartCoroutine(Flee());
     }
 
