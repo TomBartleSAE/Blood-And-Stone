@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 3329333985533355036}
   - component: {fileID: 3856902720985113865}
   - component: {fileID: 462067002108148392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Night_Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
