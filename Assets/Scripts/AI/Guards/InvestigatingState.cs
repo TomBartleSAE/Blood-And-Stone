@@ -40,8 +40,8 @@ public class InvestigatingState : AntAIState
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        guard.vision.angle = 45;
-        guard.vision.distance = 5f;
+        guard.vision.angle = 35;
+        guard.vision.distance = 3.5f;
         
         //looking for vampire
         if (vision.CanSeeObject(vampire))
