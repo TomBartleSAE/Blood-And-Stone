@@ -735,7 +735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'As a new vampire, you must sedate your thirst. To attack villagers use
+  m_text: 'As a new vampire, you must satiate your thirst. To attack villagers use
     the left or right mouse click to select a villager and drain them.
 
 '
@@ -7429,7 +7429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac9c933544a7c04bbb6d8c07f26f7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: -5643648500748391389, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
 --- !u!1 &7563689501971693911
 GameObject:
   m_ObjectHideFlags: 0
