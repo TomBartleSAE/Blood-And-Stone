@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 2569025597535828910}
   m_Father: {fileID: 6128260388451072840}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &2030328347885456317
 PrefabInstance:
@@ -43,20 +43,48 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3373855439663000736, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7049926620438292785}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7049926620438292785}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GetDestroyed
       objectReference: {fileID: 0}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RefundBlood
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BuildingBase, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: BuildingBase, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
@@ -66,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770483816351998112, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4166157571608763184, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -77,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4552095772511807862, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5271138710105583861, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_RootOrder
@@ -175,6 +207,7 @@ MonoBehaviour:
   cost: 20
   health: {fileID: 6772698126864838754}
   grid: {fileID: 0}
+  dustParticle: {fileID: 872881567380791508, guid: 17657ea8482aaf54c89240e4a854833b, type: 3}
   trigger: {fileID: 3519285200125493634}
   range: 2
   target: {fileID: 0}

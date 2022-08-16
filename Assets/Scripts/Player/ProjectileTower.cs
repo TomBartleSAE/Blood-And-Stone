@@ -58,6 +58,7 @@ public class ProjectileTower : DamageTower
                 projectile.gameObject.SetActive(false);
                 
                 impactParticle.transform.position = targetArea;
+                impactParticle.gameObject.SetActive(true);
                 impactParticle.Play();
                 
                 Invoke(nameof(ResetProjectile), 3f);
