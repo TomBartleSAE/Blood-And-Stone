@@ -33,8 +33,8 @@ public class ChasingState : AntAIState
         base.Enter();
 
         guard = owner.GetComponent<GuardModel>();
-        guard.vision.angle = 45f;
-        guard.vision.distance = 5f;
+        guard.vision.angle = 35f;
+        guard.vision.distance = 3.5f;
         guard.isAlert = true;
         guard.IsAlerted();
         guard.GetComponent<FollowPath>().moveSpeed = 8;
