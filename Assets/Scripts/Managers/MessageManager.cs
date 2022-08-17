@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,15 +10,20 @@ public class MessageManager : ManagerBase<MessageManager>
 {
     [SerializeField] private TextMeshProUGUI messageText;
 
-    private float timer;
-    public float lerpValue = -0.1f;
+    public float timer;
+    public float lerpValue = 0.1f;
+
+    public float dilate;
+
+    public bool textFade = false;
     
     public void ShowMessage(string message, float duration)
     {
+        lerpValue = 0;
         timer = duration;
         messageText.text = message;
         messageText.enabled = true;
-        
+        textFade = true;
     }
 
     private void Update()
@@ -28,14 +34,25 @@ public class MessageManager : ManagerBase<MessageManager>
 
             if (timer <= 0)
             {
-                messageText.enabled = false;
+                //messageText.enabled = false;
+                textFade = false;
             }
-
         }
         
-        if (messageText.enabled)
+        if (textFade && messageText.enabled)
         {
-	        messageText.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, Mathf.Lerp(-0.5f, 0f, lerpValue += 0.5f * Time.deltaTime));
+            messageText.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, Mathf.Lerp(-0.5f, -0.1f, lerpValue += 0.5f * Time.deltaTime));
+        }
+
+        if (!textFade && messageText.enabled)
+        {
+            float dilateFloat = messageText.fontMaterial.GetFloat(ShaderUtilities.ID_FaceDilate);
+            dilate = ( dilateFloat -= 0.5f * Time.deltaTime);
+            messageText.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, dilate);
+            if (dilate <= -0.5f)
+            {
+                messageText.enabled = false;
+            }
         }
     }
-}
+}   
