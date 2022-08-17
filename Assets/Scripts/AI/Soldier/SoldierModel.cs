@@ -53,13 +53,16 @@ public class SoldierModel : EnemyBase
 
     private void Update()
     {
-	    if (Vector3.Distance(transform.position, target.position) < range)
+	    if (target != null)
 	    {
-		    inRange = true;
-	    }
-	    else
-	    {
-		    inRange = false;
+		    if (Vector3.Distance(transform.position, target.position) < range)
+		    {
+			    inRange = true;
+		    }
+		    else
+		    {
+			    inRange = false;
+		    }
 	    }
     }
 

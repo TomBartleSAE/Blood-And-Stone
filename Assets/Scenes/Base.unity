@@ -256,15 +256,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 870d9d4b19e3f574898f5436036c644e, type: 2}
-  m_sharedMaterial: {fileID: 6893677756390530138, guid: 870d9d4b19e3f574898f5436036c644e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e0560be2ae001e44ac0a4486776371a, type: 2}
+  m_sharedMaterial: {fileID: 6893677756390530138, guid: 2e0560be2ae001e44ac0a4486776371a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 277944163}
+  lerpValue: 0
 --- !u!1 &779145829
 GameObject:
   m_ObjectHideFlags: 0
