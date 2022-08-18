@@ -25,6 +25,7 @@ public class SoldierModel : EnemyBase
     public bool castleStanding = true;
     public bool inRange = false;
     public bool targetAlive = false;
+    public bool castlePathBlocked;
 
     public float attackCooldown;
     public float range = 1f;
@@ -111,7 +112,7 @@ public class SoldierModel : EnemyBase
         pathfinding.enabled = false;
         GetComponent<FollowPath>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
-        this.enabled = false;
+        enabled = false;
         //gameObject.SetActive(false);
     }
 

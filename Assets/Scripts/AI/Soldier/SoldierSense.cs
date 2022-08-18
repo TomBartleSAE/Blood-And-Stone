@@ -12,7 +12,8 @@ public class SoldierSense : MonoBehaviour, ISense
         attackedByTower = 2,
         castleStanding = 3,
         inRange = 4,
-        targetAlive = 5
+        targetAlive = 5,
+        castlePathBlocked = 6
     }
     
     public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -25,6 +26,7 @@ public class SoldierSense : MonoBehaviour, ISense
         aWorldState.Set(SoldierBools.castleStanding, aAgent.GetComponent<SoldierModel>().castleStanding);
         aWorldState.Set(SoldierBools.inRange, aAgent.GetComponent<SoldierModel>().inRange);
         aWorldState.Set(SoldierBools.targetAlive, aAgent.GetComponent<SoldierModel>().targetAlive);
+        aWorldState.Set(SoldierBools.castlePathBlocked, aAgent.GetComponent<SoldierModel>().castlePathBlocked);
         
         aWorldState.EndUpdate();
     }
