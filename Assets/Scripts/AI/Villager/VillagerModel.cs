@@ -23,6 +23,7 @@ public class VillagerModel : MonoBehaviour, IStunnable
     public float stunTime;
 
     public Animator anim;
+    public ParticleSystem stunParticles;
 
     private void Start()
     {

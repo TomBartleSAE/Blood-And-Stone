@@ -27,6 +27,8 @@ public class StunnedState : AntAIState
         base.Enter();
 
         villager.GetComponent<FollowPath>().moveSpeed = 0;
+        
+        villager.stunParticles.Play();
 
         StartCoroutine(StunnedTimer());
     }
@@ -47,6 +49,7 @@ public class StunnedState : AntAIState
 
         villager.isStunned = false;
         villager.isScared = true;
+        villager.stunParticles.Stop();
 
         Finish();
     }
