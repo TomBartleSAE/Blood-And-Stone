@@ -216,6 +216,21 @@ MonoBehaviour:
   delay: 5
   anim: {fileID: 7093292879952836522}
   weaponModel: {fileID: 1263615345147552615}
+--- !u!114 &4850253792049326300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128260388451072843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5192f07dd4cdb444dbd71e4f4796d513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingBase: {fileID: 7049926620438292785}
+  clipName: TowerDestroyed
+  arrayName: 3
 --- !u!114 &6772698126864838754 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -4480982740973044769, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
@@ -326,3 +341,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6937706268257096495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948964436732436756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f83739fcad8341a6913267de7d24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayName: 0
+  clipName: 
+  isPlayerCharacter: 0

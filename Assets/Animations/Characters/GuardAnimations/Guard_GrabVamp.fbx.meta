@@ -76,7 +76,7 @@ ModelImporter:
         messageOptions: 0
       - time: 0.7403599
         functionName: PlaySFX
-        data: Attack
+        data: NPCAttack
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

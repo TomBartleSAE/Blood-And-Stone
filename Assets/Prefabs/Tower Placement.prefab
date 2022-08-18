@@ -126,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5079446817884302212}
   - component: {fileID: 5079446817884302213}
+  - component: {fileID: 7601962178551543486}
   - component: {fileID: 5079446817884302215}
   m_Layer: 0
   m_Name: Tower Placement
@@ -173,6 +174,21 @@ MonoBehaviour:
   buildableLayers:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7601962178551543486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5079446817884302330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f123d55670c60b1409f57b6ce0835ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPlacement: {fileID: 5079446817884302213}
+  clipName: TowerPlacement
+  arrayName: 3
 --- !u!114 &5079446817884302215
 MonoBehaviour:
   m_ObjectHideFlags: 0
