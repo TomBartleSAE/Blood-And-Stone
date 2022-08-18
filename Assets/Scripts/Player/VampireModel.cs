@@ -15,6 +15,8 @@ public class VampireModel : MonoBehaviour
 
     public Animator anim;
 
+    private bool isFeeding;
+
     public event Action VampireFeedingEvent;
 
     private void Start()
@@ -33,7 +35,7 @@ public class VampireModel : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, movement.target.position) < feedRange)
             {
-                if (movement.target.GetComponent<VillagerModel>())
+                if (movement.target.GetComponent<VillagerModel>() && !isFeeding)
                 {
                     Feed(movement.target.gameObject);
                 }
@@ -62,6 +64,7 @@ public class VampireModel : MonoBehaviour
     {
         // TODO: Move any view code here to a separate script
         movement.clickMovementActive = false;
+        isFeeding = true;
         // Play animations on vampire and victim
         movement.target = null;
         //victim.transform.position = transform.position;
@@ -71,6 +74,7 @@ public class VampireModel : MonoBehaviour
         anim.SetTrigger("Attack");
         VampireFeedingEvent?.Invoke();
         yield return new WaitForSeconds(3f);
+        isFeeding = false;
         movement.clickMovementActive = true;
     }
 
