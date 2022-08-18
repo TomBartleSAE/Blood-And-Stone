@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 15
+  maxHealth: 30
   healthMultiplier: 1
 --- !u!114 &2644285148407779229
 MonoBehaviour:

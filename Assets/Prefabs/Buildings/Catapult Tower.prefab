@@ -71,6 +71,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4480982740973044769, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: maxHealth
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2614277991046188286, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -216,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fcbff21a87e6a4687d554375d47e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 20
+  cost: 25
   health: {fileID: 6772698126864838754}
   grid: {fileID: 0}
   dustParticle: {fileID: 872881567380791508, guid: 17657ea8482aaf54c89240e4a854833b, type: 3}

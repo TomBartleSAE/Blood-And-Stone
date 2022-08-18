@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4480982740973044769, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
+      propertyPath: maxHealth
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2614277991046188286, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -146,6 +150,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5271138710105583862, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
   m_PrefabInstance: {fileID: 2650628545628602090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4908900708369818825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921326127909735964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d21821d09f3f254a9778d763d3fa109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weakeningTower: {fileID: 6793332098926969027}
+  clipName: TowerBats
+  arrayName: 3
+--- !u!114 &6654801299519923773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921326127909735964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5192f07dd4cdb444dbd71e4f4796d513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingBase: {fileID: 6793332098926969027}
+  clipName: TowerDestroyed
+  arrayName: 3
 --- !u!114 &6793332098926969027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,36 +200,6 @@ MonoBehaviour:
   range: 2
   target: {fileID: 0}
   targets: []
---- !u!114 &6654801299519923773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921326127909735964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5192f07dd4cdb444dbd71e4f4796d513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingBase: {fileID: 6793332098926969027}
-  clipName: TowerDestroyed
-  arrayName: 3
---- !u!114 &4908900708369818825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921326127909735964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d21821d09f3f254a9778d763d3fa109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weakeningTower: {fileID: 6793332098926969027}
-  clipName: TowerBats
-  arrayName: 3
 --- !u!4 &7921326127909735967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5271138710105583861, guid: 80e06e077f3be0a46aaf3ceaf031ebe6, type: 3}
