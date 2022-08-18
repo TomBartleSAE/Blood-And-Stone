@@ -31,9 +31,7 @@ public class PauseSettingsUI : MonoBehaviour
 	    MuteAudio(defaultMute);
 	    ChangeVolume(defaultVolume);
 	    volumeSlider.value = defaultVolume;
-        ResolutionChanged(0);
-        dropdown.value = 0;
-        SettingsManager.Instance.tutorialCompleted = false;
+	    SettingsManager.Instance.tutorialCompleted = false;
     }
 
     public void ChangeVolume(float newVolume)
