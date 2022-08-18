@@ -31,22 +31,23 @@ public class TowerBase : BuildingBase
     {
         if (other.GetComponent<EnemyBase>() && !other.isTrigger)
         {
-            targets.Remove(other.gameObject);
-            other.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
-            if (targets.Count > 0)
-            {
-                target = targets[Random.Range(0, targets.Count)];
-            }
-            else
-            {
-                target = null;
-            }
+            RemoveTarget(other.gameObject);
         }
     }
 
-    private void RemoveTarget(GameObject target)
+    private void RemoveTarget(GameObject newTarget)
     {
-        targets.Remove(target);
-        target.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
+        targets.Remove(newTarget);
+        
+        if (targets.Count > 0)
+        {
+            target = targets[Random.Range(0, targets.Count)];
+        }
+        else
+        {
+            target = null;
+        }
+        
+        newTarget.GetComponent<Tom.Health>().DeathEvent -= RemoveTarget;
     }
 }
