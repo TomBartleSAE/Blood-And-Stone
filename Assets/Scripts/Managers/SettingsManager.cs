@@ -48,7 +48,6 @@ public class SettingsManager : ManagerBase<SettingsManager>
             return 1;
         }
     }
-    
 
     public void SaveSettings()
     {
@@ -59,7 +58,10 @@ public class SettingsManager : ManagerBase<SettingsManager>
 
     public void LoadSettings()
     {
-        volumeLevel = PlayerPrefs.GetFloat("volume");
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            volumeLevel = PlayerPrefs.GetFloat("volume");
+        }
         //gets previous tutorial status ie completed or not
         int tutorialStatus = PlayerPrefs.GetInt("tutorial");
         tutorialCompleted = IntToBool(tutorialStatus);
