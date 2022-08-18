@@ -14,7 +14,12 @@ public class SettingsManager : ManagerBase<SettingsManager>
     {
         LoadSettings();
         AudioListener.volume = volumeLevel;
-        tutorialCompleted = TutorialManager.Instance.tutorialPreviouslyCompleted;
+        //tutorialCompleted = TutorialManager.Instance.tutorialPreviouslyCompleted;
+    }
+
+    private void OnApplicationQuit()
+    {
+	    SaveSettings();
     }
 
     //0 == true; 1 == false;

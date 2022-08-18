@@ -14,5 +14,6 @@ public class SkipTutorial : MonoBehaviour
         GetComponent<Button>().interactable = false;
         //Here for if they skip the tutorial - AM
         TutorialManager.Instance.tutorialPreviouslyCompleted = true;
+        SettingsManager.Instance.tutorialCompleted = true;
     }
 }
