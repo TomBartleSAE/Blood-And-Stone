@@ -108,10 +108,12 @@ MonoBehaviour:
     position: {x: 565.53845, y: 342.0879}
     pre:
     - id: 0
-      value: 1
+      value: 0
     - id: 4
-      value: 1
+      value: 0
     - id: 6
+      value: 1
+    - id: 3
       value: 1
     post:
     - id: 2
@@ -130,13 +132,13 @@ MonoBehaviour:
     - id: 3
       value: 0
   worldStates:
-  - position: {x: 362.53738, y: 678.7155}
+  - position: {x: 362.53738, y: 680.7155}
     isAutoUpdate: 1
     list:
     - id: 0
       value: 0
     - id: 1
-      value: 1
+      value: 0
     - id: 2
       value: 0
     - id: 3
@@ -146,4 +148,4 @@ MonoBehaviour:
     - id: 5
       value: 0
     - id: 6
-      value: 0
+      value: 1
