@@ -101,7 +101,7 @@ public class SoldierModel : EnemyBase
     {
         if (GhoulsInRange.Count > 0)
         {
-            target = GhoulsInRange[Random.Range(0, GhoulsInRange.Count - 1)];
+            target = GhoulsInRange[Random.Range(0, GhoulsInRange.Count)];
         }
         else
         {

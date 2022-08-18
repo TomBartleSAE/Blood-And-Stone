@@ -116,6 +116,7 @@ MonoBehaviour:
   health: {fileID: 6559976953810290360}
   clickMovement: {fileID: 7957953460022438710}
   boxSelection: {fileID: 0}
+  anim: {fileID: 229281232505937602}
   target: {fileID: 0}
   hasTarget: 0
   targetAlive: 0
@@ -125,7 +126,7 @@ MonoBehaviour:
   autoAttack: 0
   localAutoAttack: 0
   damage: -3
-  attackCooldown: 0
+  attackCooldown: 3
   attackRange: 2
 --- !u!114 &6559976953810290360
 MonoBehaviour:

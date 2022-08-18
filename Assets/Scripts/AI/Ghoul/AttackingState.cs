@@ -35,20 +35,19 @@ public class AttackingState : AntAIState
 
         ghoulModel.newGhoulTargetEvent += NewTarget;
         
-        target.GetComponent<Health>().DeathEvent += TargetDead;
+        //target.GetComponent<Health>().DeathEvent += TargetDead;
         
         /*if (target.GetComponent<Health>().currentHealth > 0)
         {
             ghoulModel.targetAlive = true;
         }*/
 
-        Attack();
+        //Attack();
     }
 
     private void OnDisable()
     {
-        ghoulModel.newGhoulTargetEvent -= NewTarget;
-        target.GetComponent<Health>().DeathEvent -= TargetDead;
+        //ghoulModel.newGhoulTargetEvent -= NewTarget;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -58,8 +57,9 @@ public class AttackingState : AntAIState
         timer -= Time.deltaTime;
         if (timer <= 0 && ghoulModel.inRange)
         {
-            canAttack = true;
             Invoke(nameof(Attack), 1.25f);
+            ghoulModel.anim.SetTrigger("Attack");
+            canAttack = false;
         }
     }
 
@@ -78,12 +78,18 @@ public class AttackingState : AntAIState
             target.GetComponent<Health>().ChangeHealth(-damage, gameObject); // Changing health by negative damage means damage values can be positive which makes more sense
             canAttack = false;
             timer = ghoulModel.attackCooldown;
+            if (target.GetComponent<Health>().currentHealth <= 0)
+            {
+                ghoulModel.TargetDeath(target.gameObject);
+                ghoulModel.target = null;
+            }
         }
     }
 
     public void TargetDead(GameObject deadThing)
     {
 	    //HACK - should I set up a function or event that updates all at once?
+        target.GetComponent<Health>().DeathEvent -= TargetDead;
         target = null;
         ghoulModel.target = null;
         clickMovement.target = null;

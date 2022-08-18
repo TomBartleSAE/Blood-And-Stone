@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Anthill.AI;
 using Tanks;
 using Tom;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class GhoulModel : MonoBehaviour
     private PathfindingAgent pathfinding;
     public ClickMovement clickMovement;
     public BoxSelection boxSelection;
+    public Animator anim;
 
     public Transform target;
     public event Action<Transform> newGhoulTargetEvent;
@@ -89,11 +91,17 @@ public class GhoulModel : MonoBehaviour
     void Die(GameObject thisDeadThing)
     {
         DayNPCManager.Instance.GhoulDeath();
-        Destroy(gameObject);
+        anim.SetTrigger("Death");
+        pathfinding.enabled = false;
+        health.enabled = false;
+        GetComponent<FollowPath>().enabled = false;
+        GetComponent<AntAIAgent>().enabled = false;
+        enabled = false;
+        //Destroy(gameObject);
     }
 
     //will return to FindTargetState and look for new target
-    void TargetDeath(GameObject deadThing)
+    public void TargetDeath(GameObject deadThing)
     {
         hasTarget = false;
         inRange = false;

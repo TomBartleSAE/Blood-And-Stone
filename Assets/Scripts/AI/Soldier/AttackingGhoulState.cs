@@ -32,8 +32,12 @@ public class AttackingGhoulState : AntAIState
         base.Enter();
 
         soldierModel = owner.GetComponent<SoldierModel>();
+        pathfinding = owner.GetComponent<PathfindingAgent>();
         target = soldierModel.target;
 	    damage = soldierModel.damage;
+
+        pathfinding.FindPath(owner.transform.position, target.transform.position);
+        
 	    if (target != null)
 	    {
 		    target.GetComponent<Health>().DeathEvent += TargetDead;
