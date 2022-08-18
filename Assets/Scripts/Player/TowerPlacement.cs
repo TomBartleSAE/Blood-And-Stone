@@ -100,11 +100,13 @@ public class TowerPlacement : MonoBehaviour
         
         if (!selectedNode.canBuild || selectedNode.isBlocked)
         {
+            MessageManager.Instance.ShowMessage("This area is blocked!", 3f);
             return;
         }
 
         if (PlayerManager.Instance.currentBlood < selectedBuilding.cost)
         {
+            MessageManager.Instance.ShowMessage("Not enough blood!", 3f);
             return;
         }
         

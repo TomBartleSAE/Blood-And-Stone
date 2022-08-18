@@ -28,7 +28,7 @@ public class TowerGhost : MonoBehaviour
     {
         ghost.GetComponentInChildren<MeshFilter>().mesh = building.GetComponentInChildren<MeshFilter>().sharedMesh;
 
-        if (!node.canBuild || node.isBlocked)
+        if (!node.canBuild || node.isBlocked || PlayerManager.Instance.currentBlood < tower.selectedBuilding.cost)
         {
             ghost.GetComponentInChildren<MeshRenderer>().material = blockedMaterial;
         }
