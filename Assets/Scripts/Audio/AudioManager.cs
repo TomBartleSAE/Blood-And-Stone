@@ -30,7 +30,7 @@ public class AudioManager : ManagerBase<AudioManager>
 	public SoundData[] ghoulFootstepsSounds;
 
 	[HideInInspector]
-	public string currentPhase = "MainMenu";
+	public string currentPhase;
 
 	[HideInInspector]
 	private AudioSource buttonEnterAudioSource;
@@ -113,6 +113,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			{
 				s.source.ignoreListenerPause = true;
 			}
+
 		}
 
 		foreach (SoundData s in sfxSounds)
@@ -190,8 +191,7 @@ public class AudioManager : ManagerBase<AudioManager>
 			}
 		}
 
-		currentPhase = "MainMenu";
-
+		Play("MainMenuMusic", ArrayName.music);
 	}
 
 	// subscribing to event triggers found sounds
@@ -517,15 +517,19 @@ public class AudioManager : ManagerBase<AudioManager>
 	IEnumerator PhaseMusicCoroutine(string phaseName)
 	{
 		mainSnapshot.TransitionTo(0);
+		string clipName = "clip";
 		currentPhase = phaseName;
-		string clipName = "LoadIn";
+		SoundData s = new SoundData();
 		ArrayName arrayName = ArrayName.music;
 
-		Play(clipName, arrayName);
 
-		SoundData s = new SoundData();
-		s = Array.Find(musicSounds, item => item.soundName == clipName);
-		yield return new WaitForSeconds(s.clip.length);
+		if (currentPhase != "MainMenu")
+		{
+			clipName = "LoadIn";
+			Play(clipName, arrayName);		
+			s = Array.Find(musicSounds, item => item.soundName == clipName);
+			yield return new WaitForSeconds(s.clip.length);
+		}
 
 		switch (phaseName)
 		{
@@ -551,7 +555,11 @@ public class AudioManager : ManagerBase<AudioManager>
 				clipName = "NightPhasePause";
 				break;
 		}
-		Play(clipName, arrayName);
+		if(clipName != "clip")
+		{ 
+				Play(clipName, arrayName);
+		}
+
 		yield return null;
 	}
 

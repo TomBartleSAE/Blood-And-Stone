@@ -66,10 +66,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4ac3be9da5f537d418dd9ba407936d46, type: 3}
     volume: 1
     volumeVariance: 0
-    pitch: 0.5
+    pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 6601103107475366672, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    mixerGroup: {fileID: -4968072067051026121, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
     playWhenPaused: 1
     source: {fileID: 0}
     playOnAwake: 0
@@ -273,8 +273,19 @@ MonoBehaviour:
     playWhenPaused: 0
     source: {fileID: 0}
     playOnAwake: 0
-  - soundName: TowerCatapult
-    clip: {fileID: 8300000, guid: ef5adde1def7ce34c8ddbebc9d21bd7c, type: 3}
+  - soundName: TowerCatapultLoad
+    clip: {fileID: 8300000, guid: 76218af369f2a6a4c9cc5a5949a70199, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 7792085171996100112, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
+    source: {fileID: 0}
+    playOnAwake: 0
+  - soundName: TowerCatapultAttack
+    clip: {fileID: 8300000, guid: 5723da4af0673e544a833e6e814301b6, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
@@ -484,6 +495,17 @@ MonoBehaviour:
     playOnAwake: 0
   - soundName: PCAttack
     clip: {fileID: 8300000, guid: 759e308a3b418644fa9e9911d0c2dc13, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 2014876411405162757, guid: a0c9499aa73fdfc44805f18472b82e38, type: 2}
+    playWhenPaused: 0
+    source: {fileID: 0}
+    playOnAwake: 0
+  - soundName: GuardAlert
+    clip: {fileID: 8300000, guid: 6d63d31f4125ff349997f9b08798a597, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1

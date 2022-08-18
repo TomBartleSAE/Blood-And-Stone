@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 5087221706454770325}
   - component: {fileID: 5087221706454770326}
   - component: {fileID: 5087221706454770324}
+  - component: {fileID: 179584647172133250}
   - component: {fileID: 5087221706454770323}
   - component: {fileID: 520551853}
   - component: {fileID: 4191081011320983613}
@@ -468,6 +469,21 @@ MonoBehaviour:
   - {fileID: 8064410166968708312}
   - {fileID: 4945393312576614501}
   - {fileID: 6739731297397663794}
+--- !u!114 &179584647172133250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087221706454770327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ddfacb7ca94ed4dbcc1a5c3f83e9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castleObject: {fileID: 5087221706454770324}
+  clipName: CastleUpgrade
+  arrayName: 3
 --- !u!65 &5087221706454770323
 BoxCollider:
   m_ObjectHideFlags: 0

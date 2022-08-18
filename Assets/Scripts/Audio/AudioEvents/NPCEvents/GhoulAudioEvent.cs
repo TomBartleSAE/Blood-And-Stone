@@ -23,14 +23,14 @@ public class GhoulAudioEvent : MonoBehaviour
 
     public void PlayGhoulMoveAudio()
     {
-        int index = UnityEngine.Random.Range(1, 3);
+        int index = UnityEngine.Random.Range(1, 4);
         AudioManager.Instance.Play(clipName + index, arrayName);
     }
     public void PlayGhoulAttackAudio(bool hasTarget)
     {
         if (hasTarget)
         {
-            int index = UnityEngine.Random.Range(1, 3);
+            int index = UnityEngine.Random.Range(1, 4);
             AudioManager.Instance.Play(clipName + index, arrayName);
         }
     }

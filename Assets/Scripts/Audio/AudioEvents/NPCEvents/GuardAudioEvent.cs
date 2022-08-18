@@ -6,6 +6,7 @@ public class GuardAudioEvent : MonoBehaviour
 {
     public GuardModel guardModel;
     public string alertClipName;
+    public string uiAlertClipName;
     public string ghoulClipName;
     public AudioManager.ArrayName arrayName;
 
@@ -26,11 +27,12 @@ public class GuardAudioEvent : MonoBehaviour
 
     public void PlayAlertAudio()
     {
+        AudioManager.Instance.Play(uiAlertClipName, arrayName);
         AudioManager.Instance.Play(alertClipName, arrayName);
     }
     public void PlayGhoulAudio()
     {
-        int index = UnityEngine.Random.Range(1, 3);
+        int index = UnityEngine.Random.Range(1, 4);
         AudioManager.Instance.Play(ghoulClipName + index, arrayName);
     }
 }

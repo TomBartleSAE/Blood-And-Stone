@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 3689531663806443247}
   - component: {fileID: 3689531663806443236}
   - component: {fileID: 3689531663806443244}
+  - component: {fileID: 788529966596824684}
   - component: {fileID: 3689531663806443246}
   - component: {fileID: 3689531663806443245}
   - component: {fileID: 3689531663806443235}
@@ -168,6 +169,23 @@ MonoBehaviour:
   investigationTime: 5
   hearingRange: 5
   waypoints: []
+--- !u!114 &788529966596824684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689531663806443243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf71323e826a384c9ef600dd115f217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guardModel: {fileID: 3689531663806443244}
+  alertClipName: TownCrier
+  uiAlertClipName: GuardAlert
+  ghoulClipName: GhoulAcknowledge
+  arrayName: 3
 --- !u!114 &3689531663806443246
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -81,9 +81,9 @@ public class AnimationAudioEvent : MonoBehaviour
             case "BodyImpact":
                 clipName = sound;
                 break;
-            case "Attack":
+            case "NPCAttack":
                 index = UnityEngine.Random.Range(1, 3);
-                clipName = "NPCAttack" + index;
+                clipName = sound + index;
                 break;
             case "PCAttack":
                 clipName = sound;
@@ -102,6 +102,15 @@ public class AnimationAudioEvent : MonoBehaviour
                 index = UnityEngine.Random.Range(1, 3);
                 clipName = sound + index;
                 break;
+            case "TowerCatapultAttack":
+                clipName = sound;
+                break;
+            case "TowerCatapultLoad":
+                clipName = sound;
+                break;
+            case "TowerCrossbow":
+                clipName = sound;
+                break;
         }
 
         if (playerCharacter != null && isNightPhase) //this is determining the attenuation
@@ -113,8 +122,5 @@ public class AnimationAudioEvent : MonoBehaviour
             AudioManager.Instance.Play(clipName, arrayName);
         }
     }
-
-
-    //20 - 22 = npc attack sounds
 
 }
