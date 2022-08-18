@@ -58,7 +58,6 @@ public class GhoulModel : MonoBehaviour
 
     private void OnDestroy()
     {
-        DayNPCManager.Instance.RemoveFromGhoulList(gameObject);
         health.DeathEvent -= Die;
         clickMovement.HasTargetEvent -= HasTargetBoolChange;
     }
@@ -91,6 +90,7 @@ public class GhoulModel : MonoBehaviour
     void Die(GameObject thisDeadThing)
     {
         DayNPCManager.Instance.GhoulDeath();
+        DayNPCManager.Instance.RemoveFromGhoulList(gameObject);
         anim.SetTrigger("Death");
         pathfinding.enabled = false;
         health.enabled = false;
