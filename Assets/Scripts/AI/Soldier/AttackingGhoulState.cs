@@ -33,14 +33,19 @@ public class AttackingGhoulState : AntAIState
 
         soldierModel = owner.GetComponent<SoldierModel>();
         target = soldierModel.target;
-        damage = soldierModel.damage;
-        target.GetComponent<Health>().DeathEvent += TargetDead;
+	    damage = soldierModel.damage;
+	    if (target != null)
+	    {
+		    target.GetComponent<Health>().DeathEvent += TargetDead;
+	    }
     }
 
     private void OnDisable()
     {
-        target.GetComponent<Health>().DeathEvent -= TargetDead;
-
+	    if (target != null)
+	    {
+		    target.GetComponent<Health>().DeathEvent -= TargetDead;
+	    }
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -75,5 +80,6 @@ public class AttackingGhoulState : AntAIState
     {
         soldierModel.GhoulsInRange.Remove(deadThing.transform);
         soldierModel.ChangeTarget();
+        target.GetComponent<Health>().DeathEvent -= TargetDead;
     }
 }

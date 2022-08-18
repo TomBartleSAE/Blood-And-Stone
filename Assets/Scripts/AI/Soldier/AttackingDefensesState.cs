@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class AttackingDefensesState : AntAIState
 {
-    public SoldierModel soldier;
+    public SoldierModel soldierModel;
 
     public GameObject owner;
     public Transform target;
@@ -29,17 +29,24 @@ public class AttackingDefensesState : AntAIState
     {
         base.Enter();
 
-        soldier = owner.GetComponent<SoldierModel>();
-        target = soldier.target;
+        soldierModel = owner.GetComponent<SoldierModel>();
 
+	    target = soldierModel.target;
+	    
         canAttack = true;
 
-        target.GetComponent<Tom.Health>().DeathEvent += LeaveState;
+        if (target != null)
+        {
+	        target.GetComponent<Tom.Health>().DeathEvent += LeaveState;
+        }
     }
 
     private void OnDisable()
     {
-        target.GetComponent<Tom.Health>().DeathEvent -= LeaveState;
+	    if (target != null)
+	    {
+		    target.GetComponent<Tom.Health>().DeathEvent -= LeaveState;
+	    }
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -57,7 +64,7 @@ public class AttackingDefensesState : AntAIState
             {
                 canAttack = false;
                 Attack();
-                attackTimer = soldier.attackCooldown;
+                attackTimer = soldierModel.attackCooldown;
             }
         }
     }
@@ -72,9 +79,9 @@ public class AttackingDefensesState : AntAIState
         float distance = Vector3.Distance(owner.transform.position, target.transform.position);
 
         // Tom: Changed this to force soldier to switch to MoveToTarget state when out of range
-        if (distance > soldier.range)
+        if (distance > soldierModel.range)
         {
-            soldier.inRange = false;
+            soldierModel.inRange = false;
         }
     }
 
@@ -82,17 +89,17 @@ public class AttackingDefensesState : AntAIState
     {
         target.GetComponent<Tom.Health>().ChangeHealth(-damage, owner);
         canAttack = true;
-        soldier.anim.SetTrigger("Attack");
+        soldierModel.anim.SetTrigger("Attack");
     }
 
     public void LeaveState(GameObject go)
     {
         // Tom: Added some extra bool changes here
         target.GetComponent<Tom.Health>().DeathEvent -= LeaveState;
-        soldier.target = null;
-        soldier.attackedByTower = false;
-        soldier.hasTarget = false;
-        soldier.inRange = false;
+        soldierModel.target = null;
+        soldierModel.attackedByTower = false;
+        soldierModel.hasTarget = false;
+        soldierModel.inRange = false;
         Finish();
     }
 }
