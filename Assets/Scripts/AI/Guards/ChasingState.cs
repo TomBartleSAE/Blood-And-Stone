@@ -37,7 +37,7 @@ public class ChasingState : AntAIState
         guard.vision.distance = 3.5f;
         guard.isAlert = true;
         guard.IsAlerted();
-        guard.GetComponent<FollowPath>().moveSpeed = 8;
+        guard.GetComponent<FollowPath>().moveSpeed = guard.chasingSpeed;
         
         //get vampire location
         target = guard.vampire;

@@ -40,7 +40,10 @@ public class GuardModel : MonoBehaviour
     public bool isPatrolling;
     public bool isDead = false;
 
-    [Header("Various Floats")]
+    [Header("Various Floats")] 
+    public float patrolSpeed = 2.5f;
+    public float investigatingSpeed = 5f;
+    public float chasingSpeed = 8f;
     public float guardRange;
     public float captureTime;
     public float searchCooldown;

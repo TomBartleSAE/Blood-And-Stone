@@ -29,7 +29,7 @@ public class InvestigatingState : AntAIState
         vampire = guard.vampire;
         guard.isPatrolling = false;
         guard.IsAlerted();
-        guard.GetComponent<FollowPath>().moveSpeed = 5;
+        guard.GetComponent<FollowPath>().moveSpeed = guard.investigatingSpeed;
         
         //Run FindPath to get to event site
         pathfinding.FindPath(transform.position, guard.investigateTarget.transform.position);

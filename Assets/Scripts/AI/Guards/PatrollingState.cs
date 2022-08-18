@@ -44,7 +44,7 @@ public class PatrollingState : AntAIState
         waypoints = guard.waypoints;
         guard.vision.angle = 25;
         guard.vision.distance = 2.5f;
-        guard.GetComponent<FollowPath>().moveSpeed = 2.5f;
+        guard.GetComponent<FollowPath>().moveSpeed = guard.patrolSpeed;
 
         //gets random waypoint from array of possible waypoints
         GetPatrolPoints();
