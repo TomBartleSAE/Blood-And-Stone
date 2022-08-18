@@ -28,7 +28,14 @@ public class MainMenuManager : ManagerBase<MainMenuManager>
     public void Play()
     {
         PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.newGameDataPath));
-        GameManager.Instance.CallPhaseChange("Tutorial_Act1-1", "MainMenu", GameManager.Instance.tutorialState);
+        if (!SettingsManager.Instance.tutorialCompleted)
+        {
+            GameManager.Instance.CallPhaseChange("Tutorial_Act1-1", "MainMenu", GameManager.Instance.tutorialState);
+        }
+        else
+        {
+            GameManager.Instance.CallPhaseChange("NightTest", "MainMenu", GameManager.Instance.nightPhaseState);
+        }
     }
 
     public void Load()
