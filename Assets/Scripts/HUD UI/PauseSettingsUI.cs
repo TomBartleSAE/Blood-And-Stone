@@ -17,20 +17,13 @@ public class PauseSettingsUI : MonoBehaviour
 
     private float defaultVolume = 0.75f;
     private bool defaultMute = false;
+    public bool savedMute;
 
     private void Start()
     {
         PopulateResolutionList();
         
-        if (GetComponentInParent<MainMenuManager>().savedVolume != null)
-        {
-            volumeSlider.value = GetComponentInParent<MainMenuManager>().savedVolume;
-        }
-        else
-        {
-            volumeSlider.value = defaultVolume;
-        }
-
+        volumeSlider.value = SettingsManager.Instance.volumeLevel;
     }
 
     public void RestoreDefaultSettings()
@@ -40,11 +33,13 @@ public class PauseSettingsUI : MonoBehaviour
 	    volumeSlider.value = defaultVolume;
         ResolutionChanged(0);
         dropdown.value = 0;
+        SettingsManager.Instance.tutorialCompleted = false;
     }
 
     public void ChangeVolume(float newVolume)
     {
 	    AudioListener.volume = newVolume;
+        SettingsManager.Instance.volumeLevel = newVolume;
     }
 
     public void MuteAudio(bool value)
@@ -87,8 +82,6 @@ public class PauseSettingsUI : MonoBehaviour
 
     public void SaveSettings()
     {
-        PlayerPrefs.SetFloat("volume", volumeSlider.value);
-        PlayerPrefs.Save();
+        SettingsManager.Instance.SaveSettings();
     }
-
 }

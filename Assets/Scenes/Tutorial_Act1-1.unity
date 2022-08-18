@@ -808,6 +808,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 1541075062}
   activeClickArea: {fileID: 0}
   index: 0
+  tutorialPreviouslyCompleted: 0
   mouseButton: 0
 --- !u!4 &645748530
 Transform:
@@ -1643,6 +1644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2314524477850749910, guid: 77aec5cfb4b7cdf4ea884d0d1a32df76, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 645748529}
     - target: {fileID: 2314524477850749914, guid: 77aec5cfb4b7cdf4ea884d0d1a32df76, type: 3}
       propertyPath: m_Name
       value: Skip Button

@@ -20,6 +20,8 @@ public class TutorialManager : ManagerBase<TutorialManager>
     private Coroutine textTyping;
     private string currentText;
 
+    public bool tutorialPreviouslyCompleted;
+
     public enum MouseButton
     {
         LeftClick,
@@ -174,5 +176,10 @@ public class TutorialManager : ManagerBase<TutorialManager>
     public void LoadNewGameData()
     {
         PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.newGameDataPath));
+    }
+
+    public void TutorialCompletedBoolChange(bool value)
+    {
+        SettingsManager.Instance.tutorialCompleted = value;
     }
 }

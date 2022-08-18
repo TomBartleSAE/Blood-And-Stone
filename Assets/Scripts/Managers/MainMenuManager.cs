@@ -6,13 +6,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : ManagerBase<MainMenuManager>
 {
     public TextMeshProUGUI continueText;
-    
-    public Slider volumeSlider;
+    public PauseSettingsUI settings;
 
-    public float savedVolume;
+    private bool tutorialCompleted;
 
     private void Start()
     {
@@ -24,8 +23,6 @@ public class MainMenuManager : MonoBehaviour
         {
             continueText.color = Color.gray;
         }
-        
-        LoadSettings();
     }
 
     public void Play()
@@ -41,12 +38,6 @@ public class MainMenuManager : MonoBehaviour
             PlayerManager.Instance.LoadSaveData(SaveManager.Instance.LoadGame(SaveManager.Instance.saveFilePath));
             GameManager.Instance.CallPhaseChange("DayTest", SceneManager.GetActiveScene().name, GameManager.Instance.dayPhaseState);
         }
-    }
-
-    public void LoadSettings()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("volume");
-        savedVolume = PlayerPrefs.GetFloat("volume");
     }
 
     public void Quit()

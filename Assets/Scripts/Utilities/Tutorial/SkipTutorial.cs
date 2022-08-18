@@ -12,5 +12,7 @@ public class SkipTutorial : MonoBehaviour
         GameManager.Instance.CallPhaseChange("NightTest", SceneManager.GetActiveScene().name,
             GameManager.Instance.nightPhaseState);
         GetComponent<Button>().interactable = false;
+        //Here for if they skip the tutorial - AM
+        TutorialManager.Instance.tutorialPreviouslyCompleted = true;
     }
 }
