@@ -66,12 +66,15 @@ public class GuardModel : MonoBehaviour
         
         //reaction to own death event
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
+
+        mapExit.GetComponent<ReturnToCastleTrigger>().VampireExitEvent += StopMoving;
     }
 
     private void OnDisable()
     {
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
         GetComponent<Health>().DeathEvent -= CheckGhoulCapacity;
+        mapExit.GetComponent<ReturnToCastleTrigger>().VampireExitEvent -= StopMoving;
     }
 
     #region Investigation
@@ -146,5 +149,12 @@ public class GuardModel : MonoBehaviour
     {
         NightNPCManager.Instance.GuardAlert(false);
         NotAlertedEvent?.Invoke();
+    }
+
+    //hack
+    void StopMoving()
+    {
+	    Rigidbody rb = GetComponent<Rigidbody>();
+	    rb.isKinematic = true;
     }
 }

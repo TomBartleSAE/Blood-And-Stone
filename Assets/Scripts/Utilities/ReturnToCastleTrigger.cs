@@ -9,6 +9,8 @@ public class ReturnToCastleTrigger : MonoBehaviour
     public Collider collider;
     public GameObject view;
 
+    public event Action VampireExitEvent;
+
     private void Start()
     {
         SetTrigger(false);
@@ -27,6 +29,8 @@ public class ReturnToCastleTrigger : MonoBehaviour
     {
         if (other.GetComponent<VampireModel>())
         {
+	        VampireExitEvent?.Invoke();
+	        LevelTimer.Instance.timerActive = false;
             GameManager.Instance.CallPhaseChange("DayTest", "NightTest", GameManager.Instance.dayPhaseState);
         }
 
