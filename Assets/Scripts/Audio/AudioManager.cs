@@ -32,6 +32,9 @@ public class AudioManager : ManagerBase<AudioManager>
 	[HideInInspector]
 	public string currentPhase = "MainMenu";
 
+	[HideInInspector]
+	private AudioSource buttonEnterAudioSource;
+
 	public enum ArrayName {
 	
 	ambience, 
@@ -66,16 +69,34 @@ public class AudioManager : ManagerBase<AudioManager>
 
 		foreach (SoundData s in menuSounds)
 		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-			s.source.loop = s.loop;
-			s.source.playOnAwake = s.playOnAwake;
-
-			s.source.outputAudioMixerGroup = s.mixerGroup;
-
-			if (s.playWhenPaused == true)
+			if (s.soundName == "ButtonEnter")
 			{
-				s.source.ignoreListenerPause = true;
+				s.source = gameObject.AddComponent<AudioSource>();
+				buttonEnterAudioSource = s.source; // setting the source reference we have to the source of this audio (hopefully)
+				s.source.clip = s.clip;
+				s.source.loop = s.loop;
+				s.source.playOnAwake = s.playOnAwake;
+
+				s.source.outputAudioMixerGroup = s.mixerGroup;
+
+				if (s.playWhenPaused == true)
+				{
+					s.source.ignoreListenerPause = true;
+				}
+			}
+			else
+			{
+				s.source = gameObject.AddComponent<AudioSource>();
+				s.source.clip = s.clip;
+				s.source.loop = s.loop;
+				s.source.playOnAwake = s.playOnAwake;
+
+				s.source.outputAudioMixerGroup = s.mixerGroup;
+
+				if (s.playWhenPaused == true)
+				{
+					s.source.ignoreListenerPause = true;
+				}
 			}
 		}
 
@@ -257,7 +278,17 @@ public class AudioManager : ManagerBase<AudioManager>
 	public void StopPlaying(string soundToStop) // this is ONLY stopping the pause music when it is currently playing and the game is resuming
 	{
 		SoundData s = new SoundData();
-		switch (soundToStop)
+
+		//foreach (SoundData s in ambienceSounds)  //this code could be used to fix the super long janky hard coded code belore, only IF a paused audio source does not count as playing on an "isPlaying" check
+		//{
+		//	if (s.source.isPlaying)
+		//	{
+		//		s.source.Pause();
+		//	}
+		//}
+
+
+		switch (soundToStop) // this switch could be refined if we had a reduced amount of audiosources, or if we found a way to single handledly just stop ANY audio source playing (maybe a find all sources and stop them function?)
 		{
 			case "DayPhasePause":
 				s = Array.Find(musicSounds, item => item.soundName == soundToStop);
@@ -462,24 +493,16 @@ public class AudioManager : ManagerBase<AudioManager>
 	{
 		StartCoroutine(LoadingCoroutine(soundToStop));
 	}
-	//	loadingAMSnapshot.TransitionTo(0);    // notif: if !()
 
 	IEnumerator LoadingCoroutine(string soundToStop) //this will stop audio playing during the loading screen by (if main menu) waiting for the button enter to finish, then transitioning snapshots, then (also if else) stopping music sounds  
 	{
-		SoundData s = new SoundData();
 
-        switch (currentPhase)
+		if (buttonEnterAudioSource.isPlaying)
 		{
-			default:
-				loadingScreenSnapshot.TransitionTo(0);
-				break;
-			case "MainMenu":
-				s = Array.Find(menuSounds, item => item.soundName == "ButtonEnter");
-				yield return new WaitForSeconds(s.clip.length);
-				loadingScreenSnapshot.TransitionTo(2); //fades music in and out, currently uses only master mixer group volume. If time for further improvements to the game audio, make subgroups for sounds/etc
-				yield return new WaitForSeconds(2);
-				break;
+			yield return new WaitWhile(() => buttonEnterAudioSource.isPlaying);
 		}
+
+		loadingScreenSnapshot.TransitionTo(0); //fades music in and out but the int number, currently uses only master mixer group volume. If time for further improvements to the game audio, make subgroups for sounds/etc
 
 		StopPlaying(soundToStop);
 
@@ -495,7 +518,6 @@ public class AudioManager : ManagerBase<AudioManager>
 	{
 		mainSnapshot.TransitionTo(0);
 		currentPhase = phaseName;
-		// Debug.Log("Setting currentPhase to" + currentPhase.ToString());
 		string clipName = "LoadIn";
 		ArrayName arrayName = ArrayName.music;
 
@@ -532,12 +554,6 @@ public class AudioManager : ManagerBase<AudioManager>
 		Play(clipName, arrayName);
 		yield return null;
 	}
-
-
-	//Get reference to ClickMovement script on Vampire object, subscribe to StartedMoveEvent
-	//Get reference to ClickMovement script on Vampire object, subscribe to HasTargetEvent(function requires bool variable), check if bool variable is true
-	//If you need a different sound for villagers and guards, add “if (clickMovementReference.target.GetComponent<VillagerModel>()” for villagers or “…GetComponent<GuardModel>()” for guards
-	//Get reference to TooltipObject script in each Tower prefab, subscribe to SelectedObjectEvent
 
 	public void PlayAmbience()
 	{
@@ -579,30 +595,6 @@ public class AudioManager : ManagerBase<AudioManager>
 		Play(clipName, arrayName);
 		Play(clipName2, arrayName);
 	}
-	// GameManager.Instance.LoadingStartedEvent
-	// GameManager.Instance.LoadingFinishedEvent   if (myScene == passedStringVariable)
-	// GameManager.Instance.dayPhaseState.WaveEndedEvent
-	// GameManager.Instance.dayPhaseState.WaveStartedEvent
-	// night phase almost ending: LevelTimer.Instance.TimerNearlyOverEvent (default to 10 seconds before end, can change this in Base scene > Level Timer object > nearlyOverEventTime)
-	// GameManager.Instance.GameOverEvent
-	// Get reference to Pause System object in scene, subscribe to GamePausedEvent/GameResumedEvent
 
-
-
-
-	//look for anything currently playing, fade it out, then fade in the new music
-
-
-
-	//   the following code is what needs to be placed within other scripts to call the play function in the audio manager
-	//
-	//   public void TestSound()
-	//   {
-	//       FindObjectOfType<AudioManager>().Play("Insert clip name in audio manager inspector", AudioManager.ArrayName.insert arrayname);
-	//   }
-
-
-
-
-	//        myAudioSource.PlayDelayed(Random.Range(minDelay, maxDelay)); <<<< This element will be good only for ambience, will need mindelay/maxdelay variables, maybe add those to array for ambience?
+	// myAudioSource.PlayDelayed(Random.Range(minDelay, maxDelay)); <<<< This element will be good only for ambience, will need mindelay/maxdelay variables, maybe add those to array for ambience?
 }

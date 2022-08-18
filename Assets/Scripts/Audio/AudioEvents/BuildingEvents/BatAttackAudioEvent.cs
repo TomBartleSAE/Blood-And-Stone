@@ -10,13 +10,13 @@ public class BatAttackAudioEvent : MonoBehaviour
 
     void OnEnable()
     {
-        weakeningTower.EnemyBeingWeakened += PlayAttackAudio;
+ //       weakeningTower.EnemyBeingWeakened += PlayAttackAudio;
     }
 
 
     void OnDisable()
     {
-        weakeningTower.EnemyBeingWeakened -= PlayAttackAudio;
+  //      weakeningTower.EnemyBeingWeakened -= PlayAttackAudio;
     }
 
     public void PlayAttackAudio()
