@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 92409965164385164, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 169082289633761204, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2581573383732910477, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2964088960905265038, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
@@ -258,6 +258,30 @@ PrefabInstance:
     - target: {fileID: 8354392383760790736, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0514737d79a99314eb626e34e7da129d, type: 3}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782498842124310108, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109911013187656819, guid: 0c65a6ebb6e0245449110d12e80c79a9, type: 3}
       propertyPath: m_RootOrder
