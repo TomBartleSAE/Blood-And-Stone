@@ -96,5 +96,6 @@ public class VampireModel : MonoBehaviour
     {
         anim.SetTrigger("Death");
         movement.clickMovementActive = false;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 }

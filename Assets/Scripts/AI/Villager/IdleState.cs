@@ -10,7 +10,7 @@ public class IdleState : AntAIState
 
     public Vector3 destination;
 
-    public bool newPath = true;
+    public bool hasPath = true;
 
     public override void Create(GameObject aGameObject)
     {
@@ -26,8 +26,6 @@ public class IdleState : AntAIState
         pathfinding = owner.GetComponent<PathfindingAgent>();
 
         GetDestination();
-
-        GoToDestination(transform.position, destination);
     }
 
      public override void Execute(float aDeltaTime, float aTimeScale)
@@ -35,20 +33,19 @@ public class IdleState : AntAIState
          base.Execute(aDeltaTime, aTimeScale);
 
          //gets new path once destination reached, again, I'd prefer to have a PathCompletedEvent 
-         if (owner.GetComponent<PathfindingAgent>().path.Count != 0)
+         if (pathfinding.path.Count != 0)
          {
              if (Vector3.Distance(pathfinding.path[pathfinding.path.Count - 1].coordinates, transform.position) < 0.5)
              {
                  pathfinding.path.Clear();
+                 hasPath = false;
                  GetDestination();
                  pathfinding.FindPath(transform.position, destination);
              }
          }
-
          else
          {
              GetDestination();
-             GoToDestination(transform.position, destination);
          }
      }
 
@@ -61,23 +58,17 @@ public class IdleState : AntAIState
     void GetDestination()
     {
         Node destinationNode = new Node();
-        destinationNode.coordinates = new Vector3(Random.Range(-8, 8), 0, Random.Range(5,-7));
+        destinationNode.coordinates = new Vector3(Random.Range(-8, 8), 0, Random.Range(5, -7));
 
         if (destinationNode.isBlocked)
         {
             GetDestination();
         }
-        
+
         if (!destinationNode.isBlocked || pathfinding.path.Count == 0)
         {
             destination = destinationNode.coordinates;
-            newPath = false;
+            pathfinding.FindPath(owner.transform.position, destinationNode.coordinates);
         }
-    }
-
-    //finds the path
-    void GoToDestination(Vector3 startPos, Vector3 destinationPos)
-    {
-        owner.GetComponent<PathfindingAgent>().FindPath(startPos, destinationPos);
     }
 }
