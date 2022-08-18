@@ -10,7 +10,7 @@ public class PauseSettingsUI : MonoBehaviour
     public Slider volumeSlider;
     public Toggle muteToggle;
     public TMP_Dropdown dropdown;
-    
+
     List<string> resOptions = new List<string>() {"1920 x 1080", "1280 x 720", "1280 x 1040"};
 
     public float previousVolume;
@@ -21,7 +21,16 @@ public class PauseSettingsUI : MonoBehaviour
     private void Start()
     {
         PopulateResolutionList();
-        volumeSlider.value = 0.75f;
+        
+        if (GetComponentInParent<MainMenuManager>().savedVolume != null)
+        {
+            volumeSlider.value = GetComponentInParent<MainMenuManager>().savedVolume;
+        }
+        else
+        {
+            volumeSlider.value = defaultVolume;
+        }
+
     }
 
     public void RestoreDefaultSettings()
@@ -73,8 +82,13 @@ public class PauseSettingsUI : MonoBehaviour
         if (indexValue == 2)
         {
             Screen.SetResolution(1280, 1040, false);
-        }
-        Debug.Log(Screen.currentResolution);
+        } 
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
+        PlayerPrefs.Save();
     }
 
 }

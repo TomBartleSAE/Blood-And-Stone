@@ -11,15 +11,9 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI continueText;
     
     public Slider volumeSlider;
-    public Toggle muteToggle;
 
-    public float previousVolume;
+    public float savedVolume;
 
-    private float defaultVolume = 100;
-    private bool defaultMute = false;
-    //TODO need screensize when added
-
-    
     private void Start()
     {
         if (SaveManager.Instance.SaveFileExists(SaveManager.Instance.saveFilePath))
@@ -30,6 +24,8 @@ public class MainMenuManager : MonoBehaviour
         {
             continueText.color = Color.gray;
         }
+        
+        LoadSettings();
     }
 
     public void Play()
@@ -47,28 +43,11 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void RestoreDefaultSettings()
+    public void LoadSettings()
     {
-        AudioListener.volume = defaultVolume;
-        MuteAudio(defaultMute);
-        //TODO restore to default resolution
+        volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        savedVolume = PlayerPrefs.GetFloat("volume");
     }
-
-    public void MuteAudio(bool value)
-    {
-        if (value)
-        {
-            previousVolume = AudioListener.volume;
-            volumeSlider.value = 0;
-        }
-
-        if (!value)
-        {
-            volumeSlider.value = previousVolume;
-            muteToggle.isOn = false;
-        }
-    }
-    
 
     public void Quit()
     {
