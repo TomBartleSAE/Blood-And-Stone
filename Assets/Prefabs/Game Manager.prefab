@@ -56,7 +56,9 @@ MonoBehaviour:
   tutorialState: {fileID: 1945999870306932424}
   stateManager: {fileID: 1659434417592835435}
   loadingImage: {fileID: 0}
+  deathScreenUI: {fileID: 0}
   levelTimer: {fileID: 0}
+  baseCamera: {fileID: 0}
 --- !u!114 &1659434417592835435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
-  nightPhaseTime: 30
-  burnParticle: {fileID: 4087533388648067238, guid: 472a1a5fbe6214248ad236a7ad514810, type: 3}
+  nightPhaseTime: 120
 --- !u!1 &1659434419030389964
 GameObject:
   m_ObjectHideFlags: 0
