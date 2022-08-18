@@ -47,7 +47,11 @@ MonoBehaviour:
   owner: {fileID: 0}
   castle: {fileID: 0}
   pathfinding: {fileID: 0}
-  soldier: {fileID: 0}
-  attackTime: 3
+  soldierModel: {fileID: 0}
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 128
   damage: 5
+  attackTimer: 0
   canAttack: 1
+  inRangeOfCastle: 0

@@ -43,6 +43,7 @@ public class SoldierModel : EnemyBase
     {
         health.DeathEvent -= Die;
         health.DamageChangeEvent += Retaliate;
+        pathfinding.grid.GridGeneratedEvent -= FindNewTarget;
     }
 
     void Awake()
@@ -50,6 +51,11 @@ public class SoldierModel : EnemyBase
         rb = GetComponent<Rigidbody>();
         pathfinding = GetComponent<PathfindingAgent>();
         health = GetComponent<Health>();
+    }
+
+    private void Start()
+    {
+        pathfinding.grid.GridGeneratedEvent += FindNewTarget;
     }
 
     private void Update()
@@ -112,6 +118,7 @@ public class SoldierModel : EnemyBase
         pathfinding.enabled = false;
         GetComponent<FollowPath>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<Health>().enabled = false;
         enabled = false;
         //gameObject.SetActive(false);
     }
@@ -124,5 +131,13 @@ public class SoldierModel : EnemyBase
 	        attackedByGhoul = true;
 	        hasTarget = true;
         }
+    }
+
+    public void FindNewTarget()
+    {
+        hasTarget = false;
+        target = null;
+        inRange = false;
+        castlePathBlocked = false;
     }
 }

@@ -19,30 +19,22 @@ MonoBehaviour:
     - id: 1
       name: attackedByGhoul
     - id: 2
-      name: attackedByTower
-    - id: 3
       name: castleStanding
-    - id: 4
+    - id: 3
       name: inRange
-    - id: 5
+    - id: 4
       name: targetAlive
-    - id: 6
+    - id: 5
       name: castlePathBlocked
   actions:
   - name: SoldierFindTargetState
-    isDefault: 0
+    isDefault: 1
     state: {fileID: 2912095369631467980, guid: 970ad14248e65d4428c2555599da73be, type: 3}
     cost: 0
     position: {x: 346.8235, y: 77.31543}
     pre:
-    - id: 3
-      value: 1
-    - id: 2
-      value: 0
     - id: 0
       value: 0
-    - id: 1
-      value: 1
     post:
     - id: 0
       value: 1
@@ -54,31 +46,27 @@ MonoBehaviour:
     pre:
     - id: 0
       value: 1
-    - id: 4
+    - id: 3
       value: 0
     post:
-    - id: 4
+    - id: 3
       value: 1
   - name: AttackKeepState
-    isDefault: 1
+    isDefault: 0
     state: {fileID: 5808321601648382795, guid: c320874527d1fd744936e85827ebb7d2, type: 3}
-    cost: 10
+    cost: 0
     position: {x: 352.21503, y: 344.01935}
     pre:
-    - id: 3
+    - id: 2
       value: 1
     - id: 1
       value: 0
-    - id: 2
-      value: 0
-    - id: 4
-      value: 0
-    - id: 0
-      value: 0
-    - id: 6
+    - id: 3
+      value: 1
+    - id: 5
       value: 0
     post:
-    - id: 3
+    - id: 2
       value: 0
   - name: AttackGhoulState
     isDefault: 0
@@ -88,7 +76,7 @@ MonoBehaviour:
     pre:
     - id: 1
       value: 1
-    - id: 4
+    - id: 3
       value: 1
     - id: 0
       value: 1
@@ -97,42 +85,40 @@ MonoBehaviour:
       value: 0
     - id: 0
       value: 0
-    - id: 4
-      value: 0
     - id: 3
+      value: 0
+    - id: 2
       value: 1
   - name: AttackDefensesState
     isDefault: 0
     state: {fileID: 1022765470523554323, guid: 7c10f288672821e44ba4993fde654035, type: 3}
-    cost: 2
+    cost: 0
     position: {x: 565.53845, y: 342.0879}
     pre:
     - id: 0
-      value: 0
-    - id: 4
-      value: 0
-    - id: 6
       value: 1
     - id: 3
       value: 1
-    post:
+    - id: 5
+      value: 1
     - id: 2
-      value: 0
-    - id: 4
+      value: 1
+    post:
+    - id: 3
       value: 0
     - id: 0
       value: 0
-    - id: 6
+    - id: 5
       value: 0
   goals:
   - name: DestroyTarget
     isDefault: 1
     position: {x: 1016.2948, y: 79.04004}
     conditions:
-    - id: 3
+    - id: 2
       value: 0
   worldStates:
-  - position: {x: 362.53738, y: 680.7155}
+  - position: {x: 333.53738, y: 696.7155}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -140,12 +126,10 @@ MonoBehaviour:
     - id: 1
       value: 0
     - id: 2
-      value: 0
-    - id: 3
       value: 1
+    - id: 3
+      value: 0
     - id: 4
       value: 0
     - id: 5
       value: 0
-    - id: 6
-      value: 1

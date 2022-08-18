@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Anthill.AI;
 using Tom;
 using UnityEngine;
@@ -13,7 +14,6 @@ public class AttackingKeepState : AntAIState
     public PathfindingAgent pathfinding;
     public SoldierModel soldierModel;
     
-    public LayerMask buildingLayer;
     
     public float damage;
     public float attackTimer;
@@ -34,14 +34,8 @@ public class AttackingKeepState : AntAIState
         base.Enter();
 
         castle = soldierModel.castle;
-        pathfinding.PathFailedEvent += BreakThroughWall;
         
         pathfinding.FindPath(owner.transform.position, castle.position);
-    }
-
-    private void OnDisable()
-    {
-	    pathfinding.PathFailedEvent -= BreakThroughWall;
     }
 
     public override void Execute(float aDeltaTime, float aTimeScale)
@@ -73,15 +67,6 @@ public class AttackingKeepState : AntAIState
         base.Exit();
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-	    if (other.GetComponent<Castle>())
-	    {
-		    Debug.Log("Castle in Range");
-		    inRangeOfCastle = true;
-	    }
-    }
-
     public void AttackCastle()
     {
 	    if (canAttack)
@@ -90,24 +75,5 @@ public class AttackingKeepState : AntAIState
 		    castle.GetComponentInParent<Health>().ChangeHealth(-damage, owner);
 		    soldierModel.anim.SetTrigger("Attack");
 	    }
-    }
-    
-    public void BreakThroughWall()
-    {
-	    Collider[] towers = Physics.OverlapSphere(transform.position, 100, buildingLayer);
-
-	    foreach (var building in towers)
-	    {
-		    float shortestDistance = 100000;
-		    float distance = Vector3.Distance(transform.position, building.transform.position);
-		    if (distance < shortestDistance)
-		    {
-			    shortestDistance = distance;
-			    soldierModel.target = building.transform;
-		    }
-	    }
-
-	    //will change to AttackingDefensesState
-	    soldierModel.attackedByTower = true;
     }
 }

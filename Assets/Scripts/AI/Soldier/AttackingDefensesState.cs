@@ -55,10 +55,10 @@ public class AttackingDefensesState : AntAIState
 
         // Tom: NOTE removed all pathfinding code here, should all be handled by MoveToTarget state
         
-        CheckRange();
+        //CheckRange();
 
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (attackTimer <= 0 && soldierModel.inRange)
         {
             if (canAttack)
             {
@@ -100,6 +100,7 @@ public class AttackingDefensesState : AntAIState
         soldierModel.attackedByTower = false;
         soldierModel.hasTarget = false;
         soldierModel.inRange = false;
+        soldierModel.castlePathBlocked = false;
         Finish();
     }
 }

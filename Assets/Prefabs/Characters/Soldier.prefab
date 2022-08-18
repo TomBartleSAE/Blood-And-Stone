@@ -137,8 +137,9 @@ MonoBehaviour:
   castleStanding: 1
   inRange: 0
   targetAlive: 0
+  castlePathBlocked: 0
   attackCooldown: 3
-  range: 1
+  range: 1.5
   damage: 3
   buildingLayer:
     serializedVersion: 2

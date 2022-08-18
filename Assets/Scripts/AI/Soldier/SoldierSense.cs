@@ -9,11 +9,10 @@ public class SoldierSense : MonoBehaviour, ISense
     {
         hasTarget = 0,
         attackedByGhoul = 1,
-        attackedByTower = 2,
-        castleStanding = 3,
-        inRange = 4,
-        targetAlive = 5,
-        castlePathBlocked = 6
+        castleStanding = 2,
+        inRange = 3,
+        targetAlive = 4,
+        castlePathBlocked = 5
     }
     
     public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -22,7 +21,6 @@ public class SoldierSense : MonoBehaviour, ISense
 
         aWorldState.Set(SoldierBools.hasTarget, aAgent.GetComponent<SoldierModel>().hasTarget);
         aWorldState.Set(SoldierBools.attackedByGhoul, aAgent.GetComponent<SoldierModel>().attackedByGhoul);
-        aWorldState.Set(SoldierBools.attackedByTower, aAgent.GetComponent<SoldierModel>().attackedByTower);
         aWorldState.Set(SoldierBools.castleStanding, aAgent.GetComponent<SoldierModel>().castleStanding);
         aWorldState.Set(SoldierBools.inRange, aAgent.GetComponent<SoldierModel>().inRange);
         aWorldState.Set(SoldierBools.targetAlive, aAgent.GetComponent<SoldierModel>().targetAlive);
