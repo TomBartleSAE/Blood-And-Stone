@@ -55,8 +55,13 @@ public class VampireModel : MonoBehaviour
 
     public void Feed(GameObject victim)
     {
+        StartCoroutine(FeedRoutine(victim));
+    }
+
+    public IEnumerator FeedRoutine(GameObject victim)
+    {
         // TODO: Move any view code here to a separate script
-        
+        movement.clickMovementActive = false;
         // Play animations on vampire and victim
         movement.target = null;
         //victim.transform.position = transform.position;
@@ -65,6 +70,8 @@ public class VampireModel : MonoBehaviour
         PlayerManager.Instance.ChangeBlood(bloodGain);
         anim.SetTrigger("Attack");
         VampireFeedingEvent?.Invoke();
+        yield return new WaitForSeconds(3f);
+        movement.clickMovementActive = true;
     }
 
     //Guard Conversion Interaction - AM
