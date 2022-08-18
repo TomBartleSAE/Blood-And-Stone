@@ -106,7 +106,7 @@ public class GuardModel : MonoBehaviour
         if (ghoulCurrent < ghoulMax)
         {
             GhoulConversion();
-            PlayerManager.Instance.CurrentGhouls += 1;
+            PlayerManager.Instance.CurrentGhouls++;
         }
 
         else
