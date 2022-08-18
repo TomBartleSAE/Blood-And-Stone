@@ -95,13 +95,19 @@ public class PatrollingState : AntAIState
     {
         // HACK
         int tempPatrolPoint = Random.Range(0, waypoints.Length - 1);
-        while(Vector3.Distance(waypoints[tempPatrolPoint].transform.position, owner.transform.position) < 0.5f)
+        
+        /*while(Vector3.Distance(waypoints[tempPatrolPoint].transform.position, owner.transform.position) < 0.5f)
         {
             tempPatrolPoint = Random.Range(0, waypoints.Length - 1);
-        }
+        }*/
         
         pointA = owner.transform.position;
         pointB = waypoints[tempPatrolPoint].transform.position;
+
+        if (Vector3.Distance(pointA, pointB) <= 2)
+        {
+	        GetPatrolPoints();
+        }
     }
 
     //changes path destination according to patrol direction
