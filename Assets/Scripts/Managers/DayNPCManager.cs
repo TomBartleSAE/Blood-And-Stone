@@ -14,6 +14,8 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     public event Action SoldierDeathEvent;
     public event Action GameOverDayEvent;
 
+    public int ghoulCount;
+
     public int[] ghoulDamageLevels = new int[4];
     public float[] ghoulHealthLevels = new float[4];
     public float[] ghoulAttackRateLevels = new float[4];
@@ -51,13 +53,11 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     {
         ghoul.GetComponent<GhoulModel>().SetLevel(PlayerManager.Instance.CastleLevel);
         Ghouls.Add(ghoul);
-        PlayerManager.Instance.CurrentGhouls = Ghouls.Count;
     }
 
     public void RemoveFromGhoulList(GameObject ghoul)
     {
         Ghouls.Remove(ghoul);
-        PlayerManager.Instance.CurrentGhouls = Ghouls.Count;
     }
 
     public void GhoulDeath()
