@@ -2049,7 +2049,7 @@ Transform:
   - {fileID: 1624428825}
   - {fileID: 1018811894}
   - {fileID: 1821002282}
-  - {fileID: 771747208}
+  - {fileID: 771747210}
   - {fileID: 982029865}
   - {fileID: 1753114542}
   - {fileID: 1171024822}
@@ -2210,7 +2210,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 771747208}
+  - component: {fileID: 771747210}
   - component: {fileID: 771747209}
   m_Layer: 0
   m_Name: Tutorial 8-3
@@ -2219,21 +2219,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &771747208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771747207}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 645748530}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &771747209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,6 +2250,26 @@ MonoBehaviour:
     the crypt, select the crypt building, then select the upgrade icon. '
   portrait: {fileID: 0}
   typingDelay: 0
+--- !u!224 &771747210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771747207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 645748530}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &809744403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2563,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1940171884}
   m_Father: {fileID: 645748530}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2579,7 +2585,7 @@ MonoBehaviour:
       m_Calls: []
   mouseButton: 0
   clickArea: {fileID: 892770987}
-  clickVisual: {fileID: 0}
+  clickVisual: {fileID: 1940171883}
 --- !u!1001 &994057539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8697,6 +8703,67 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6922014664452399887, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
   m_PrefabInstance: {fileID: 618204313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1608034867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 982029865}
+    m_Modifications:
+    - target: {fileID: 7099036766853562393, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_Name
+      value: Tutorial Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099036766853562393, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
 --- !u!1 &1624428824
 GameObject:
   m_ObjectHideFlags: 0
@@ -14145,6 +14212,16 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1940171883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7099036766853562393, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+  m_PrefabInstance: {fileID: 1608034867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1940171884 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7624322586092952227, guid: ae14176025a5cb546a00d30363d616f6, type: 3}
+  m_PrefabInstance: {fileID: 1608034867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945608964
 GameObject:
   m_ObjectHideFlags: 0
