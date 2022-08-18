@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 84812048248208947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80554, y: 0.80554, z: 0.80554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6091718671446231755}
@@ -460,9 +460,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 5087221706454770326}
-  upgradeCosts: 000000003200000064000000c8000000
+  upgradeCosts: 00000000320000006400000096000000
   maxHealths: 4b000000500000005a00000064000000
-  maxBloods: 320000004b000000640000007d000000
+  maxBloods: 320000006400000096000000c8000000
   ghoulPopcaps: 0a000000190000002800000037000000
   meshes:
   - {fileID: 7523624221735868070}
@@ -588,7 +588,7 @@ RectTransform:
   m_GameObject: {fileID: 5443463709228780652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4910464, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8764580139910373241}
@@ -599,8 +599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: 15}
-  m_SizeDelta: {x: 219, y: 30}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 217.5, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2898599487898083623
 MonoBehaviour:
@@ -896,7 +896,7 @@ RectTransform:
   m_GameObject: {fileID: 8307473132677751548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80554, y: 0.80554, z: 0.80554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6091718671446231755}
