@@ -24,9 +24,7 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     public void AddToSoldierList(GameObject newSoldier)
     {
         Soldiers.Add(newSoldier);
-        //TODO not sure how to unsub when is a local variable?
-        newSoldier.GetComponent<Health>().DeathEvent += RemoveFromSoldierList;
-        
+
         foreach (var ghoul in Ghouls)
         {
 	        ghoul.GetComponent<GhoulModel>().targetAlive = true;
@@ -35,9 +33,7 @@ public class DayNPCManager : ManagerBase<DayNPCManager>
     
     public void RemoveFromSoldierList(GameObject soldier)
     {
-        soldier.GetComponent<Health>().DeathEvent -= RemoveFromSoldierList;
-
-        SoldierDeathEvent?.Invoke();
+	    SoldierDeathEvent?.Invoke();
         Soldiers.Remove(soldier);
         
         if (Soldiers.Count == 0)
