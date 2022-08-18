@@ -53,15 +53,15 @@ public class ProjectileTower : DamageTower
             {
                 // Play impact particle
                 isLaunching = false;
-                curveTime = 0;
                 
                 projectile.gameObject.SetActive(false);
                 
-                impactParticle.transform.position = targetArea;
                 impactParticle.gameObject.SetActive(true);
+                impactParticle.transform.position = targetArea;
                 impactParticle.Play();
                 
                 Invoke(nameof(ResetProjectile), 3f);
+                curveTime = 0;
             }
         }
     }
