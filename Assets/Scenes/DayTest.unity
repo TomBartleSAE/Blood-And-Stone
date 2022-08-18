@@ -1438,6 +1438,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: maxBloods.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: maxBloods.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: maxBloods.Array.data[3]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: upgradeCosts.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087221706454770324, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
+      propertyPath: upgradeCosts.Array.data[3]
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5087221706454770325, guid: d5fa8aab8d207504f850906d1eefb0b4, type: 3}
       propertyPath: m_RootOrder
       value: 6
