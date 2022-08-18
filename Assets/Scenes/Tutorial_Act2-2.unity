@@ -288,7 +288,7 @@ MonoBehaviour:
         m_MethodName: SelectBuilding
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3249869415638050215, guid: 597afa945c892e2479ef9d1a2892ead6, type: 3}
+          m_ObjectArgument: {fileID: 7049926620438292785, guid: 597afa945c892e2479ef9d1a2892ead6, type: 3}
           m_ObjectArgumentAssemblyTypeName: BuildingBase, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
