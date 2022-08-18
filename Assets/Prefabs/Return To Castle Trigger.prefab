@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 3841571662052430092}
-  view: {fileID: 3841571661279169669}
+  view: {fileID: 6332566149673605907}
 --- !u!65 &3841571662052430092
 BoxCollider:
   m_ObjectHideFlags: 0
