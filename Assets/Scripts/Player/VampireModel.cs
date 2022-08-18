@@ -87,4 +87,10 @@ public class VampireModel : MonoBehaviour
         newParticle.Play();
         Destroy(gameObject);
     }
+
+    public void Captured()
+    {
+        anim.SetTrigger("Death");
+        movement.clickMovementActive = false;
+    }
 }

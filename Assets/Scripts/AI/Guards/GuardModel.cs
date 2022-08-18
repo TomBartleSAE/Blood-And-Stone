@@ -128,6 +128,7 @@ public class GuardModel : MonoBehaviour
     public void CapturedVampire()
     {
 	    GameManager.Instance.GameOverMessage("You were captured by the town guard...");
+        vampire.GetComponent<VampireModel>().Captured();
         CapturedVampireEvent?.Invoke();
     }
 
