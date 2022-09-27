@@ -67,9 +67,11 @@ public class GuardModel : MonoBehaviour
         //reaction to own death event
         GetComponent<Health>().DeathEvent += CheckGhoulCapacity;
 
+        //used upon exiting map after guard-ghoul conversion  
         mapExit.GetComponent<ReturnToCastleTrigger>().VampireExitEvent += StopMoving;
     }
 
+    //unsubbing from events
     private void OnDisable()
     {
         NightNPCManager.Instance.VillagerDeathEvent -= Reaction;
@@ -79,14 +81,16 @@ public class GuardModel : MonoBehaviour
 
     #region Investigation
     
-    //reacting to villager/guard death; will go to investigate
+    //reacting to villager/guard death; will go to location to investigate
     public void Reaction(GameObject deadThing)
     {
         if (Vector3.Distance(transform.position, deadThing.transform.position) < hearingRange)
         {
+	        //changes state
             isAlert = true;
             isPatrolling = false;
         
+            //allocates target
             investigateTarget = deadThing.transform;
         }
     }
@@ -133,7 +137,9 @@ public class GuardModel : MonoBehaviour
     
     public void CapturedVampire()
     {
+	    //Gameover message
 	    GameManager.Instance.GameOverMessage("You were captured by the town guard...");
+	    
         vampire.GetComponent<VampireModel>().Captured();
         CapturedVampireEvent?.Invoke();
     }
@@ -150,8 +156,7 @@ public class GuardModel : MonoBehaviour
         NightNPCManager.Instance.GuardAlert(false);
         NotAlertedEvent?.Invoke();
     }
-
-    //hack
+    
     void StopMoving()
     {
 	    Rigidbody rb = GetComponent<Rigidbody>();
